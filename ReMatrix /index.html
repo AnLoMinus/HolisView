@@ -1,0 +1,1559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>HolisView – Restart Matrix (RM)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="HolisView – Restart Matrix: Interactive color–sefira flow, restart protocol, triggers and compassion codes, future-ready for ChatGPT API." />
+  <style>
+    :root {
+      --bg-dark: #050612;
+      --accent-purple: #b466ff;
+      --accent-blue: #3ea8ff;
+      --accent-red: #ff4b6e;
+      --accent-green: #73ffb4;
+      --text-main: #f5f5ff;
+      --text-muted: #a4a6c5;
+      --card-bg: rgba(10, 12, 35, 0.92);
+      --border-soft: rgba(255, 255, 255, 0.06);
+      --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.7);
+      --radius-xl: 24px;
+      --transition-fast: 0.2s ease-out;
+      --transition-slow: 0.4s ease-out;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #15173a 0, #050612 60%);
+      color: var(--text-main);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Floating orbs behind content */
+    .orb {
+      position: fixed;
+      border-radius: 999px;
+      filter: blur(35px);
+      opacity: 0.45;
+      pointer-events: none;
+      mix-blend-mode: screen;
+      z-index: 0;
+      animation: floatOrb 18s infinite alternate ease-in-out;
+    }
+
+    .orb.orb-purple {
+      width: 420px;
+      height: 420px;
+      background: radial-gradient(circle, rgba(180, 102, 255, 0.9), transparent 70%);
+      top: -120px;
+      right: -60px;
+    }
+
+    .orb.orb-blue {
+      width: 380px;
+      height: 380px;
+      background: radial-gradient(circle, rgba(62, 168, 255, 0.9), transparent 70%);
+      bottom: -140px;
+      left: -40px;
+      animation-delay: 2s;
+    }
+
+    .orb.orb-red {
+      width: 260px;
+      height: 260px;
+      background: radial-gradient(circle, rgba(255, 75, 110, 0.9), transparent 70%);
+      top: 40%;
+      left: 55%;
+      animation-delay: 4s;
+    }
+
+    @keyframes floatOrb {
+      0% {
+        transform: translate3d(0, 0, 0) scale(1);
+      }
+      50% {
+        transform: translate3d(-20px, 15px, 0) scale(1.05);
+      }
+      100% {
+        transform: translate3d(15px, -25px, 0) scale(1.03);
+      }
+    }
+
+    .app-shell {
+      position: relative;
+      z-index: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 24px 16px 48px;
+    }
+
+    header.app-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .brand-block {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-logo {
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: radial-gradient(circle at 30% 0, #ffffff, #b466ff 35%, #050612 80%);
+      box-shadow: 0 0 20px rgba(180, 102, 255, 0.65);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 18px;
+      letter-spacing: 0.04em;
+      color: #050612;
+    }
+
+    .brand-text h1 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-main);
+    }
+
+    .brand-text p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .meta-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.75rem;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: radial-gradient(circle at top left, rgba(180, 102, 255, 0.26), rgba(5, 6, 18, 0.98));
+      backdrop-filter: blur(14px);
+    }
+
+    .meta-pill {
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    main {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+      gap: 22px;
+    }
+
+    @media (max-width: 960px) {
+      main {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-soft);
+      box-shadow: var(--shadow-soft);
+      padding: 18px 18px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.06), transparent 65%);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity var(--transition-slow);
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .card-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card-title span.emoji {
+      font-size: 1.15rem;
+    }
+
+    .card-subtitle {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    .chip {
+      font-size: 0.7rem;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.02);
+      color: var(--text-muted);
+      cursor: default;
+    }
+
+    /* Hero content */
+    .hero-title {
+      font-size: 1.6rem;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    .hero-highlight {
+      background: linear-gradient(110deg, #ff9af0, #ffe770, #73ffb4, #3ea8ff, #b466ff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-text {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      max-width: 480px;
+      line-height: 1.4;
+      margin-bottom: 12px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .btn {
+      appearance: none;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      font-size: 0.8rem;
+      padding: 8px 14px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-weight: 600;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast);
+    }
+
+    .btn-primary {
+      background: linear-gradient(120deg, #ff9af0, #ffe770, #73ffb4);
+      color: #050612;
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.65);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 36px rgba(0, 0, 0, 0.85);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      color: var(--text-main);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(255, 255, 255, 0.04);
+      transform: translateY(-1px);
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
+    .hero-meta-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    /* Color matrix */
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .color-btn {
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 999px;
+      padding: 8px 10px;
+      font-size: 0.78rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.02);
+      cursor: pointer;
+      transition: background var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+    }
+
+    .color-btn span.label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .color-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .color-dot.black {
+      background: #050612;
+    }
+
+    .color-dot.white {
+      background: #fdfdfd;
+    }
+
+    .color-dot.red {
+      background: #ff4b6e;
+    }
+
+    .color-dot.blue {
+      background: #3ea8ff;
+    }
+
+    .color-dot.grey {
+      background: #82889d;
+    }
+
+    .color-dot.purple {
+      background: #b466ff;
+    }
+
+    .color-btn.active {
+      border-color: rgba(255, 255, 255, 0.7);
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.75);
+      transform: translateY(-1px);
+      background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.08), rgba(10, 12, 35, 0.98));
+    }
+
+    .color-description {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+      min-height: 34px;
+    }
+
+    .color-meta {
+      font-size: 0.78rem;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 6px;
+    }
+
+    .pill {
+      padding: 4px 6px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .pill-label {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+
+    .pill-value {
+      font-size: 0.78rem;
+    }
+
+    /* Restart flow */
+    .flow-layout {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 12px;
+    }
+
+    @media (max-width: 960px) {
+      .flow-layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .flow-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .flow-step {
+      border-radius: 12px;
+      padding: 7px 9px;
+      font-size: 0.78rem;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.02);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      cursor: pointer;
+      transition: background var(--transition-fast), transform var(--transition-fast), border-color var(--transition-fast);
+    }
+
+    .flow-step-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .flow-step-index {
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.08);
+      font-size: 0.7rem;
+    }
+
+    .flow-step-title {
+      font-weight: 600;
+    }
+
+    .flow-step.active {
+      background: radial-gradient(circle at top left, rgba(180, 102, 255, 0.18), rgba(10, 12, 35, 0.98));
+      border-color: rgba(180, 102, 255, 0.9);
+      transform: translateY(-1px);
+    }
+
+    .flow-detail {
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 10px;
+      background: rgba(3, 5, 20, 0.85);
+      font-size: 0.8rem;
+      min-height: 120px;
+    }
+
+    .flow-detail h4 {
+      font-size: 0.86rem;
+      margin-bottom: 4px;
+    }
+
+    .flow-detail p {
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .flow-detail ul {
+      padding-left: 16px;
+      margin: 3px 0;
+      color: var(--text-muted);
+    }
+
+    .flow-detail li {
+      margin-bottom: 2px;
+    }
+
+    /* Triggers + compassion */
+    .stack {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .mini-title {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .tag-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      font-size: 0.72rem;
+    }
+
+    .tag {
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .list-scroll {
+      max-height: 148px;
+      overflow-y: auto;
+      padding-right: 4px;
+      font-size: 0.78rem;
+    }
+
+    .entry-row {
+      padding: 5px 0;
+      border-bottom: 1px dashed rgba(255, 255, 255, 0.06);
+    }
+
+    .entry-row:last-child {
+      border-bottom: none;
+    }
+
+    .entry-main {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      align-items: baseline;
+    }
+
+    .entry-title {
+      font-weight: 600;
+    }
+
+    .entry-meta {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
+    .entry-desc {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    /* Journal */
+    .field-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    @media (max-width: 720px) {
+      .field-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    label {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    select,
+    textarea {
+      width: 100%;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: rgba(3, 5, 20, 0.9);
+      color: var(--text-main);
+      font-size: 0.8rem;
+      padding: 6px 10px;
+      outline: none;
+      resize: vertical;
+      min-height: 34px;
+      transition: border-color var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+    }
+
+    textarea {
+      border-radius: 14px;
+      min-height: 60px;
+    }
+
+    select:focus,
+    textarea:focus {
+      border-color: rgba(180, 102, 255, 0.9);
+      box-shadow: 0 0 0 1px rgba(180, 102, 255, 0.6);
+      background: rgba(7, 10, 32, 0.98);
+    }
+
+    .journal-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      margin-top: 6px;
+    }
+
+    .journal-actions small {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+
+    .journal-log {
+      margin-top: 8px;
+      max-height: 130px;
+      overflow-y: auto;
+      font-size: 0.78rem;
+      border-top: 1px dashed rgba(255, 255, 255, 0.08);
+      padding-top: 6px;
+    }
+
+    .log-item {
+      padding: 4px 0;
+      border-bottom: 1px dashed rgba(255, 255, 255, 0.06);
+    }
+
+    .log-item:last-child {
+      border-bottom: none;
+    }
+
+    .log-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      margin-bottom: 2px;
+    }
+
+    .log-text {
+      font-size: 0.78rem;
+    }
+
+    /* ChatGPT section */
+    .code-block {
+      font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.72rem;
+      background: rgba(3, 5, 20, 0.94);
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 8px 10px;
+      overflow-x: auto;
+      margin-top: 6px;
+    }
+
+    .api-status {
+      font-size: 0.74rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    .status-pill {
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      background: rgba(255, 255, 255, 0.02);
+      font-size: 0.7rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .input-row {
+      display: flex;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    .input-row input {
+      flex: 1;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: rgba(3, 5, 20, 0.9);
+      color: var(--text-main);
+      font-size: 0.78rem;
+      padding: 6px 10px;
+      outline: none;
+      transition: border-color var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+    }
+
+    .input-row input:focus {
+      border-color: rgba(62, 168, 255, 0.85);
+      box-shadow: 0 0 0 1px rgba(62, 168, 255, 0.65);
+      background: rgba(7, 10, 32, 0.98);
+    }
+
+    .btn-small {
+      font-size: 0.7rem;
+      padding: 6px 10px;
+    }
+
+    .ai-preview {
+      margin-top: 6px;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      min-height: 32px;
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 18px;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 8px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 10px;
+    }
+
+    footer a {
+      color: var(--accent-blue);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    .hashtags {
+      font-size: 0.7rem;
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+  <!-- Floating energy orbs -->
+  <div class="orb orb-purple"></div>
+  <div class="orb orb-blue"></div>
+  <div class="orb orb-red"></div>
+
+  <div class="app-shell">
+    <header class="app-header">
+      <div class="brand-block">
+        <div class="brand-logo">HV</div>
+        <div class="brand-text">
+          <h1>HolisView · Restart Matrix (RM)</h1>
+          <p>From black–white thinking → integrated color-conscious flow</p>
+        </div>
+      </div>
+      <div class="meta-badge">
+        <span class="meta-pill">🔁 Begin Again Protocol</span>
+        <span>4 Colors · 4 Sefirot · 7 Steps · 10 Triggers · 13 Compassion Codes</span>
+      </div>
+    </header>
+
+    <main>
+      <!-- LEFT COLUMN -->
+      <section class="card" id="hero-card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">
+              <span class="emoji">🌌</span>
+              <span>Hero · Restart Matrix</span>
+            </div>
+            <div class="card-subtitle">Live color-state awareness + sefirot + daily restart</div>
+          </div>
+        </div>
+
+        <div>
+          <h2 class="hero-title">
+            Live inside the <span class="hero-highlight">Restart Matrix</span> – not inside your story.
+          </h2>
+          <p class="hero-text">
+            One tap to name your color, one breath to choose your sefira, one micro-action to begin again.
+            This page is your interactive canvas for the HolisView flow <strong>“תתחיל מחדש”</strong>.
+          </p>
+
+          <div class="hero-actions">
+            <button class="btn btn-primary" id="btn-random-color">
+              🎨 Random Color Check
+            </button>
+            <button class="btn btn-ghost" id="btn-scroll-journal">
+              ✍️ Jump to Restart Journal
+            </button>
+          </div>
+
+          <div class="hero-meta">
+            <div class="hero-meta-item">
+              📅 <span>26 Nov 2025 · Restart Session Template</span>
+            </div>
+            <div class="hero-meta-item">
+              🧬 <span>HV Core: 4/7/10/13 integrated</span>
+            </div>
+          </div>
+        </div>
+
+        <hr style="border: none; border-top: 1px solid rgba(255,255,255,0.08); margin: 12px 0;" />
+
+        <!-- Color Matrix -->
+        <div class="card-header">
+          <div>
+            <div class="card-title">
+              <span class="emoji">🎨</span>
+              <span>Color Matrix · מצב תודעה</span>
+            </div>
+            <div class="card-subtitle">Choose your current color – the system explains the state + sefira</div>
+          </div>
+        </div>
+
+        <div class="color-grid" id="color-grid">
+          <!-- Buttons generated by JS -->
+        </div>
+
+        <div class="color-description" id="color-description">
+          Tap a color to map your current emotional state.
+        </div>
+
+        <div class="color-meta">
+          <div class="pill">
+            <span class="pill-label">🧠 Dominant Sefira</span>
+            <span class="pill-value" id="color-sefira">–</span>
+          </div>
+          <div class="pill">
+            <span class="pill-label">🔥 Suggested Micro-Action</span>
+            <span class="pill-value" id="color-action">–</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- RIGHT COLUMN -->
+      <section class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">
+              <span class="emoji">🔁</span>
+              <span>Restart Flow · 7 Steps</span>
+            </div>
+            <div class="card-subtitle">From freeze / fight / fog → conscious reset</div>
+          </div>
+        </div>
+
+        <div class="flow-layout">
+          <div class="flow-list" id="flow-list">
+            <!-- Steps populated by JS -->
+          </div>
+          <div class="flow-detail" id="flow-detail">
+            <h4>Pick a step to see how to use it today.</h4>
+            <p>
+              This is the <strong>“תתחיל מחדש”</strong> protocol inside HolisView –
+              a loop you can run multiple times a day whenever the story in your head feels stuck.
+            </p>
+            <ul>
+              <li>Use it after failure, conflict, anxiety, overload.</li>
+              <li>Keep it light: one color, one question, one micro-action.</li>
+            </ul>
+          </div>
+        </div>
+
+        <hr style="border: none; border-top: 1px solid rgba(255,255,255,0.08); margin: 10px 0;" />
+
+        <div class="stack">
+          <div>
+            <div class="mini-title">🧨 Triggers (10) – when to use Restart</div>
+            <div class="tag-cloud" id="trigger-tags">
+              <!-- Tags from JS -->
+            </div>
+            <div class="list-scroll" id="trigger-list">
+              <!-- Trigger rows -->
+            </div>
+          </div>
+
+          <div>
+            <div class="mini-title">💜 Compassion Codes (13) – how to talk to yourself</div>
+            <div class="list-scroll" id="compassion-list">
+              <!-- Compassion codes -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Second row: Journal + API -->
+      <section class="card" id="journal-card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">
+              <span class="emoji">📓</span>
+              <span>Restart Journal</span>
+            </div>
+            <div class="card-subtitle">Tiny log for color · sefira · micro-action (saved locally)</div>
+          </div>
+        </div>
+
+        <form id="journal-form">
+          <div class="field-grid">
+            <div>
+              <label for="journal-color">🎨 Color right now</label>
+              <select id="journal-color" required>
+                <option value="">Pick a color…</option>
+                <option value="black">Black · Shutdown</option>
+                <option value="white">White · Clarity</option>
+                <option value="red">Red · Attack / Push</option>
+                <option value="blue">Blue · Defense / Boundaries</option>
+                <option value="grey">Grey · Fog</option>
+                <option value="purple">Purple · Integration</option>
+              </select>
+            </div>
+            <div>
+              <label for="journal-sefira">🕯 Sefira anchor</label>
+              <select id="journal-sefira" required>
+                <option value="">Choose a sefira…</option>
+                <option value="Chesed">Chesed · חסד</option>
+                <option value="Gevurah">Gevurah · גבורה</option>
+                <option value="Tiferet">Tiferet · תפארת</option>
+                <option value="Malchut">Malchut · מלכות</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label for="journal-action">🔥 Micro-action (1 small step)</label>
+            <textarea id="journal-action" placeholder="Example: put the phone away for 10 minutes and breathe…"></textarea>
+          </div>
+
+          <div class="journal-actions">
+            <small>Saved in your browser only · Use it as a gentle daily reset log.</small>
+            <div style="display:flex; gap:6px;">
+              <button type="button" class="btn btn-ghost btn-small" id="btn-clear-journal">🧹 Clear</button>
+              <button type="submit" class="btn btn-primary btn-small">💾 Save</button>
+            </div>
+          </div>
+        </form>
+
+        <div class="journal-log" id="journal-log"></div>
+      </section>
+
+      <section class="card">
+        <div class="card-header">
+          <div>
+            <div class="card-title">
+              <span class="emoji">🤖</span>
+              <span>ChatGPT API · Future Hook</span>
+            </div>
+            <div class="card-subtitle">
+              UI is ready – you can later plug in a backend that talks to ChatGPT based on this matrix.
+            </div>
+          </div>
+        </div>
+
+        <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:6px;">
+          The idea: send <strong>color + sefira + trigger + previous log</strong> as context to ChatGPT,
+          and ask for one more compassionate, grounded step. Below is a minimal client-side shape and a
+          <em>pseudo</em>-call you can wire up in a secure backend.
+        </p>
+
+        <div class="input-row">
+          <input
+            id="ai-input"
+            type="text"
+            placeholder="Example: I’m stuck in red + Gevurah after an argument…"
+          />
+          <button class="btn btn-ghost btn-small" type="button" id="btn-ai-draft">
+            🧪 Draft Prompt
+          </button>
+        </div>
+
+        <div class="ai-preview" id="ai-preview"></div>
+
+        <div class="api-status">
+          <span class="status-pill">
+            ⏳ API status: client-only demo
+          </span>
+          <span>Wire it to your backend when you’re ready.</span>
+        </div>
+
+        <div class="code-block">
+<pre>
+// PSEUDO: shape for your backend route
+async function callRestartAssistant(payload) {
+  const body = {
+    color: payload.color,      // 'black' | 'white' | 'red' | ...
+    sefira: payload.sefira,    // 'Chesed' | 'Gevurah' | ...
+    trigger: payload.trigger,  // e.g. 'Conflict'
+    log: payload.log,          // last few journal entries
+    note: payload.note         // user free text
+  };
+
+  // TODO: send this to your secure backend.
+  // Example (server-side):
+  //
+  // const completion = await openai.chat.completions.create({
+  //   model: 'gpt-4.1',
+  //   messages: [
+  //     { role: 'system', content: 'You are a HolisView restart coach...' },
+  //     { role: 'user', content: JSON.stringify(body) }
+  //   ]
+  // });
+}
+</pre>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div>
+        © HolisView – Restart Matrix · AnLoMinus.  
+        GitHub: <a href="https://github.com/AnLoMinus/HolisView" target="_blank" rel="noreferrer">HolisView Repo</a>
+      </div>
+      <div class="hashtags">
+        #HolisView #RestartMatrix #BeginAgain #ColorFlow #Sefirot #AnLoMinus
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Core data for the Restart Matrix
+    const colorStates = {
+      black: {
+        label: "Black · ⚫",
+        description: "Shutdown / despair / \"I see no way out right now\".",
+        sefira: "Malchut · מלכות – accept reality as it is, then move one tiny step.",
+        action: "Stand up, drink water, open a window – 1% movement from total freeze."
+      },
+      white: {
+        label: "White · ⚪",
+        description: "Clarity / breathing space / simple goodness.",
+        sefira: "Chesed · חסד – expand, give yourself permission to start soft.",
+        action: "Write down one small good thing about today and say it out loud."
+      },
+      red: {
+        label: "Red · 🔴",
+        description: "Fight / push / attack – the system is on full power.",
+        sefira: "Gevurah · גבורה – cut one reaction, choose one wise boundary.",
+        action: "Do not send the message right now; wait 10 minutes and breathe."
+      },
+      blue: {
+        label: "Blue · 🔵",
+        description: "Defense / boundaries / guarding the gate.",
+        sefira: "Tiferet · תפארת – balance between kindness and truth.",
+        action: "Name one clear boundary you honor today – and one place you can soften."
+      },
+      grey: {
+        label: "Grey · 🌫",
+        description: "Fog / confusion / being between worlds.",
+        sefira: "Malchut + Tiferet – hold the fog, choose one small grounded act.",
+        action: "Pick exactly one task and finish it fully; ignore everything else for 10 minutes."
+      },
+      purple: {
+        label: "Purple · 💜",
+        description: "Integration / royalty / \"both-and\" consciousness.",
+        sefira: "Malchut · מלכות – all colors together in one heart.",
+        action: "Give thanks for one past version of you that got you here, then plan the next step."
+      }
+    };
+
+    const restartSteps = [
+      {
+        id: 1,
+        emoji: "✋",
+        title: "Stop",
+        summary: "Freeze the automatic reaction for a few seconds.",
+        detail: "Notice if you’re in fight (red), freeze (black), defense (blue) or fog (grey). No judgment, only naming.",
+        hints: [
+          "Take 3 slow breaths.",
+          "Do not answer, do not send, do not decide yet."
+        ]
+      },
+      {
+        id: 2,
+        emoji: "🎯",
+        title: "Color Scan",
+        summary: "Name your current emotional color.",
+        detail: "Ask: \"Which color am I right now?\" and where do I feel it in the body (head / chest / stomach / hands).",
+        hints: [
+          "Write one sentence: \"Now: red in the chest, Gevurah without Chesed.\"",
+          "Treat it like data, not identity."
+        ]
+      },
+      {
+        id: 3,
+        emoji: "🕯",
+        title: "Sefira Switch",
+        summary: "Choose the sefira that will guide your next move.",
+        detail: "Pick one sefira-anchor: Chesed, Gevurah, Tiferet or Malchut. Ask its question: What is the good? What must stop? How do I balance? What small step is real?",
+        hints: [
+          "Say it quietly: \"Right now I choose Tiferet.\"",
+          "Let the sefira reframe the situation."
+        ]
+      },
+      {
+        id: 4,
+        emoji: "🚶‍♂️",
+        title: "Micro-Action",
+        summary: "Do one very small concrete step.",
+        detail: "Restart happens through the tiniest movement. Not a big promise – just one aligned action that your future self will thank you for.",
+        hints: [
+          "From black: get out of bed and open the curtain.",
+          "From red: put the phone on the table and walk away for 2 minutes."
+        ]
+      },
+      {
+        id: 5,
+        emoji: "📝",
+        title: "Log & Learn",
+        summary: "Write down what you just did.",
+        detail: "Capture color, sefira, action and how you feel after 5 minutes. This makes the matrix a living lab, not just a theory.",
+        hints: [
+          "One line is enough.",
+          "You are building your own HolisView dataset."
+        ]
+      },
+      {
+        id: 6,
+        emoji: "🔂",
+        title: "Daily Loop",
+        summary: "Repeat twice a day.",
+        detail: "Morning and night: quick color scan + 1 micro-action. Over time, you’ll see where red dominates, where black appears, and when purple integration starts to show.",
+        hints: [
+          "Attach it to existing habits: coffee / brushing teeth.",
+          "Consistency beats intensity."
+        ]
+      },
+      {
+        id: 7,
+        emoji: "📡",
+        title: "Share the Story",
+        summary: "Turn your restarts into stories.",
+        detail: "Later, you can collect 'Restart Moments' – short before/after snapshots. They can become cards, posts, or learning pieces for others.",
+        hints: [
+          "You are not just healing yourself; you are building tools for the world.",
+          "One honest story can unlock someone else’s matrix."
+        ]
+      }
+    ];
+
+    const triggers = [
+      { name: "Failure", color: "black", sefira: "Malchut", desc: "When something falls apart and the inner voice says: \"I knew I’d fail.\"" },
+      { name: "Conflict", color: "red", sefira: "Gevurah", desc: "Arguments, fights, sharp words – heat rises in the chest." },
+      { name: "Criticism", color: "red", sefira: "Tiferet", desc: "You receive feedback and your system wants to attack or disappear." },
+      { name: "Spiritual Drop", color: "black", sefira: "Chesed", desc: "After a high moment, you feel empty or far from the light." },
+      { name: "Overload", color: "grey", sefira: "Malchut", desc: "Too many tabs open – brain fog, decision paralysis." },
+      { name: "Lack of Sleep", color: "grey", sefira: "Tiferet", desc: "Everything feels heavier than it really is." },
+      { name: "Anxiety", color: "blue", sefira: "Tiferet", desc: "Body is on alert; mind jumps to worst-case scenarios." },
+      { name: "Loneliness", color: "black", sefira: "Chesed", desc: "Sense of being unseen, disconnected, off-grid." },
+      { name: "Boredom", color: "grey", sefira: "Malchut", desc: "Nothing feels meaningful; you drift into numbing habits." },
+      { name: "Temptation Loop", color: "red", sefira: "Gevurah", desc: "Old patterns call you back; urge feels stronger than choice." }
+    ];
+
+    const compassionCodes = [
+      { name: "Rachum", label: "רחום – Compassion", desc: "I don’t beat myself up for falling; I notice with a soft heart." },
+      { name: "Chanun", label: "חנון – Grace", desc: "I allow another clean attempt, without replaying all my past mistakes." },
+      { name: "Erech Apayim", label: "ארך אפיים – Patience", desc: "I give time for the process; not every change is instant." },
+      { name: "Rav Chesed", label: "רב חסד – Abundant Kindness", desc: "I exaggerate kindness toward myself when my system is harsh." },
+      { name: "Emet", label: "אמת – Truth", desc: "I don’t lie about what happened, but I also don’t make it my identity." },
+      { name: "Notzer Chesed", label: "נוצר חסד – Guarded Mercy", desc: "I remember the good I’ve already done and keep it as a shield." },
+      { name: "Nose Avon", label: "נושא עוון – Bearing Iniquity", desc: "I carry my shadow with responsibility, not with shame." },
+      { name: "VeChata’ah", label: "וחטאה – Cleansing Miss", desc: "I see my mis-aim as a chance to realign, not as a final verdict." },
+      { name: "VeNakeh", label: "ונקה – Clearing", desc: "I release the need to punish myself; I choose repair instead." },
+      { name: "Soft Gaze", label: "מבט רך – Soft Gaze", desc: "I look at myself the way I would look at a dear friend." },
+      { name: "Small Steps", label: "צעד קטן – Small Step", desc: "I respect tiny progress as holy and real." },
+      { name: "Stay Curious", label: "סקרנות – Curiosity", desc: "Instead of asking \"what’s wrong with me?\" I ask \"what’s happening in me?\"." },
+      { name: "Never Too Late", label: "אף פעם לא מאוחר – Never Too Late", desc: "Every breath is a possible restart; the gate is never fully closed." }
+    ];
+
+    // DOM references
+    const colorGridEl = document.getElementById("color-grid");
+    const colorDescriptionEl = document.getElementById("color-description");
+    const colorSefiraEl = document.getElementById("color-sefira");
+    const colorActionEl = document.getElementById("color-action");
+    const flowListEl = document.getElementById("flow-list");
+    const flowDetailEl = document.getElementById("flow-detail");
+    const triggerTagsEl = document.getElementById("trigger-tags");
+    const triggerListEl = document.getElementById("trigger-list");
+    const compassionListEl = document.getElementById("compassion-list");
+    const journalForm = document.getElementById("journal-form");
+    const journalLogEl = document.getElementById("journal-log");
+    const btnClearJournal = document.getElementById("btn-clear-journal");
+    const btnRandomColor = document.getElementById("btn-random-color");
+    const btnScrollJournal = document.getElementById("btn-scroll-journal");
+    const journalCard = document.getElementById("journal-card");
+    const aiInputEl = document.getElementById("ai-input");
+    const btnAiDraft = document.getElementById("btn-ai-draft");
+    const aiPreviewEl = document.getElementById("ai-preview");
+
+    let activeColorKey = null;
+    let activeStepId = null;
+    const JOURNAL_KEY = "holisview-restart-journal-v1";
+
+    function renderColorButtons() {
+      colorGridEl.innerHTML = "";
+      Object.entries(colorStates).forEach(([key, state]) => {
+        const btn = document.createElement("button");
+        btn.className = "color-btn";
+        btn.dataset.color = key;
+
+        const left = document.createElement("span");
+        left.className = "label";
+
+        const dot = document.createElement("span");
+        dot.className = "color-dot " + key;
+
+        const text = document.createElement("span");
+        text.textContent = state.label;
+
+        left.appendChild(dot);
+        left.appendChild(text);
+
+        const side = document.createElement("span");
+        side.style.fontSize = "0.7rem";
+        side.style.color = "var(--text-muted)";
+        side.textContent = key === "black"
+          ? "Freeze"
+          : key === "white"
+            ? "Clarity"
+            : key === "red"
+              ? "Fight"
+              : key === "blue"
+                ? "Guard"
+                : key === "grey"
+                  ? "Fog"
+                  : "Integration";
+
+        btn.appendChild(left);
+        btn.appendChild(side);
+
+        btn.addEventListener("click", () => setActiveColor(key));
+        colorGridEl.appendChild(btn);
+      });
+    }
+
+    function setActiveColor(key) {
+      activeColorKey = key;
+      const state = colorStates[key];
+      // Update button styles
+      document.querySelectorAll(".color-btn").forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.color === key);
+      });
+      // Update description
+      colorDescriptionEl.textContent = state.description;
+      colorSefiraEl.textContent = state.sefira;
+      colorActionEl.textContent = state.action;
+
+      // Slight visual shift on hero card background (using CSS variables)
+      const heroCard = document.getElementById("hero-card");
+      if (!heroCard) return;
+      let outline;
+      switch (key) {
+        case "black":
+          outline = "0 0 0 1px rgba(5,6,18,0.8)";
+          break;
+        case "white":
+          outline = "0 0 0 1px rgba(255,255,255,0.55)";
+          break;
+        case "red":
+          outline = "0 0 0 1px rgba(255,75,110,0.7)";
+          break;
+        case "blue":
+          outline = "0 0 0 1px rgba(62,168,255,0.7)";
+          break;
+        case "grey":
+          outline = "0 0 0 1px rgba(130,136,157,0.7)";
+          break;
+        case "purple":
+        default:
+          outline = "0 0 0 1px rgba(180,102,255,0.8)";
+          break;
+      }
+      heroCard.style.boxShadow = "0 18px 40px rgba(0,0,0,0.8), " + outline;
+      setTimeout(() => {
+        heroCard.style.boxShadow = "var(--shadow-soft)";
+      }, 400);
+    }
+
+    function renderFlowSteps() {
+      flowListEl.innerHTML = "";
+      restartSteps.forEach(step => {
+        const row = document.createElement("div");
+        row.className = "flow-step";
+        row.dataset.stepId = step.id;
+
+        const left = document.createElement("div");
+        left.className = "flow-step-left";
+
+        const index = document.createElement("span");
+        index.className = "flow-step-index";
+        index.textContent = step.id;
+
+        const title = document.createElement("span");
+        title.className = "flow-step-title";
+        title.textContent = `${step.emoji} ${step.title}`;
+
+        left.appendChild(index);
+        left.appendChild(title);
+
+        const summary = document.createElement("span");
+        summary.style.fontSize = "0.7rem";
+        summary.style.color = "var(--text-muted)";
+        summary.textContent = step.summary;
+
+        row.appendChild(left);
+        row.appendChild(summary);
+
+        row.addEventListener("click", () => setActiveStep(step.id));
+        flowListEl.appendChild(row);
+      });
+    }
+
+    function setActiveStep(id) {
+      activeStepId = id;
+      document.querySelectorAll(".flow-step").forEach(row => {
+        row.classList.toggle("active", Number(row.dataset.stepId) === id);
+      });
+      const step = restartSteps.find(s => s.id === id);
+      if (!step) return;
+
+      flowDetailEl.innerHTML = "";
+      const h4 = document.createElement("h4");
+      h4.textContent = `${step.emoji} ${step.title}`;
+      const p = document.createElement("p");
+      p.textContent = step.detail;
+
+      const ul = document.createElement("ul");
+      step.hints.forEach(h => {
+        const li = document.createElement("li");
+        li.textContent = h;
+        ul.appendChild(li);
+      });
+
+      flowDetailEl.appendChild(h4);
+      flowDetailEl.appendChild(p);
+      flowDetailEl.appendChild(ul);
+    }
+
+    function renderTriggers() {
+      triggerTagsEl.innerHTML = "";
+      triggerListEl.innerHTML = "";
+
+      triggers.forEach(tr => {
+        const tag = document.createElement("span");
+        tag.className = "tag";
+        tag.textContent = tr.name;
+        triggerTagsEl.appendChild(tag);
+      });
+
+      triggers.forEach(tr => {
+        const row = document.createElement("div");
+        row.className = "entry-row";
+
+        const main = document.createElement("div");
+        main.className = "entry-main";
+
+        const title = document.createElement("span");
+        title.className = "entry-title";
+        title.textContent = tr.name;
+
+        const meta = document.createElement("span");
+        meta.className = "entry-meta";
+        meta.textContent = `${tr.color} · ${tr.sefira}`;
+
+        main.appendChild(title);
+        main.appendChild(meta);
+
+        const desc = document.createElement("div");
+        desc.className = "entry-desc";
+        desc.textContent = tr.desc;
+
+        row.appendChild(main);
+        row.appendChild(desc);
+        triggerListEl.appendChild(row);
+      });
+    }
+
+    function renderCompassion() {
+      compassionListEl.innerHTML = "";
+      compassionCodes.forEach(code => {
+        const row = document.createElement("div");
+        row.className = "entry-row";
+
+        const main = document.createElement("div");
+        main.className = "entry-main";
+
+        const title = document.createElement("span");
+        title.className = "entry-title";
+        title.textContent = code.label;
+
+        const meta = document.createElement("span");
+        meta.className = "entry-meta";
+        meta.textContent = code.name;
+
+        main.appendChild(title);
+        main.appendChild(meta);
+
+        const desc = document.createElement("div");
+        desc.className = "entry-desc";
+        desc.textContent = code.desc;
+
+        row.appendChild(main);
+        row.appendChild(desc);
+        compassionListEl.appendChild(row);
+      });
+    }
+
+    function loadJournal() {
+      let entries = [];
+      try {
+        const raw = localStorage.getItem(JOURNAL_KEY);
+        if (raw) entries = JSON.parse(raw);
+      } catch (e) {
+        entries = [];
+      }
+      return Array.isArray(entries) ? entries : [];
+    }
+
+    function saveJournal(entries) {
+      try {
+        localStorage.setItem(JOURNAL_KEY, JSON.stringify(entries));
+      } catch (e) {
+        // ignore storage errors
+      }
+    }
+
+    function renderJournal() {
+      const entries = loadJournal();
+      journalLogEl.innerHTML = "";
+      if (!entries.length) {
+        const p = document.createElement("p");
+        p.style.color = "var(--text-muted)";
+        p.style.fontSize = "0.78rem";
+        p.textContent = "No restart entries yet. Use the form above after your next micro-action.";
+        journalLogEl.appendChild(p);
+        return;
+      }
+      entries
+        .slice()
+        .reverse()
+        .forEach(entry => {
+          const row = document.createElement("div");
+          row.className = "log-item";
+
+          const meta = document.createElement("div");
+          meta.className = "log-meta";
+
+          const left = document.createElement("span");
+          left.textContent = `${entry.date} · ${entry.time}`;
+
+          const right = document.createElement("span");
+          right.textContent = `${entry.color} · ${entry.sefira}`;
+
+          meta.appendChild(left);
+          meta.appendChild(right);
+
+          const text = document.createElement("div");
+          text.className = "log-text";
+          text.textContent = entry.action || "(no description)";
+
+          row.appendChild(meta);
+          row.appendChild(text);
+          journalLogEl.appendChild(row);
+        });
+    }
+
+    function formatNow() {
+      const now = new Date();
+      const pad = n => String(n).padStart(2, "0");
+      const date = `${pad(now.getDate())}.${pad(now.getMonth() + 1)}.${now.getFullYear()}`;
+      const time = `${pad(now.getHours())}:${pad(now.getMinutes())}`;
+      return { date, time };
+    }
+
+    // Event bindings
+    journalForm.addEventListener("submit", e => {
+      e.preventDefault();
+      const color = document.getElementById("journal-color").value;
+      const sefira = document.getElementById("journal-sefira").value;
+      const action = document.getElementById("journal-action").value.trim();
+
+      if (!color || !sefira) return;
+
+      const { date, time } = formatNow();
+      const entries = loadJournal();
+      entries.push({ color, sefira, action, date, time });
+      saveJournal(entries);
+      renderJournal();
+
+      journalForm.reset();
+    });
+
+    btnClearJournal.addEventListener("click", () => {
+      saveJournal([]);
+      renderJournal();
+    });
+
+    btnRandomColor.addEventListener("click", () => {
+      const keys = Object.keys(colorStates);
+      const random = keys[Math.floor(Math.random() * keys.length)];
+      setActiveColor(random);
+    });
+
+    btnScrollJournal.addEventListener("click", () => {
+      journalCard.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+
+    btnAiDraft.addEventListener("click", () => {
+      const text = aiInputEl.value.trim();
+      if (!text) {
+        aiPreviewEl.textContent = "Type something you’re going through, then I’ll build a restart-ready prompt.";
+        return;
+      }
+      aiPreviewEl.textContent =
+        "Draft prompt:\n\n" +
+        "You are a HolisView restart coach. I will give you my current color, sefira anchor, and a short description " +
+        "of what I’m going through. Please reflect it back with compassion and suggest one very small, grounded " +
+        "micro-action and one compassionate sentence I can say to myself.\n\n" +
+        "My current note: " +
+        text;
+    });
+
+    // Initialize
+    renderColorButtons();
+    renderFlowSteps();
+    renderTriggers();
+    renderCompassion();
+    renderJournal();
+    setActiveStep(1);
+  </script>
+</body>
+</html>
