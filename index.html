@@ -126,12 +126,128 @@
       margin-left: 6px;
     }
 
+    .api-form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 12px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-group label {
+      font-weight: 600;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      font-family: inherit;
+      background: #fff;
+    }
+
+    .form-group textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .status {
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #fff;
+    }
+
+    .status[data-type="success"] {
+      border-color: #2ecc71;
+      color: #2ecc71;
+    }
+
+    .status[data-type="error"] {
+      border-color: #e74c3c;
+      color: #e74c3c;
+    }
+
+    .status[data-type="info"] {
+      border-color: #3498db;
+      color: #3498db;
+    }
+
+    .response-box {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .response-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      font-size: 0.95rem;
+    }
+
+    .response-meta a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .response-box pre {
+      white-space: pre-wrap;
+      word-break: break-word;
+      margin: 0;
+      font-family: "JetBrains Mono", "Fira Code", monospace;
+      background: #f2f3f5;
+      border-radius: 8px;
+      padding: 10px;
+      border: 1px solid var(--border);
+    }
+
+    button.primary {
+      align-self: flex-start;
+      padding: 10px 16px;
+      border: none;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: #fff;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.1s ease, box-shadow 0.1s ease;
+    }
+
+    button.primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+    }
+
     @media (prefers-color-scheme: dark) {
       body { background: #121212; color: #e5e5e5; }
       .card { background: #1d1f24; border-color: #2e3137; }
       .links li { background: #1d1f24; border-color: #2e3137; }
       header { color: #fff; }
       .checklist li { background: #1d1f24; border-color: #2e3137; }
+      .form-group input, .form-group textarea, .form-group select { background: #1d1f24; color: #e5e5e5; border-color: #2e3137; }
+      .response-box { background: #1d1f24; }
+      .response-box pre { background: #111318; }
+      .status { background: #1d1f24; }
     }
   </style>
 </head>
@@ -228,6 +344,61 @@
     </section>
 
     <section class="card">
+      <h2>🔗 חיבור ל-ChatGPT API</h2>
+      <p>שימוש במתכונים חכמים לקישור ה-API: הזינו מפתח, מודל, ואפיינו את הפרומפטים. הפונקציות מאורגנות בקובץ <code>scripts/chatgpt-api.js</code> וניתן למחזר אותן לכל דף.</p>
+      <form id="chatgpt-form" class="api-form">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="apiKey">מפתח API</label>
+            <input id="apiKey" name="apiKey" type="password" placeholder="sk-..." required autocomplete="off">
+          </div>
+          <div class="form-group">
+            <label for="baseUrl">Base URL</label>
+            <input id="baseUrl" name="baseUrl" type="url" value="https://api.openai.com/v1" placeholder="https://api.openai.com/v1">
+          </div>
+          <div class="form-group">
+            <label for="model">מודל</label>
+            <select id="model" name="model">
+              <option value="gpt-4o-mini">gpt-4o-mini</option>
+              <option value="gpt-4o">gpt-4o</option>
+              <option value="gpt-4.1">gpt-4.1</option>
+              <option value="o3-mini">o3-mini</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="temperature">Temperature</label>
+            <input id="temperature" name="temperature" type="number" step="0.1" min="0" max="2" value="0.7">
+          </div>
+          <div class="form-group">
+            <label for="maxTokens">Max Tokens</label>
+            <input id="maxTokens" name="maxTokens" type="number" min="1" max="4096" value="400">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="system">System Prompt</label>
+          <textarea id="system" name="system" placeholder="הגדר את תפקיד המערכת"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="prompt">User Prompt</label>
+          <textarea id="prompt" name="prompt" placeholder="שאלו שאלה או בקשו תוצר" required></textarea>
+        </div>
+
+        <button type="submit" class="primary">שליחת בקשה</button>
+
+        <p id="chatgpt-status" class="status" data-type="info">מוכן לעבודה</p>
+
+        <div class="response-box">
+          <div class="response-meta">
+            <span id="chatgpt-meta"></span>
+            <a id="chatgpt-playground-link" href="#" target="_blank" rel="noopener"></a>
+          </div>
+          <pre id="chatgpt-output"></pre>
+        </div>
+      </form>
+    </section>
+
+    <section class="card">
       <h2>📋 צ'קליסט המשך פיתוח</h2>
       <p>על בסיס מסמך "הנחיות לבניית אתר" – שלבים מיידיים לעבודה:</p>
       <ul class="checklist">
@@ -241,5 +412,7 @@
       </ul>
     </section>
   </main>
+
+  <script type="module" src="scripts/chatgpt-ui.js"></script>
 </body>
 </html>
