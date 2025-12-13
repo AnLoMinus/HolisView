@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>❤️ אחדות ישראל - תיקון מידות חברתיות</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #f5f5f5;
+            direction: rtl;
+        }
+
+        .page {
+            width: 210mm;
+            height: 297mm;
+            padding: 0.3cm;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            page-break-after: always;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 10px;
+            padding: 12px;
+            background: linear-gradient(135deg, #fc5c7d 0%, #6a82fb 100%);
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .main-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 4px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .subtitle {
+            font-size: 12px;
+            color: #fff0f5;
+            font-weight: 500;
+        }
+
+        .intro-box {
+            background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%);
+            border: 2px solid #e53935;
+            border-radius: 8px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        .intro-text {
+            font-size: 9px;
+            color: #333;
+            line-height: 1.4;
+            text-align: justify;
+        }
+
+        .section-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #c62828;
+            margin: 10px 0 6px 0;
+            padding: 6px;
+            background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%);
+            border-right: 4px solid #c62828;
+            border-radius: 5px;
+        }
+
+        .principles-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 6px;
+            margin-bottom: 10px;
+        }
+
+        .principle-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 5px;
+            border-radius: 6px;
+            border: 2px solid #e91e63;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .principle-number {
+            display: inline-block;
+            background: #e91e63;
+            color: white;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 18px;
+            font-weight: 700;
+            font-size: 8px;
+            margin-left: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            float: right;
+        }
+
+        .principle-title {
+            font-size: 8px;
+            font-weight: 700;
+            color: #c2185b;
+            margin-bottom: 2px;
+        }
+
+        .principle-text {
+            font-size: 6px;
+            color: #333;
+            line-height: 1.2;
+        }
+
+        .actions-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 6px;
+            margin-bottom: 10px;
+        }
+
+        .action-card {
+            background: white;
+            padding: 5px;
+            border-radius: 6px;
+            border-right: 3px solid #ff9800;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .action-icon {
+            font-size: 12px;
+            margin-bottom: 2px;
+        }
+
+        .action-title {
+            font-size: 7px;
+            font-weight: 700;
+            color: #e65100;
+            margin-bottom: 2px;
+        }
+
+        .action-text {
+            font-size: 6px;
+            color: #333;
+            line-height: 1.1;
+        }
+
+        .page-footer {
+            text-align: center;
+            font-size: 8px;
+            color: #666;
+            margin-top: 10px;
+            padding-top: 8px;
+            border-top: 2px solid #ddd;
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+
+            .page {
+                width: 210mm;
+                height: 297mm;
+                margin: 0;
+                box-shadow: none;
+                page-break-after: always;
+            }
+
+            @page {
+                size: A4;
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- דף 1 -->
+    <div class="page">
+        <div class="header">
+            <div class="main-title">❤️ אחדות ישראל - תיקון מידות חברתיות ❤️</div>
+            <div class="subtitle">כל ישראל ערבים זה לזה | אהבת חינם | דרכים מעשיות לאחדות</div>
+        </div>
+
+        <div class="intro-box">
+            <div class="intro-text">
+                אחדות ישראל היא יסוד יסודות בעבודת ה'. "כל ישראל ערבים זה לזה" - כל אחד מישראל הוא חלק מגוף אחד גדול.
+                כאשר יש אחדות - השכינה שורה בינינו, ברכה מתרבה, והתפילות נענות. אהבת חינם היא התרופה לשנאת חינם שגרמה
+                לחורבן הבית. בדורנו, עבודת האחדות היא המפתח להבאת הגאולה השלמה.
+            </div>
+        </div>
+
+        <div class="section-title">🌟 עשרים עקרונות לאחדות ישראל</div>
+        <div class="principles-grid">
+            <div class="principle-card">
+                <div class="principle-number">1</div>
+                <div class="principle-title">💖 אהבת חינם</div>
+                <div class="principle-text">אהוב כל יהודי ללא תנאי וללא סיבה</div>
+            </div>
+            <div class="principle-card">
+                <div class="principle-number">2</div>
+                <div class="principle-title">⚖️ דן לכף זכות</div>
+                <div class="principle-text">שפוט כל אדם לכף זכות - תמיד!</div>
+            </div>
+            <div class="principle-card">
+                <div class="principle-number">3</div>
+                <div class="principle-title">🤝 כבוד הבריות</div>
+                <div class="principle-text">כבד כל אדם - גבוה ונמוך</div>
+            </div>
+            <div class="principle-card">
+                <div class="principle-number">4</div>
+                <div class="principle-title">🙊 שמירת הלשון</div>
+                <div class="principle-text">לא לדבר לשון הרע על אף אחד</div>
+            </div>
+            <div class="principle-card">
+                <div class="principle-number">5</div>
+                <div class="principle-title">😊 פנים מאירות</div>
+                <div class="principle-text">קבל כל אדם בסבר פנים יפות</div>
+            </div>
+            <div class="principle-card">
+                <div class="principle-number">6</div>
+                <div class="principle-title">🕊️ שלום</div>
+                <div class="principle-text">רודף שלום - תמיד מנסה לעשות שלום</div>
+            </div>
+            <div class="principle-card">
+                <div class="principle-number">7</div>
+                <div class="principle-title">🙏 תפילה לזולת</div>
+                <div class="principle-text">התפלל על הצלחת אחרים - לא רק שלך</div>
+            </div>
+            <div class="principle-card">
+                <div class="principle-number">8</div>
+                <div class="principle-title">💝 נתינה</div>
+                <div class="principle-text">תן ללא ציפייה לקבל בחזרה</div>
+            </div>
+            <div class="principle-card">
+                <div class="principle-number">9</div>
+                <div class="principle-title">🌈 קבלת השונה</div>
+                <div class="principle-text">קבל את השונה ממך - גם הוא חלק מהכלל</div>
+            </div>
+            <div class="principle-card">
+                <div class="principle-number">10</div>
+                <div class="principle-title">🎁 עזרה</div>
+                <div class="principle-text">עזור לכל מי שצריך - בלי חשבונות</div>
+            </div>
+            <div class="principle-card">
+                <div class="principle-number">11</div>
+                <div class="principle-title">🔥 סליחה</div>
+                <div class="principle-text">סלח ומחל - אל תשמור טינה</div>
+            </div>
+            <div class="principle-card">
+                <div class="principle-number">12</div>
+                <div class="principle-title">🌟 שמחה בזולת</div>
+                <div class="principle-text">שמח בהצלחת חברך כאילו זה שלך</div>
+            </div>
+            <div class="principle-card">
+                <div class="principle-number">13</div>
+                <div class="principle-title">💬 דיבור טוב</div>
+                <div class="principle-text">דבר טוב על כולם - הפוך לשון הרע ללשון טוב</div>
+            </div>
+            <div class="principle-card">
+                <div class="principle-number">14</div>
+                <div class="principle-title">🛡️ הגנה</div>
+                <div class="principle-text">הגן על כבוד כל יהודי - עמוד למענו</div>
+            </div>
+            <div class="principle-card">
+                <div class="principle-number">15</div>
+                <div class="principle-title">🎯 ערבות</div>
+                <div class="principle-text">הרגש אחריות על כל ישראל - ערבים זה לזה</div>
+            </div>
+            <div class="principle-card">
+                <div class="principle-number">16</div>
+                <div class="principle-title">💎 חיבור</div>
+                <div class="principle-text">חבר אנשים - עשה שידוכים וחיבורים</div>
+            </div>
+            <div class="principle-card">
+                <div class="principle-number">17</div>
+                <div class="principle-title">🌱 חינוך</div>
+                <div class="principle-text">חנך לאהבת ישראל - העבר לדור הבא</div>
+            </div>
+            <div class="principle-card">
+                <div class="principle-number">18</div>
+                <div class="principle-title">🏡 שלום בית</div>
+                <div class="principle-text">התחל מהבית - שלום במשפחה קודם</div>
+            </div>
+            <div class="principle-card">
+                <div class="principle-number">19</div>
+                <div class="principle-title">🎊 חגיגות משותפות</div>
+                <div class="principle-text">חגוג יחד - שמחות וצער משותפים</div>
+            </div>
+            <div class="principle-card">
+                <div class="principle-number">20</div>
+                <div class="principle-title">🙌 תודה</div>
+                <div class="principle-text">תודה לכל מי שתורם - הכרת הטוב</div>
+            </div>
+        </div>
+
+        <div class="section-title">🎯 24 מעשים יומיים לחיזוק האחדות</div>
+        <div class="actions-grid">
+            <div class="action-card">
+                <div class="action-icon">😊</div>
+                <div class="action-title">חיוך</div>
+                <div class="action-text">חייך לכל אדם שפגשת</div>
+            </div>
+            <div class="action-card">
+                <div class="action-icon">🙏</div>
+                <div class="action-title">ברכה</div>
+                <div class="action-text">ברך מישהו בהצלחה</div>
+            </div>
+            <div class="action-card">
+                <div class="action-icon">💬</div>
+                <div class="action-title">שיחה</div>
+                <div class="action-text">שוחח עם מישהו חדש</div>
+            </div>
+            <div class="action-card">
+                <div class="action-icon">🎁</div>
+                <div class="action-title">מתנה</div>
+                <div class="action-text">תן מתנה קטנה</div>
+            </div>
+            <div class="action-card">
+                <div class="action-icon">📞</div>
+                <div class="action-title">שיחה</div>
+                <div class="action-text">התקשר למישהו לשאול מצב</div>
+            </div>
+            <div class="action-card">
+                <div class="action-icon">🤲</div>
+                <div class="action-title">עזרה</div>
+                <div class="action-text">עזור למישהו שצריך</div>
+            </div>
+            <div class="action-card">
+                <div class="action-icon">💝</div>
+                <div class="action-title">מחמאה</div>
+                <div class="action-text">תן מחמאה כנה</div>
+            </div>
+            <div class="action-card">
+                <div class="action-icon">🎤</div>
+                <div class="action-title">הקשבה</div>
+                <div class="action-text">הקשב באמת למישהו</div>
+            </div>
+            <div class="action-card">
+                <div class="action-icon">🙇</div>
+                <div class="action-title">סליחה</div>
+                <div class="action-text">בקש סליחה על עבר</div>
+            </div>
+            <div class="action-card">
+                <div class="action-icon">💫</div>
+                <div class="action-title">מחילה</div>
+                <div class="action-text">מחל למי שפגע בך</div>
+            </div>
+            <div class="action-card">
+                <div class="action-icon">📚</div>
+                <div class="action-title">חברותא</div>
+                <div class="action-text">למד עם חבר</div>
+            </div>
+            <div class="action-card">
+                <div class="action-icon">🍽️</div>
+                <div class="action-title">אכלו יחד</div>
+                <div class="action-text">הזמן למסיבה או סעודה</div>
+            </div>
+            <div class="action-card">
+                <div class="action-icon">🎵</div>
+                <div class="action-title">שירה</div>
+                <div class="action-text">שרו יחד - מחבר לבבות</div>
+            </div>
+            <div class="action-card">
+                <div class="action-icon">🌟</div>
+                <div class="action-title">שבח</div>
+                <div class="action-text">שבח מישהו בציבור</div>
+            </div>
+            <div class="action-card">
+                <div class="action-icon">🔔</div>
+                <div class="action-title">זכרון</div>
+                <div class="action-text">זכור יום הולדת או אירוע</div>
+            </div>
+            <div class="action-card">
+                <div class="action-icon">💌</div>
+                <div class="action-title">הודעה</div>
+                <div class="action-text">שלח הודעת חיזוק</div>
+            </div>
+            <div class="action-card">
+                <div class="action-icon">🎊</div>
+                <div class="action-title">שמחה</div>
+                <div class="action-text">שמח עם שמחים</div>
+            </div>
+            <div class="action-card">
+                <div class="action-icon">😢</div>
+                <div class="action-title">נחמה</div>
+                <div class="action-text">נחם אבלים</div>
+            </div>
+            <div class="action-card">
+                <div class="action-icon">🏥</div>
+                <div class="action-title">ביקור</div>
+                <div class="action-text">בקר חולים</div>
+            </div>
+            <div class="action-card">
+                <div class="action-icon">🤗</div>
+                <div class="action-title">חיבוק</div>
+                <div class="action-text">חבק (במידה ומותר)</div>
+            </div>
+            <div class="action-card">
+                <div class="action-icon">🌺</div>
+                <div class="action-title">פרחים</div>
+                <div class="action-text">הבא פרחים למישהו</div>
+            </div>
+            <div class="action-card">
+                <div class="action-icon">📖</div>
+                <div class="action-title">שיתוף ידע</div>
+                <div class="action-text">שתף משהו שלמדת</div>
+            </div>
+            <div class="action-card">
+                <div class="action-icon">🔥</div>
+                <div class="action-title">חיזוק</div>
+                <div class="action-text">חזק מישהו שמתייאש</div>
+            </div>
+            <div class="action-card">
+                <div class="action-icon">💪</div>
+                <div class="action-title">תמיכה</div>
+                <div class="action-text">תמוך במישהו בקושי</div>
+            </div>
+        </div>
+
+        <div
+            style="background: linear-gradient(135deg, #e8eaf6 0%, #c5cae9 100%); border: 2px solid #3f51b5; border-radius: 8px; padding: 10px; margin-top: 8px;">
+            <div style="font-size: 12px; font-weight: 700; color: #283593; margin-bottom: 6px; text-align: center;">
+                🔥 למה אחדות כל כך חשובה?</div>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px;">
+                <div
+                    style="background: white; padding: 5px; border-radius: 4px; font-size: 7px; border-right: 3px solid #5c6bc0;">
+                    ✨ <strong>שכינה:</strong> באחדות השכינה שורה בינינו - נוכחות אלוקית
+                </div>
+                <div
+                    style="background: white; padding: 5px; border-radius: 4px; font-size: 7px; border-right: 3px solid #5c6bc0;">
+                    🙏 <strong>תפילות:</strong> תפילות נענות יותר - כוח קבוצתי
+                </div>
+                <div
+                    style="background: white; padding: 5px; border-radius: 4px; font-size: 7px; border-right: 3px solid #5c6bc0;">
+                    💰 <strong>ברכה:</strong> ברכה בפרנסה ובכל - שפע משמים
+                </div>
+                <div
+                    style="background: white; padding: 5px; border-radius: 4px; font-size: 7px; border-right: 3px solid #5c6bc0;">
+                    🛡️ <strong>הגנה:</strong> הגנה מכל פגע - ביחד חזקים
+                </div>
+                <div
+                    style="background: white; padding: 5px; border-radius: 4px; font-size: 7px; border-right: 3px solid #5c6bc0;">
+                    🌅 <strong>גאולה:</strong> מקרבת את הגאולה - תיקון העולם
+                </div>
+                <div
+                    style="background: white; padding: 5px; border-radius: 4px; font-size: 7px; border-right: 3px solid #5c6bc0;">
+                    💖 <strong>אהבה:</strong> יותר אהבה בעולם - שינוי אנרגיה
+                </div>
+            </div>
+        </div>
+
+        <div
+            style="background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%); border: 2px solid #f57c00; border-radius: 8px; padding: 10px; margin-top: 8px;">
+            <div style="font-size: 12px; font-weight: 700; color: #e65100; margin-bottom: 6px; text-align: center;">
+                ⚠️ מכשולים לאחדות - להימנע!</div>
+            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 5px;">
+                <div
+                    style="background: white; padding: 5px; border-radius: 4px; font-size: 7px; text-align: center; border: 1px solid #f57c00;">
+                    ❌ לשון הרע
+                </div>
+                <div
+                    style="background: white; padding: 5px; border-radius: 4px; font-size: 7px; text-align: center; border: 1px solid #f57c00;">
+                    ❌ שנאת חינם
+                </div>
+                <div
+                    style="background: white; padding: 5px; border-radius: 4px; font-size: 7px; text-align: center; border: 1px solid #f57c00;">
+                    ❌ קנאה
+                </div>
+                <div
+                    style="background: white; padding: 5px; border-radius: 4px; font-size: 7px; text-align: center; border: 1px solid #f57c00;">
+                    ❌ גאווה
+                </div>
+                <div
+                    style="background: white; padding: 5px; border-radius: 4px; font-size: 7px; text-align: center; border: 1px solid #f57c00;">
+                    ❌ מחלוקת
+                </div>
+                <div
+                    style="background: white; padding: 5px; border-radius: 4px; font-size: 7px; text-align: center; border: 1px solid #f57c00;">
+                    ❌ שיפוטיות
+                </div>
+                <div
+                    style="background: white; padding: 5px; border-radius: 4px; font-size: 7px; text-align: center; border: 1px solid #f57c00;">
+                    ❌ רכילות
+                </div>
+                <div
+                    style="background: white; padding: 5px; border-radius: 4px; font-size: 7px; text-align: center; border: 1px solid #f57c00;">
+                    ❌ טינה
+                </div>
+                <div
+                    style="background: white; padding: 5px; border-radius: 4px; font-size: 7px; text-align: center; border: 1px solid #f57c00;">
+                    ❌ אנוכיות
+                </div>
+                <div
+                    style="background: white; padding: 5px; border-radius: 4px; font-size: 7px; text-align: center; border: 1px solid #f57c00;">
+                    ❌ אדישות
+                </div>
+                <div
+                    style="background: white; padding: 5px; border-radius: 4px; font-size: 7px; text-align: center; border: 1px solid #f57c00;">
+                    ❌ חוסר סבלנות
+                </div>
+                <div
+                    style="background: white; padding: 5px; border-radius: 4px; font-size: 7px; text-align: center; border: 1px solid #f57c00;">
+                    ❌ הרגשת עליונות
+                </div>
+            </div>
+        </div>
+
+        <div
+            style="background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%); border: 2px solid #4caf50; border-radius: 8px; padding: 8px; margin-top: 8px;">
+            <div style="font-size: 12px; font-weight: 700; color: #2e7d32; margin-bottom: 5px; text-align: center;">
+                💡 ציטוטים מחזקים לאחדות</div>
+            <div style="font-size: 7px; color: #333; line-height: 1.4;">
+                🔹 "כל ישראל ערבים זה לזה" (שבועות לט)<br>
+                🔹 "ואהבת לרעך כמוך - זה כלל גדול בתורה" (רבי עקיבא)<br>
+                🔹 "כל ישראל יש להם חלק לעולם הבא" (סנהדרין צ)<br>
+                🔹 "אם אין אני לי מי לי, וכשאני לעצמי מה אני" (אבות א, יד)<br>
+                🔹 "לא עליך המלאכה לגמור ולא אתה בן חורין להיבטל ממנה" (אבות ב, טז)<br>
+                🔹 "הוי מתלמידיו של אהרן - אוהב שלום ורודף שלום" (אבות א, יב)
+            </div>
+        </div>
+
+        <div class="page-footer">
+            תלמיד חכם • משה לאון יעקובוב | אחדות ישראל | ז' בתשרי ה'תשפ"ו • 30.09.2025
+        </div>
+    </div>
+</body>
+
+</html>

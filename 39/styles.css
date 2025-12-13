@@ -1,0 +1,1070 @@
+/* משתני צבעים */
+:root {
+  /* צבעים ראשיים */
+  --primary-color: #4a90e2;
+  --secondary-color: #f5a623;
+  --success-color: #7ed321;
+  --info-color: #50e3c2;
+  --warning-color: #f5a623;
+  --danger-color: #d0021b;
+  --light-color: #f8f9fa;
+  --dark-color: #343a40;
+  --border-color: #dee2e6;
+  --text-color: #333;
+  --link-color: #4a90e2;
+  --hover-color: #357abd;
+
+  /* גדלי טקסט */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+}
+
+/* טיפוגרפיה */
+@font-face {
+  font-family: "Frank Ruehl";
+  src: url("fonts/FrankRuehlCLM-Medium.ttf") format("truetype");
+}
+
+body {
+  font-family: "Frank Ruehl", serif;
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Frank Ruehl", serif;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+/* תפריט ניווט */
+.navbar {
+  border-bottom: 1px solid var(--border-color);
+}
+
+.navbar-brand {
+  font-size: var(--text-xl);
+  color: var(--primary-color) !important;
+}
+
+.navbar-brand i {
+  margin-left: 0.5rem;
+}
+
+.nav-link {
+  color: var(--text-color) !important;
+  font-size: var(--text-base);
+  padding: 0.5rem 1rem !important;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--accent-color) !important;
+}
+
+/* כפתורים */
+.btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
+  transform: translateY(-2px);
+}
+
+.btn-outline-primary {
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+  transition: all 0.3s ease;
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--primary-color);
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* כרטיסים */
+.card {
+  border: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
+.card-title {
+  color: var(--primary-color);
+  font-size: var(--text-xl);
+  margin-bottom: 1rem;
+}
+
+.card-title i {
+  margin-left: 0.5rem;
+  color: var(--accent-color);
+}
+
+/* קישורים */
+a {
+  color: var(--link-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--accent-color);
+}
+
+/* אייקונים */
+.bi {
+  margin-left: 0.5rem;
+}
+
+/* התאמה למובייל */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
+  }
+
+  h1 {
+    font-size: var(--text-2xl);
+  }
+
+  .card-title {
+    font-size: var(--text-lg);
+  }
+
+  .navbar-brand {
+    font-size: var(--text-lg);
+  }
+}
+
+/* טפסים */
+.form-control {
+  border: 1px solid var(--border-color);
+  padding: 0.5rem 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.form-control:focus {
+  border-color: var(--accent-color);
+  box-shadow: none;
+}
+
+/* התראות */
+.alert {
+  border: none;
+  border-radius: 0.5rem;
+}
+
+.alert-info {
+  background-color: rgba(52, 152, 219, 0.1);
+  color: var(--primary-color);
+}
+
+/* פוטר */
+footer {
+  border-top: 1px solid var(--border-color);
+  color: var(--text-color);
+  font-size: var(--text-sm);
+}
+
+/* מדריך מהיר */
+.list-group {
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+/* כלים שימושיים */
+.list-unstyled li {
+  padding: 0.5rem 0;
+  transition: transform 0.3s ease;
+}
+
+.list-unstyled li:hover {
+  transform: translateX(-5px);
+}
+
+/* שיעור יומי */
+#currentDate {
+  font-weight: bold;
+  color: var(--accent-color);
+}
+
+/* טבלאות */
+table {
+  width: 100%;
+  margin-bottom: 1rem;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 0.75rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+th {
+  background-color: var(--light-bg);
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+/* מעברים וטאבים */
+.nav-tabs {
+  border-bottom: 2px solid var(--border-color);
+}
+
+.nav-tabs .nav-link {
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+}
+
+.nav-tabs .nav-link.active {
+  border-bottom-color: var(--accent-color);
+}
+
+/* אקורדיון */
+.accordion-button {
+  background-color: var(--light-bg);
+  color: var(--primary-color);
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+/* תוכן לימודי */
+.study-content {
+  background-color: var(--light-bg);
+  padding: 2rem;
+  border-radius: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.study-text {
+  font-size: var(--text-lg);
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+.study-paragraph {
+  text-align: justify;
+  margin-bottom: 1.5rem;
+}
+
+/* סגנונות דף הקבלה */
+.kabbalah-content {
+  background-color: var(--bg-light);
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.sefirot-diagram {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: 2rem auto;
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+}
+
+.sefirah-node {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.sefirah-node:hover {
+  transform: scale(1.1);
+}
+
+.sefirah-details {
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 1rem;
+  border-radius: 8px;
+  margin-top: 1rem;
+}
+
+.combinations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.combination-item {
+  background-color: var(--bg-light);
+  padding: 1rem;
+  border-radius: 8px;
+  text-align: center;
+  font-family: "Frank Ruehl", serif;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.combination-item:hover {
+  background-color: var(--primary-color);
+  color: white;
+  transform: scale(1.05);
+}
+
+.meditation-timer {
+  background-color: var(--bg-dark);
+  color: white;
+  padding: 2rem;
+  border-radius: 15px;
+  text-align: center;
+  margin: 2rem 0;
+}
+
+.meditation-timer button {
+  font-size: 1.2rem;
+  padding: 1rem 2rem;
+  margin: 1rem;
+  border-radius: 30px;
+  background: linear-gradient(
+    45deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
+  border: none;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.meditation-timer button:hover {
+  transform: scale(1.05);
+}
+
+.meditation-timer button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.progress-section {
+  background-color: var(--bg-light);
+  padding: 1.5rem;
+  border-radius: 10px;
+  margin: 2rem 0;
+}
+
+.progress-bar {
+  height: 10px;
+  border-radius: 5px;
+  background: linear-gradient(
+    90deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
+}
+
+.notes-section {
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.notes-section textarea {
+  width: 100%;
+  min-height: 200px;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-family: "Frank Ruehl", serif;
+  resize: vertical;
+}
+
+/* אנימציות */
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 5px rgba(var(--primary-rgb), 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(var(--primary-rgb), 0.8);
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(var(--primary-rgb), 0.5);
+  }
+}
+
+.holy-name {
+  animation: glow 2s infinite;
+}
+
+/* התאמה למובייל */
+@media (max-width: 768px) {
+  .kabbalah-content {
+    padding: 1rem;
+  }
+
+  .sefirot-diagram {
+    padding: 1rem;
+  }
+
+  .sefirah-node {
+    width: 60px;
+    height: 60px;
+    font-size: 0.9rem;
+  }
+
+  .combinations-grid {
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  }
+
+  .meditation-timer button {
+    font-size: 1rem;
+    padding: 0.8rem 1.5rem;
+  }
+}
+
+/* סגנונות דף המדריך המאורגן */
+.section-title {
+  color: var(--primary-color);
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.section-title i {
+  margin-left: 0.5rem;
+  color: var(--secondary-color);
+}
+
+.subsection {
+  background-color: var(--light-color);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.subsection h3 {
+  color: var(--dark-color);
+  margin-bottom: 1rem;
+}
+
+.list-group-item {
+  border: none;
+  border-radius: 0.5rem !important;
+  margin-bottom: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.list-group-item:hover {
+  background-color: rgba(74, 144, 226, 0.1);
+  transform: translateX(-5px);
+}
+
+.list-group-item i {
+  margin-left: 0.5rem;
+  color: var(--secondary-color);
+}
+
+.list-group-item.completed {
+  background-color: rgba(126, 211, 33, 0.1);
+  border-right: 4px solid var(--success-color);
+}
+
+.list-group-item.completed i {
+  color: var(--success-color);
+}
+
+.study-tips {
+  padding-right: 1.25rem;
+}
+
+.study-tips li {
+  position: relative;
+  padding-right: 0.5rem;
+}
+
+.study-tips li::before {
+  content: "";
+  position: absolute;
+  right: -1.25rem;
+  top: 0.5rem;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+}
+
+.alert-info i {
+  margin-left: 0.5rem;
+  color: var(--primary-color);
+}
+
+.progress {
+  height: 0.5rem;
+  border-radius: 0.25rem;
+  background-color: var(--light-color);
+}
+
+.progress-bar {
+  background: linear-gradient(
+    45deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
+  transition: width 0.3s ease;
+}
+
+.btn-back-to-top {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  display: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+  color: white;
+  text-align: center;
+  line-height: 40px;
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.btn-back-to-top:hover {
+  background-color: var(--secondary-color);
+  transform: translateY(-3px);
+}
+
+/* התאמה למובייל */
+@media (max-width: 768px) {
+  .subsection {
+    padding: 1rem;
+  }
+
+  .list-group-item {
+    font-size: 0.9rem;
+  }
+
+  .study-tips li {
+    font-size: 0.9rem;
+  }
+}
+
+/* סגנונות דף המסע הרוחני */
+.journey-header {
+  background: linear-gradient(
+    135deg,
+    var(--primary-color),
+    var(--secondary-color)
+  );
+  color: white;
+  padding: 4rem 0;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.journey-header h1 {
+  color: white;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.journey-header .lead {
+  font-size: 1.25rem;
+  opacity: 0.9;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.content-card {
+  background: white;
+  border-radius: 15px;
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.content-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.card-icon {
+  width: 60px;
+  height: 60px;
+  background: var(--light-color);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+}
+
+.card-icon i {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+}
+
+.practice-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.practice-card {
+  background: white;
+  border-radius: 15px;
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.practice-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.practice-card i {
+  font-size: 2rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.tools-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.tool-item {
+  background: white;
+  border-radius: 10px;
+  padding: 1.5rem;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.tool-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.tool-item i {
+  font-size: 2rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.quick-start {
+  padding-right: 1.25rem;
+}
+
+.quick-start li {
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.quick-start li::before {
+  content: "";
+  position: absolute;
+  right: -1.25rem;
+  top: 0.5rem;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+}
+
+.tikkun-list {
+  list-style: none;
+  padding: 0;
+}
+
+.tikkun-list li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+
+.tikkun-list li:hover {
+  background-color: var(--light-color);
+  transform: translateX(-5px);
+}
+
+.tikkun-list i {
+  margin-left: 0.75rem;
+  color: var(--primary-color);
+}
+
+/* אנימציות */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.content-card,
+.practice-card,
+.tool-item {
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+/* התאמה למובייל */
+@media (max-width: 768px) {
+  .journey-header {
+    padding: 2rem 0;
+  }
+
+  .journey-header h1 {
+    font-size: 2rem;
+  }
+
+  .card-grid,
+  .practice-cards,
+  .tools-container {
+    grid-template-columns: 1fr;
+  }
+
+  .content-card,
+  .practice-card,
+  .tool-item {
+    padding: 1.5rem;
+  }
+}
+
+/* מודלים */
+.modal-content {
+  border-radius: 15px;
+  border: none;
+}
+
+.modal-header {
+  background: var(--light-color);
+  border-radius: 15px 15px 0 0;
+  border-bottom: none;
+}
+
+.modal-body {
+  padding: 2rem;
+}
+
+.practice-steps {
+  padding-right: 1.25rem;
+}
+
+.practice-steps li {
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  background: var(--light-color);
+  border-radius: 5px;
+}
+
+/* הודעות מערכת */
+.alert {
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.alert-success {
+  background-color: var(--success-color);
+  color: white;
+  border: none;
+}
+
+.alert-info {
+  background-color: var(--info-color);
+  color: white;
+  border: none;
+}
+
+/* סגנונות כרטיסי לימוד */
+.study-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.study-card {
+  background: white;
+  border-radius: 15px;
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.study-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.study-card i {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+}
+
+.study-card h3 {
+  color: var(--dark-color);
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.study-card p {
+  color: var(--text-color);
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+}
+
+.study-card .btn {
+  margin-top: auto;
+  width: 100%;
+  padding: 0.75rem;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.study-card .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* התאמה למובייל */
+@media (max-width: 768px) {
+  .study-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .study-card {
+    padding: 1.5rem;
+  }
+
+  .study-card i {
+    font-size: 2rem;
+  }
+
+  .study-card h3 {
+    font-size: 1.25rem;
+  }
+}
+
+/* סגנונות לחלק הלימוד */
+.study-section {
+  background: linear-gradient(135deg, var(--light-color) 0%, #ffffff 100%);
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.study-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.study-card {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 1.5rem;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.study-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.study-card i {
+  font-size: 2rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.study-card h3 {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  color: var(--dark-color);
+}
+
+.study-card p {
+  color: var(--text-color);
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+/* סגנונות למודל לימוד */
+.modal-content {
+  border-radius: 15px;
+  border: none;
+}
+
+.modal-header {
+  background: var(--primary-color);
+  color: white;
+  border-radius: 15px 15px 0 0;
+  padding: 1.5rem;
+}
+
+.modal-body {
+  padding: 2rem;
+}
+
+.category-section {
+  background: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+}
+
+.category-title {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.table {
+  margin-bottom: 0;
+}
+
+.table th {
+  background: var(--primary-color);
+  color: white;
+  font-weight: 500;
+}
+
+.learning-section {
+  background: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
+}
+
+.section-title {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.resources,
+.exercises {
+  margin-top: 1.5rem;
+}
+
+.resources h5,
+.exercises h5 {
+  color: var(--dark-color);
+  margin-bottom: 0.75rem;
+}
+
+.resources ul,
+.exercises ul {
+  list-style-type: none;
+  padding-right: 0;
+}
+
+.resources li,
+.exercises li {
+  margin-bottom: 0.5rem;
+  padding-right: 1.5rem;
+  position: relative;
+}
+
+.resources li:before,
+.exercises li:before {
+  content: "•";
+  color: var(--primary-color);
+  position: absolute;
+  right: 0;
+}
+
+.trait-card {
+  background: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
+}
+
+.trait-title {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.trait-description {
+  color: var(--text-color);
+  margin-bottom: 1.5rem;
+}
+
+/* התאמה למובייל */
+@media (max-width: 768px) {
+  .study-section {
+    padding: 1rem;
+  }
+
+  .study-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-dialog {
+    margin: 0.5rem;
+  }
+
+  .modal-body {
+    padding: 1rem;
+  }
+
+  .category-section,
+  .learning-section,
+  .trait-card {
+    padding: 1rem;
+  }
+}
