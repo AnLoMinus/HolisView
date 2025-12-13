@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HolisView – שער המרכזי</title>
+  <style>
+    :root {
+      --primary: #4A90E2;
+      --secondary: #9B51E0;
+      --accent: #F5A623;
+      --bg: #f8f9fa;
+      --text: #2d3436;
+      --card: #ffffff;
+      --border: #e3e6ea;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: 'Assistant', 'Alef', 'Heebo', Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: #fff;
+      padding: 48px 20px 32px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0 0 12px;
+      font-size: 2.4rem;
+      letter-spacing: 0.5px;
+    }
+
+    header p {
+      margin: 0 auto;
+      max-width: 800px;
+      font-size: 1.1rem;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: -24px auto 48px;
+      padding: 0 16px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    }
+
+    .card h2 {
+      margin-top: 0;
+      font-size: 1.3rem;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .links {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+      padding: 0;
+      list-style: none;
+      margin: 12px 0 0;
+    }
+
+    .links li {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px;
+      background: #fff;
+      transition: transform 0.1s ease, box-shadow 0.1s ease;
+    }
+
+    .links li:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.06);
+    }
+
+    .links a {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 600;
+      display: block;
+    }
+
+    .links small {
+      display: block;
+      color: #6c7680;
+      margin-top: 4px;
+    }
+
+    .checklist {
+      list-style: none;
+      padding: 0;
+      margin: 12px 0 0;
+    }
+
+    .checklist li {
+      margin: 6px 0;
+      padding: 10px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+    }
+
+    .badge {
+      background: var(--accent);
+      color: #fff;
+      padding: 2px 8px;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      margin-left: 6px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      body { background: #121212; color: #e5e5e5; }
+      .card { background: #1d1f24; border-color: #2e3137; }
+      .links li { background: #1d1f24; border-color: #2e3137; }
+      header { color: #fff; }
+      .checklist li { background: #1d1f24; border-color: #2e3137; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>HolisView – שער המרכזי של כל האתרים במאגר</h1>
+    <p>עמוד זה מאגד את כל הפרויקטים והאתרים הקיימים בתיקיות המאגר, כדי שתוכלו לנווט במהירות לכל קובץ HTML ולבנות עליו את השלבים הבאים.</p>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>AI-Flow</h2>
+      <ul class="links">
+        <li><a href="AI-Flow/index.html">דף הבית</a><small>תיאור כללי</small></li>
+        <li><a href="AI-Flow/index-x.html">דף הבית – גרסה מורחבת</a><small>וריאציה נוספת</small></li>
+        <li><a href="AI-Flow/structure.html">מבנה</a><small>שלד מערכות</small></li>
+        <li><a href="AI-Flow/sefirot.html">עשר הספירות</a><small>מסלול ספירות</small></li>
+        <li><a href="AI-Flow/seven.html">שבע</a><small>מסלול שבע</small></li>
+        <li><a href="AI-Flow/ten.html">עשר</a><small>מסלול עשר</small></li>
+        <li><a href="AI-Flow/thirteen.html">שלוש עשרה</a><small>מסלול י"ג</small></li>
+        <li><a href="AI-Flow/abiya.html">אצילות בריאה יצירה עשיה</a><small>מודל אבי"ע</small></li>
+        <li><a href="AI-Flow/elements.html">יסודות</a><small>מרכיבי בסיס</small></li>
+        <li><a href="AI-Flow/pardes.html">פרד"ס</a><small>מסלול פרד"ס</small></li>
+        <li><a href="AI-Flow/print.html">תצוגת הדפסה</a><small>גרסת print</small></li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>ReMatrix</h2>
+      <ul class="links">
+        <li><a href="ReMatrix%20/index.html">ReMatrix – אינדקס ראשי</a><small>דף ניתוב</small></li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>4 – ארבע ספירות</h2>
+      <ul class="links">
+        <li><a href="4/CARDS/4-sefirot-box-cover.html">כריכת קופסה</a></li>
+        <li><a href="4/CARDS/4-sefirot-1.html">קלף 1</a></li>
+        <li><a href="4/CARDS/4-sefirot-2.html">קלף 2</a></li>
+        <li><a href="4/CARDS/4-sefirot-3.html">קלף 3</a></li>
+        <li><a href="4/CARDS/4-sefirot-4.html">קלף 4</a></li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>10 – עשר הספירות</h2>
+      <ul class="links">
+        <li><a href="10/ten_sefirot.html">Ten Sefirot – תצוגה כללית</a></li>
+        <li><a href="10/ten_sefirot plus.html">Ten Sefirot Plus</a></li>
+        <li><a href="10/ten_sefirot back.html">Ten Sefirot – גב</a></li>
+        <li><a href="10/sefer_sefirot.html">ספר הספירות</a></li>
+        <li><a href="10/sefirot_structure.html">מבנה הספירות</a></li>
+        <li><a href="10/final_summary.html">סיכום סופי</a></li>
+        <li><a href="10/print.html">גרסת הדפסה</a></li>
+        <li><a href="10/understanding_analysis.html">בינה</a></li>
+        <li><a href="10/wisdom_analysis.html">חכמה</a></li>
+        <li><a href="10/crown_analysis.html">כתר</a></li>
+        <li><a href="10/keter_analysis.html">כתר (אופציה)</a></li>
+        <li><a href="10/chesed_analysis.html">חסד</a></li>
+        <li><a href="10/gevura_analysis.html">גבורה</a></li>
+        <li><a href="10/tiferet_analysis.html">תפארת</a></li>
+        <li><a href="10/netzach_analysis.html">נצח</a></li>
+        <li><a href="10/hod_analysis.html">הוד</a></li>
+        <li><a href="10/yesod_analysis.html">יסוד</a></li>
+        <li><a href="10/malchut_analysis.html">מלכות</a></li>
+        <li><a href="10/daat_analysis.html">דעת</a></li>
+        <li><a href="10/cards-list.html">רשימת קלפים</a></li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>10 – חבילת קלפים</h2>
+      <ul class="links">
+        <li><a href="10/cards/ten-sefirot-box-cover.html">כריכת קופסה</a></li>
+        <li><a href="10/cards/1-10.html">1/10</a></li>
+        <li><a href="10/cards/2-10-hachma.html">2/10 – חכמה</a></li>
+        <li><a href="10/cards/3-10-bina.html">3/10 – בינה</a></li>
+        <li><a href="10/cards/5-10-chesed.html">5/10 – חסד</a></li>
+        <li><a href="10/cards/6-10-gevura.html">6/10 – גבורה</a></li>
+        <li><a href="10/cards/7-10-netzach.html">7/10 – נצח</a></li>
+        <li><a href="10/cards/8-10-hod.html">8/10 – הוד</a></li>
+        <li><a href="10/cards/9-10-tiferet.html">9/10 – תפארת</a></li>
+        <li><a href="10/cards/10-10-yesod.html">10/10 – יסוד</a></li>
+        <li><a href="10/cards/11-10-malchut.html">11/10 – מלכות</a></li>
+        <li><a href="10/cards/ten-sefirot-1.html">Ten Sefirot 1</a></li>
+        <li><a href="10/cards/ten-sefirot-2.html">Ten Sefirot 2</a></li>
+        <li><a href="10/cards/ten-sefirot-3.html">Ten Sefirot 3</a></li>
+        <li><a href="10/cards/ten-sefirot-4.html">Ten Sefirot 4</a></li>
+        <li><a href="10/cards/ten-sefirot.html">Ten Sefirot (Grid)</a></li>
+        <li><a href="10/cards/final_summary.html">סיכום חבילת קלפים</a></li>
+        <li><a href="10/cards/coping-cards.html">קלפי התמודדות</a></li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>📋 צ'קליסט המשך פיתוח</h2>
+      <p>על בסיס מסמך "הנחיות לבניית אתר" – שלבים מיידיים לעבודה:</p>
+      <ul class="checklist">
+        <li>⬜ הטמעת עיצוב אחיד לפי פלטת הצבעים והפונטים שנקבעו.</li>
+        <li>⬜ יצירת רכיב חיפוש בסיסי (חיפוש טקסט מלא בין הקבצים).</li>
+        <li>⬜ הוספת ניווט עליון ותגיות לכל קטגוריה (4 / 7 / 10 / 13 / AI-Flow).</li>
+        <li>⬜ בניית דף בית עם סטטיסטיקות על מספר המסמכים והקלפים.</li>
+        <li>⬜ אופטימיזציה להדפסה וטעינה מהירה (דחיסת תמונות וקאשינג סטטי).</li>
+        <li>⬜ חיבור GitHub Pages והגדרת דומיין מותאם.</li>
+        <li>⬜ הכנת תרשימי זרימה אינטראקטיביים ומפות מושגים לדפי תוכן נבחרים.</li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>
