@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HolisView – שער המרכזי</title>
+  <style>
+    :root {
+      --bg: #0f1114;
+      --panel: #12161c;
+      --panel-2: #161b23;
+      --text: #e8edf3;
+      --muted: #9fb2c9;
+      --border: #1f2630;
+      --radius: 16px;
+      --shadow: 0 14px 40px rgba(0, 0, 0, 0.35);
+
+      --ai-flow-1: #6ed3ff;
+      --ai-flow-2: #2c98f0;
+      --ai-flow-3: #1f6ad5;
+
+      --rematrix-1: #ffd166;
+      --rematrix-2: #ff9f1c;
+      --rematrix-3: #ff6b6b;
+
+      --sefirot-1: #c8ff9c;
+      --sefirot-2: #8ecf4c;
+      --sefirot-3: #3b8f3b;
+
+      --cards-1: #ffb7ff;
+      --cards-2: #b47bff;
+      --cards-3: #7f5dff;
+
+      --api-1: #9ef0ff;
+      --api-2: #74d0e1;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: 'Assistant', 'Alef', 'Heebo', Arial, sans-serif;
+      background: radial-gradient(circle at 20% 20%, rgba(55, 92, 186, 0.16), transparent 34%),
+                  radial-gradient(circle at 80% 10%, rgba(255, 145, 77, 0.14), transparent 32%),
+                  linear-gradient(180deg, #0c1015 0%, #0a0d11 100%);
+      color: var(--text);
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    header {
+      padding: 64px 20px 36px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0 0 12px;
+      font-size: 2.4rem;
+      letter-spacing: 0.4px;
+    }
+
+    header p {
+      margin: 0 auto;
+      max-width: 900px;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 0 auto 64px;
+      padding: 0 18px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .section {
+      background: linear-gradient(145deg, var(--panel), var(--panel-2));
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    .title-block h2 {
+      margin: 0;
+      font-size: 1.35rem;
+      letter-spacing: 0.3px;
+    }
+
+    .subtitle { color: var(--muted); margin: 4px 0 0; }
+
+    .palette {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .swatch {
+      width: 18px;
+      height: 18px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05);
+    }
+
+    .links-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+      list-style: none;
+      padding: 0;
+    }
+
+    .link-card {
+      padding: 14px;
+      border-radius: 14px;
+      background: linear-gradient(160deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      border: 1px solid var(--border);
+      transition: transform 0.12s ease, box-shadow 0.12s ease, border-color 0.12s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .link-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(255,255,255,0.08);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.35);
+    }
+
+    .link-card a {
+      color: inherit;
+      text-decoration: none;
+      font-weight: 700;
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .link-card small { display: block; color: var(--muted); margin-top: 6px; }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border-radius: 10px;
+      padding: 4px 10px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 0.88rem;
+    }
+
+    .tag { font-size: 0.8rem; color: var(--muted); }
+
+    .theme-ai-flow { border-color: rgba(110, 211, 255, 0.22); background: linear-gradient(160deg, rgba(110, 211, 255, 0.16), rgba(44, 152, 240, 0.06)); }
+    .theme-rematrix { border-color: rgba(255, 209, 102, 0.24); background: linear-gradient(160deg, rgba(255, 209, 102, 0.14), rgba(255, 107, 107, 0.05)); }
+    .theme-sefirot { border-color: rgba(200, 255, 156, 0.26); background: linear-gradient(160deg, rgba(142, 207, 76, 0.14), rgba(59, 143, 59, 0.06)); }
+    .theme-cards { border-color: rgba(180, 123, 255, 0.23); background: linear-gradient(160deg, rgba(180, 123, 255, 0.18), rgba(127, 93, 255, 0.06)); }
+    .theme-api { border-color: rgba(158, 240, 255, 0.3); background: linear-gradient(160deg, rgba(158, 240, 255, 0.14), rgba(116, 208, 225, 0.05)); }
+
+    .accent-bar {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, rgba(255,255,255,0.08), transparent 36%);
+      opacity: 0.6;
+      pointer-events: none;
+    }
+
+    .checklist {
+      list-style: none;
+      padding: 0;
+      margin: 12px 0 0;
+      display: grid;
+      gap: 10px;
+    }
+
+    .checklist li {
+      padding: 12px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+
+    .api-form { display: flex; flex-direction: column; gap: 12px; }
+    .form-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group label { font-weight: 700; color: #dce5f2; }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: #0c1016;
+      color: var(--text);
+      font-family: inherit;
+    }
+    .form-group textarea { min-height: 120px; resize: vertical; }
+
+    .status {
+      padding: 12px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: #0c1016;
+      color: var(--text);
+    }
+    .status[data-type="success"] { border-color: rgba(110, 211, 255, 0.45); color: #9ef0ff; }
+    .status[data-type="error"] { border-color: rgba(255, 107, 107, 0.6); color: #ff9f9f; }
+    .status[data-type="info"] { border-color: rgba(116, 208, 225, 0.45); color: #9ef0ff; }
+
+    .response-box {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px;
+      background: #0c1016;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .response-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      font-size: 0.95rem;
+    }
+    .response-meta a { color: #9ef0ff; text-decoration: none; font-weight: 700; }
+    .response-box pre {
+      white-space: pre-wrap;
+      word-break: break-word;
+      margin: 0;
+      font-family: "JetBrains Mono", "Fira Code", monospace;
+      background: #0a0d11;
+      border-radius: 10px;
+      padding: 10px;
+      border: 1px solid var(--border);
+    }
+
+    button.primary {
+      align-self: flex-start;
+      padding: 11px 18px;
+      border: none;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #9ef0ff, #74d0e1);
+      color: #0a0d11;
+      font-weight: 800;
+      cursor: pointer;
+      transition: transform 0.1s ease, box-shadow 0.1s ease;
+    }
+    button.primary:hover { transform: translateY(-1px); box-shadow: 0 10px 24px rgba(0,0,0,0.28); }
+
+    .footer {
+      margin: 0 auto;
+      max-width: 1200px;
+      padding: 32px 18px 56px;
+      display: grid;
+      gap: 18px;
+      background: linear-gradient(145deg, var(--panel), var(--panel-2));
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      color: var(--text);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+    }
+
+    .footer-title {
+      margin: 0 0 8px;
+      font-size: 1rem;
+      letter-spacing: 0.2px;
+    }
+
+    .footer p { margin: 0; color: var(--muted); }
+
+    .footer-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 8px;
+    }
+
+    .footer-links a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 700;
+    }
+    .footer-links a:hover { color: #9ef0ff; }
+
+    .footer-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.14), transparent);
+      border: none;
+    }
+
+    .footer-credit {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .footer-badges {
+      display: inline-flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .footer-badge {
+      padding: 6px 10px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.03);
+      color: var(--text);
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 640px) {
+      header h1 { font-size: 2rem; }
+      .section { padding: 16px; }
+      .footer { padding: 24px 16px 40px; }
+    }
+  </style>
+</head>
+  <body>
+    <header>
+      <h1>HolisView – שער המרכזי של כל האתרים במאגר</h1>
+      <p>עמוד זה מאגד את כל הפרויקטים והאתרים הקיימים בתיקיות המאגר, כדי שתוכלו לנווט במהירות לכל קובץ HTML ולבנות עליו את השלבים הבאים.</p>
+    </header>
+
+    <main>
+      <section class="section">
+        <div class="section-header">
+          <div class="title-block">
+            <h2>AI-Flow · ניווט חכם</h2>
+            <p class="subtitle">דפי המסלול המקוריים עם מיקוד במסעות ספירה ותרחישים מודפסים.</p>
+          </div>
+          <div class="palette" aria-label="פלטת צבעים AI-Flow">
+            <span class="swatch" style="background: var(--ai-flow-1);"></span>
+            <span class="swatch" style="background: var(--ai-flow-2);"></span>
+            <span class="swatch" style="background: var(--ai-flow-3);"></span>
+          </div>
+        </div>
+        <ul class="links-grid">
+          <li class="link-card theme-ai-flow">
+            <div class="accent-bar"></div>
+            <a href="AI-Flow/index.html">דף הבית</a>
+            <small>לנדינג בסיסי לכל המסלולים וההקדמה.</small>
+            <div class="badge">/AI-Flow/index.html</div>
+          </li>
+          <li class="link-card theme-ai-flow">
+            <div class="accent-bar"></div>
+            <a href="AI-Flow/index-x.html">דף הבית – גרסה מורחבת</a>
+            <small>וריאציה עשירה יותר עם תוספות ניתוב.</small>
+            <div class="badge">/AI-Flow/index-x.html</div>
+          </li>
+          <li class="link-card theme-ai-flow">
+            <div class="accent-bar"></div>
+            <a href="AI-Flow/structure.html">מבנה</a>
+            <small>שלד מערכות וקישורים פנימיים למסלולים.</small>
+            <div class="badge">/AI-Flow/structure.html</div>
+          </li>
+          <li class="link-card theme-ai-flow">
+            <div class="accent-bar"></div>
+            <a href="AI-Flow/sefirot.html">עשר הספירות</a>
+            <small>דף הספירות עם טקסטים ושדות תיעוד.</small>
+            <div class="badge">/AI-Flow/sefirot.html</div>
+          </li>
+          <li class="link-card theme-ai-flow">
+            <div class="accent-bar"></div>
+            <a href="AI-Flow/seven.html">שבע</a>
+            <small>מסלול שבע ספירות עם חיתוך תמות.</small>
+            <div class="badge">/AI-Flow/seven.html</div>
+          </li>
+          <li class="link-card theme-ai-flow">
+            <div class="accent-bar"></div>
+            <a href="AI-Flow/ten.html">עשר</a>
+            <small>תרגילים סביב עשר ספירות.</small>
+            <div class="badge">/AI-Flow/ten.html</div>
+          </li>
+          <li class="link-card theme-ai-flow">
+            <div class="accent-bar"></div>
+            <a href="AI-Flow/thirteen.html">שלוש עשרה</a>
+            <small>מסלול י"ג מדות ומבנה מפורט.</small>
+            <div class="badge">/AI-Flow/thirteen.html</div>
+          </li>
+          <li class="link-card theme-ai-flow">
+            <div class="accent-bar"></div>
+            <a href="AI-Flow/abiya.html">אצילות בריאה יצירה עשיה</a>
+            <small>מודל אבי"ע והקשרים לעולמות.</small>
+            <div class="badge">/AI-Flow/abiya.html</div>
+          </li>
+          <li class="link-card theme-ai-flow">
+            <div class="accent-bar"></div>
+            <a href="AI-Flow/elements.html">יסודות</a>
+            <small>מרכיבי בסיס וצלבים בין היסודות.</small>
+            <div class="badge">/AI-Flow/elements.html</div>
+          </li>
+          <li class="link-card theme-ai-flow">
+            <div class="accent-bar"></div>
+            <a href="AI-Flow/pardes.html">פרד"ס</a>
+            <small>מסלול פרד"ס מלא עם דוגמאות.</small>
+            <div class="badge">/AI-Flow/pardes.html</div>
+          </li>
+          <li class="link-card theme-ai-flow">
+            <div class="accent-bar"></div>
+            <a href="AI-Flow/print.html">תצוגת הדפסה</a>
+            <small>גרסה נקיה להדפסה.</small>
+            <div class="badge">/AI-Flow/print.html</div>
+          </li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <div class="section-header">
+          <div class="title-block">
+            <h2>ReMatrix · הדפסה וקלפים</h2>
+            <p class="subtitle">אינדקס מרכזי לזרימה של ריבוי מטריצות מודפסות.</p>
+          </div>
+          <div class="palette" aria-label="פלטת צבעים ReMatrix">
+            <span class="swatch" style="background: var(--rematrix-1);"></span>
+            <span class="swatch" style="background: var(--rematrix-2);"></span>
+            <span class="swatch" style="background: var(--rematrix-3);"></span>
+          </div>
+        </div>
+        <ul class="links-grid">
+          <li class="link-card theme-rematrix">
+            <div class="accent-bar"></div>
+            <a href="ReMatrix%20/index.html">ReMatrix – אינדקס ראשי</a>
+            <small>שער ניתוב לכל חבילות הריסטארט.</small>
+            <div class="badge">/ReMatrix /index.html</div>
+          </li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <div class="section-header">
+          <div class="title-block">
+            <h2>4 ספירות · חבילת מיני</h2>
+            <p class="subtitle">קלפים ממוקדים למקרה שימוש קומפקטי.</p>
+          </div>
+          <div class="palette" aria-label="פלטת צבעים 4 ספירות">
+            <span class="swatch" style="background: var(--sefirot-1);"></span>
+            <span class="swatch" style="background: var(--sefirot-2);"></span>
+            <span class="swatch" style="background: var(--sefirot-3);"></span>
+          </div>
+        </div>
+        <ul class="links-grid">
+          <li class="link-card theme-sefirot">
+            <div class="accent-bar"></div>
+            <a href="4/CARDS/4-sefirot-box-cover.html">כריכת קופסה</a>
+            <small>עטיפה לחבילת הקלפים.</small>
+            <div class="badge">/4/CARDS/4-sefirot-box-cover.html</div>
+          </li>
+          <li class="link-card theme-sefirot">
+            <div class="accent-bar"></div>
+            <a href="4/CARDS/4-sefirot-1.html">קלף 1</a>
+            <small>חסד – פתיח של המארז.</small>
+            <div class="badge">/4/CARDS/4-sefirot-1.html</div>
+          </li>
+          <li class="link-card theme-sefirot">
+            <div class="accent-bar"></div>
+            <a href="4/CARDS/4-sefirot-2.html">קלף 2</a>
+            <small>גבורה – איזון.</small>
+            <div class="badge">/4/CARDS/4-sefirot-2.html</div>
+          </li>
+          <li class="link-card theme-sefirot">
+            <div class="accent-bar"></div>
+            <a href="4/CARDS/4-sefirot-3.html">קלף 3</a>
+            <small>תפארת – חיבור.</small>
+            <div class="badge">/4/CARDS/4-sefirot-3.html</div>
+          </li>
+          <li class="link-card theme-sefirot">
+            <div class="accent-bar"></div>
+            <a href="4/CARDS/4-sefirot-4.html">קלף 4</a>
+            <small>יסוד – חותם.</small>
+            <div class="badge">/4/CARDS/4-sefirot-4.html</div>
+          </li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <div class="section-header">
+          <div class="title-block">
+            <h2>10 ספירות · אלבום ודפי עומק</h2>
+            <p class="subtitle">מסמכי לימוד עם פירוק ספירה-אחר-ספירה ודפי הדפסה.</p>
+          </div>
+          <div class="palette" aria-label="פלטת צבעים 10 ספירות">
+            <span class="swatch" style="background: var(--cards-1);"></span>
+            <span class="swatch" style="background: var(--cards-2);"></span>
+            <span class="swatch" style="background: var(--cards-3);"></span>
+          </div>
+        </div>
+        <ul class="links-grid">
+          <li class="link-card theme-cards"><div class="accent-bar"></div><a href="10/ten_sefirot.html">Ten Sefirot – תצוגה כללית</a><small>פריסת כל הספירות על ציר אחד.</small><div class="badge">/10/ten_sefirot.html</div></li>
+          <li class="link-card theme-cards"><div class="accent-bar"></div><a href="10/ten_sefirot plus.html">Ten Sefirot Plus</a><small>ווריאציה מורחבת עם טקסטים נוספים.</small><div class="badge">/10/ten_sefirot plus.html</div></li>
+          <li class="link-card theme-cards"><div class="accent-bar"></div><a href="10/ten_sefirot back.html">Ten Sefirot – גב</a><small>חלק אחורי של החוברת.</small><div class="badge">/10/ten_sefirot back.html</div></li>
+          <li class="link-card theme-cards"><div class="accent-bar"></div><a href="10/sefer_sefirot.html">ספר הספירות</a><small>סיכומי עומק עם טקסטים ארוכים.</small><div class="badge">/10/sefer_sefirot.html</div></li>
+          <li class="link-card theme-cards"><div class="accent-bar"></div><a href="10/sefirot_structure.html">מבנה הספירות</a><small>שכבות ומסלולי חיבור.</small><div class="badge">/10/sefirot_structure.html</div></li>
+          <li class="link-card theme-cards"><div class="accent-bar"></div><a href="10/final_summary.html">סיכום סופי</a><small>דף נעילה לתוכן.</small><div class="badge">/10/final_summary.html</div></li>
+          <li class="link-card theme-cards"><div class="accent-bar"></div><a href="10/print.html">גרסת הדפסה</a><small>פריסה ידידותית למדפסת.</small><div class="badge">/10/print.html</div></li>
+          <li class="link-card theme-cards"><div class="accent-bar"></div><a href="10/understanding_analysis.html">בינה</a><small>ניתוח ספירת בינה.</small><div class="badge">/10/understanding_analysis.html</div></li>
+          <li class="link-card theme-cards"><div class="accent-bar"></div><a href="10/wisdom_analysis.html">חכמה</a><small>ניתוח ספירת חכמה.</small><div class="badge">/10/wisdom_analysis.html</div></li>
+          <li class="link-card theme-cards"><div class="accent-bar"></div><a href="10/crown_analysis.html">כתר</a><small>ניתוח ספירת כתר.</small><div class="badge">/10/crown_analysis.html</div></li>
+          <li class="link-card theme-cards"><div class="accent-bar"></div><a href="10/keter_analysis.html">כתר (אופציה)</a><small>גרסת טקסט נוספת לכתר.</small><div class="badge">/10/keter_analysis.html</div></li>
+          <li class="link-card theme-cards"><div class="accent-bar"></div><a href="10/chesed_analysis.html">חסד</a><small>ניתוח ספירת חסד.</small><div class="badge">/10/chesed_analysis.html</div></li>
+          <li class="link-card theme-cards"><div class="accent-bar"></div><a href="10/gevura_analysis.html">גבורה</a><small>ניתוח ספירת גבורה.</small><div class="badge">/10/gevura_analysis.html</div></li>
+          <li class="link-card theme-cards"><div class="accent-bar"></div><a href="10/tiferet_analysis.html">תפארת</a><small>ניתוח ספירת תפארת.</small><div class="badge">/10/tiferet_analysis.html</div></li>
+          <li class="link-card theme-cards"><div class="accent-bar"></div><a href="10/netzach_analysis.html">נצח</a><small>ניתוח ספירת נצח.</small><div class="badge">/10/netzach_analysis.html</div></li>
+          <li class="link-card theme-cards"><div class="accent-bar"></div><a href="10/hod_analysis.html">הוד</a><small>ניתוח ספירת הוד.</small><div class="badge">/10/hod_analysis.html</div></li>
+          <li class="link-card theme-cards"><div class="accent-bar"></div><a href="10/yesod_analysis.html">יסוד</a><small>ניתוח ספירת יסוד.</small><div class="badge">/10/yesod_analysis.html</div></li>
+          <li class="link-card theme-cards"><div class="accent-bar"></div><a href="10/malchut_analysis.html">מלכות</a><small>ניתוח ספירת מלכות.</small><div class="badge">/10/malchut_analysis.html</div></li>
+          <li class="link-card theme-cards"><div class="accent-bar"></div><a href="10/daat_analysis.html">דעת</a><small>ספירת דעת והעמקה.</small><div class="badge">/10/daat_analysis.html</div></li>
+          <li class="link-card theme-cards"><div class="accent-bar"></div><a href="10/cards-list.html">רשימת קלפים</a><small>קטלוג לכל הקלפים והקבצים.</small><div class="badge">/10/cards-list.html</div></li>
+        </ul>
+      </section>
+
+      <section class="section">
+        <div class="section-header">
+          <div class="title-block">
+            <h2>10 ספירות · חבילת קלפים</h2>
+            <p class="subtitle">כל הקלפים עם טקסטים נלווים ושכבות צבע.</p>
+          </div>
+          <div class="palette" aria-label="פלטת צבעים חבילת קלפים">
+            <span class="swatch" style="background: var(--cards-1);"></span>
+            <span class="swatch" style="background: var(--cards-2);"></span>
+            <span class="swatch" style="background: var(--cards-3);"></span>
+          </div>
+        </div>
+        <ul class="links-grid">
+          <li class="link-card theme-cards"><div class="accent-bar"></div><a href="10/cards/ten-sefirot-box-cover.html">כריכת קופסה</a><small>עטיפה לחבילת הספירות.</small><div class="badge">/10/cards/ten-sefirot-box-cover.html</div></li>
+          <li class="link-card theme-cards"><div class="accent-bar"></div><a href="10/cards/1-10.html">1/10</a><small>פתיחת הסדרה.</small><div class="badge">/10/cards/1-10.html</div></li>
+          <li class="link-card theme-cards"><div class="accent-bar"></div><a href="10/cards/2-10-hachma.html">2/10 – חכמה</a><small>קלף חכמה.</small><div class="badge">/10/cards/2-10-hachma.html</div></li>
+          <li class="link-card theme-cards"><div class="accent-bar"></div><a href="10/cards/3-10-bina.html">3/10 – בינה</a><small>קלף בינה.</small><div class="badge">/10/cards/3-10-bina.html</div></li>
+          <li class="link-card theme-cards"><div class="accent-bar"></div><a href="10/cards/5-10-chesed.html">5/10 – חסד</a><small>קלף חסד.</small><div class="badge">/10/cards/5-10-chesed.html</div></li>
+          <li class="link-card theme-cards"><div class="accent-bar"></div><a href="10/cards/6-10-gevura.html">6/10 – גבורה</a><small>קלף גבורה.</small><div class="badge">/10/cards/6-10-gevura.html</div></li>
+          <li class="link-card theme-cards"><div class="accent-bar"></div><a href="10/cards/7-10-netzach.html">7/10 – נצח</a><small>קלף נצח.</small><div class="badge">/10/cards/7-10-netzach.html</div></li>
+          <li class="link-card theme-cards"><div class="accent-bar"></div><a href="10/cards/8-10-hod.html">8/10 – הוד</a><small>קלף הוד.</small><div class="badge">/10/cards/8-10-hod.html</div></li>
+          <li class="link-card theme-cards"><div class="accent-bar"></div><a href="10/cards/9-10-tiferet.html">9/10 – תפארת</a><small>קלף תפארת.</small><div class="badge">/10/cards/9-10-tiferet.html</div></li>
+          <li class="link-card theme-cards"><div class="accent-bar"></div><a href="10/cards/10-10-yesod.html">10/10 – יסוד</a><small>קלף יסוד.</small><div class="badge">/10/cards/10-10-yesod.html</div></li>
+          <li class="link-card theme-cards"><div class="accent-bar"></div><a href="10/cards/11-10-malchut.html">11/10 – מלכות</a><small>קלף מלכות.</small><div class="badge">/10/cards/11-10-malchut.html</div></li>
+          <li class="link-card theme-cards"><div class="accent-bar"></div><a href="10/cards/ten-sefirot-1.html">Ten Sefirot 1</a><small>הדפסה א׳ של כל הספירות.</small><div class="badge">/10/cards/ten-sefirot-1.html</div></li>
+          <li class="link-card theme-cards"><div class="accent-bar"></div><a href="10/cards/ten-sefirot-2.html">Ten Sefirot 2</a><small>הדפסה ב׳.</small><div class="badge">/10/cards/ten-sefirot-2.html</div></li>
+          <li class="link-card theme-cards"><div class="accent-bar"></div><a href="10/cards/ten-sefirot-3.html">Ten Sefirot 3</a><small>הדפסה ג׳.</small><div class="badge">/10/cards/ten-sefirot-3.html</div></li>
+          <li class="link-card theme-cards"><div class="accent-bar"></div><a href="10/cards/ten-sefirot-4.html">Ten Sefirot 4</a><small>הדפסה ד׳.</small><div class="badge">/10/cards/ten-sefirot-4.html</div></li>
+          <li class="link-card theme-cards"><div class="accent-bar"></div><a href="10/cards/ten-sefirot.html">Ten Sefirot (Grid)</a><small>טבלת ספירות מרובעת.</small><div class="badge">/10/cards/ten-sefirot.html</div></li>
+          <li class="link-card theme-cards"><div class="accent-bar"></div><a href="10/cards/final_summary.html">סיכום חבילת קלפים</a><small>דף סיכום לסדרה.</small><div class="badge">/10/cards/final_summary.html</div></li>
+          <li class="link-card theme-cards"><div class="accent-bar"></div><a href="10/cards/coping-cards.html">קלפי התמודדות</a><small>סט ייעודי לתמיכה.</small><div class="badge">/10/cards/coping-cards.html</div></li>
+        </ul>
+      </section>
+
+      <section class="section theme-api">
+        <div class="section-header">
+          <div class="title-block">
+            <h2>🔗 חיבור ל-ChatGPT API</h2>
+            <p class="subtitle">מגרש משחקים מוכן לבדיקת המפתחות, המודל והמתכון המותאם שלכם.</p>
+          </div>
+          <div class="palette" aria-label="פלטת צבעים API">
+            <span class="swatch" style="background: var(--api-1);"></span>
+            <span class="swatch" style="background: var(--api-2);"></span>
+          </div>
+        </div>
+        <p>שימוש במתכונים חכמים לקישור ה-API: הזינו מפתח, מודל, ואפיינו את הפרומפטים. הפונקציות מאורגנות בקובץ <code>scripts/chatgpt-api.js</code> וניתן למחזר אותן לכל דף.</p>
+        <form id="chatgpt-form" class="api-form">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="apiKey">מפתח API</label>
+              <input id="apiKey" name="apiKey" type="password" placeholder="sk-..." required autocomplete="off">
+            </div>
+            <div class="form-group">
+              <label for="baseUrl">Base URL</label>
+              <input id="baseUrl" name="baseUrl" type="url" value="https://api.openai.com/v1" placeholder="https://api.openai.com/v1">
+            </div>
+            <div class="form-group">
+              <label for="model">מודל</label>
+              <select id="model" name="model">
+                <option value="gpt-4o-mini">gpt-4o-mini</option>
+                <option value="gpt-4o">gpt-4o</option>
+                <option value="gpt-4.1">gpt-4.1</option>
+                <option value="o3-mini">o3-mini</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="temperature">Temperature</label>
+              <input id="temperature" name="temperature" type="number" step="0.1" min="0" max="2" value="0.7">
+            </div>
+            <div class="form-group">
+              <label for="maxTokens">Max Tokens</label>
+              <input id="maxTokens" name="maxTokens" type="number" min="1" max="4096" value="400">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="system">System Prompt</label>
+            <textarea id="system" name="system" placeholder="הגדר את תפקיד המערכת"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="prompt">User Prompt</label>
+            <textarea id="prompt" name="prompt" placeholder="שאלו שאלה או בקשו תוצר" required></textarea>
+          </div>
+
+          <button type="submit" class="primary">שליחת בקשה</button>
+
+          <p id="chatgpt-status" class="status" data-type="info">מוכן לעבודה</p>
+
+          <div class="response-box">
+            <div class="response-meta">
+              <span id="chatgpt-meta"></span>
+              <a id="chatgpt-playground-link" href="#" target="_blank" rel="noopener"></a>
+            </div>
+            <pre id="chatgpt-output"></pre>
+          </div>
+        </form>
+      </section>
+
+      <section class="section">
+        <div class="section-header">
+          <div class="title-block">
+            <h2>📋 צ'קליסט המשך פיתוח</h2>
+            <p class="subtitle">מבוסס "הנחיות לבניית אתר" – היעדים הבאים ליישור קו.</p>
+          </div>
+        </div>
+        <ul class="checklist">
+          <li>⬜ הטמעת עיצוב אחיד לפי פלטת הצבעים והפונטים שנקבעו.</li>
+          <li>⬜ יצירת רכיב חיפוש בסיסי (חיפוש טקסט מלא בין הקבצים).</li>
+          <li>⬜ הוספת ניווט עליון ותגיות לכל קטגוריה (4 / 7 / 10 / 13 / AI-Flow).</li>
+          <li>⬜ בניית דף בית עם סטטיסטיקות על מספר המסמכים והקלפים.</li>
+          <li>⬜ אופטימיזציה להדפסה וטעינה מהירה (דחיסת תמונות וקאשינג סטטי).</li>
+          <li>⬜ חיבור GitHub Pages והגדרת דומיין מותאם.</li>
+          <li>⬜ הכנת תרשימי זרימה אינטראקטיביים ומפות מושגים לדפי תוכן נבחרים.</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-grid">
+        <div>
+          <h3 class="footer-title">HolisView</h3>
+          <p>אינדקס מאוחד לכל המסלולים, הקלפים והדפי לימוד. המטרה: נגישות מהירה וחוויית משתמש נעימה.</p>
+        </div>
+        <div>
+          <h3 class="footer-title">ניווט מהיר</h3>
+          <ul class="footer-links">
+            <li><a href="AI-Flow/index.html">AI-Flow</a></li>
+            <li><a href="ReMatrix%20/index.html">ReMatrix</a></li>
+            <li><a href="4/CARDS/4-sefirot-box-cover.html">חבילת 4 ספירות</a></li>
+            <li><a href="10/ten_sefirot.html">חבילת 10 ספירות</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer-title">משאבים</h3>
+          <ul class="footer-links">
+            <li><a href="scripts/chatgpt-api.js">API Toolkit</a></li>
+            <li><a href="scripts/chatgpt-ui.js">UI Controller</a></li>
+            <li><a href="README.md">README</a></li>
+            <li><a href="הנחיות_לבניית_אתר.md">הנחיות לבנייה</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <hr class="footer-divider" aria-hidden="true">
+
+      <div class="footer-credit">
+        <span>בעיצוב אהבה ופוקוס על חוויית משתמש.</span>
+        <div class="footer-badges">
+          <span class="footer-badge">קרדיט: HolisView Lab</span>
+          <span class="footer-badge">Dark Mode Ready</span>
+        </div>
+      </div>
+    </footer>
+
+    <script type="module" src="scripts/chatgpt-ui.js"></script>
+  </body>
+</html>
