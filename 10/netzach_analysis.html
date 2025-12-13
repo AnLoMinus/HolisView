@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>נצח – הכוח לנצח ולהתמיד למרות כל המכשולים</title>
+    <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <style>
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Frank Ruhl Libre', serif;
+            background: white;
+            color: #2c3e50;
+        }
+
+        .page {
+            width: 210mm;
+            height: 297mm;
+            margin: 0 auto;
+            padding: 15mm;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(to bottom, #ffffff, #f8f9fa);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page::before {
+            content: '';
+            position: absolute;
+            top: 5mm;
+            left: 5mm;
+            right: 5mm;
+            bottom: 5mm;
+            border: 1px solid #e67e22;
+            pointer-events: none;
+        }
+
+        .page::after {
+            content: '';
+            position: absolute;
+            top: 6mm;
+            left: 6mm;
+            right: 6mm;
+            bottom: 6mm;
+            border: 1px solid #e67e22;
+            pointer-events: none;
+            opacity: 0.5;
+        }
+
+        .bsd {
+            position: absolute;
+            top: 8mm;
+            right: 8mm;
+            color: #e67e22;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .page-number {
+            position: absolute;
+            top: 15mm;
+            right: 8mm;
+            background: linear-gradient(45deg, #e67e22, #f39c12);
+            color: white;
+            padding: 2mm 4mm;
+            border-radius: 0 2mm 2mm 0;
+            font-size: 10px;
+            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            z-index: 1;
+        }
+
+        .page-number::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -5px;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 10px 5px 0 0;
+            border-color: #e67e22 transparent transparent transparent;
+            transform: rotate(180deg);
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #e67e22;
+            margin: 0 0 5mm;
+            text-align: center;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            position: relative;
+            padding: 3mm 0;
+        }
+
+        h1::before,
+        h1::after {
+            content: '✧';
+            color: #e67e22;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 20px;
+        }
+
+        h1::before {
+            right: 20%;
+        }
+
+        h1::after {
+            left: 20%;
+        }
+
+        .explanation {
+            font-size: 14px;
+            line-height: 1.4;
+            margin: 0 0 5mm;
+            text-align: justify;
+        }
+
+        .explanation strong {
+            color: #e67e22;
+        }
+
+        .sefirot-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0 0 5mm;
+            font-size: 12px;
+        }
+
+        .sefirot-table th,
+        .sefirot-table td {
+            padding: 4px 6px;
+            border: 1px solid #ddd;
+            text-align: right;
+        }
+
+        .sefirot-table th {
+            background: #fff5e6;
+            font-weight: bold;
+        }
+
+        .summary-section {
+            font-size: 12px;
+            line-height: 1.4;
+        }
+
+        .summary-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin: 0 0 3mm;
+            color: #e67e22;
+        }
+
+        .practical-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 5mm;
+        }
+
+        .practical-list li {
+            margin-bottom: 2mm;
+            padding-right: 10px;
+            position: relative;
+        }
+
+        .practical-list li::before {
+            content: "🏆";
+            position: absolute;
+            right: 0;
+            color: #e67e22;
+        }
+
+        .key-points {
+            background: #fff5e6;
+            padding: 3mm;
+            border-radius: 2mm;
+            margin-bottom: 3mm;
+        }
+
+        .key-points p {
+            margin: 0 0 2mm;
+        }
+
+        .key-points p:last-child {
+            margin-bottom: 0;
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+
+            .page {
+                width: 210mm;
+                height: 297mm;
+                margin: 0;
+                padding: 15mm;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <div class="bsd">(בס״ד)</div>
+        <div class="page-number">עמוד 6 | נצח</div>
+        <h1>נצח – הכוח לנצח ולהתמיד למרות כל המכשולים 🏆🔥</h1>
+
+        <div class="explanation">
+            <strong>נצח</strong> הוא <strong>כוח ההתמדה, הניצחון והיכולת לא לוותר לעולם</strong>.
+            <br><br>
+            אם <strong>תפארת</strong> היא האיזון, <strong>נצח הוא הנחישות להחזיק באמת ולהמשיך בדרך למרות
+                הקשיים</strong>.
+            <br><br>
+            זו <strong>הסבלנות להיאבק, היכולת לשרוד ולהתעלות על כל מכשול בדרך להגשמת השליחות</strong>.
+            <br><br>
+            👑 <strong>חסד ללא נצח</strong> – יכול להיות רגעי, בלי המשכיות.<br>
+            ⚔ <strong>גבורה ללא נצח</strong> – יכולה להיות משמעת זמנית, בלי עקביות.<br>
+            🎨 <strong>תפארת ללא נצח</strong> – יכולה להישאר תיאוריה יפה, אבל בלי יישום לאורך זמן.
+            <br><br>
+            📢 <strong>נצח הוא הכוח של האנשים שמנצחים לא בגלל שהם הכי חזקים – אלא בגלל שהם לא מפסיקים לנסות!</strong>
+        </div>
+
+        <table class="sefirot-table">
+            <tr>
+                <th>ספירה</th>
+                <th>פירוש רוחני</th>
+                <th>ביטוי מעשי</th>
+            </tr>
+            <tr>
+                <td>כתר שבנצח 👑</td>
+                <td>התמדה שמגיעה מחיבור לאינסוף</td>
+                <td>לא לוותר כי אתה יודע שהשליחות שלך גדולה ממך</td>
+            </tr>
+            <tr>
+                <td>חכמה שבנצח 🧠</td>
+                <td>הברקה של אמונה שנותנת כוח לנצח</td>
+                <td>להאמין שגם אם יש נפילות, התוצאה תגיע</td>
+            </tr>
+            <tr>
+                <td>בינה שבנצח 🏛</td>
+                <td>הבנת חשיבות ההתמדה והדרך הארוכה</td>
+                <td>לדעת שלפעמים צריך סבלנות כדי להגיע לניצחון</td>
+            </tr>
+            <tr>
+                <td>דעת שבנצח 🔥💡</td>
+                <td>חיבור עמוק למטרה כדי להמשיך למרות הקשיים</td>
+                <td>להבין שכל אתגר הוא חלק מהתהליך ולא מכשול אמיתי</td>
+            </tr>
+            <tr>
+                <td>חסד שבנצח ❤️</td>
+                <td>התמדה מתוך אהבה, לא רק מתוך מאבק</td>
+                <td>להמשיך בדרך כי אתה באמת רוצה, לא רק כי צריך</td>
+            </tr>
+            <tr>
+                <td>גבורה שבנצח ⚔</td>
+                <td>כוח פנימי להחזיק מעמד מול ניסיונות</td>
+                <td>לא להישבר גם כשהדרך קשה, להילחם על מה שחשוב לך</td>
+            </tr>
+            <tr>
+                <td>תפארת שבנצח 🎨</td>
+                <td>להתמיד מתוך איזון ויופי</td>
+                <td>לא להפוך את המאבק לעקשנות, אלא להחזיק באמת בטוב</td>
+            </tr>
+            <tr>
+                <td>נצח שבנצח 🏆</td>
+                <td>כוח הניצחון המוחלט, התעקשות ללא פשרות</td>
+                <td>להחזיק מטרה ולכבוש אותה בלי לוותר</td>
+            </tr>
+            <tr>
+                <td>הוד שבנצח 🙏</td>
+                <td>להילחם אבל מתוך ענווה</td>
+                <td>לדעת שהניצחון האמיתי מגיע מה' ולא רק מהמאמצים שלך</td>
+            </tr>
+            <tr>
+                <td>יסוד שבנצח 🔗</td>
+                <td>להפוך את ההתמדה למשהו מעשי וקבוע</td>
+                <td>לא רק להתמיד במחשבות, אלא ליצור הרגלים שמביאים הצלחה</td>
+            </tr>
+            <tr>
+                <td>מלכות שבנצח 👑</td>
+                <td>הניצחון שמביא השפעה בעולם</td>
+                <td>להפוך את ההתמדה שלך למציאות שתשנה את העולם</td>
+            </tr>
+        </table>
+
+        <div class="summary-section">
+            <div class="key-points">
+                <p>🔹 <strong>נצח הוא לא להיות הכי חזק – אלא זה שממשיך גם כשאחרים מפסיקים</strong>.</p>
+                <p>🔹 <strong>נצח זה לדעת שאם נפלתי, אני פשוט צריך לקום שוב</strong>.</p>
+                <p>🔹 <strong>נצח הוא להבין שהניצחון האמיתי הוא לא רק חיצוני – אלא להיות נאמן לאמת שלך בכל מצב</strong>.
+                </p>
+            </div>
+
+            <div class="summary-title">איך מיישמים את זה ביום-יום? 🔥</div>
+            <ul class="practical-list">
+                <li>לא לוותר כשקשה – אם יש לך מטרה, תחזיק בה עד שתשיג אותה</li>
+                <li>לבנות משמעת חזקה – להכניס הרגלים של התמדה לכל תחום בחיים</li>
+                <li>ללמוד מהכישלונות ולהמשיך – כל נפילה היא שיעור שמקרב אותך להצלחה</li>
+                <li>לא לתת לייאוש מקום – ההצלחה מגיעה למי שלא מפסיק לנסות</li>
+                <li>להישאר עם ראש למעלה גם ברגעי קושי – לא כל קרב מנצחים מייד, אבל הדרך היא שמביאה את הניצחון האמיתי
+                </li>
+                <li>לשלב את נצח עם הוד – לדעת להתמיד בענווה – לא מתוך גאווה, אלא מתוך שליחות</li>
+                <li>להיות "לוחם" של אמת – להתמיד במה שנכון ולא במה שקל</li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>

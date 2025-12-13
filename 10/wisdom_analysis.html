@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>חכמה – עשר הספירות הפנימיות</title>
+    <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <style>
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Frank Ruhl Libre', serif;
+            background: white;
+            color: #2c3e50;
+        }
+
+        .page {
+            width: 210mm;
+            height: 297mm;
+            margin: 0 auto;
+            padding: 15mm;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(to bottom, #ffffff, #f8f9fa);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page::before {
+            content: '';
+            position: absolute;
+            top: 5mm;
+            left: 5mm;
+            right: 5mm;
+            bottom: 5mm;
+            border: 1px solid #2c3e50;
+            pointer-events: none;
+        }
+
+        .page::after {
+            content: '';
+            position: absolute;
+            top: 6mm;
+            left: 6mm;
+            right: 6mm;
+            bottom: 6mm;
+            border: 1px solid #2c3e50;
+            pointer-events: none;
+            opacity: 0.5;
+        }
+
+        .bsd {
+            position: absolute;
+            top: 8mm;
+            right: 8mm;
+            color: #2c3e50;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .page-number {
+            position: absolute;
+            top: 15mm;
+            right: 8mm;
+            background: linear-gradient(45deg, #2c3e50, #34495e);
+            color: white;
+            padding: 2mm 4mm;
+            border-radius: 0 2mm 2mm 0;
+            font-size: 10px;
+            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            z-index: 1;
+        }
+
+        .page-number::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -5px;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 10px 5px 0 0;
+            border-color: #2c3e50 transparent transparent transparent;
+            transform: rotate(180deg);
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #2c3e50;
+            margin: 0 0 5mm;
+            text-align: center;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            position: relative;
+            padding: 3mm 0;
+        }
+
+        h1::before,
+        h1::after {
+            content: '✧';
+            color: #2c3e50;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 20px;
+        }
+
+        h1::before {
+            right: 20%;
+        }
+
+        h1::after {
+            left: 20%;
+        }
+
+        .explanation {
+            font-size: 14px;
+            line-height: 1.4;
+            margin: 0 0 5mm;
+            text-align: justify;
+        }
+
+        .sefirot-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0 0 5mm;
+            font-size: 12px;
+        }
+
+        .sefirot-table th,
+        .sefirot-table td {
+            padding: 4px 6px;
+            border: 1px solid #ddd;
+            text-align: right;
+        }
+
+        .sefirot-table th {
+            background: #f5f5f5;
+            font-weight: bold;
+        }
+
+        .summary-section {
+            font-size: 12px;
+            line-height: 1.4;
+        }
+
+        .summary-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin: 0 0 3mm;
+            color: #2c3e50;
+        }
+
+        .practical-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 5mm;
+        }
+
+        .practical-list li {
+            margin-bottom: 2mm;
+            padding-right: 10px;
+            position: relative;
+        }
+
+        .practical-list li::before {
+            content: "•";
+            position: absolute;
+            right: 0;
+            color: #2c3e50;
+        }
+
+        .key-points {
+            background: #f8f9fa;
+            padding: 3mm;
+            border-radius: 2mm;
+            margin-bottom: 3mm;
+        }
+
+        .key-points p {
+            margin: 0 0 2mm;
+        }
+
+        .key-points p:last-child {
+            margin-bottom: 0;
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+
+            .page {
+                width: 210mm;
+                height: 297mm;
+                margin: 0;
+                padding: 15mm;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <div class="bsd">(בס״ד)</div>
+        <div class="page-number">עמוד 9 | חכמה</div>
+        <h1>חכמה – עשר הספירות הפנימיות ופירושן המעשי 🧠✨</h1>
+
+        <div class="explanation">
+            חכמה היא הברק הראשוני של ההשגה. היא אינה תהליך של עיבוד נתונים כמו בינה, אלא הופעה פתאומית של רעיון. חכמה
+            היא ה"נקודה" שממנה מתפתחת ההבנה כולה.
+        </div>
+
+        <table class="sefirot-table">
+            <tr>
+                <th>ספירה</th>
+                <th>פירוש רוחני</th>
+                <th>ביטוי מעשי</th>
+            </tr>
+            <tr>
+                <td>כתר שבחכמה 👑</td>
+                <td>מקור ההשראה, הניצוץ הראשוני של הרעיון</td>
+                <td>רגעים של אינטואיציה טהורה, "נפילת אסימון" פתאומית</td>
+            </tr>
+            <tr>
+                <td>חכמה שבחכמה 🧠</td>
+                <td>החכמה במלוא עוצמתה, תפיסה בלתי אמצעית של המציאות</td>
+                <td>יכולת לקלוט אמת במהירות ולזהות תובנות עמוקות</td>
+            </tr>
+            <tr>
+                <td>בינה שבחכמה 🏛</td>
+                <td>ההתחלה של פירוק הרעיון הגדול לחלקים קטנים</td>
+                <td>לקחת רעיון חדש ולחשוב איך ליישם אותו בפרקטיקה</td>
+            </tr>
+            <tr>
+                <td>חסד שבחכמה ❤️</td>
+                <td>נתינת החכמה ללא סייג, גילוי אור אינסופי</td>
+                <td>שיתוף חכמה עם אחרים, הוראה והדרכה נדיבה</td>
+            </tr>
+            <tr>
+                <td>גבורה שבחכמה ⚔</td>
+                <td>ריכוז החכמה לנקודה ממוקדת, צמצום עודף מידע</td>
+                <td>חשיבה חדה ומדויקת, חיתוך בין אמת לשקר</td>
+            </tr>
+            <tr>
+                <td>תפארת שבחכמה 🎨</td>
+                <td>איזון בין עומק החכמה לבין היכולת לתקשר אותה לאחרים</td>
+                <td>להעביר רעיונות מסובכים בצורה ברורה ומאוזנת</td>
+            </tr>
+            <tr>
+                <td>נצח שבחכמה 🏆</td>
+                <td>הנחישות להבין ולהתעמק גם כשקשה</td>
+                <td>לימוד ממושך, לא לוותר גם כשלא מבינים מיד</td>
+            </tr>
+            <tr>
+                <td>הוד שבחכמה 🙏</td>
+                <td>ענווה מול החכמה האינסופית, הכרה בכך שהאדם מוגבל</td>
+                <td>לדעת להקשיב, להכיר בכך שיש מה ללמוד מכל אחד</td>
+            </tr>
+            <tr>
+                <td>יסוד שבחכמה 🔗</td>
+                <td>החיבור של החכמה למציאות היומיומית</td>
+                <td>יישום תובנות והוצאת רעיונות מהכוח אל הפועל</td>
+            </tr>
+            <tr>
+                <td>מלכות שבחכמה 👑</td>
+                <td>הבאת החכמה לשיא גילויה בעולם המעשה</td>
+                <td>להפוך ידע לתוצאה מוחשית – חכמה שמנהלת את החיים</td>
+            </tr>
+        </table>
+
+        <div class="summary-section">
+            <div class="key-points">
+                <p>🔹 <strong>חכמה היא השלב הראשון אחרי הכתר</strong>, ולכן היא לא דורשת מחשבה עמוקה – היא פשוט
+                    <em>מופיעה</em>.
+                </p>
+                <p>🔹 מתוך החכמה, האדם יכול <strong>לבנות הבנה, להעביר ידע, ולהפוך אותו למעשים</strong>.</p>
+                <p>🔹 ככל שמעמיקים בתוך החכמה, יש צורך גם <strong>בענווה (הוד)</strong>, <strong>בנחישות (נצח)</strong>,
+                    וביכולת <strong>לצמצם את החכמה לפעולות ברורות (יסוד ומלכות)</strong>.</p>
+            </div>
+
+            <div class="summary-title">איך מיישמים את זה ביום-יום? 🔥</div>
+            <ul class="practical-list">
+                <li>הקשב לאינטואיציה שלך – הרבה תובנות מגיעות בלי לחשוב עליהן יותר מדי</li>
+                <li>למד לזהות רגעי הארה – כשעולה לך רעיון מבריק, רשום אותו לפני שיישכח</li>
+                <li>אל תמהר לדבר – חקור קודם – חכמה אמיתית דורשת עיבוד לפני שמדברים</li>
+                <li>השתמש בחכמה כדי לתת – למד אחרים, עזור להם להבין דברים חדשים</li>
+                <li>אל תתפזר – התפקס על עיקרי הדברים – חשיבה מדויקת חוסכת הרבה זמן</li>
+                <li>התמיד בלימוד – גם כשלא מבינים מיד, חכמה נבנית על התמדה</li>
+                <li>תרגם חכמה לפעולה – אל תשאיר ידע כתיאורטי בלבד, תתחיל ליישם אותו</li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>

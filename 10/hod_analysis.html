@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>הוד – הענווה שבקבלת האמת והכרת מקומך</title>
+    <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <style>
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Frank Ruhl Libre', serif;
+            background: white;
+            color: #2c3e50;
+        }
+
+        .page {
+            width: 210mm;
+            height: 297mm;
+            margin: 0 auto;
+            padding: 15mm;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(to bottom, #ffffff, #f8f9fa);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page::before {
+            content: '';
+            position: absolute;
+            top: 5mm;
+            left: 5mm;
+            right: 5mm;
+            bottom: 5mm;
+            border: 1px solid #27ae60;
+            pointer-events: none;
+        }
+
+        .page::after {
+            content: '';
+            position: absolute;
+            top: 6mm;
+            left: 6mm;
+            right: 6mm;
+            bottom: 6mm;
+            border: 1px solid #27ae60;
+            pointer-events: none;
+            opacity: 0.5;
+        }
+
+        .bsd {
+            position: absolute;
+            top: 8mm;
+            right: 8mm;
+            color: #27ae60;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .page-number {
+            position: absolute;
+            top: 15mm;
+            right: 8mm;
+            background: linear-gradient(45deg, #27ae60, #2ecc71);
+            color: white;
+            padding: 2mm 4mm;
+            border-radius: 0 2mm 2mm 0;
+            font-size: 10px;
+            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            z-index: 1;
+        }
+
+        .page-number::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -5px;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 10px 5px 0 0;
+            border-color: #27ae60 transparent transparent transparent;
+            transform: rotate(180deg);
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #27ae60;
+            margin: 0 0 5mm;
+            text-align: center;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            position: relative;
+            padding: 3mm 0;
+        }
+
+        h1::before,
+        h1::after {
+            content: '✧';
+            color: #27ae60;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 20px;
+        }
+
+        h1::before {
+            right: 20%;
+        }
+
+        h1::after {
+            left: 20%;
+        }
+
+        .explanation {
+            font-size: 14px;
+            line-height: 1.4;
+            margin: 0 0 5mm;
+            text-align: justify;
+        }
+
+        .explanation strong {
+            color: #27ae60;
+        }
+
+        .sefirot-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0 0 5mm;
+            font-size: 12px;
+        }
+
+        .sefirot-table th,
+        .sefirot-table td {
+            padding: 4px 6px;
+            border: 1px solid #ddd;
+            text-align: right;
+        }
+
+        .sefirot-table th {
+            background: #f0fff4;
+            font-weight: bold;
+        }
+
+        .summary-section {
+            font-size: 12px;
+            line-height: 1.4;
+        }
+
+        .summary-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin: 0 0 3mm;
+            color: #27ae60;
+        }
+
+        .practical-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 5mm;
+        }
+
+        .practical-list li {
+            margin-bottom: 2mm;
+            padding-right: 10px;
+            position: relative;
+        }
+
+        .practical-list li::before {
+            content: "🙏";
+            position: absolute;
+            right: 0;
+            color: #27ae60;
+        }
+
+        .key-points {
+            background: #f0fff4;
+            padding: 3mm;
+            border-radius: 2mm;
+            margin-bottom: 3mm;
+        }
+
+        .key-points p {
+            margin: 0 0 2mm;
+        }
+
+        .key-points p:last-child {
+            margin-bottom: 0;
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+
+            .page {
+                width: 210mm;
+                height: 297mm;
+                margin: 0;
+                padding: 15mm;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <div class="bsd">(בס״ד)</div>
+        <div class="page-number">עמוד 5 | הוד</div>
+        <h1>הוד – הענווה שבקבלת האמת והכרת מקומך 🙏✨</h1>
+
+        <div class="explanation">
+            <strong>הוד</strong> הוא <strong>היכולת להכיר באמת, להוריד את האגו ולפעול מתוך ענווה</strong>.
+            <br><br>
+            אם <strong>נצח</strong> הוא ההתמדה והניצחון, <strong>הוד הוא לדעת מתי להרכין ראש ולהכיר בכוח שמעבר
+                לנו</strong>.
+            <br><br>
+            ⚔ <strong>נצח ללא הוד</strong> – יכול להפוך לעקשנות וגאווה.<br>
+            🙏 <strong>הוד ללא נצח</strong> – יכול להפוך לוויתור עצמי וחוסר עשייה.<br>
+            🎭 <strong>תפארת היא היופי של שניהם יחד – לדעת מתי להילחם ומתי לקבל את המציאות בענווה</strong>.
+            <br><br>
+            📢 <strong>הוד הוא הכוח לדעת שאין לי שליטה על הכל – אבל יש לי שליחות בתוך מה שה' נותן לי</strong>.
+        </div>
+
+        <table class="sefirot-table">
+            <tr>
+                <th>ספירה</th>
+                <th>פירוש רוחני</th>
+                <th>ביטוי מעשי</th>
+            </tr>
+            <tr>
+                <td>כתר שבהוד 👑</td>
+                <td>ענווה מוחלטת מתוך חיבור לה'</td>
+                <td>לדעת שכל מה שיש לי – מאת ה', ואין לי גאווה בזה</td>
+            </tr>
+            <tr>
+                <td>חכמה שבהוד 🧠</td>
+                <td>תובנה מפתיעה על מקומי בעולם</td>
+                <td>להבין פתאום שאני לא המרכז, יש משהו גדול יותר ממני</td>
+            </tr>
+            <tr>
+                <td>בינה שבהוד 🏛</td>
+                <td>ניתוח עמוק של הענווה</td>
+                <td>להבין למה הענווה היא כוח ולא חולשה</td>
+            </tr>
+            <tr>
+                <td>דעת שבהוד 🔥💡</td>
+                <td>חיבור פנימי לאמת בענווה</td>
+                <td>לדעת שאני לא כל יכול, אבל אני שליח של ה' בעולם</td>
+            </tr>
+            <tr>
+                <td>חסד שבהוד ❤️</td>
+                <td>קבלת האמת מתוך אהבה</td>
+                <td>להרגיש סיפוק מוויתור על האגו, לא כעס או מרמור</td>
+            </tr>
+            <tr>
+                <td>גבורה שבהוד ⚔</td>
+                <td>לדעת מתי לוותר ולשלוט בעצמי</td>
+                <td>היכולת לשתוק בזמן הנכון ולהימנע מעימות מיותר</td>
+            </tr>
+            <tr>
+                <td>תפארת שבהוד 🎨</td>
+                <td>איזון בין ענווה לנוכחות</td>
+                <td>לדעת להיות משפיע בלי להתגאות, ענווה אמיתית</td>
+            </tr>
+            <tr>
+                <td>נצח שבהוד 🏆</td>
+                <td>להתמיד בענווה גם כשקשה</td>
+                <td>להישאר צנוע גם כשההצלחות מגיעות ולא לשכוח מאיפה הכול מגיע</td>
+            </tr>
+            <tr>
+                <td>הוד שבהוד 🙏</td>
+                <td>ענווה טהורה</td>
+                <td>הרגע שבו אתה מבין שלא הכול בשליטתך ומקבל זאת בשלווה</td>
+            </tr>
+            <tr>
+                <td>יסוד שבהוד 🔗</td>
+                <td>להפוך את הענווה למעשה</td>
+                <td>להקשיב יותר, להיות פתוח לדעות אחרות, לתת מקום לאחרים</td>
+            </tr>
+            <tr>
+                <td>מלכות שבהוד 👑</td>
+                <td>להקרין ענווה כלפי העולם</td>
+                <td>להוביל מתוך שקט פנימי ולא מתוך צורך בהכרה חיצונית</td>
+            </tr>
+        </table>
+
+        <div class="summary-section">
+            <div class="key-points">
+                <p>🔹 <strong>הוד זה לדעת להכיר במציאות בלי אגו – לא הכל תלוי בי, ואני מקבל זאת בשלווה</strong>.</p>
+                <p>🔹 <strong>הוד זה לדעת לתת מקום לאחרים – בלי לפחד שאני פחות טוב</strong>.</p>
+                <p>🔹 <strong>הוד הוא ההבנה שהניצחון האמיתי לא תמיד בא מכוח, אלא לפעמים מהיכולת להרפות ולבטוח
+                        בה'</strong>.</p>
+            </div>
+
+            <div class="summary-title">איך מיישמים את זה ביום-יום? 🔥</div>
+            <ul class="practical-list">
+                <li>להיות מסוגל להגיד "לא יודע" – לא לפחד להודות כשאין לך תשובה להכול</li>
+                <li>לקבל ביקורת בלי להתגונן – לראות איפה אפשר להשתפר במקום להיעלב</li>
+                <li>להקשיב באמת לאחרים – לתת לאחרים מקום ולא תמיד לדבר ראשון</li>
+                <li>לא להתרגש יותר מדי מהשבחים – להישאר צנוע גם כשמקבלים מחמאות</li>
+                <li>לזכור שכל הכישרונות שלי הם מתנה מלמעלה – להשתמש בהם נכון ולא להתגאות</li>
+                <li>להיות שמח גם כשלא אני במרכז – ליהנות מההצלחה של אחרים בלי לקנא</li>
+                <li>להתפלל באמת – להבין שהכול מה', ולא רק מהמאמצים שלי</li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>

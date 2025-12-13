@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ספר הספירות - מסע אל עומק הנפש והמציאות</title>
+    <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <style>
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Frank Ruhl Libre', serif;
+            background: linear-gradient(135deg, #f5e6d3 0%, #f9f2ea 100%);
+            color: #2c3e50;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 20px;
+            position: relative;
+        }
+
+        .sidebar {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            position: sticky;
+            top: 20px;
+            height: calc(100vh - 40px);
+            overflow-y: auto;
+            border: 1px solid #d4af38;
+            background: linear-gradient(180deg, #f5e8d8, #d2ae3755);
+        }
+
+        .main-content {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            border: 1px solid #d4af38;
+            background: linear-gradient(180deg, #f5e8d8, #d2ae3755);
+
+        }
+
+        .toc {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .toc-item {
+            margin-bottom: 10px;
+            padding: 8px;
+            border-radius: 5px;
+            transition: background 0.3s;
+            cursor: pointer;
+        }
+
+        .toc-item:hover {
+            background: rgba(212, 175, 55, 0.1);
+        }
+
+        .toc-item.active {
+            background: rgba(212, 175, 55, 0.2);
+            font-weight: bold;
+        }
+
+        .chapter {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
+        .chapter.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .chapter-title {
+            font-size: 24px;
+            color: #d4af37;
+            margin-bottom: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .chapter-title::before,
+        .chapter-title::after {
+            content: '✧';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #d4af37;
+            font-size: 20px;
+        }
+
+        .chapter-title::before {
+            right: 20%;
+        }
+
+        .chapter-title::after {
+            left: 20%;
+        }
+
+        .bsd {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #d4af37;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .nav-button {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            background: #d4af37;
+            color: white;
+            cursor: pointer;
+            font-family: inherit;
+            transition: background 0.3s;
+        }
+
+        .nav-button:hover {
+            background: #c4a585;
+        }
+
+        .nav-button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        iframe {
+            width: 100%;
+            height: calc(100vh - 200px);
+            border: none;
+            border-radius: 5px;
+        }
+
+        .credits {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 12px;
+            color: rgba(44, 62, 80, 0.7);
+        }
+
+        /* מותאם למובייל */
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                position: relative;
+                height: auto;
+                top: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="bsd">(בס״ד)</div>
+
+        <aside class="sidebar">
+            <h2 style="text-align: center; color: #d4af37; margin-bottom: 20px;">תוכן העניינים</h2>
+            <ul class="toc">
+                <li class="toc-item active" data-chapter="intro">פתיחה ומבוא</li>
+                <li class="toc-item" data-chapter="intro-back">מבוא מורחב</li>
+                <li class="toc-item" data-chapter="structure">מבנה הספירות</li>
+                <li class="toc-item" data-chapter="keter">כתר - רצון עליון</li>
+                <li class="toc-item" data-chapter="chochma">חכמה - הברקה ראשונית</li>
+                <li class="toc-item" data-chapter="bina">בינה - הבנה מעמיקה</li>
+                <li class="toc-item" data-chapter="daat">דעת - חיבור והפנמה</li>
+                <li class="toc-item" data-chapter="chesed">חסד - אהבה ונתינה</li>
+                <li class="toc-item" data-chapter="gevura">גבורה - גבולות ומשמעת</li>
+                <li class="toc-item" data-chapter="tiferet">תפארת - איזון והרמוניה</li>
+                <li class="toc-item" data-chapter="netzach">נצח - התמדה וניצחון</li>
+                <li class="toc-item" data-chapter="hod">הוד - ענווה וקבלה</li>
+                <li class="toc-item" data-chapter="yesod">יסוד - חיבור ויישום</li>
+                <li class="toc-item" data-chapter="malchut">מלכות - ביטוי בעולם</li>
+                <li class="toc-item" data-chapter="summary">סיכום ומבט על</li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <div id="chapter-content">
+                <!-- תוכן הפרק יוטען כאן -->
+            </div>
+
+            <div class="navigation">
+                <button class="nav-button" id="prev-chapter" disabled>הקודם</button>
+                <button class="nav-button" id="next-chapter">הבא</button>
+            </div>
+
+            <div class="credits">
+                © כל הזכויות שמורות • נכתב ועוצב בידי משה לאון יעקובוב • תשפ״ד
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const chapters = {
+            'intro': 'ten_sefirot.html',
+            'intro-back': 'ten_sefirot back.html',
+            'structure': 'sefirot_structure.html',
+            'keter': 'keter_analysis.html',
+            'chochma': 'wisdom_analysis.html',
+            'bina': 'understanding_analysis.html',
+            'daat': 'daat_analysis.html',
+            'chesed': 'chesed_analysis.html',
+            'gevura': 'gevura_analysis.html',
+            'tiferet': 'tiferet_analysis.html',
+            'netzach': 'netzach_analysis.html',
+            'hod': 'hod_analysis.html',
+            'yesod': 'yesod_analysis.html',
+            'malchut': 'malchut_analysis.html',
+            'summary': 'final_summary.html'
+        };
+
+        let currentChapter = 'intro';
+
+        function loadChapter(chapterId) {
+            const content = document.getElementById('chapter-content');
+            const iframe = document.createElement('iframe');
+            iframe.src = chapters[chapterId];
+
+            content.innerHTML = '';
+            content.appendChild(iframe);
+
+            // עדכון כפתורי ניווט
+            document.getElementById('prev-chapter').disabled = chapterId === 'intro';
+            document.getElementById('next-chapter').disabled = chapterId === 'summary';
+
+            // עדכון תפריט
+            document.querySelectorAll('.toc-item').forEach(item => {
+                item.classList.remove('active');
+                if (item.dataset.chapter === chapterId) {
+                    item.classList.add('active');
+                }
+            });
+
+            currentChapter = chapterId;
+        }
+
+        // אירועי לחיצה על תפריט
+        document.querySelectorAll('.toc-item').forEach(item => {
+            item.addEventListener('click', () => {
+                loadChapter(item.dataset.chapter);
+            });
+        });
+
+        // אירועי כפתורי ניווט
+        document.getElementById('prev-chapter').addEventListener('click', () => {
+            const chapters = Object.keys(chapters);
+            const currentIndex = chapters.indexOf(currentChapter);
+            if (currentIndex > 0) {
+                loadChapter(chapters[currentIndex - 1]);
+            }
+        });
+
+        document.getElementById('next-chapter').addEventListener('click', () => {
+            const chapters = Object.keys(chapters);
+            const currentIndex = chapters.indexOf(currentChapter);
+            if (currentIndex < chapters.length - 1) {
+                loadChapter(chapters[currentIndex + 1]);
+            }
+        });
+
+        // טעינה ראשונית
+        loadChapter('intro');
+    </script>
+</body>
+
+</html>

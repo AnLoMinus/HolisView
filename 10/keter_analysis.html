@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ניתוח הספירות בתוך כתר</title>
+    <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <style>
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Frank Ruhl Libre', serif;
+            background: white;
+            color: #2c3e50;
+        }
+
+        .page {
+            width: 210mm;
+            height: 297mm;
+            margin: 0 auto;
+            padding: 15mm;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(to bottom, #ffffff, #f8f9fa);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page::before {
+            content: '';
+            position: absolute;
+            top: 5mm;
+            left: 5mm;
+            right: 5mm;
+            bottom: 5mm;
+            border: 1px solid #8e44ad;
+            pointer-events: none;
+        }
+
+        .page::after {
+            content: '';
+            position: absolute;
+            top: 6mm;
+            left: 6mm;
+            right: 6mm;
+            bottom: 6mm;
+            border: 1px solid #8e44ad;
+            pointer-events: none;
+            opacity: 0.5;
+        }
+
+        .bsd {
+            position: absolute;
+            top: 8mm;
+            right: 8mm;
+            color: #8e44ad;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .page-number {
+            position: absolute;
+            top: 15mm;
+            right: 8mm;
+            background: linear-gradient(45deg, #8e44ad, #9b59b6);
+            color: white;
+            padding: 2mm 4mm;
+            border-radius: 0 2mm 2mm 0;
+            font-size: 10px;
+            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            z-index: 1;
+        }
+
+        .page-number::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -5px;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 10px 5px 0 0;
+            border-color: #8e44ad transparent transparent transparent;
+            transform: rotate(180deg);
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #8e44ad;
+            margin: 0 0 5mm;
+            text-align: center;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            position: relative;
+            padding: 3mm 0;
+        }
+
+        h1::before,
+        h1::after {
+            content: '✧';
+            color: #8e44ad;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 20px;
+        }
+
+        h1::before {
+            right: 20%;
+        }
+
+        h1::after {
+            left: 20%;
+        }
+
+        .explanation {
+            font-size: 14px;
+            line-height: 1.4;
+            margin: 0 0 5mm;
+            text-align: justify;
+        }
+
+        .explanation strong {
+            color: #8e44ad;
+        }
+
+        .sefirot-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0 0 5mm;
+            font-size: 12px;
+        }
+
+        .sefirot-table th,
+        .sefirot-table td {
+            padding: 4px 6px;
+            border: 1px solid #ddd;
+            text-align: right;
+        }
+
+        .sefirot-table th {
+            background: #f5f0ff;
+            font-weight: bold;
+        }
+
+        .summary-section {
+            font-size: 12px;
+            line-height: 1.4;
+        }
+
+        .summary-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin: 0 0 3mm;
+            color: #8e44ad;
+        }
+
+        .practical-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 5mm;
+        }
+
+        .practical-list li {
+            margin-bottom: 2mm;
+            padding-right: 10px;
+            position: relative;
+        }
+
+        .practical-list li::before {
+            content: "🎩";
+            position: absolute;
+            right: 0;
+            color: #8e44ad;
+        }
+
+        .key-points {
+            background: #f5f0ff;
+            padding: 3mm;
+            border-radius: 2mm;
+            margin-bottom: 3mm;
+        }
+
+        .key-points p {
+            margin: 0 0 2mm;
+        }
+
+        .key-points p:last-child {
+            margin-bottom: 0;
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+
+            .page {
+                width: 210mm;
+                height: 297mm;
+                margin: 0;
+                padding: 15mm;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <h1>✨ ניתוח הספירות בתוך כתר 🎩</h1>
+
+        <div class="explanation">
+            <strong>כתר</strong> הוא השורש העליון, מעל ההכרה, המקום שבו הרצון האלוקי מתגלה בתור כוח טמיר ונעלם שמכוון את
+            כל המציאות. מתוכו משתלשלות כל שאר הספירות.
+        </div>
+
+        <table class="sefirot-table">
+            <tr>
+                <th>ספירה</th>
+                <th>פירוש רוחני</th>
+                <th>ביטוי מעשי</th>
+            </tr>
+            <tr>
+                <td>כתר שבכתר 👑</td>
+                <td>הרצון הפנימי ביותר, ההשתוקקות האינסופית של הנשמה לאלוקות</td>
+                <td>תחושת שליחות גבוהה, חיבור פנימי עמוק לייעוד</td>
+            </tr>
+            <tr>
+                <td>חכמה שבכתר 🧠</td>
+                <td>הברק הראשוני של ההשגה האלוקית שטרם נתפס בשכל</td>
+                <td>פתיחות לתובנות חדשות, השראה פתאומית</td>
+            </tr>
+            <tr>
+                <td>בינה שבכתר 🏛</td>
+                <td>הרחבת ההבנה של הרצון העליון, עיבוד ההשראה האלוקית</td>
+                <td>עיבוד והסקת מסקנות על מטרות חייך</td>
+            </tr>
+            <tr>
+                <td>חסד שבכתר ❤️</td>
+                <td>ההשפעה האינסופית הבאה מהרצון העליון</td>
+                <td>נתינה מוחלטת ללא ציפייה לתמורה</td>
+            </tr>
+            <tr>
+                <td>גבורה שבכתר ⚔</td>
+                <td>כוח הצמצום של הרצון, התמקדות במטרה אחת</td>
+                <td>הצבת גבולות ברורים לעצמך ולהתקדמותך</td>
+            </tr>
+            <tr>
+                <td>תפארת שבכתר 🎨</td>
+                <td>האיזון בין קבלת ההשראה לבין היכולת לבטא אותה בחיים</td>
+                <td>חיבור בין חלומות למציאות, פעולה מתוך חזון</td>
+            </tr>
+            <tr>
+                <td>נצח שבכתר 🏆</td>
+                <td>הדחף לממש את הרצון האלוקי ללא וויתור</td>
+                <td>התמדה למרות קשיים, נחישות בלתי מתפשרת</td>
+            </tr>
+            <tr>
+                <td>הוד שבכתר 🙏</td>
+                <td>קבלת הדרך האלוקית בענווה מוחלטת</td>
+                <td>הכנעה בפני החזון הגדול יותר ממך</td>
+            </tr>
+            <tr>
+                <td>יסוד שבכתר 🔗</td>
+                <td>הכוח לקשר בין הרצון העליון למציאות המעשית</td>
+                <td>יישום רוחני בחיי היום-יום, תרגום מחשבות למעשים</td>
+            </tr>
+            <tr>
+                <td>מלכות שבכתר 👑</td>
+                <td>גילוי מוחלט של הרצון העליון במציאות</td>
+                <td>הפיכת השאיפות הרוחניות למציאות חיה וקיימת</td>
+            </tr>
+        </table>
+
+        <div class="summary-section">
+            <div class="key-points">
+                <p>כתר הוא המקום שבו הכול מתחיל – הרצון, ההשפעה, הכוח הטמיר שמניע את הבריאה. בתוכו יש תהליך:</p>
+                <p>✅ קודם מופיע <strong>הרצון הטהור (כתר שבכתר)</strong></p>
+                <p>✅ לאחר מכן מגיעה <strong>ההבנה (חכמה ובינה שבכתר)</strong></p>
+                <p>✅ זה מוביל ל<strong>השפעה וגבולות (חסד וגבורה שבכתר)</strong></p>
+                <p>✅ משם מגיע <strong>איזון בין כוח לפעולה (תפארת ונצח שבכתר)</strong></p>
+                <p>✅ לאחר מכן באה <strong>ענווה וקבלת הייעוד (הוד שבכתר)</strong></p>
+                <p>✅ לבסוף, הרצון הופך למציאות <strong>(יסוד ומלכות שבכתר)</strong></p>
+            </div>
+
+            <div class="summary-title">איך מיישמים את זה ביום-יום? 🔥</div>
+            <ul class="practical-list">
+                <li>הגדרת מטרות גבוהות – להתחבר לרצון הפנימי ביותר שלך</li>
+                <li>ללמוד ולחקור – לפתח הבנה מעמיקה של הדרך שלך</li>
+                <li>לתת ולעזור – לא לשמור את הרצון לעצמך, אלא לחלוק עם העולם</li>
+                <li>לשלוט על עצמך – להימנע מהתפזרות, להציב גבולות חכמים</li>
+                <li>לפעול בהתמדה – לא להיכנע לקשיים, אלא להמשיך בדרך</li>
+                <li>להיות עניו – לזכור שהכול מגיע ממקום גבוה יותר</li>
+                <li>לבצע בפועל – לתרגם רעיונות נשגבים למעשים יומיומיים</li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>

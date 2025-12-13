@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מלכות – הביטוי הסופי של כל הכוחות במציאות</title>
+    <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <style>
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Frank Ruhl Libre', serif;
+            background: white;
+            color: #2c3e50;
+        }
+
+        .page {
+            width: 210mm;
+            height: 297mm;
+            margin: 0 auto;
+            padding: 15mm;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(to bottom, #ffffff, #f8f9fa);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page::before {
+            content: '';
+            position: absolute;
+            top: 5mm;
+            left: 5mm;
+            right: 5mm;
+            bottom: 5mm;
+            border: 1px solid #9b59b6;
+            pointer-events: none;
+        }
+
+        .page::after {
+            content: '';
+            position: absolute;
+            top: 6mm;
+            left: 6mm;
+            right: 6mm;
+            bottom: 6mm;
+            border: 1px solid #9b59b6;
+            pointer-events: none;
+            opacity: 0.5;
+        }
+
+        .bsd {
+            position: absolute;
+            top: 8mm;
+            right: 8mm;
+            color: #9b59b6;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .page-number {
+            position: absolute;
+            top: 15mm;
+            right: 8mm;
+            background: linear-gradient(45deg, #9b59b6, #8e44ad);
+            color: white;
+            padding: 2mm 4mm;
+            border-radius: 0 2mm 2mm 0;
+            font-size: 10px;
+            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            z-index: 1;
+        }
+
+        .page-number::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -5px;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 10px 5px 0 0;
+            border-color: #9b59b6 transparent transparent transparent;
+            transform: rotate(180deg);
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #9b59b6;
+            margin: 0 0 5mm;
+            text-align: center;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            position: relative;
+            padding: 3mm 0;
+        }
+
+        h1::before,
+        h1::after {
+            content: '✧';
+            color: #9b59b6;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 20px;
+        }
+
+        h1::before {
+            right: 20%;
+        }
+
+        h1::after {
+            left: 20%;
+        }
+
+        .explanation {
+            font-size: 14px;
+            line-height: 1.4;
+            margin: 0 0 5mm;
+            text-align: justify;
+        }
+
+        .explanation strong {
+            color: #9b59b6;
+        }
+
+        .sefirot-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0 0 5mm;
+            font-size: 12px;
+        }
+
+        .sefirot-table th,
+        .sefirot-table td {
+            padding: 4px 6px;
+            border: 1px solid #ddd;
+            text-align: right;
+        }
+
+        .sefirot-table th {
+            background: #f9f0ff;
+            font-weight: bold;
+        }
+
+        .summary-section {
+            font-size: 12px;
+            line-height: 1.4;
+        }
+
+        .summary-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin: 0 0 3mm;
+            color: #9b59b6;
+        }
+
+        .practical-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 5mm;
+        }
+
+        .practical-list li {
+            margin-bottom: 2mm;
+            padding-right: 10px;
+            position: relative;
+        }
+
+        .practical-list li::before {
+            content: "👑";
+            position: absolute;
+            right: 0;
+            color: #9b59b6;
+        }
+
+        .key-points {
+            background: #f9f0ff;
+            padding: 3mm;
+            border-radius: 2mm;
+            margin-bottom: 3mm;
+        }
+
+        .key-points p {
+            margin: 0 0 2mm;
+        }
+
+        .key-points p:last-child {
+            margin-bottom: 0;
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+
+            .page {
+                width: 210mm;
+                height: 297mm;
+                margin: 0;
+                padding: 15mm;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <div class="bsd">(בס״ד)</div>
+        <div class="page-number">עמוד 8 | מלכות</div>
+        <h1>מלכות – הביטוי הסופי של כל הכוחות במציאות 👑✨</h1>
+
+        <div class="explanation">
+            <strong>מלכות היא התוצאה, ההגשמה, הביטוי המעשי של כל מה שבנינו</strong>.
+            <br><br>
+            אם <strong>כתר הוא הרצון הראשוני</strong>, <strong>מלכות היא המימוש הסופי</strong>.
+            <br><br>
+            אם <strong>יסוד הוא החיבור</strong>, <strong>מלכות היא ההתגלות של החיבור הזה בעולם</strong>.
+            <br><br>
+            👑 <strong>מלכות לא פועלת מעצמה – היא מקבלת מכל הספירות שלפניה</strong>.<br>
+            💡 <strong>אם אין לך מלכות, כל הרעיונות שלך נשארים תיאורטיים</strong>.<br>
+            🌍 <strong>מלכות היא מה שרואים בפועל – איך כל העבודה הפנימית שלך מתבטאת בחיים שלך</strong>.
+            <br><br>
+            📢 <strong>מלכות היא האחריות להביא אור לעולם, ליצור מציאות שמביעה את האלוקות!</strong>
+        </div>
+
+        <table class="sefirot-table">
+            <tr>
+                <th>ספירה</th>
+                <th>פירוש רוחני</th>
+                <th>ביטוי מעשי</th>
+            </tr>
+            <tr>
+                <td>כתר שבמלכות 👑</td>
+                <td>שליחות אלוקית עליונה</td>
+                <td>להבין שהמעמד שלך בעולם הוא שליחות מה' ולא רק הישג אישי</td>
+            </tr>
+            <tr>
+                <td>חכמה שבמלכות 🧠</td>
+                <td>תובנה שמכתיבה הנהגה נכונה</td>
+                <td>מלך אמיתי יודע שהחכמה שלו נועדה להנהיג, לא רק לעצמו</td>
+            </tr>
+            <tr>
+                <td>בינה שבמלכות 🏛</td>
+                <td>הבנה עמוקה של המציאות והאחריות עליה</td>
+                <td>מלכות אמיתית היא להבין איך להנהיג אנשים ולהיות רגיש לצורכיהם</td>
+            </tr>
+            <tr>
+                <td>דעת שבמלכות 🔥💡</td>
+                <td>חיבור עמוק בין הנהגה לרגש</td>
+                <td>מנהיג אמיתי מחובר לעם, יודע להרגיש את האנשים ולהנהיג עם לב</td>
+            </tr>
+            <tr>
+                <td>חסד שבמלכות ❤️</td>
+                <td>נתינה שמביאה השפעה</td>
+                <td>המלך לא נועד לשלוט – אלא לתת, לעזור, ולשמש דוגמה לעם</td>
+            </tr>
+            <tr>
+                <td>גבורה שבמלכות ⚔</td>
+                <td>שליטה פנימית שיוצרת כבוד</td>
+                <td>מי שאין לו שליטה על עצמו – לא יכול לשלוט על אחרים</td>
+            </tr>
+            <tr>
+                <td>תפארת שבמלכות 🎨</td>
+                <td>מנהיגות מאוזנת בין כוח לרחמים</td>
+                <td>מלך אמיתי יודע מתי להיות תקיף ומתי להיות רחום</td>
+            </tr>
+            <tr>
+                <td>נצח שבמלכות 🏆</td>
+                <td>התמדה בדרך ההנהגה הנכונה</td>
+                <td>גם כשהמצב קשה, לא מוותרים על האמת ועל הדרך</td>
+            </tr>
+            <tr>
+                <td>הוד שבמלכות 🙏</td>
+                <td>ענווה שמביאה מלכות אמיתית</td>
+                <td>מלך אמיתי לא גאוותן – הוא יודע שכל כוחו מה'</td>
+            </tr>
+            <tr>
+                <td>יסוד שבמלכות 🔗</td>
+                <td>חיבור שמביא לידי שלמות</td>
+                <td>המלך מחבר את העם, מאחד כוחות ויוצר הרמוניה אמיתית</td>
+            </tr>
+            <tr>
+                <td>מלכות שבמלכות 👑</td>
+                <td>ביטוי מוחלט של האלוקות בעולם</td>
+                <td>לשקף בעולם את השלמות האלוקית ולהיות דוגמה חיה לעבודת ה'</td>
+            </tr>
+        </table>
+
+        <div class="summary-section">
+            <div class="key-points">
+                <p>🔹 <strong>מלכות היא לא שליטה – אלא השפעה</strong>.</p>
+                <p>🔹 <strong>מלכות היא לא כוח חיצוני – אלא עוצמה פנימית שמשפיעה החוצה</strong>.</p>
+                <p>🔹 <strong>מלכות היא לא רק הנהגה – אלא לדעת שההנהגה היא שליחות מאת ה'</strong>.</p>
+            </div>
+
+            <div class="summary-title">איך מיישמים את זה ביום-יום? 🔥</div>
+            <ul class="practical-list">
+                <li>לקחת אחריות על המציאות שלך – להבין שהחיים שלך הם בידיים שלך</li>
+                <li>לגלות את האור שבך ולהקרין אותו לסביבה – להיות דוגמה חיובית לאחרים</li>
+                <li>לא לחפש שליטה – אלא השראה – במקום לדרוש, תן דוגמה אישית</li>
+                <li>להבין שכל הכוחות שלך הם שליחות מאלוקים – להשתמש בהם בחכמה ובענווה</li>
+                <li>ליצור מציאות שמבטאת את הערכים שלך – להפוך את הרצון הטוב שלך לעשייה</li>
+                <li>לראות את עצמך כמלך – אבל מלך שמשרת את עמו – לדעת שהגדולה האמיתית היא בנתינה</li>
+                <li>להנהיג מתוך אהבה ולא מתוך פחד – להשפיע על אחרים בצורה שמעצימה אותם</li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>

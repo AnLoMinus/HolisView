@@ -1,0 +1,188 @@
+/* A4 Page Settings */
+@page {
+  size: A4;
+  margin: 0;
+  size: 210mm 297mm;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 210mm;
+  height: 297mm;
+  font-family: "Heebo", sans-serif;
+  background: white;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Page Container */
+.page {
+  width: 200mm;
+  height: 287mm;
+  /* padding: 5mm; */
+  box-sizing: border-box;
+  position: relative;
+  background: white;
+  margin: 5mm auto;
+}
+
+/* בס״ד Styles */
+.bsd {
+  position: absolute;
+  top: 3mm;
+  right: 5mm;
+  font-size: 0.8rem;
+  color: #333;
+  font-weight: 500;
+}
+
+/* Header Styles */
+.header {
+  text-align: center;
+  position: relative;
+}
+
+.header-icon i {
+  font-size: 1.2rem;
+  color: white;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: #ffd700;
+  margin-bottom: 0.25rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.subtitle {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+
+/* Content Styles */
+.content {
+  font-size: 0.7rem;
+  line-height: 1.3;
+}
+
+.section {
+  margin-bottom: 0.5rem;
+}
+
+.section-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #ffd700;
+  margin-bottom: 0.25rem;
+  border-bottom: 1px solid #ffd700;
+  padding-bottom: 0.25rem;
+}
+
+/* Table Styles */
+.table-container {
+  margin: 0.25rem 0;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 0.2rem;
+  text-align: right;
+  border: 1px solid #ddd;
+  font-size: 0.65rem;
+}
+
+th {
+  background: #ffd700;
+  color: white;
+  font-weight: 500;
+}
+
+tr:nth-child(even) {
+  background: #f9f9f9;
+}
+
+/* List Styles */
+.feature-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.65rem;
+}
+
+.feature-list li {
+  margin-bottom: 0.2rem;
+  padding-right: 1rem;
+  position: relative;
+}
+
+.feature-list li::before {
+  content: "🔹";
+  position: absolute;
+  right: 0;
+  color: #ffd700;
+  font-size: 0.6rem;
+}
+
+/* Footer */
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 0.7rem;
+  color: #666;
+  padding: 1rem;
+  background: white;
+}
+
+/* Print Specific Styles */
+@media print {
+  body {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .page {
+    page-break-after: always;
+  }
+}
+
+/* Grid Layout */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+  margin-bottom: 3rem;
+  height: calc(100% - 180px);
+  overflow: auto;
+}
+
+.grid-item {
+  background: #f9f9f9;
+  padding: 0.25rem;
+  border-radius: 3px;
+}
+
+/* Compact Tables */
+.compact-table {
+  font-size: 0.6rem;
+}
+
+.compact-table th,
+.compact-table td {
+  padding: 0.15rem;
+}

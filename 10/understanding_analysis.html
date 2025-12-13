@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>בינה – ההבנה המעמיקה</title>
+    <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <style>
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Frank Ruhl Libre', serif;
+            background: white;
+            color: #2c3e50;
+        }
+
+        .page {
+            width: 210mm;
+            height: 297mm;
+            margin: 0 auto;
+            padding: 15mm;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(to bottom, #ffffff, #f8f9fa);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page::before {
+            content: '';
+            position: absolute;
+            top: 5mm;
+            left: 5mm;
+            right: 5mm;
+            bottom: 5mm;
+            border: 1px solid #2c3e50;
+            pointer-events: none;
+        }
+
+        .page::after {
+            content: '';
+            position: absolute;
+            top: 6mm;
+            left: 6mm;
+            right: 6mm;
+            bottom: 6mm;
+            border: 1px solid #2c3e50;
+            pointer-events: none;
+            opacity: 0.5;
+        }
+
+        .bsd {
+            position: absolute;
+            top: 8mm;
+            right: 8mm;
+            color: #2c3e50;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .page-number {
+            position: absolute;
+            top: 15mm;
+            right: 8mm;
+            background: linear-gradient(45deg, #2c3e50, #34495e);
+            color: white;
+            padding: 2mm 4mm;
+            border-radius: 0 2mm 2mm 0;
+            font-size: 10px;
+            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            z-index: 1;
+        }
+
+        .page-number::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -5px;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 10px 5px 0 0;
+            border-color: #2c3e50 transparent transparent transparent;
+            transform: rotate(180deg);
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #2c3e50;
+            margin: 0 0 5mm;
+            text-align: center;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            position: relative;
+            padding: 3mm 0;
+        }
+
+        h1::before,
+        h1::after {
+            content: '✧';
+            color: #2c3e50;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 20px;
+        }
+
+        h1::before {
+            right: 20%;
+        }
+
+        h1::after {
+            left: 20%;
+        }
+
+        .explanation {
+            font-size: 14px;
+            line-height: 1.4;
+            margin: 0 0 5mm;
+            text-align: justify;
+        }
+
+        .explanation strong {
+            color: #2c3e50;
+        }
+
+        .sefirot-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0 0 5mm;
+            font-size: 12px;
+        }
+
+        .sefirot-table th,
+        .sefirot-table td {
+            padding: 4px 6px;
+            border: 1px solid #ddd;
+            text-align: right;
+        }
+
+        .sefirot-table th {
+            background: #f5f5f5;
+            font-weight: bold;
+        }
+
+        .summary-section {
+            font-size: 12px;
+            line-height: 1.4;
+        }
+
+        .summary-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin: 0 0 3mm;
+            color: #2c3e50;
+        }
+
+        .practical-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 5mm;
+        }
+
+        .practical-list li {
+            margin-bottom: 2mm;
+            padding-right: 10px;
+            position: relative;
+        }
+
+        .practical-list li::before {
+            content: "•";
+            position: absolute;
+            right: 0;
+            color: #2c3e50;
+        }
+
+        .key-points {
+            background: #f8f9fa;
+            padding: 3mm;
+            border-radius: 2mm;
+            margin-bottom: 3mm;
+        }
+
+        .key-points p {
+            margin: 0 0 2mm;
+        }
+
+        .key-points p:last-child {
+            margin-bottom: 0;
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+
+            .page {
+                width: 210mm;
+                height: 297mm;
+                margin: 0;
+                padding: 15mm;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <div class="bsd">(בס״ד)</div>
+        <div class="page-number">עמוד 10 | בינה</div>
+        <h1>בינה – ההבנה המעמיקה ופירוק החכמה לחלקים פרקטיים 🏛✨</h1>
+
+        <div class="explanation">
+            <strong>בינה</strong> היא כוח הניתוח, העיבוד וההבנה. אם חכמה היא ה"ברק" של הרעיון, <strong>בינה היא זו
+                שלוקחת את הרעיון ומפתחת אותו לפרטים ברורים ומעשיים</strong>. זוהי היכולת להעמיק, להקיף, להסיק מסקנות
+            ולהפוך מידע להבנה אמיתית.
+        </div>
+
+        <table class="sefirot-table">
+            <tr>
+                <th>ספירה</th>
+                <th>פירוש רוחני</th>
+                <th>ביטוי מעשי</th>
+            </tr>
+            <tr>
+                <td>כתר שבבינה 👑</td>
+                <td>הרצון להבין לעומק, השתוקקות להשגת חכמה שלמה</td>
+                <td>סקרנות ללא גבול, חיפוש אחר המשמעות הפנימית של הדברים</td>
+            </tr>
+            <tr>
+                <td>חכמה שבבינה 🧠</td>
+                <td>ההברקה הראשונית בתוך התהליך האנליטי</td>
+                <td>קליטת מידע חדש במהירות והסקת מסקנות מידיות</td>
+            </tr>
+            <tr>
+                <td>בינה שבבינה 🏛</td>
+                <td>כוח העומק של הבינה, הרחבת החכמה לרמות רבות של הבנה</td>
+                <td>חשיבה לוגית מעמיקה, ניתוח יסודי של רעיונות</td>
+            </tr>
+            <tr>
+                <td>חסד שבבינה ❤️</td>
+                <td>היכולת להרחיב ולהעניק את ההבנה לאחרים</td>
+                <td>הסברת נושאים מורכבים לאחרים בסבלנות וברוחב לב</td>
+            </tr>
+            <tr>
+                <td>גבורה שבבינה ⚔</td>
+                <td>צמצום ובירור, סינון המידע הלא רלוונטי</td>
+                <td>דיוק, חיתוך המיותר והתמקדות בעיקר</td>
+            </tr>
+            <tr>
+                <td>תפארת שבבינה 🎨</td>
+                <td>איזון בין החכמה לבין העומק של ההבנה</td>
+                <td>שילוב של ניתוח אנליטי עם חשיבה יצירתית</td>
+            </tr>
+            <tr>
+                <td>נצח שבבינה 🏆</td>
+                <td>התמדה בפיתוח הבנה, למרות הקשיים</td>
+                <td>חקירה מתמשכת של נושא, לא להסתפק בהבנה שטחית</td>
+            </tr>
+            <tr>
+                <td>הוד שבבינה 🙏</td>
+                <td>הכרה בכך שהבינה מוגבלת בפני עצמה וזקוקה לאור עליון</td>
+                <td>ענווה, הבנה שאי אפשר לדעת הכול, נכונות ללמוד מאחרים</td>
+            </tr>
+            <tr>
+                <td>יסוד שבבינה 🔗</td>
+                <td>חיבור של הבנה עמוקה למציאות המעשית</td>
+                <td>הפיכת רעיונות מופשטים למודלים ברורים וברי יישום</td>
+            </tr>
+            <tr>
+                <td>מלכות שבבינה 👑</td>
+                <td>השלמת תהליך ההבנה והפיכתו לכלי שניתן להשתמש בו</td>
+                <td>מימוש הבנה תיאורטית בפועל, תרגום רעיונות למציאות</td>
+            </tr>
+        </table>
+
+        <div class="summary-section">
+            <div class="key-points">
+                <p>🔹 <strong>בינה היא השלב שבו רעיונות מתפתחים להבנה אמיתית.</strong></p>
+                <p>🔹 ככל שהאדם מעמיק יותר בבינה, כך הוא יודע <strong>לסנן, לדייק ולבנות יסודות חזקים יותר לחשיבה
+                        ולמעשה</strong>.</p>
+                <p>🔹 הבינה גם דורשת איזון – <strong>לא לשקוע רק בניתוח, אלא גם לדעת לתרגם את ההבנה לעשייה</strong>
+                    (יסוד ומלכות שבבינה).</p>
+            </div>
+
+            <div class="summary-title">איך מיישמים את זה ביום-יום? 🔥</div>
+            <ul class="practical-list">
+                <li>חקור נושאים לעומק – אל תסתפק בהבנה שטחית, לך למקור הדברים</li>
+                <li>אל תקבל מידע כמובן מאליו – שאל, נתח, בחן אם הדברים נכונים</li>
+                <li>שתף את החכמה שלך – למידה אמיתית מגיעה כשאתה מלמד אחרים</li>
+                <li>דע לסנן מידע – התמקד בעיקר, אל תיתן ליותר מדי מידע לבלבל אותך</li>
+                <li>שמור על איזון בין למידה לעשייה – אל תישאר רק בשלב המחקר, תיישם</li>
+                <li>תתמיד בלימוד – גם אם משהו קשה להבנה, המשך לחקור וללמוד</li>
+                <li>היה עניו וקשוב לאחרים – הבינה מתחזקת כשמכירים במגבלות שלנו ולומדים מכל אדם</li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>

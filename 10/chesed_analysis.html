@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>חסד – השפעה ונתינה אינסופית</title>
+    <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <style>
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Frank Ruhl Libre', serif;
+            background: white;
+            color: #2c3e50;
+        }
+
+        .page {
+            width: 210mm;
+            height: 297mm;
+            margin: 0 auto;
+            padding: 15mm;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(to bottom, #ffffff, #f8f9fa);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page::before {
+            content: '';
+            position: absolute;
+            top: 5mm;
+            left: 5mm;
+            right: 5mm;
+            bottom: 5mm;
+            border: 1px solid #e74c3c;
+            pointer-events: none;
+        }
+
+        .page::after {
+            content: '';
+            position: absolute;
+            top: 6mm;
+            left: 6mm;
+            right: 6mm;
+            bottom: 6mm;
+            border: 1px solid #e74c3c;
+            pointer-events: none;
+            opacity: 0.5;
+        }
+
+        .bsd {
+            position: absolute;
+            top: 8mm;
+            right: 8mm;
+            color: #e74c3c;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .page-number {
+            position: absolute;
+            top: 15mm;
+            right: 8mm;
+            background: linear-gradient(45deg, #e74c3c, #e67e22);
+            color: white;
+            padding: 2mm 4mm;
+            border-radius: 0 2mm 2mm 0;
+            font-size: 10px;
+            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            z-index: 1;
+        }
+
+        .page-number::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -5px;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 10px 5px 0 0;
+            border-color: #e74c3c transparent transparent transparent;
+            transform: rotate(180deg);
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #e74c3c;
+            margin: 0 0 5mm;
+            text-align: center;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            position: relative;
+            padding: 3mm 0;
+        }
+
+        h1::before,
+        h1::after {
+            content: '✧';
+            color: #e74c3c;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 20px;
+        }
+
+        h1::before {
+            right: 20%;
+        }
+
+        h1::after {
+            left: 20%;
+        }
+
+        .explanation {
+            font-size: 14px;
+            line-height: 1.4;
+            margin: 0 0 5mm;
+            text-align: justify;
+        }
+
+        .explanation strong {
+            color: #e74c3c;
+        }
+
+        .sefirot-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0 0 5mm;
+            font-size: 12px;
+        }
+
+        .sefirot-table th,
+        .sefirot-table td {
+            padding: 4px 6px;
+            border: 1px solid #ddd;
+            text-align: right;
+        }
+
+        .sefirot-table th {
+            background: #fff5f5;
+            font-weight: bold;
+        }
+
+        .summary-section {
+            font-size: 12px;
+            line-height: 1.4;
+        }
+
+        .summary-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin: 0 0 3mm;
+            color: #e74c3c;
+        }
+
+        .practical-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 5mm;
+        }
+
+        .practical-list li {
+            margin-bottom: 2mm;
+            padding-right: 10px;
+            position: relative;
+        }
+
+        .practical-list li::before {
+            content: "•";
+            position: absolute;
+            right: 0;
+            color: #e74c3c;
+        }
+
+        .key-points {
+            background: #fff5f5;
+            padding: 3mm;
+            border-radius: 2mm;
+            margin-bottom: 3mm;
+        }
+
+        .key-points p {
+            margin: 0 0 2mm;
+        }
+
+        .key-points p:last-child {
+            margin-bottom: 0;
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+
+            .page {
+                width: 210mm;
+                height: 297mm;
+                margin: 0;
+                padding: 15mm;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <div class="bsd">(בס״ד)</div>
+        <div class="page-number">עמוד 2 | חסד</div>
+        <h1>חסד – השפעה ונתינה אינסופית ללא גבולות ❤️✨</h1>
+
+        <div class="explanation">
+            <strong>חסד</strong> הוא הכוח האלוקי של נתינה ללא תנאים וללא גבולות. זהו הרצון להעניק, להאיר, לשפוך שפע של
+            טוב על הזולת מתוך אהבה אמיתית. בעוד <strong>דעת</strong> מחברת בין ההבנה לרגש, <strong>חסד הוא הביטוי הראשון
+                של הרגש בפועל – הרצון להיטיב ולתת</strong>.
+            <br><br>
+            חסד הוא לא רק נתינה חומרית – <strong>אלא נתינה רוחנית, תמיכה, אהבה, הקשבה, ועזרה לזולת בלי לצפות
+                לתמורה</strong>.
+        </div>
+
+        <table class="sefirot-table">
+            <tr>
+                <th>ספירה</th>
+                <th>פירוש רוחני</th>
+                <th>ביטוי מעשי</th>
+            </tr>
+            <tr>
+                <td>כתר שבחסד 👑</td>
+                <td>אהבה אינסופית, נתינה ברמה האלוקית</td>
+                <td>נתינה ללא אינטרס, עזרה לכל אחד בלי לשפוט</td>
+            </tr>
+            <tr>
+                <td>חכמה שבחסד 🧠</td>
+                <td>חסד חכם, נתינה ממוקדת ונבונה</td>
+                <td>לתת מתוך הבנה, לא רק מתוך רגש עיוור</td>
+            </tr>
+            <tr>
+                <td>בינה שבחסד 🏛</td>
+                <td>הרחבת הנתינה, חשיבה איך לעזור בצורה מיטבית</td>
+                <td>לא רק לתת אלא לחשוב איך הנתינה תשפיע לטובה</td>
+            </tr>
+            <tr>
+                <td>דעת שבחסד 🔥💡</td>
+                <td>חיבור אישי לנתינה, נתינה מתוך חיבור עמוק</td>
+                <td>נתינה עם רגש אמיתי, אכפתיות אמיתית</td>
+            </tr>
+            <tr>
+                <td>חסד שבחסד ❤️</td>
+                <td>נתינה אינסופית בלי גבול</td>
+                <td>אהבה ללא תנאים, עזרה ללא ציפייה להחזר</td>
+            </tr>
+            <tr>
+                <td>גבורה שבחסד ⚔</td>
+                <td>הצבת גבולות בנתינה, איזון נכון בין חסד למשמעת</td>
+                <td>לתת מתוך חכמה, לא לפנק בצורה שמזיקה</td>
+            </tr>
+            <tr>
+                <td>תפארת שבחסד 🎨</td>
+                <td>נתינה מאוזנת, נתינה שמכבדת את המקבל</td>
+                <td>להעניק מתוך יופי, כבוד וחיבור אמיתי</td>
+            </tr>
+            <tr>
+                <td>נצח שבחסד 🏆</td>
+                <td>התמדה בנתינה, לא רק בהתלהבות רגעית</td>
+                <td>להפוך את הנתינה להרגל קבוע ולא למשהו מזדמן</td>
+            </tr>
+            <tr>
+                <td>הוד שבחסד 🙏</td>
+                <td>הענווה שבנתינה, לתת בלי להרגיש עליון</td>
+                <td>לתת בצורה שמעצימה את המקבל ולא משפילה אותו</td>
+            </tr>
+            <tr>
+                <td>יסוד שבחסד 🔗</td>
+                <td>נתינה שיוצרת קשר וחיבור עמוק</td>
+                <td>נתינה שבונה מערכות יחסים אמיתיות עם הזולת</td>
+            </tr>
+            <tr>
+                <td>מלכות שבחסד 👑</td>
+                <td>מימוש הנתינה בעולם, יצירת שינוי אמיתי דרך החסד</td>
+                <td>להפוך את הנתינה למשהו שמשפיע על החברה כולה</td>
+            </tr>
+        </table>
+
+        <div class="summary-section">
+            <div class="key-points">
+                <p>🔹 <strong>חסד הוא הכוח שמאפשר לנו להיות משפיעים, מחוברים ונותנים לעולם</strong>.</p>
+                <p>🔹 חסד אמיתי <strong>צריך להיות חכם ומאוזן</strong> – לא כל נתינה היא בהכרח טובה.</p>
+                <p>🔹 נתינה אמיתית <strong>אינה נמדדת בגודל הנתינה אלא בכוונה ובחיבור הפנימי שלנו אליה</strong>.</p>
+            </div>
+
+            <div class="summary-title">איך מיישמים את זה ביום-יום? 🔥</div>
+            <ul class="practical-list">
+                <li>תן ללא תנאים – אל תצפה לתמורה, פשוט תעשה טוב</li>
+                <li>תחשוב איך הנתינה תשפיע – לפעמים עדיף לתת בדרך חכמה מאשר רק מתוך רגש</li>
+                <li>תעשה חסד קטן כל יום – מחווה קטנה יכולה לשנות למישהו את היום</li>
+                <li>אל תיתן רק חומר – תן גם זמן, הקשבה, תמיכה</li>
+                <li>תדע גם להציב גבולות – לא כל נתינה היא בהכרח טובה למקבל</li>
+                <li>תתמיד בנתינה – חסד אמיתי הוא לא חד-פעמי, אלא דרך חיים</li>
+                <li>תהיה עניו בנתינה שלך – אל תגרום לאחרים להרגיש שהם חייבים לך</li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>

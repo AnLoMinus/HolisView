@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מבנה עשר הספירות - תרשים אינטראקטיבי</title>
+    <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Frank Ruhl Libre', serif;
+            background: #f5e6d3;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #2c3e50;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            margin: 20px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .sefirot-diagram {
+            position: relative;
+            width: 100%;
+            height: 800px;
+            margin: 20px auto;
+        }
+
+        .sefirah {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            cursor: pointer;
+            transition: transform 0.3s;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .sefirah:hover {
+            transform: scale(1.1);
+        }
+
+        .sefirah-title {
+            font-size: 14px;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        .sefirah-icon {
+            font-size: 24px;
+        }
+
+        .connection-line {
+            position: absolute;
+            transform-origin: 0 0;
+            pointer-events: none;
+            display: block !important;
+        }
+
+        .connection-solid {
+            background: rgba(100, 100, 100, 0.6);
+            height: 2px;
+        }
+
+        .connection-dashed {
+            border-top: 2px dashed rgba(100, 100, 100, 0.4);
+            height: 0;
+        }
+
+        .connection-letter {
+            position: absolute;
+            font-size: 14px;
+            color: #666;
+            transform-origin: center;
+            font-weight: bold;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 2px;
+            border-radius: 50%;
+            width: 16px;
+            height: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* מיקום הספירות */
+        #keter {
+            top: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        #chochma {
+            top: 180px;
+            left: 25%;
+            background: rgba(0, 102, 204, 0.2);
+            border: 2px solid rgba(0, 102, 204, 0.8);
+        }
+
+        #bina {
+            top: 180px;
+            right: 25%;
+            background: rgba(204, 0, 0, 0.2);
+            border: 2px solid rgba(204, 0, 0, 0.8);
+        }
+
+        #daat {
+            top: 150px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(128, 0, 128, 0.1);
+        }
+
+        #chesed {
+            top: 320px;
+            left: 25%;
+            background: rgba(255, 255, 255, 0.9);
+            border: 2px solid rgba(255, 215, 0, 0.8);
+        }
+
+        #gevura {
+            top: 320px;
+            right: 25%;
+            background: rgba(255, 0, 0, 0.2);
+            border: 2px solid rgba(255, 0, 0, 0.8);
+        }
+
+        #tiferet {
+            top: 320px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 215, 0, 0.2);
+            border: 2px solid rgba(255, 215, 0, 0.8);
+        }
+
+        #netzach {
+            top: 460px;
+            left: 25%;
+            background: rgba(34, 139, 34, 0.2);
+            border: 2px solid rgba(34, 139, 34, 0.8);
+        }
+
+        #hod {
+            top: 460px;
+            right: 25%;
+            background: rgba(255, 165, 0, 0.2);
+            border: 2px solid rgba(255, 165, 0, 0.8);
+        }
+
+        #yesod {
+            top: 460px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 191, 255, 0.2);
+            border: 2px solid rgba(0, 191, 255, 0.8);
+        }
+
+        #malchut {
+            top: 600px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(75, 0, 130, 0.2);
+            border: 2px solid rgba(75, 0, 130, 0.8);
+        }
+
+        .controls {
+            text-align: center;
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            border: none;
+            border-radius: 5px;
+            background: #d4b595;
+            color: white;
+            cursor: pointer;
+            font-family: inherit;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #c4a585;
+        }
+
+        .bsd {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="bsd">בס"ד</div>
+        <h1 style="text-align: center;">מבנה עשר הספירות</h1>
+
+        <div class="controls">
+            <button onclick="animateFlow()">הצג זרימת האור</button>
+            <button onclick="pulseAll()">הדגש ספירות</button>
+        </div>
+
+        <div class="sefirot-diagram" id="sefirot-diagram">
+            <div class="sefirah" id="keter">
+                <div class="sefirah-icon">👑</div>
+                <div class="sefirah-title">כתר</div>
+            </div>
+            <div class="sefirah" id="chochma">
+                <div class="sefirah-icon">🧠</div>
+                <div class="sefirah-title">חכמה</div>
+            </div>
+            <div class="sefirah" id="bina">
+                <div class="sefirah-icon">🏛</div>
+                <div class="sefirah-title">בינה</div>
+            </div>
+            <div class="sefirah" id="daat">
+                <div class="sefirah-icon">🔥</div>
+                <div class="sefirah-title">דעת</div>
+            </div>
+            <div class="sefirah" id="chesed">
+                <div class="sefirah-icon">❤️</div>
+                <div class="sefirah-title">חסד</div>
+            </div>
+            <div class="sefirah" id="gevura">
+                <div class="sefirah-icon">⚔</div>
+                <div class="sefirah-title">גבורה</div>
+            </div>
+            <div class="sefirah" id="tiferet">
+                <div class="sefirah-icon">🎨</div>
+                <div class="sefirah-title">תפארת</div>
+            </div>
+            <div class="sefirah" id="netzach">
+                <div class="sefirah-icon">🏆</div>
+                <div class="sefirah-title">נצח</div>
+            </div>
+            <div class="sefirah" id="hod">
+                <div class="sefirah-icon">🙏</div>
+                <div class="sefirah-title">הוד</div>
+            </div>
+            <div class="sefirah" id="yesod">
+                <div class="sefirah-icon">🔗</div>
+                <div class="sefirah-title">יסוד</div>
+            </div>
+            <div class="sefirah" id="malchut">
+                <div class="sefirah-icon">👑</div>
+                <div class="sefirah-title">מלכות</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // יצירת קווי חיבור
+        function createConnections() {
+            const connections = [
+                // קווים רגילים
+                { from: 'keter', to: 'chochma', letter: 'א', type: 'solid' },
+                { from: 'keter', to: 'bina', letter: 'ב', type: 'solid' },
+                { from: 'chochma', to: 'bina', letter: 'ג', type: 'solid' },
+                { from: 'chochma', to: 'chesed', letter: 'ה', type: 'solid' },
+                { from: 'bina', to: 'gevura', letter: 'ו', type: 'solid' },
+                { from: 'chesed', to: 'gevura', letter: 'ז', type: 'solid' },
+                { from: 'chesed', to: 'tiferet', letter: 'ט', type: 'solid' },
+                { from: 'gevura', to: 'tiferet', letter: 'כ', type: 'solid' },
+                { from: 'netzach', to: 'hod', letter: 'ע', type: 'solid' },
+                { from: 'netzach', to: 'yesod', letter: 'פ', type: 'solid' },
+                { from: 'hod', to: 'yesod', letter: 'צ', type: 'solid' },
+                { from: 'yesod', to: 'malchut', letter: 'ת', type: 'solid' },
+
+                // קווים מקווקווים
+                { from: 'chesed', to: 'netzach', letter: 'י', type: 'dashed' },
+                { from: 'gevura', to: 'hod', letter: 'ל', type: 'dashed' },
+                { from: 'tiferet', to: 'yesod', letter: 'נ', type: 'dashed' },
+                { from: 'chochma', to: 'tiferet', letter: 'ד', type: 'dashed' },
+                { from: 'bina', to: 'tiferet', letter: 'ח', type: 'dashed' }
+            ];
+
+            connections.forEach(({ from, to, letter, type }) => {
+                // יצירת הקו
+                const line = document.createElement('div');
+                line.className = `connection-line connection-${type}`;
+                document.getElementById('sefirot-diagram').appendChild(line);
+
+                // יצירת האות
+                const letterDiv = document.createElement('div');
+                letterDiv.className = 'connection-letter';
+                letterDiv.textContent = letter;
+                document.getElementById('sefirot-diagram').appendChild(letterDiv);
+
+                updateConnection(from, to, line, letterDiv);
+            });
+        }
+
+        // עדכון מיקום קווי החיבור והאותיות
+        function updateConnection(from, to, line, letter) {
+            const fromEl = document.getElementById(from);
+            const toEl = document.getElementById(to);
+            const fromRect = fromEl.getBoundingClientRect();
+            const toRect = toEl.getBoundingClientRect();
+            const containerRect = document.getElementById('sefirot-diagram').getBoundingClientRect();
+
+            const fromX = fromRect.left - containerRect.left + fromRect.width / 2;
+            const fromY = fromRect.top - containerRect.top + fromRect.height / 2;
+            const toX = toRect.left - containerRect.left + toRect.width / 2;
+            const toY = toRect.top - containerRect.top + toRect.height / 2;
+
+            // חישוב אורך וזווית הקו
+            const length = Math.sqrt(Math.pow(toX - fromX, 2) + Math.pow(toY - fromY, 2));
+            const angle = Math.atan2(toY - fromY, toX - fromX) * 180 / Math.PI;
+
+            // עדכון הקו
+            line.style.width = `${length}px`;
+            line.style.left = `${fromX}px`;
+            line.style.top = `${fromY}px`;
+            line.style.transform = `rotate(${angle}deg)`;
+
+            // מיקום האות באמצע הקו
+            const midX = fromX + (toX - fromX) / 2 - 8;
+            const midY = fromY + (toY - fromY) / 2 - 8;
+            letter.style.left = `${midX}px`;
+            letter.style.top = `${midY}px`;
+        }
+
+        // אנימציית זרימת האור
+        function animateFlow() {
+            const timeline = anime.timeline({
+                easing: 'easeInOutSine',
+                duration: 1000
+            });
+
+            const sefirot = ['keter', 'chochma', 'bina', 'daat', 'chesed', 'gevura', 'tiferet',
+                'netzach', 'hod', 'yesod', 'malchut'];
+
+            sefirot.forEach((sefirah, index) => {
+                timeline.add({
+                    targets: `#${sefirah}`,
+                    scale: [1, 1.2, 1],
+                    opacity: [0.5, 1],
+                    duration: 500,
+                }, index * 200);
+            });
+        }
+
+        // אנימציית פעימה לכל הספירות
+        function pulseAll() {
+            anime({
+                targets: '.sefirah',
+                scale: [1, 1.1, 1],
+                opacity: [0.8, 1, 0.8],
+                duration: 1500,
+                loop: true,
+                direction: 'alternate',
+                easing: 'easeInOutSine',
+                delay: anime.stagger(100)
+            });
+        }
+
+        // יצירת הקווים בטעינת העמוד
+        window.onload = createConnections;
+    </script>
+</body>
+
+</html>

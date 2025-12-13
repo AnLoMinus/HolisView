@@ -1,0 +1,1497 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>עשר הספירות - מדריך מעשי 🌟</title>
+    <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <style>
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Frank Ruhl Libre', 'Times New Roman', serif;
+            background-color: #f5f5f5;
+            line-height: 1.2;
+        }
+
+        .page {
+            width: 210mm;
+            height: 297mm;
+            margin: 0;
+            background: white;
+            padding: 10px;
+            box-sizing: border-box;
+            page-break-after: always;
+            display: flex;
+            gap: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .right-side,
+        .left-side {
+            flex: 1;
+            padding: 8px;
+            overflow-y: auto;
+            max-height: calc(297mm - 20px);
+        }
+
+        .right-side {
+            border-right: 1px solid #eee;
+            padding-right: 10px;
+        }
+
+        .left-side {
+            padding-left: 10px;
+        }
+
+        .title {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        .day-header {
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .day-number {
+            font-size: 32px;
+            width: 50px;
+            height: 50px;
+        }
+
+        .day-title {
+            font-size: 22px;
+        }
+
+        .explanation {
+            font-size: 14px;
+            line-height: 1.3;
+            margin: 8px 0;
+            padding: 10px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            margin-bottom: 8px;
+            padding-bottom: 4px;
+        }
+
+        .tasks-list {
+            margin: 0 0 10px 0;
+        }
+
+        .task-item {
+            margin-bottom: 6px;
+            padding: 6px;
+            font-size: 13px;
+        }
+
+        .input-section {
+            margin-bottom: 10px;
+        }
+
+        .input-title {
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+
+        .input-field {
+            min-height: 40px;
+            padding: 6px;
+            font-size: 13px;
+        }
+
+        textarea.input-field {
+            min-height: 50px;
+        }
+
+        .reflection-box {
+            padding: 8px;
+            margin-top: 10px;
+        }
+
+        .reflection-title {
+            font-size: 16px;
+            margin-bottom: 6px;
+        }
+
+        .reflection-text {
+            font-size: 13px;
+            line-height: 1.3;
+        }
+
+        .reflection-prompts p {
+            margin: 4px 0;
+            font-size: 13px;
+        }
+
+        .tracking-grid {
+            font-size: 13px;
+            gap: 6px;
+        }
+
+        .checklist label {
+            font-size: 13px;
+        }
+
+        .motivation-box {
+            margin-top: 10px !important;
+            padding: 8px;
+            font-size: 13px;
+        }
+
+        /* הוספת סגנונות ייחודיים לכל יום */
+        .page-intro {
+            background: linear-gradient(to bottom right, #ffffff, #f8f9fa);
+            border: 2px solid #2c3e50;
+            border-radius: 15px;
+        }
+
+        .page-intro::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">🌱</text></svg>') no-repeat center;
+            opacity: 0.05;
+            z-index: -1;
+        }
+
+        /* יום ראשון - אור */
+        .page-day1 {
+            background: linear-gradient(to bottom right, #ffffff, #fff9e6);
+            border: 2px solid #f1c40f;
+            border-radius: 15px;
+        }
+
+        .page-day1::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">✨</text></svg>') no-repeat center;
+            opacity: 0.05;
+            z-index: -1;
+        }
+
+        /* יום שני - מים */
+        .page-day2 {
+            background: linear-gradient(to bottom right, #ffffff, #e8f4f8);
+            border: 2px solid #3498db;
+            border-radius: 15px;
+        }
+
+        .page-day2::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">💧</text></svg>') no-repeat center;
+            opacity: 0.05;
+            z-index: -1;
+        }
+
+        /* יום שלישי - צמיחה */
+        .page-day3 {
+            background: linear-gradient(to bottom right, #ffffff, #e8f6e8);
+            border: 2px solid #2ecc71;
+            border-radius: 15px;
+        }
+
+        .page-day3::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">🌱</text></svg>') no-repeat center;
+            opacity: 0.05;
+            z-index: -1;
+        }
+
+        /* יום רביעי - מאורות */
+        .page-day4 {
+            background: linear-gradient(to bottom right, #ffffff, #f4e8f8);
+            border: 2px solid #9b59b6;
+            border-radius: 15px;
+        }
+
+        .page-day4::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">🌙</text></svg>') no-repeat center;
+            opacity: 0.05;
+            z-index: -1;
+        }
+
+        /* יום חמישי - דגים ועופות */
+        .page-day5 {
+            background: linear-gradient(to bottom right, #ffffff, #e8f6f4);
+            border: 2px solid #1abc9c;
+            border-radius: 15px;
+        }
+
+        .page-day5::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">🦋</text></svg>') no-repeat center;
+            opacity: 0.05;
+            z-index: -1;
+        }
+
+        /* יום שישי - חיות ואדם */
+        .page-day6 {
+            background: linear-gradient(to bottom right, #ffffff, #fdf1e8);
+            border: 2px solid #e67e22;
+            border-radius: 15px;
+        }
+
+        .page-day6::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">👥</text></svg>') no-repeat center;
+            opacity: 0.05;
+            z-index: -1;
+        }
+
+        /* יום שביעי - שבת */
+        .page-day7 {
+            background: linear-gradient(to bottom right, #ffffff, #f0f2f4);
+            border: 2px solid #34495e;
+            border-radius: 15px;
+        }
+
+        .page-day7::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">✡️</text></svg>') no-repeat center;
+            opacity: 0.05;
+            z-index: -1;
+        }
+
+        /* עיצובים משותפים לכל העמודים */
+        .page {
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .right-side,
+        .left-side {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* התאמות להדפסה */
+        @media print {
+            body {
+                background: none;
+            }
+
+            .page {
+                margin: 0;
+                padding: 8px;
+                height: 100vh;
+                box-shadow: none;
+            }
+
+            .task-item {
+                box-shadow: none;
+                border: 1px solid #ccc;
+            }
+
+            .right-side,
+            .left-side {
+                padding: 6px;
+                max-height: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- עמוד פתיחה -->
+    <div class="page page-intro">
+        <div class="right-side">
+            <div class="title">עשר הספירות - מדריך מעשי</div>
+            <div class="subtitle">מסע להבנת הכוחות הרוחניים והיישום שלהם בחיים</div>
+
+            <div class="explanation">
+                ברוכים הבאים למסע המרתק של הבנת עשר הספירות. תוכנית זו מבוססת על חכמת הקבלה ומשלבת תובנות רוחניות עמוקות
+                עם כלים מעשיים ליישום בחיי היומיום. כל ספירה מייצגת כוח רוחני שונה, וביחד הן יוצרות מפה שלמה להתפתחות
+                אישית ורוחנית.
+            </div>
+
+            <div class="section-title">עקרונות המדריך</div>
+            <ul class="tasks-list">
+                <li class="task-item">הבנה מעמיקה של כל ספירה וכוחותיה</li>
+                <li class="task-item">יישום מעשי בחיי היומיום</li>
+                <li class="task-item">חיבור בין רוחניות למציאות</li>
+                <li class="task-item">התפתחות אישית דרך הספירות</li>
+                <li class="task-item">מעקב והתקדמות בכל שלב</li>
+            </ul>
+
+            <div class="section-title">הכנה למסע</div>
+            <ul class="tasks-list">
+                <li class="task-item">פתיחות ללמידה חדשה</li>
+                <li class="task-item">נכונות להתבוננות פנימית</li>
+                <li class="task-item">סבלנות לתהליך</li>
+                <li class="task-item">התמדה בתרגול</li>
+                <li class="task-item">יישום הדרגתי בחיים</li>
+            </ul>
+
+            <div class="reflection-box">
+                <div class="reflection-title">מבנה עשר הספירות</div>
+                <div class="reflection-text">
+                    • כתר - הרצון העליון והשאיפה הנשגבת<br>
+                    • חכמה - ההשראה והברק הראשוני<br>
+                    • בינה - ההבנה המעמיקה והניתוח<br>
+                    • חסד - נתינה ואהבה אינסופית<br>
+                    • גבורה - גבולות ושליטה עצמית<br>
+                    • תפארת - איזון והרמוניה<br>
+                    • נצח - התמדה וניצחון<br>
+                    • הוד - ענווה וקבלה<br>
+                    • יסוד - חיבור והשפעה<br>
+                    • מלכות - מימוש בפועל
+                </div>
+            </div>
+        </div>
+
+        <div class="left-side">
+            <div class="title">התחייבות אישית ללימוד הספירות</div>
+
+            <div class="input-section">
+                <div class="input-title">פרטים אישיים:</div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                    <input type="text" class="input-field" style="min-height: 40px;" placeholder="שם מלא">
+                    <input type="text" class="input-field" style="min-height: 40px;" placeholder="תאריך התחלה">
+                </div>
+            </div>
+
+            <div class="input-section">
+                <div class="input-title">המטרות שלי בלימוד הספירות:</div>
+                <textarea class="input-field" style="min-height: 100px;" placeholder="1. התפתחות רוחנית
+2. הבנה עמוקה יותר
+3. יישום בחיי היומיום
+4. חיבור לשורשים
+..."></textarea>
+            </div>
+
+            <div class="input-section">
+                <div class="input-title">תחומים לשיפור:</div>
+                <textarea class="input-field" style="min-height: 100px;" placeholder="באילו תחומים בחיים הייתי רוצה ליישם את חכמת הספירות?
+- יחסים בינאישיים
+- התפתחות אישית
+- עבודת המידות
+- חיבור רוחני"></textarea>
+            </div>
+
+            <div class="input-section">
+                <div class="input-title">התחייבות אישית:</div>
+                <textarea class="input-field" style="min-height: 100px;" placeholder="אני מתחייב/ת ללמוד ולהעמיק בחכמת הספירות מתוך:
+- רצון אמיתי להתפתח
+- נכונות להשקיע מאמץ
+- סבלנות לתהליך
+- אמונה ביכולת ליישם"></textarea>
+            </div>
+
+            <div class="reflection-box">
+                <div class="reflection-title">משאבים ללימוד</div>
+                <div class="reflection-text" style="font-size: 14px;">
+                    • ספרי קבלה מומלצים<br>
+                    • שיעורים מקוונים<br>
+                    • קבוצות לימוד<br>
+                    • מורים ומדריכים<br>
+                    • חומרי עזר מעשיים
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 20px;">
+                <div style="display: inline-block; margin: 0 20px;">
+                    <input type="text" class="input-field" style="min-height: 40px; width: 200px;" placeholder="חתימה">
+                    <div style="margin-top: 5px;">חתימה</div>
+                </div>
+                <div style="display: inline-block; margin: 0 20px;">
+                    <input type="text" class="input-field" style="min-height: 40px; width: 200px;" placeholder="תאריך">
+                    <div style="margin-top: 5px;">תאריך</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- כתר -->
+    <div class="page page-day1">
+        <div class="right-side">
+            <div class="day-header">
+                <div class="day-number" style="background: #f1c40f;">1</div>
+                <div class="day-title">כתר - המקור העליון של הרצון האלוקי 👑</div>
+            </div>
+
+            <div class="explanation">
+                כתר הוא השורש העליון, מעל ההכרה, המקום שבו הרצון האלוקי מתגלה בתור כוח טמיר ונעלם שמכוון את כל המציאות.
+                מתוכו משתלשלות כל שאר הספירות.
+            </div>
+
+            <div class="section-title">תובנות רוחניות</div>
+            <ul class="tasks-list">
+                <li class="task-item">הרצון הפנימי ביותר, ההשתוקקות האינסופית של הנשמה לאלוקות</li>
+                <li class="task-item">הברק הראשוני של ההשגה האלוקית שטרם נתפס בשכל</li>
+                <li class="task-item">הרחבת ההבנה של הרצון העליון, עיבוד ההשראה האלוקית</li>
+                <li class="task-item">ההשפעה האינסופית הבאה מהרצון העליון</li>
+            </ul>
+
+            <div class="section-title">משימות מעשיות</div>
+            <ul class="tasks-list">
+                <li class="task-item">הגדרת מטרות גבוהות – להתחבר לרצון הפנימי ביותר שלך</li>
+                <li class="task-item">ללמוד ולחקור – לפתח הבנה מעמיקה של הדרך שלך</li>
+                <li class="task-item">לתת ולעזור – לא לשמור את הרצון לעצמך, אלא לחלוק עם העולם</li>
+                <li class="task-item">לשלוט על עצמך – להימנע מהתפזרות, להציב גבולות חכמים</li>
+                <li class="task-item">לפעול בהתמדה – לא להיכנע לקשיים, אלא להמשיך בדרך</li>
+            </ul>
+
+            <div class="reflection-box">
+                <div class="reflection-title">נקודות מפתח</div>
+                <div class="reflection-text">
+                    • כתר הוא המקום שבו הכול מתחיל<br>
+                    • קודם מופיע הרצון הטהור<br>
+                    • לאחר מכן מגיעה ההבנה<br>
+                    • זה מוביל להשפעה וגבולות<br>
+                    • משם מגיע איזון בין כוח לפעולה
+                </div>
+            </div>
+        </div>
+
+        <div class="left-side">
+            <div class="title">יומן אישי - כתר</div>
+
+            <div class="input-section">
+                <div class="input-title">חיבור לרצון העליון:</div>
+                <textarea class="input-field" style="min-height: 100px;" placeholder="מהו הרצון העמוק ביותר שלי?
+מה המטרה הגבוהה שאני שואף אליה?
+איך אני מרגיש את החיבור לאלוקות?"></textarea>
+            </div>
+
+            <div class="input-section">
+                <div class="input-title">תרגול יומי:</div>
+                <div class="checklist">
+                    <input type="checkbox" id="crown1"><label for="crown1">התבוננות פנימית</label><br>
+                    <input type="checkbox" id="crown2"><label for="crown2">חיבור למטרה הגבוהה</label><br>
+                    <input type="checkbox" id="crown3"><label for="crown3">לימוד והעמקה</label><br>
+                    <input type="checkbox" id="crown4"><label for="crown4">מעשה של נתינה</label><br>
+                    <input type="checkbox" id="crown5"><label for="crown5">תפילה והתבודדות</label>
+                </div>
+            </div>
+
+            <div class="input-section">
+                <div class="input-title">תובנות מהיום:</div>
+                <textarea class="input-field" style="min-height: 60px;" placeholder="מה למדתי היום על:
+- החיבור שלי לרצון העליון
+- המטרות הגבוהות שלי
+- הדרך להגשים אותן"></textarea>
+            </div>
+
+            <div class="reflection-box">
+                <div class="reflection-title">סיכום היום</div>
+                <div class="reflection-prompts">
+                    <p>רגעי חיבור משמעותיים:</p>
+                    <textarea class="input-field" style="min-height: 40px;"></textarea>
+                    <p>תובנות חדשות:</p>
+                    <textarea class="input-field" style="min-height: 40px;"></textarea>
+                    <p>יעדים להמשך:</p>
+                    <textarea class="input-field" style="min-height: 40px;"></textarea>
+                </div>
+            </div>
+
+            <div class="motivation-box"
+                style="text-align: center; margin-top: 20px; padding: 10px; background: #fff9e6; border-radius: 10px;">
+                <div style="font-weight: bold; margin-bottom: 10px;">מחשבה ליום</div>
+                <div>"כתר הוא הרצון הטהור שמניע את כל המציאות. התחבר אליו ותגלה את הכוח האמיתי שלך."</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- חכמה -->
+    <div class="page page-day2">
+        <div class="right-side">
+            <div class="day-header">
+                <div class="day-number" style="background: #3498db;">2</div>
+                <div class="day-title">חכמה - ההשראה והברק הראשוני 🧠</div>
+            </div>
+
+            <div class="explanation">
+                חכמה היא הברק הראשוני של ההשגה. היא אינה תהליך של עיבוד נתונים כמו בינה, אלא הופעה פתאומית של רעיון.
+                חכמה היא ה"נקודה" שממנה מתפתחת ההבנה כולה.
+            </div>
+
+            <div class="section-title">תובנות רוחניות</div>
+            <ul class="tasks-list">
+                <li class="task-item">מקור ההשראה, הניצוץ הראשוני של הרעיון</li>
+                <li class="task-item">החכמה במלוא עוצמתה, תפיסה בלתי אמצעית של המציאות</li>
+                <li class="task-item">ההתחלה של פירוק הרעיון הגדול לחלקים קטנים</li>
+                <li class="task-item">נתינת החכמה ללא סייג, גילוי אור אינסופי</li>
+            </ul>
+
+            <div class="section-title">משימות מעשיות</div>
+            <ul class="tasks-list">
+                <li class="task-item">הקשב לאינטואיציה שלך – הרבה תובנות מגיעות בלי לחשוב עליהן יותר מדי</li>
+                <li class="task-item">למד לזהות רגעי הארה – כשעולה לך רעיון מבריק, רשום אותו לפני שיישכח</li>
+                <li class="task-item">אל תמהר לדבר – חקור קודם</li>
+                <li class="task-item">השתמש בחכמה כדי לתת – למד אחרים, עזור להם להבין דברים חדשים</li>
+                <li class="task-item">אל תתפזר – התפקס על עיקרי הדברים</li>
+            </ul>
+
+            <div class="reflection-box">
+                <div class="reflection-title">נקודות מפתח</div>
+                <div class="reflection-text">
+                    • חכמה היא השלב הראשון אחרי הכתר<br>
+                    • היא לא דורשת מחשבה עמוקה – היא פשוט מופיעה<br>
+                    • מתוך החכמה, אפשר לבנות הבנה<br>
+                    • החכמה דורשת גם ענווה ונחישות<br>
+                    • צריך לתרגם את החכמה למעשים
+                </div>
+            </div>
+        </div>
+
+        <div class="left-side">
+            <div class="title">יומן אישי - חכמה</div>
+
+            <div class="input-section">
+                <div class="input-title">תובנות והארות:</div>
+                <textarea class="input-field" style="min-height: 100px;" placeholder="אילו רעיונות חדשים הופיעו היום?
+מה הבנתי פתאום בצורה ברורה?
+איזה ניצוץ של הבנה קיבלתי?"></textarea>
+            </div>
+
+            <div class="input-section">
+                <div class="input-title">תרגול יומי:</div>
+                <div class="checklist">
+                    <input type="checkbox" id="wisdom1"><label for="wisdom1">הקשבה לאינטואיציה</label><br>
+                    <input type="checkbox" id="wisdom2"><label for="wisdom2">רישום תובנות</label><br>
+                    <input type="checkbox" id="wisdom3"><label for="wisdom3">לימוד חדש</label><br>
+                    <input type="checkbox" id="wisdom4"><label for="wisdom4">שיתוף ידע עם אחרים</label><br>
+                    <input type="checkbox" id="wisdom5"><label for="wisdom5">התבוננות בתובנות</label>
+                </div>
+            </div>
+
+            <div class="input-section">
+                <div class="input-title">יישום החכמה:</div>
+                <textarea class="input-field" style="min-height: 60px;" placeholder="איך אני מתכוון ליישם את התובנות שקיבלתי?
+מה אני יכול ללמד אחרים?
+איך אני יכול להפוך את ההבנה למעשים?"></textarea>
+            </div>
+
+            <div class="reflection-box">
+                <div class="reflection-title">סיכום היום</div>
+                <div class="reflection-prompts">
+                    <p>רגעי הארה משמעותיים:</p>
+                    <textarea class="input-field" style="min-height: 40px;"></textarea>
+                    <p>דברים חדשים שלמדתי:</p>
+                    <textarea class="input-field" style="min-height: 40px;"></textarea>
+                    <p>תוכניות ליישום:</p>
+                    <textarea class="input-field" style="min-height: 40px;"></textarea>
+                </div>
+            </div>
+
+            <div class="motivation-box"
+                style="text-align: center; padding: 10px; background: #e8f4f8; border-radius: 10px;">
+                <div style="font-weight: bold; margin-bottom: 10px;">מחשבה ליום</div>
+                <div>"החכמה היא הניצוץ הראשון של האור האלוקי. פתח את ליבך לקבל את ההארה."</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- בינה -->
+    <div class="page page-day3">
+        <div class="right-side">
+            <div class="day-header">
+                <div class="day-number" style="background: #2ecc71;">3</div>
+                <div class="day-title">בינה - ההבנה המעמיקה ופירוק החכמה לחלקים פרקטיים 🏛</div>
+            </div>
+
+            <div class="explanation">
+                בינה היא כוח הניתוח, העיבוד וההבנה. אם חכמה היא ה"ברק" של הרעיון, בינה היא זו שלוקחת את הרעיון ומפתחת
+                אותו לפרטים ברורים ומעשיים. זוהי היכולת להעמיק, להקיף, להסיק מסקנות ולהפוך מידע להבנה אמיתית.
+            </div>
+
+            <div class="section-title">תובנות רוחניות</div>
+            <ul class="tasks-list">
+                <li class="task-item">הרצון להבין לעומק, השתוקקות להשגת חכמה שלמה</li>
+                <li class="task-item">ההברקה הראשונית בתוך התהליך האנליטי</li>
+                <li class="task-item">כוח העומק של הבינה, הרחבת החכמה לרמות רבות של הבנה</li>
+                <li class="task-item">היכולת להרחיב ולהעניק את ההבנה לאחרים</li>
+            </ul>
+
+            <div class="section-title">משימות מעשיות</div>
+            <ul class="tasks-list">
+                <li class="task-item">חקור נושאים לעומק – אל תסתפק בהבנה שטחית</li>
+                <li class="task-item">אל תקבל מידע כמובן מאליו – שאל, נתח, בחן</li>
+                <li class="task-item">שתף את החכמה שלך – למידה אמיתית מגיעה כשאתה מלמד</li>
+                <li class="task-item">דע לסנן מידע – התמקד בעיקר</li>
+                <li class="task-item">שמור על איזון בין למידה לעשייה</li>
+            </ul>
+
+            <div class="reflection-box">
+                <div class="reflection-title">נקודות מפתח</div>
+                <div class="reflection-text">
+                    • בינה היא השלב שבו רעיונות מתפתחים להבנה<br>
+                    • ככל שמעמיקים יותר, כך מדייקים יותר<br>
+                    • הבינה דורשת איזון בין ניתוח לעשייה<br>
+                    • חשוב לתרגם את ההבנה למעשים<br>
+                    • הבינה מתחזקת דרך לימוד והוראה
+                </div>
+            </div>
+        </div>
+
+        <div class="left-side">
+            <div class="title">יומן אישי - בינה</div>
+
+            <div class="input-section">
+                <div class="input-title">העמקה והבנה:</div>
+                <textarea class="input-field" style="min-height: 100px;" placeholder="מה הבנתי היום לעומק?
+        איך התפתחה ההבנה שלי?
+        אילו קשרים חדשים גיליתי?"></textarea>
+            </div>
+
+            <div class="input-section">
+                <div class="input-title">תרגול יומי:</div>
+                <div class="checklist">
+                    <input type="checkbox" id="understanding1"><label for="understanding1">לימוד מעמיק</label><br>
+                    <input type="checkbox" id="understanding2"><label for="understanding2">ניתוח והסקת
+                        מסקנות</label><br>
+                    <input type="checkbox" id="understanding3"><label for="understanding3">הסברה לאחרים</label><br>
+                    <input type="checkbox" id="understanding4"><label for="understanding4">יישום מעשי</label><br>
+                    <input type="checkbox" id="understanding5"><label for="understanding5">כתיבת תובנות</label>
+                </div>
+            </div>
+
+            <div class="input-section">
+                <div class="input-title">יישום ההבנה:</div>
+                <textarea class="input-field" style="min-height: 60px;" placeholder="איך אני מתכוון ליישם את מה שהבנתי?
+        למי אני יכול להסביר את התובנות שלי?
+        איך אני יכול להפוך את ההבנה למעשים?"></textarea>
+            </div>
+
+            <div class="reflection-box">
+                <div class="reflection-title">סיכום היום</div>
+                <div class="reflection-prompts">
+                    <p>תובנות עמוקות:</p>
+                    <textarea class="input-field" style="min-height: 40px;"></textarea>
+                    <p>קשרים חדשים שגיליתי:</p>
+                    <textarea class="input-field" style="min-height: 40px;"></textarea>
+                    <p>תוכניות ליישום:</p>
+                    <textarea class="input-field" style="min-height: 40px;"></textarea>
+                </div>
+            </div>
+
+            <div class="motivation-box"
+                style="text-align: center; padding: 8px; background: #e8f6e8; border-radius: 8px;">
+                <div style="font-weight: bold; margin-bottom: 6px;">מחשבה ליום</div>
+                <div>"בינה היא הכוח להפוך רעיון למציאות. העמק בהבנה והפוך אותה לחלק מחייך."</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- חסד -->
+    <div class="page page-day4">
+        <div class="right-side">
+            <div class="day-header">
+                <div class="day-number" style="background: #9b59b6;">4</div>
+                <div class="day-title">חסד - השפעה אינסופית ואהבה ללא תנאי ❤️</div>
+            </div>
+
+            <div class="explanation">
+                חסד הוא הספירה שמבטאת נתינה, אהבה, והתרחבות אינסופית. אם חכמה היא נקודת ההברקה הראשונית ובינה היא עיבוד
+                הרעיון, הרי שחסד הוא השלב שבו התובנות יוצאות מהכוח אל הפועל – על ידי השפעה ונתינה לזולת.
+            </div>
+
+            <div class="section-title">תובנות רוחניות</div>
+            <ul class="tasks-list">
+                <li class="task-item">אהבה אינסופית, נתינה ברמה האלוקית</li>
+                <li class="task-item">חסד חכם, נתינה ממוקדת ונבונה</li>
+                <li class="task-item">הרחבת הנתינה, חשיבה איך לעזור בצורה מיטבית</li>
+                <li class="task-item">נתינה מתוך חיבור עמוק ואכפתיות אמיתית</li>
+            </ul>
+
+            <div class="section-title">משימות מעשיות</div>
+            <ul class="tasks-list">
+                <li class="task-item">עשה חסד עם אחרים ללא אינטרסים</li>
+                <li class="task-item">למד לזהות היכן חסר חסד</li>
+                <li class="task-item">תן מתוך חכמה – נתינה חכמה היא זו שעוזרת באמת</li>
+                <li class="task-item">הצב גבולות לנתינה – נתינה בלי גבול יכולה להזיק</li>
+                <li class="task-item">התמד בעזרה – אל תיתן רק כשנוח לך</li>
+            </ul>
+
+            <div class="reflection-box">
+                <div class="reflection-title">נקודות מפתח</div>
+                <div class="reflection-text">
+                    • חסד הוא הכוח שיוצא מעולם הרעיונות אל המעשה<br>
+                    • כדי לתת נכון, צריך איזון<br>
+                    • חסד אמיתי מתמיד לאורך זמן<br>
+                    • נתינה חכמה היא זו שעוזרת באמת<br>
+                    • חסד צריך להיות מתוך ענווה
+                </div>
+            </div>
+        </div>
+
+        <div class="left-side">
+            <div class="title">יומן אישי - חסד</div>
+
+            <div class="input-section">
+                <div class="input-title">מעשי חסד:</div>
+                <textarea class="input-field" style="min-height: 100px;" placeholder="אילו מעשי חסד עשיתי היום?
+למי עזרתי?
+איך הרגשתי כשנתתי?"></textarea>
+            </div>
+
+            <div class="input-section">
+                <div class="input-title">תרגול יומי:</div>
+                <div class="checklist">
+                    <input type="checkbox" id="kindness1"><label for="kindness1">נתינה ללא תמורה</label><br>
+                    <input type="checkbox" id="kindness2"><label for="kindness2">עזרה לזולת</label><br>
+                    <input type="checkbox" id="kindness3"><label for="kindness3">הקשבה ותמיכה</label><br>
+                    <input type="checkbox" id="kindness4"><label for="kindness4">שיתוף והשפעה</label><br>
+                    <input type="checkbox" id="kindness5"><label for="kindness5">התנדבות</label>
+                </div>
+            </div>
+
+            <div class="input-section">
+                <div class="input-title">תכנון נתינה:</div>
+                <textarea class="input-field" style="min-height: 60px;" placeholder="איך אני יכול לתת יותר מחר?
+למי אני יכול לעזור?
+איזה סוג של עזרה נדרשת?"></textarea>
+            </div>
+
+            <div class="reflection-box">
+                <div class="reflection-title">סיכום היום</div>
+                <div class="reflection-prompts">
+                    <p>השפעות חיוביות:</p>
+                    <textarea class="input-field" style="min-height: 40px;"></textarea>
+                    <p>תובנות על נתינה:</p>
+                    <textarea class="input-field" style="min-height: 40px;"></textarea>
+                    <p>תוכניות לנתינה:</p>
+                    <textarea class="input-field" style="min-height: 40px;"></textarea>
+                </div>
+            </div>
+
+            <div class="motivation-box"
+                style="text-align: center; padding: 8px; background: #f4e8f8; border-radius: 8px;">
+                <div style="font-weight: bold; margin-bottom: 6px;">מחשבה ליום</div>
+                <div>"חסד הוא הדרך שבה אהבת ה' מתגלה בעולם. היה צינור להשפעה זו."</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- גבורה -->
+    <div class="page page-day5">
+        <div class="right-side">
+            <div class="day-header">
+                <div class="day-number" style="background: #1abc9c;">5</div>
+                <div class="day-title">גבורה - הכוח להציב גבולות ולשלוט בעצמך ⚔</div>
+            </div>
+
+            <div class="explanation">
+                גבורה היא הכוח של שליטה עצמית, משמעת פנימית ויכולת להציב גבולות. בעוד חסד הוא נתינה בלי גבול, גבורה
+                מאזנת את החסד ומוודאת שהנתינה תהיה במקום הנכון ובמידה הנכונה.
+            </div>
+
+            <div class="section-title">תובנות רוחניות</div>
+            <ul class="tasks-list">
+                <li class="task-item">כוח המשמעת האלוקית, שליטה מוחלטת על הרצון</li>
+                <li class="task-item">הבחנה חכמה איפה לשים גבולות</li>
+                <li class="task-item">הבנת הצורך בגבולות, חיזוק ההבנה הפנימית</li>
+                <li class="task-item">גבורה מתוך אהבה ולא מתוך אכזריות</li>
+            </ul>
+
+            <div class="section-title">משימות מעשיות</div>
+            <ul class="tasks-list">
+                <li class="task-item">להציב גבולות לעצמך – לא הכל צריך להיות זמין בכל רגע</li>
+                <li class="task-item">לשלוט במילים שלך – לא להגיב מיד מתוך כעס</li>
+                <li class="task-item">להתאמן על דחיית סיפוקים</li>
+                <li class="task-item">להיות נאמן לערכים שלך גם כשזה קשה</li>
+                <li class="task-item">לשלב חסד בתוך הגבורה – לא להיות קשה מדי</li>
+            </ul>
+
+            <div class="reflection-box">
+                <div class="reflection-title">נקודות מפתח</div>
+                <div class="reflection-text">
+                    • גבורה היא לא להילחם נגד אחרים – אלא לנצח את עצמך<br>
+                    • היא הכוח הפנימי לעמוד על האמת שלך<br>
+                    • הגבורה האמיתית היא לדעת מתי לעצור<br>
+                    • גבורה בלי חסד יכולה להפוך לנוקשות<br>
+                    • גבורה אמיתית באה מתוך אהבה
+                </div>
+            </div>
+        </div>
+
+        <div class="left-side">
+            <div class="title">יומן אישי - גבורה</div>
+
+            <div class="input-section">
+                <div class="input-title">שליטה עצמית:</div>
+                <textarea class="input-field" style="min-height: 100px;" placeholder="באילו מצבים הצלחתי לשלוט בעצמי?
+איך התגברתי על פיתויים?
+מה עזר לי להתגבר?"></textarea>
+            </div>
+
+            <div class="input-section">
+                <div class="input-title">תרגול יומי:</div>
+                <div class="checklist">
+                    <input type="checkbox" id="strength1"><label for="strength1">הצבת גבולות</label><br>
+                    <input type="checkbox" id="strength2"><label for="strength2">שליטה בדיבור</label><br>
+                    <input type="checkbox" id="strength3"><label for="strength3">התגברות על פיתוי</label><br>
+                    <input type="checkbox" id="strength4"><label for="strength4">עמידה על עקרונות</label><br>
+                    <input type="checkbox" id="strength5"><label for="strength5">איזון בין תקיפות לרכות</label>
+                </div>
+            </div>
+
+            <div class="input-section">
+                <div class="input-title">תכנון גבולות:</div>
+                <textarea class="input-field" style="min-height: 60px;" placeholder="אילו גבולות אני צריך להציב?
+איפה אני צריך יותר משמעת?
+איך אשמור על איזון נכון?"></textarea>
+            </div>
+
+            <div class="reflection-box">
+                <div class="reflection-title">סיכום היום</div>
+                <div class="reflection-prompts">
+                    <p>ניצחונות על היצר:</p>
+                    <textarea class="input-field" style="min-height: 40px;"></textarea>
+                    <p>תובנות על גבורה:</p>
+                    <textarea class="input-field" style="min-height: 40px;"></textarea>
+                    <p>תוכניות לחיזוק:</p>
+                    <textarea class="input-field" style="min-height: 40px;"></textarea>
+                </div>
+            </div>
+
+            <div class="motivation-box"
+                style="text-align: center; padding: 8px; background: #e8f6f4; border-radius: 8px;">
+                <div style="font-weight: bold; margin-bottom: 6px;">מחשבה ליום</div>
+                <div>"הגיבור האמיתי הוא מי ששולט ברוחו. גלה את הכוח הפנימי שלך."</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- תפארת -->
+    <div class="page page-day6">
+        <div class="right-side">
+            <div class="day-header">
+                <div class="day-number" style="background: #e67e22;">6</div>
+                <div class="day-title">תפארת - איזון בין חסד וגבורה, היופי של האמת 🎨</div>
+            </div>
+
+            <div class="explanation">
+                תפארת היא הספירה שמביאה הרמוניה בין נתינה (חסד) לבין שליטה והצבת גבולות (גבורה). אם חסד הוא אהבה
+                אינסופית וגבורה היא משמעת ונחישות, תפארת היא האיזון המושלם ביניהם – היופי של האמת, ההרמוניה של ההנהגה
+                האלוקית.
+            </div>
+
+            <div class="section-title">תובנות רוחניות</div>
+            <ul class="tasks-list">
+                <li class="task-item">איזון אלוקי מושלם, אמת גבוהה</li>
+                <li class="task-item">הבנה פתאומית איך לשלב בין חסד לגבורה</li>
+                <li class="task-item">היכולת להבין איך ומתי להיות רך ומתי להיות תקיף</li>
+                <li class="task-item">איזון שמבוסס על חמלה ורצון להיטיב</li>
+            </ul>
+
+            <div class="section-title">משימות מעשיות</div>
+            <ul class="tasks-list">
+                <li class="task-item">למצוא איזון בהחלטות – לא ללכת רק עם הרגש או רק עם השכל</li>
+                <li class="task-item">לדבר אמת בצורה מכובדת</li>
+                <li class="task-item">להקשיב לשני הצדדים לפני החלטה</li>
+                <li class="task-item">לשאוף להרמוניה במערכות יחסים</li>
+                <li class="task-item">להיות גשר בין אנשים שונים</li>
+            </ul>
+
+            <div class="reflection-box">
+                <div class="reflection-title">נקודות מפתח</div>
+                <div class="reflection-text">
+                    • תפארת היא לדעת איך לשלב חסד וגבורה<br>
+                    • תפארת היא האמת המוצגת בצורה יפה<br>
+                    • אדם עם תפארת יודע מתי להיות חזק ומתי רך<br>
+                    • תפארת היא דרך חיים, לא רק תוצאה<br>
+                    • תפארת מביאה הרמוניה לעולם
+                </div>
+            </div>
+        </div>
+
+        <div class="left-side">
+            <div class="title">יומן אישי - תפארת</div>
+
+            <div class="input-section">
+                <div class="input-title">איזון והרמוניה:</div>
+                <textarea class="input-field" style="min-height: 100px;" placeholder="איך מצאתי איזון היום?
+    איך שילבתי בין רכות לתקיפות?
+    איך הבאתי הרמוניה למצבים מורכבים?"></textarea>
+            </div>
+
+            <div class="input-section">
+                <div class="input-title">תרגול יומי:</div>
+                <div class="checklist">
+                    <input type="checkbox" id="beauty1"><label for="beauty1">מציאת איזון</label><br>
+                    <input type="checkbox" id="beauty2"><label for="beauty2">דיבור מאוזן</label><br>
+                    <input type="checkbox" id="beauty3"><label for="beauty3">הקשבה לשני צדדים</label><br>
+                    <input type="checkbox" id="beauty4"><label for="beauty4">יצירת הרמוניה</label><br>
+                    <input type="checkbox" id="beauty5"><label for="beauty5">גישור בין אנשים</label>
+                </div>
+            </div>
+
+            <div class="input-section">
+                <div class="input-title">תכנון איזון:</div>
+                <textarea class="input-field" style="min-height: 60px;" placeholder="איפה אני צריך יותר איזון?
+    איך אוכל להביא יותר הרמוניה?
+    מה יעזור לי למצוא את דרך האמצע?"></textarea>
+            </div>
+
+            <div class="reflection-box">
+                <div class="reflection-title">סיכום היום</div>
+                <div class="reflection-prompts">
+                    <p>רגעי איזון:</p>
+                    <textarea class="input-field" style="min-height: 40px;"></textarea>
+                    <p>תובנות על הרמוניה:</p>
+                    <textarea class="input-field" style="min-height: 40px;"></textarea>
+                    <p>תוכניות לאיזון:</p>
+                    <textarea class="input-field" style="min-height: 40px;"></textarea>
+                </div>
+            </div>
+
+            <div class="motivation-box"
+                style="text-align: center; padding: 8px; background: #fdf1e8; border-radius: 8px;">
+                <div style="font-weight: bold; margin-bottom: 6px;">מחשבה ליום</div>
+                <div>"תפארת היא היופי שבאמת. מצא את האיזון המושלם בין אהבה לגבולות."</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- נצח -->
+    <div class="page page-day7">
+        <div class="right-side">
+            <div class="day-header">
+                <div class="day-number" style="background: #34495e;">7</div>
+                <div class="day-title">נצח - הכוח לנצח ולהתמיד למרות כל המכשולים 🏆</div>
+            </div>
+
+            <div class="explanation">
+                נצח הוא כוח ההתמדה, הניצחון והיכולת לא לוותר לעולם. אם תפארת היא האיזון, נצח הוא הנחישות להחזיק באמת
+                ולהמשיך בדרך למרות הקשיים. זו הסבלנות להיאבק, היכולת לשרוד ולהתעלות על כל מכשול בדרך להגשמת השליחות.
+            </div>
+
+            <div class="section-title">תובנות רוחניות</div>
+            <ul class="tasks-list">
+                <li class="task-item">התמדה שמגיעה מחיבור לאינסוף</li>
+                <li class="task-item">הברקה של אמונה שנותנת כוח לנצח</li>
+                <li class="task-item">הבנת חשיבות ההתמדה והדרך הארוכה</li>
+                <li class="task-item">התמדה מתוך אהבה, לא רק מתוך מאבק</li>
+            </ul>
+
+            <div class="section-title">משימות מעשיות</div>
+            <ul class="tasks-list">
+                <li class="task-item">לא לוותר כשקשה – אם יש לך מטרה, תחזיק בה</li>
+                <li class="task-item">לבנות משמעת חזקה – להכניס הרגלים של התמדה</li>
+                <li class="task-item">ללמוד מהכישלונות ולהמשיך</li>
+                <li class="task-item">לא לתת לייאוש מקום</li>
+                <li class="task-item">להישאר עם ראש למעלה גם ברגעי קושי</li>
+            </ul>
+
+            <div class="reflection-box">
+                <div class="reflection-title">נקודות מפתח</div>
+                <div class="reflection-text">
+                    • נצח הוא לא להיות הכי חזק – אלא להמשיך<br>
+                    • נצח זה לדעת שאם נפלתי, אני קם שוב<br>
+                    • הניצחון האמיתי הוא להיות נאמן לאמת<br>
+                    • נצח דורש סבלנות והתמדה<br>
+                    • כל נפילה היא הזדמנות לצמיחה
+                </div>
+            </div>
+        </div>
+
+        <div class="left-side">
+            <div class="title">יומן אישי - נצח</div>
+
+            <div class="input-section">
+                <div class="input-title">התמדה וניצחון:</div>
+                <textarea class="input-field" style="min-height: 100px;" placeholder="במה התמדתי היום?
+איך התגברתי על קשיים?
+מה נתן לי כוח להמשיך?"></textarea>
+            </div>
+
+            <div class="input-section">
+                <div class="input-title">תרגול יומי:</div>
+                <div class="checklist">
+                    <input type="checkbox" id="victory1"><label for="victory1">התמדה במשימה</label><br>
+                    <input type="checkbox" id="victory2"><label for="victory2">התגברות על קושי</label><br>
+                    <input type="checkbox" id="victory3"><label for="victory3">למידה מכישלון</label><br>
+                    <input type="checkbox" id="victory4"><label for="victory4">חיזוק המשמעת</label><br>
+                    <input type="checkbox" id="victory5"><label for="victory5">שמירה על אופטימיות</label>
+                </div>
+            </div>
+
+            <div class="input-section">
+                <div class="input-title">תכנון התמדה:</div>
+                <textarea class="input-field" style="min-height: 60px;" placeholder="במה אני רוצה להתמיד?
+איך אתגבר על מכשולים?
+מה יעזור לי לא לוותר?"></textarea>
+            </div>
+
+            <div class="reflection-box">
+                <div class="reflection-title">סיכום היום</div>
+                <div class="reflection-prompts">
+                    <p>ניצחונות היום:</p>
+                    <textarea class="input-field" style="min-height: 40px;"></textarea>
+                    <p>לקחים מאתגרים:</p>
+                    <textarea class="input-field" style="min-height: 40px;"></textarea>
+                    <p>תוכניות להתמדה:</p>
+                    <textarea class="input-field" style="min-height: 40px;"></textarea>
+                </div>
+            </div>
+
+            <div class="motivation-box"
+                style="text-align: center; padding: 8px; background: #f0f2f4; border-radius: 8px;">
+                <div style="font-weight: bold; margin-bottom: 6px;">מחשבה ליום</div>
+                <div>"הניצחון האמיתי הוא בהתמדה. המשך בדרכך ואל תוותר."</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- הוד -->
+    <div class="page page-day8">
+        <div class="right-side">
+            <div class="day-header">
+                <div class="day-number" style="background: #8e44ad;">8</div>
+                <div class="day-title">הוד - הענווה שבקבלת האמת והכרת מקומך 🙏</div>
+            </div>
+
+            <div class="explanation">
+                הוד הוא היכולת להכיר באמת, להוריד את האגו ולפעול מתוך ענווה. אם נצח הוא ההתמדה והניצחון, הוד הוא לדעת
+                מתי להרכין ראש ולהכיר בכוח שמעבר לנו. הוד הוא הכוח לדעת שאין לי שליטה על הכל – אבל יש לי שליחות בתוך מה
+                שה' נותן לי.
+            </div>
+
+            <div class="section-title">תובנות רוחניות</div>
+            <ul class="tasks-list">
+                <li class="task-item">ענווה מוחלטת מתוך חיבור לה'</li>
+                <li class="task-item">תובנה מפתיעה על מקומי בעולם</li>
+                <li class="task-item">ניתוח עמוק של הענווה</li>
+                <li class="task-item">קבלת האמת מתוך אהבה</li>
+            </ul>
+
+            <div class="section-title">משימות מעשיות</div>
+            <ul class="tasks-list">
+                <li class="task-item">להיות מסוגל להגיד "לא יודע"</li>
+                <li class="task-item">לקבל ביקורת בלי להתגונן</li>
+                <li class="task-item">להקשיב באמת לאחרים</li>
+                <li class="task-item">לא להתרגש יותר מדי מהשבחים</li>
+                <li class="task-item">לזכור שכל הכישרונות הם מתנה מלמעלה</li>
+            </ul>
+
+            <div class="reflection-box">
+                <div class="reflection-title">נקודות מפתח</div>
+                <div class="reflection-text">
+                    • הוד זה לדעת להכיר במציאות בלי אגו<br>
+                    • הוד זה לדעת לתת מקום לאחרים<br>
+                    • הוד הוא ההבנה שלא הכל תלוי בי<br>
+                    • ענווה היא כוח, לא חולשה<br>
+                    • הוד מביא שלווה פנימית
+                </div>
+            </div>
+        </div>
+
+        <div class="left-side">
+            <div class="title">יומן אישי - הוד</div>
+
+            <div class="input-section">
+                <div class="input-title">ענווה וקבלה:</div>
+                <textarea class="input-field" style="min-height: 100px;" placeholder="איך הורדתי את האגו היום?
+איך קיבלתי את המציאות?
+מה למדתי מאחרים?"></textarea>
+            </div>
+
+            <div class="input-section">
+                <div class="input-title">תרגול יומי:</div>
+                <div class="checklist">
+                    <input type="checkbox" id="humility1"><label for="humility1">הודאה בטעות</label><br>
+                    <input type="checkbox" id="humility2"><label for="humility2">הקשבה לאחרים</label><br>
+                    <input type="checkbox" id="humility3"><label for="humility3">קבלת ביקורת</label><br>
+                    <input type="checkbox" id="humility4"><label for="humility4">הכרת תודה</label><br>
+                    <input type="checkbox" id="humility5"><label for="humility5">ויתור על כבוד</label>
+                </div>
+            </div>
+
+            <div class="input-section">
+                <div class="input-title">תכנון ענווה:</div>
+                <textarea class="input-field" style="min-height: 60px;" placeholder="איפה אני צריך יותר ענווה?
+איך אוכל לתת יותר מקום לאחרים?
+מה יעזור לי להוריד את האגו?"></textarea>
+            </div>
+
+            <div class="reflection-box">
+                <div class="reflection-title">סיכום היום</div>
+                <div class="reflection-prompts">
+                    <p>רגעי ענווה:</p>
+                    <textarea class="input-field" style="min-height: 40px;"></textarea>
+                    <p>תובנות על קבלה:</p>
+                    <textarea class="input-field" style="min-height: 40px;"></textarea>
+                    <p>תוכניות לענווה:</p>
+                    <textarea class="input-field" style="min-height: 40px;"></textarea>
+                </div>
+            </div>
+
+            <div class="motivation-box"
+                style="text-align: center; padding: 8px; background: #f4e8f8; border-radius: 8px;">
+                <div style="font-weight: bold; margin-bottom: 6px;">מחשבה ליום</div>
+                <div>"הענווה האמיתית היא לדעת את מקומך המדויק - לא יותר ולא פחות."</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- יסוד -->
+    <div class="page page-day9">
+        <div class="right-side">
+            <div class="day-header">
+                <div class="day-number" style="background: #16a085;">9</div>
+                <div class="day-title">יסוד - החיבור בין הרוח לחומר 🔗</div>
+            </div>
+
+            <div class="explanation">
+                יסוד הוא הכוח לחבר בין עולמות – להפוך רוחניות למציאות, להפוך ידע למעשה, לחבר נשמות. אם הוד הוא הענווה
+                לקבל, יסוד הוא האחריות לתת ולהעביר הלאה. אם תפארת היא היופי המאוזן, יסוד הוא מה שמחבר את כל היופי
+                למציאות הפרקטית.
+            </div>
+
+            <div class="section-title">תובנות רוחניות</div>
+            <ul class="tasks-list">
+                <li class="task-item">חיבור מוחלט בין שמים לארץ</li>
+                <li class="task-item">רעיון גדול שפתאום מקבל צורה ברורה לביצוע</li>
+                <li class="task-item">לדעת איך להפוך רעיון טוב למציאות מאורגנת</li>
+                <li class="task-item">להעניק מעצמך באמת לאחרים ולחבר אותם אליך</li>
+            </ul>
+
+            <div class="section-title">משימות מעשיות</div>
+            <ul class="tasks-list">
+                <li class="task-item">לעשות, לא רק לדבר</li>
+                <li class="task-item">לשמור על טהרת העיניים והמחשבה</li>
+                <li class="task-item">להיות אדם שאפשר לסמוך עליו</li>
+                <li class="task-item">לעזור לאחרים להתחבר לעצמם</li>
+                <li class="task-item">לפתח הרגלים טובים שמחזקים את הקשר בין הרוח לחומר</li>
+            </ul>
+
+            <div class="reflection-box">
+                <div class="reflection-title">נקודות מפתח</div>
+                <div class="reflection-text">
+                    • יסוד זה לא רק להבין – אלא להפוך הבנה למציאות<br>
+                    • יסוד זה להיות אדם שאפשר לסמוך עליו<br>
+                    • יסוד זה ליצור חיבורים אמיתיים<br>
+                    • בלי יסוד, כל המידות נשארות תיאורטיות<br>
+                    • יסוד הוא הגשר בין הכוח הפנימי לפעולה
+                </div>
+            </div>
+        </div>
+
+        <div class="left-side">
+            <div class="title">יומן אישי - יסוד</div>
+
+            <div class="input-section">
+                <div class="input-title">חיבור ויישום:</div>
+                <textarea class="input-field" style="min-height: 100px;" placeholder="איך הפכתי רעיונות למעשים?
+איך יצרתי חיבורים משמעותיים?
+מה עשיתי כדי להיות אמין יותר?"></textarea>
+            </div>
+
+            <div class="input-section">
+                <div class="input-title">תרגול יומי:</div>
+                <div class="checklist">
+                    <input type="checkbox" id="foundation1"><label for="foundation1">יישום מעשי</label><br>
+                    <input type="checkbox" id="foundation2"><label for="foundation2">שמירת הבטחות</label><br>
+                    <input type="checkbox" id="foundation3"><label for="foundation3">יצירת חיבורים</label><br>
+                    <input type="checkbox" id="foundation4"><label for="foundation4">טהרת המחשבה</label><br>
+                    <input type="checkbox" id="foundation5"><label for="foundation5">בניית אמון</label>
+                </div>
+            </div>
+
+            <div class="input-section">
+                <div class="input-title">תכנון יישום:</div>
+                <textarea class="input-field" style="min-height: 60px;" placeholder="איך אוכל ליישם יותר?
+איך אחזק את האמינות שלי?
+איך אבנה חיבורים חזקים יותר?"></textarea>
+            </div>
+
+            <div class="reflection-box">
+                <div class="reflection-title">סיכום היום</div>
+                <div class="reflection-prompts">
+                    <p>יישומים מוצלחים:</p>
+                    <textarea class="input-field" style="min-height: 40px;"></textarea>
+                    <p>חיבורים שנוצרו:</p>
+                    <textarea class="input-field" style="min-height: 40px;"></textarea>
+                    <p>תוכניות ליישום:</p>
+                    <textarea class="input-field" style="min-height: 40px;"></textarea>
+                </div>
+            </div>
+
+            <div class="motivation-box"
+                style="text-align: center; padding: 8px; background: #e8f6f4; border-radius: 8px;">
+                <div style="font-weight: bold; margin-bottom: 6px;">מחשבה ליום</div>
+                <div>"היסוד הוא הכוח להפוך חלומות למציאות. היה אדם של אמת ומעשים."</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- מלכות -->
+    <div class="page page-day10">
+        <div class="right-side">
+            <div class="day-header">
+                <div class="day-number" style="background: #2c3e50;">10</div>
+                <div class="day-title">מלכות - הביטוי הסופי של כל הכוחות במציאות 👑</div>
+            </div>
+
+            <div class="explanation">
+                מלכות היא התוצאה, ההגשמה, הביטוי המעשי של כל מה שבנינו. אם כתר הוא הרצון הראשוני, מלכות היא המימוש
+                הסופי. אם יסוד הוא החיבור, מלכות היא ההתגלות של החיבור הזה בעולם. מלכות היא האחריות להביא אור לעולם,
+                ליצור מציאות שמביעה את האלוקות.
+            </div>
+
+            <div class="section-title">תובנות רוחניות</div>
+            <ul class="tasks-list">
+                <li class="task-item">שליחות אלוקית עליונה</li>
+                <li class="task-item">תובנה שמכתיבה הנהגה נכונה</li>
+                <li class="task-item">הבנה עמוקה של המציאות והאחריות עליה</li>
+                <li class="task-item">חיבור עמוק בין הנהגה לרגש</li>
+            </ul>
+
+            <div class="section-title">משימות מעשיות</div>
+            <ul class="tasks-list">
+                <li class="task-item">לקחת אחריות על המציאות שלך</li>
+                <li class="task-item">לגלות את האור שבך ולהקרין אותו לסביבה</li>
+                <li class="task-item">לא לחפש שליטה – אלא השראה</li>
+                <li class="task-item">להבין שכל הכוחות שלך הם שליחות מאלוקים</li>
+                <li class="task-item">ליצור מציאות שמבטאת את הערכים שלך</li>
+            </ul>
+
+            <div class="reflection-box">
+                <div class="reflection-title">נקודות מפתח</div>
+                <div class="reflection-text">
+                    • מלכות היא לא שליטה – אלא השפעה<br>
+                    • מלכות היא לא כוח חיצוני – אלא עוצמה פנימית<br>
+                    • מלכות היא לא רק הנהגה – אלא שליחות<br>
+                    • מלכות דורשת אחריות גדולה<br>
+                    • מלכות היא הביטוי המושלם של כל הספירות
+                </div>
+            </div>
+        </div>
+
+        <div class="left-side">
+            <div class="title">יומן אישי - מלכות</div>
+
+            <div class="input-section">
+                <div class="input-title">מימוש והשפעה:</div>
+                <textarea class="input-field" style="min-height: 100px;" placeholder="איך השפעתי על המציאות?
+איך הבאתי אור לעולם?
+איך מימשתי את השליחות שלי?"></textarea>
+            </div>
+
+            <div class="input-section">
+                <div class="input-title">תרגול יומי:</div>
+                <div class="checklist">
+                    <input type="checkbox" id="kingdom1"><label for="kingdom1">לקיחת אחריות</label><br>
+                    <input type="checkbox" id="kingdom2"><label for="kingdom2">השפעה חיובית</label><br>
+                    <input type="checkbox" id="kingdom3"><label for="kingdom3">מנהיגות מתוך אהבה</label><br>
+                    <input type="checkbox" id="kingdom4"><label for="kingdom4">יצירת מציאות טובה</label><br>
+                    <input type="checkbox" id="kingdom5"><label for="kingdom5">הקרנת אור</label>
+                </div>
+            </div>
+
+            <div class="input-section">
+                <div class="input-title">תכנון מימוש:</div>
+                <textarea class="input-field" style="min-height: 60px;" placeholder="איך אוכל להשפיע יותר?
+איך אממש את הפוטנציאל שלי?
+איך אביא יותר אור לעולם?"></textarea>
+            </div>
+
+            <div class="reflection-box">
+                <div class="reflection-title">סיכום המסע</div>
+                <div class="reflection-prompts">
+                    <p>השפעות שיצרתי:</p>
+                    <textarea class="input-field" style="min-height: 40px;"></textarea>
+                    <p>שינויים שחוללתי:</p>
+                    <textarea class="input-field" style="min-height: 40px;"></textarea>
+                    <p>חזון להמשך:</p>
+                    <textarea class="input-field" style="min-height: 40px;"></textarea>
+                </div>
+            </div>
+
+            <div class="motivation-box"
+                style="text-align: center; padding: 8px; background: #f0f2f4; border-radius: 8px;">
+                <div style="font-weight: bold; margin-bottom: 6px;">מחשבה ליום</div>
+                <div>"מלכות היא הכוח להפוך את כל הספירות למציאות חיה. היה מלך אמיתי בעולמך."</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- סיכום מקיף -->
+    <div class="page page-summary">
+        <div class="right-side">
+            <div class="day-header">
+                <div class="day-title" style="font-size: 28px;">✨ סיכום מקיף של עשר הספירות ✨</div>
+            </div>
+
+            <div class="explanation">
+                עשר הספירות הן הכוחות הרוחניים שדרכם הקב"ה מנהיג את העולם. הן גם מפה פנימית להבנת איך הנשמה שלנו פועלת
+                ואיך נוכל לשפר את עצמנו. כל ספירה היא שלב בהתפתחות הרוחנית – מהשאיפה העליונה (כתר) ועד ליישום המעשי
+                (מלכות).
+            </div>
+
+            <div class="section-title">הטבלה המרכזית – עשר הספירות ויישומן בחיים</div>
+            <table style="width: 100%; border-collapse: collapse; margin: 10px 0;">
+                <tr style="background: #f5f5f5;">
+                    <th style="padding: 8px; border: 1px solid #ddd;">ספירה</th>
+                    <th style="padding: 8px; border: 1px solid #ddd;">מה היא מבטאת?</th>
+                    <th style="padding: 8px; border: 1px solid #ddd;">איך ליישם ביומיום?</th>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; border: 1px solid #ddd;">כתר 👑</td>
+                    <td style="padding: 8px; border: 1px solid #ddd;">המקור העליון של הרצון האלוקי</td>
+                    <td style="padding: 8px; border: 1px solid #ddd;">להקדיש זמן לשקט פנימי, להגדיר חזון אישי, להתפלל על
+                        הכיוון הנכון</td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; border: 1px solid #ddd;">חכמה 🧠</td>
+                    <td style="padding: 8px; border: 1px solid #ddd;">הברק הראשוני של ההבנה</td>
+                    <td style="padding: 8px; border: 1px solid #ddd;">לפתח חשיבה יצירתית, ללמוד דברים חדשים, להיות פתוח
+                        לתובנות</td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; border: 1px solid #ddd;">בינה 🏛</td>
+                    <td style="padding: 8px; border: 1px solid #ddd;">ההבנה המעמיקה של הרעיונות</td>
+                    <td style="padding: 8px; border: 1px solid #ddd;">לקחת רעיון ולהפוך אותו לתוכנית מעשית, לפתח ראייה
+                        רחבה ומפורטת</td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; border: 1px solid #ddd;">חסד ❤️</td>
+                    <td style="padding: 8px; border: 1px solid #ddd;">נתינה והשפעה אינסופית</td>
+                    <td style="padding: 8px; border: 1px solid #ddd;">לתת לאחרים בלי לצפות לתמורה, לעזור מתוך הלב</td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; border: 1px solid #ddd;">גבורה ⚔</td>
+                    <td style="padding: 8px; border: 1px solid #ddd;">הצבת גבולות ושליטה עצמית</td>
+                    <td style="padding: 8px; border: 1px solid #ddd;">להציב לעצמך כללים ברורים, לא להיכנע לפיתויים,
+                        לעבוד על שליטה עצמית</td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; border: 1px solid #ddd;">תפארת 🎨</td>
+                    <td style="padding: 8px; border: 1px solid #ddd;">איזון בין חסד וגבורה</td>
+                    <td style="padding: 8px; border: 1px solid #ddd;">לשלב רחמים עם צדק, לדבר בכבוד אבל לא לוותר על
+                        עקרונות</td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; border: 1px solid #ddd;">נצח 🏆</td>
+                    <td style="padding: 8px; border: 1px solid #ddd;">התמדה וניצחון מול קשיים</td>
+                    <td style="padding: 8px; border: 1px solid #ddd;">לא לוותר, לפעול גם כשקשה, למצוא דרכים יצירתיות
+                        לנצח</td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; border: 1px solid #ddd;">הוד 🙏</td>
+                    <td style="padding: 8px; border: 1px solid #ddd;">קבלת האמת וענווה</td>
+                    <td style="padding: 8px; border: 1px solid #ddd;">להודות על מה שיש, להיות פתוח ללמידה, להבין שהכול
+                        מאת ה'</td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; border: 1px solid #ddd;">יסוד 🔗</td>
+                    <td style="padding: 8px; border: 1px solid #ddd;">חיבור הרוח לחומר</td>
+                    <td style="padding: 8px; border: 1px solid #ddd;">להיות אדם שניתן לסמוך עליו, לשמור על קדושה וטהרה,
+                        לפעול מתוך אמת</td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; border: 1px solid #ddd;">מלכות 👑</td>
+                    <td style="padding: 8px; border: 1px solid #ddd;">הגשמה וביטוי של כל הספירות במציאות</td>
+                    <td style="padding: 8px; border: 1px solid #ddd;">להיות דוגמה אישית, לפעול מתוך שליחות, להפוך
+                        רעיונות למציאות</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="left-side">
+            <div class="title">כלים מעשיים ליישום</div>
+
+            <div class="section-title">בניית חזון אישי (כתר 👑)</div>
+            <ul class="tasks-list">
+                <li class="task-item">קח זמן לחשוב: מה אני רוצה להיות? מה השליחות שלי?</li>
+                <li class="task-item">כתוב לעצמך חזון ברור של מי אתה רוצה להיות בעתיד</li>
+                <li class="task-item">התפלל ובקש הכוונה – חיבור לקב"ה יוצר כיוון נכון</li>
+            </ul>
+
+            <div class="section-title">פיתוח חשיבה יצירתית (חכמה 🧠 + בינה 🏛)</div>
+            <ul class="tasks-list">
+                <li class="task-item">הקדש זמן ללמוד דברים חדשים ולקרוא חומרים מעוררי השראה</li>
+                <li class="task-item">כשעולה לך רעיון – רשום אותו ותכנן איך להפוך אותו למציאות</li>
+                <li class="task-item">נסה לנתח דברים לעומק ולבנות אסטרטגיות מעשיות</li>
+            </ul>
+
+            <div class="section-title">שילוב של נתינה ומשמעת (חסד ❤️ + גבורה ⚔)</div>
+            <ul class="tasks-list">
+                <li class="task-item">תן מעצמך לאחרים, אבל שמור על גבולות נכונים</li>
+                <li class="task-item">אל תיתן לאחרים לנצל אותך, אך גם אל תתקמצן בטוב</li>
+                <li class="task-item">שלוט בעצמך – הצב לעצמך מטרות יומיות ופעל להשיג אותן</li>
+            </ul>
+
+            <div class="reflection-box">
+                <div class="reflection-title">סיכום אחרון – הדרך לשלמות אישית</div>
+                <div class="reflection-text">
+                    ✔ כתר – חיבור לחזון ולרצון האלוקי<br>
+                    ✔ חכמה – פתיחות לרעיונות גבוהים<br>
+                    ✔ בינה – ניתוח ובניית תוכנית מעשית<br>
+                    ✔ חסד – נתינה אמיתית<br>
+                    ✔ גבורה – שליטה פנימית והצבת גבולות<br>
+                    ✔ תפארת – איזון והרמוניה<br>
+                    ✔ נצח – התמדה וניצחון על קשיים<br>
+                    ✔ הוד – ענווה וקבלת האמת<br>
+                    ✔ יסוד – נאמנות ויציבות<br>
+                    ✔ מלכות – מימוש כל הכוחות בעולם
+                </div>
+            </div>
+
+            <div class="motivation-box"
+                style="text-align: center; padding: 15px; background: #f8f9fa; border-radius: 10px; margin-top: 20px;">
+                <div style="font-weight: bold; font-size: 18px; margin-bottom: 10px;">👑 הכוח עכשיו אצלך – לך ותיישם!
+                    🚀💪</div>
+                <div>אם תעבוד על כל אחת מהמידות האלה – אתה תראה שינוי עצום בחיים שלך!</div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

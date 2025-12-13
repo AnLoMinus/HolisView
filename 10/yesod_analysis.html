@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>יסוד – החיבור בין הרוח לחומר, היכולת להוציא לפועל</title>
+    <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <style>
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Frank Ruhl Libre', serif;
+            background: white;
+            color: #2c3e50;
+        }
+
+        .page {
+            width: 210mm;
+            height: 297mm;
+            margin: 0 auto;
+            padding: 15mm;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(to bottom, #ffffff, #f8f9fa);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page::before {
+            content: '';
+            position: absolute;
+            top: 5mm;
+            left: 5mm;
+            right: 5mm;
+            bottom: 5mm;
+            border: 1px solid #3498db;
+            pointer-events: none;
+        }
+
+        .page::after {
+            content: '';
+            position: absolute;
+            top: 6mm;
+            left: 6mm;
+            right: 6mm;
+            bottom: 6mm;
+            border: 1px solid #3498db;
+            pointer-events: none;
+            opacity: 0.5;
+        }
+
+        .bsd {
+            position: absolute;
+            top: 8mm;
+            right: 8mm;
+            color: #3498db;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .page-number {
+            position: absolute;
+            top: 15mm;
+            right: 8mm;
+            background: linear-gradient(45deg, #3498db, #2980b9);
+            color: white;
+            padding: 2mm 4mm;
+            border-radius: 0 2mm 2mm 0;
+            font-size: 10px;
+            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            z-index: 1;
+        }
+
+        .page-number::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -5px;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 10px 5px 0 0;
+            border-color: #3498db transparent transparent transparent;
+            transform: rotate(180deg);
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #3498db;
+            margin: 0 0 5mm;
+            text-align: center;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            position: relative;
+            padding: 3mm 0;
+        }
+
+        h1::before,
+        h1::after {
+            content: '✧';
+            color: #3498db;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 20px;
+        }
+
+        h1::before {
+            right: 20%;
+        }
+
+        h1::after {
+            left: 20%;
+        }
+
+        .explanation {
+            font-size: 14px;
+            line-height: 1.4;
+            margin: 0 0 5mm;
+            text-align: justify;
+        }
+
+        .explanation strong {
+            color: #3498db;
+        }
+
+        .sefirot-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0 0 5mm;
+            font-size: 12px;
+        }
+
+        .sefirot-table th,
+        .sefirot-table td {
+            padding: 4px 6px;
+            border: 1px solid #ddd;
+            text-align: right;
+        }
+
+        .sefirot-table th {
+            background: #f0f8ff;
+            font-weight: bold;
+        }
+
+        .summary-section {
+            font-size: 12px;
+            line-height: 1.4;
+        }
+
+        .summary-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin: 0 0 3mm;
+            color: #3498db;
+        }
+
+        .practical-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 5mm;
+        }
+
+        .practical-list li {
+            margin-bottom: 2mm;
+            padding-right: 10px;
+            position: relative;
+        }
+
+        .practical-list li::before {
+            content: "🔗";
+            position: absolute;
+            right: 0;
+            color: #3498db;
+        }
+
+        .key-points {
+            background: #f0f8ff;
+            padding: 3mm;
+            border-radius: 2mm;
+            margin-bottom: 3mm;
+        }
+
+        .key-points p {
+            margin: 0 0 2mm;
+        }
+
+        .key-points p:last-child {
+            margin-bottom: 0;
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+
+            .page {
+                width: 210mm;
+                height: 297mm;
+                margin: 0;
+                padding: 15mm;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <div class="bsd">(בס״ד)</div>
+        <div class="page-number">עמוד 7 | יסוד</div>
+        <h1>יסוד – החיבור בין הרוח לחומר, היכולת להוציא לפועל 🔗✨</h1>
+
+        <div class="explanation">
+            <strong>יסוד</strong> הוא <strong>הכוח לחבר בין עולמות – להפוך רוחניות למציאות, להפוך ידע למעשה, לחבר
+                נשמות</strong>.
+            <br><br>
+            אם <strong>הוד הוא הענווה לקבל</strong>, <strong>יסוד הוא האחריות לתת ולהעביר הלאה</strong>.
+            <br><br>
+            אם <strong>תפארת היא היופי המאוזן</strong>, <strong>יסוד הוא מה שמחבר את כל היופי למציאות הפרקטית</strong>.
+            <br><br>
+            🔗 <strong>בלי יסוד, כל המידות נשארות תיאורטיות</strong>.<br>
+            💡 <strong>אם אין לך יסוד, החכמה שלך לא מובילה לתוצאות</strong>.<br>
+            🏛 <strong>אם אין לך יסוד, אין לך השפעה אמיתית על אחרים</strong>.
+            <br><br>
+            📢 <strong>יסוד הוא הגשר בין הכוח הפנימי שלך לבין איך שאתה פועל בעולם!</strong>
+        </div>
+
+        <table class="sefirot-table">
+            <tr>
+                <th>ספירה</th>
+                <th>פירוש רוחני</th>
+                <th>ביטוי מעשי</th>
+            </tr>
+            <tr>
+                <td>כתר שביסוד 👑</td>
+                <td>חיבור מוחלט בין שמים לארץ</td>
+                <td>להיות שליח נאמן להעברת האור האלוקי לעולם</td>
+            </tr>
+            <tr>
+                <td>חכמה שביסוד 🧠</td>
+                <td>הבזק של תובנה שמובילה למעשה</td>
+                <td>רעיון גדול שפתאום מקבל צורה ברורה לביצוע</td>
+            </tr>
+            <tr>
+                <td>בינה שביסוד 🏛</td>
+                <td>תכנון מעשי לחיבור הרוח לחומר</td>
+                <td>לדעת איך להפוך רעיון טוב למציאות מאורגנת</td>
+            </tr>
+            <tr>
+                <td>דעת שביסוד 🔥💡</td>
+                <td>חיבור רגשי ומוחי שמניע לפעולה</td>
+                <td>ההבנה הפנימית שגורמת לך באמת לעשות משהו</td>
+            </tr>
+            <tr>
+                <td>חסד שביסוד ❤️</td>
+                <td>נתינה שמביאה חיבור עמוק</td>
+                <td>להעניק מעצמך באמת לאחרים ולחבר אותם אליך</td>
+            </tr>
+            <tr>
+                <td>גבורה שביסוד ⚔</td>
+                <td>שליטה ביצרים כדי לשמור על טהרה</td>
+                <td>שמירה על קדושה אישית – להישאר נאמן לערכים שלך</td>
+            </tr>
+            <tr>
+                <td>תפארת שביסוד 🎨</td>
+                <td>חיבור אמיתי ויפה בין הנשמה לגוף</td>
+                <td>להביא את האור הרוחני לחיים דרך איזון ושדרוג</td>
+            </tr>
+            <tr>
+                <td>נצח שביסוד 🏆</td>
+                <td>התמדה בחיבור הרוחני</td>
+                <td>לא להתייאש כשלא רואים תוצאות מיידיות</td>
+            </tr>
+            <tr>
+                <td>הוד שביסוד 🙏</td>
+                <td>ענווה שמאפשרת חיבור אמיתי</td>
+                <td>לתת לאחרים מקום ולהתחבר אליהם בלי אגו</td>
+            </tr>
+            <tr>
+                <td>יסוד שביסוד 🔗</td>
+                <td>עוצמה טהורה של חיבור</td>
+                <td>להיות באמת אמין, נאמן, ושקוף ביחסים עם אחרים</td>
+            </tr>
+            <tr>
+                <td>מלכות שביסוד 👑</td>
+                <td>השפעה חזקה דרך החיבור האישי</td>
+                <td>להפיץ אור דרך חיבור אמיתי עם אנשים והשפעה בעולם</td>
+            </tr>
+        </table>
+
+        <div class="summary-section">
+            <div class="key-points">
+                <p>🔹 <strong>יסוד זה לא רק להבין – אלא להפוך את ההבנה למציאות</strong>.</p>
+                <p>🔹 <strong>יסוד זה להיות אדם שאפשר לסמוך עליו – נאמן, ישר, אמיתי</strong>.</p>
+                <p>🔹 <strong>יסוד זה ליצור חיבורים אמיתיים – בין אנשים, בין רעיונות, בין שמים לארץ</strong>.</p>
+            </div>
+
+            <div class="summary-title">איך מיישמים את זה ביום-יום? 🔥</div>
+            <ul class="practical-list">
+                <li>לעשות, לא רק לדבר – כל לימוד או רעיון צריך להוביל למעשה</li>
+                <li>לשמור על טהרת העיניים והמחשבה – להיות מחובר לקדושה באמת</li>
+                <li>להיות אדם שאפשר לסמוך עליו – לעמוד במילה שלך ולהיות נאמן</li>
+                <li>לעזור לאחרים להתחבר לעצמם – להיות מישהו שמביא אור לחיים של אחרים</li>
+                <li>לפתח הרגלים טובים שמחזקים את הקשר בין הרוח לחומר – לשמור על קביעות בלימוד ובמעשים טובים</li>
+                <li>להתחבר לעומק לפני שמשפיעים – לוודא שאתה עצמך מחובר לפני שאתה מחבר אחרים</li>
+                <li>להיות גשר ולא חומה – במקום להפריד אנשים ורעיונות, לחבר ביניהם</li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>

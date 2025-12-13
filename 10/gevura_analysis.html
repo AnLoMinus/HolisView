@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>גבורה – הכוח להציב גבולות ולשלוט בעצמך</title>
+    <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <style>
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Frank Ruhl Libre', serif;
+            background: white;
+            color: #2c3e50;
+        }
+
+        .page {
+            width: 210mm;
+            height: 297mm;
+            margin: 0 auto;
+            padding: 15mm;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(to bottom, #ffffff, #f8f9fa);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page::before {
+            content: '';
+            position: absolute;
+            top: 5mm;
+            left: 5mm;
+            right: 5mm;
+            bottom: 5mm;
+            border: 1px solid #8b0000;
+            pointer-events: none;
+        }
+
+        .page::after {
+            content: '';
+            position: absolute;
+            top: 6mm;
+            left: 6mm;
+            right: 6mm;
+            bottom: 6mm;
+            border: 1px solid #8b0000;
+            pointer-events: none;
+            opacity: 0.5;
+        }
+
+        .bsd {
+            position: absolute;
+            top: 8mm;
+            right: 8mm;
+            color: #8b0000;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .page-number {
+            position: absolute;
+            top: 15mm;
+            right: 8mm;
+            background: linear-gradient(45deg, #8b0000, #a00000);
+            color: white;
+            padding: 2mm 4mm;
+            border-radius: 0 2mm 2mm 0;
+            font-size: 10px;
+            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            z-index: 1;
+        }
+
+        .page-number::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -5px;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 10px 5px 0 0;
+            border-color: #8b0000 transparent transparent transparent;
+            transform: rotate(180deg);
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #8b0000;
+            margin: 0 0 5mm;
+            text-align: center;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            position: relative;
+            padding: 3mm 0;
+        }
+
+        h1::before,
+        h1::after {
+            content: '✧';
+            color: #8b0000;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 20px;
+        }
+
+        h1::before {
+            right: 20%;
+        }
+
+        h1::after {
+            left: 20%;
+        }
+
+        .explanation {
+            font-size: 14px;
+            line-height: 1.4;
+            margin: 0 0 5mm;
+            text-align: justify;
+        }
+
+        .explanation strong {
+            color: #8b0000;
+        }
+
+        .sefirot-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0 0 5mm;
+            font-size: 12px;
+        }
+
+        .sefirot-table th,
+        .sefirot-table td {
+            padding: 4px 6px;
+            border: 1px solid #ddd;
+            text-align: right;
+        }
+
+        .sefirot-table th {
+            background: #fff0f0;
+            font-weight: bold;
+        }
+
+        .summary-section {
+            font-size: 12px;
+            line-height: 1.4;
+        }
+
+        .summary-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin: 0 0 3mm;
+            color: #8b0000;
+        }
+
+        .practical-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 5mm;
+        }
+
+        .practical-list li {
+            margin-bottom: 2mm;
+            padding-right: 10px;
+            position: relative;
+        }
+
+        .practical-list li::before {
+            content: "⚔";
+            position: absolute;
+            right: 0;
+            color: #8b0000;
+        }
+
+        .key-points {
+            background: #fff0f0;
+            padding: 3mm;
+            border-radius: 2mm;
+            margin-bottom: 3mm;
+        }
+
+        .key-points p {
+            margin: 0 0 2mm;
+        }
+
+        .key-points p:last-child {
+            margin-bottom: 0;
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+
+            .page {
+                width: 210mm;
+                height: 297mm;
+                margin: 0;
+                padding: 15mm;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <div class="bsd">(בס״ד)</div>
+        <div class="page-number">עמוד 3 | גבורה</div>
+        <h1>⚔ גבורה – הכוח להציב גבולות ולשלוט בעצמך 🔥</h1>
+
+        <div class="explanation">
+            <strong>גבורה</strong> היא הכוח של <strong>שליטה עצמית, משמעת פנימית ויכולת להציב גבולות</strong>. בעוד
+            <strong>חסד</strong> הוא נתינה בלי גבול, <strong>גבורה מאזנת את החסד ומוודאת שהנתינה תהיה במקום הנכון ובמידה
+                הנכונה</strong>.
+            <br><br>
+            ⚡ <strong>ללא גבורה – חסד יכול להפוך לפיזור ללא הבחנה.</strong><br>
+            ⚡ <strong>ללא חסד – גבורה עלולה להפוך לנוקשות וקור רוח.</strong>
+            <br><br>
+            גבורה <strong>אינה רק כוח פיזי</strong>, אלא בעיקר <strong>כוח נפשי לשלוט ביצרים, לא להיכנע לפיתויים ולדבוק
+                באמת גם כשהיא דורשת מאמץ</strong>.
+        </div>
+
+        <table class="sefirot-table">
+            <tr>
+                <th>ספירה</th>
+                <th>פירוש רוחני</th>
+                <th>ביטוי מעשי</th>
+            </tr>
+            <tr>
+                <td>כתר שבגבורה 👑</td>
+                <td>כוח המשמעת האלוקית, שליטה מוחלטת על הרצון</td>
+                <td>להיות נאמן לערכים שלך, גם כשזה קשה</td>
+            </tr>
+            <tr>
+                <td>חכמה שבגבורה 🧠</td>
+                <td>הבחנה חכמה איפה לשים גבולות</td>
+                <td>לדעת מתי לעצור ומתי להמשיך, להפעיל שיקול דעת</td>
+            </tr>
+            <tr>
+                <td>בינה שבגבורה 🏛</td>
+                <td>הבנת הצורך בגבולות, חיזוק ההבנה הפנימית</td>
+                <td>להבין ששליטה עצמית היא כוח ולא חולשה</td>
+            </tr>
+            <tr>
+                <td>דעת שבגבורה 🔥💡</td>
+                <td>חיבור אישי למשמעת, לדעת למה אתה שולט בעצמך</td>
+                <td>שליטה מתוך הכרה פנימית ולא רק מתוך לחץ חיצוני</td>
+            </tr>
+            <tr>
+                <td>חסד שבגבורה ❤️</td>
+                <td>גבורה מתוך אהבה ולא מתוך אכזריות</td>
+                <td>להציב גבולות עם חמלה, לא מתוך כעס</td>
+            </tr>
+            <tr>
+                <td>גבורה שבגבורה ⚔</td>
+                <td>כוח הנחישות, עוצמה טהורה</td>
+                <td>התמדה במשמעת, עמידה מול פיתויים בכל מחיר</td>
+            </tr>
+            <tr>
+                <td>תפארת שבגבורה 🎨</td>
+                <td>איזון בין הגבורה לבין החסד, שליטה עם עדינות</td>
+                <td>לדעת להציב גבולות בצורה שמכבדת את האחרים</td>
+            </tr>
+            <tr>
+                <td>נצח שבגבורה 🏆</td>
+                <td>התמדה בשליטה עצמית לאורך זמן</td>
+                <td>לא להיכנע גם כשנופלים, לקום ולהמשיך</td>
+            </tr>
+            <tr>
+                <td>הוד שבגבורה 🙏</td>
+                <td>ענווה מול הכוח, לדעת שהגבורה האמיתית היא לא שלי אלא מה'</td>
+                <td>לא להתגאות בשליטה העצמית שלך, אלא להשתמש בה לטוב</td>
+            </tr>
+            <tr>
+                <td>יסוד שבגבורה 🔗</td>
+                <td>יצירת הרגלים שמחזקים את המשמעת</td>
+                <td>להפוך שליטה עצמית לאורח חיים, לא רק להתגבר רגעית</td>
+            </tr>
+            <tr>
+                <td>מלכות שבגבורה 👑</td>
+                <td>היכולת להשליט את הגבורה בעולם, שליטה מלאה על הרצונות</td>
+                <td>להיות אדם שמחזיק בעצמו, לא נותן ליצר לשלוט עליו</td>
+            </tr>
+        </table>
+
+        <div class="summary-section">
+            <div class="key-points">
+                <p>🔹 <strong>גבורה היא לא להילחם נגד אחרים – אלא לנצח את עצמך</strong>.</p>
+                <p>🔹 היא <strong>הכוח הפנימי לעמוד על האמת שלך גם כשהעולם כולו נגדך</strong>.</p>
+                <p>🔹 הגבורה האמיתית <strong>היא לדעת מתי לעצור ומתי לפעול, מתי לומר "כן" ומתי לומר "לא"</strong>.</p>
+            </div>
+
+            <div class="summary-title">איך מיישמים את זה ביום-יום? 🔥</div>
+            <ul class="practical-list">
+                <li>להציב גבולות לעצמך – לא הכל צריך להיות זמין בכל רגע</li>
+                <li>לשלוט במילים שלך – לא להגיב מיד מתוך כעס או רגש</li>
+                <li>להתאמן על דחיית סיפוקים – למשל, לא לבדוק את הטלפון כל רגע</li>
+                <li>להיות נאמן לערכים שלך גם כשזה קשה – לא לוותר כשאתה עומד בניסיון</li>
+                <li>לשלב חסד בתוך הגבורה – לא להיות קשה מדי, לדעת גם מתי לרכך</li>
+                <li>להפוך את המשמעת להרגל – להכניס סדר ודיוק בחיים</li>
+                <li>להיות גיבור בענווה – לא להתגאות בשליטה שלך, אלא להשתמש בה למטרה טובה</li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>

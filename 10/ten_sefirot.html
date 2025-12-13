@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>עשר הספירות - מפתח להבנת כוחות הנפש והמציאות</title>
+    <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <style>
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        .page::before {
+            content: '';
+            position: absolute;
+            top: 5mm;
+            left: 5mm;
+            right: 5mm;
+            bottom: 5mm;
+            border: 5px solid #8e44ad;
+            pointer-events: none;
+        }
+
+        .page::after {
+            content: '';
+            position: absolute;
+            top: 6mm;
+            left: 6mm;
+            right: 6mm;
+            bottom: 6mm;
+            border: 11111px solid #2c3e50;
+            pointer-events: none;
+            opacity: 0.1;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Frank Ruhl Libre', serif;
+            background: linear-gradient(135deg, #f5e6d3 0%, #f9f2ea 100%);
+            min-height: 100vh;
+            color: #2c3e50;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg,
+                    rgba(212, 181, 149, 0.1) 0%,
+                    rgba(255, 255, 255, 0.05) 50%,
+                    rgba(212, 181, 149, 0.1) 100%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 210mm;
+            margin: 20mm auto;
+            padding: 4mm;
+            box-sizing: border-box;
+            position: relative;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid #d4b595;
+            /* border-radius: 2mm; */
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.1),
+                0 0 30px rgba(212, 181, 149, 0.9);
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 2mm;
+            left: 2mm;
+            right: 2mm;
+            bottom: 2mm;
+            border: 1px solid rgba(212, 181, 149, 0.3);
+            border-radius: 6mm;
+            pointer-events: none;
+        }
+
+        .container::after {
+            content: '';
+            position: absolute;
+            top: -1mm;
+            left: -1mm;
+            right: -1mm;
+            bottom: -1mm;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCI+PGNpcmNsZSBjeD0iMjUiIGN5PSIyNSIgcj0iMiIgZmlsbD0iI2Q0YjU5NSIgZmlsbC1vcGFjaXR5PSIwLjIiLz48L3N2Zz4=');
+            opacity: 0.1;
+            z-index: -1;
+            border-radius: 8mm;
+            pointer-events: none;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 6mm;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 32px;
+            color: #2c3e50;
+            margin: 0 0 2mm;
+            text-align: center;
+            position: relative;
+            display: inline-block;
+        }
+
+        h1::after {
+            content: "✨";
+            position: absolute;
+            top: -6px;
+            right: -25px;
+            font-size: 20px;
+        }
+
+        h1::before {
+            content: "✨";
+            position: absolute;
+            top: -6px;
+            left: -25px;
+            font-size: 20px;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            color: #7f8c8d;
+            margin-bottom: 2mm;
+        }
+
+        .introduction {
+            font-size: 12px;
+            line-height: 1.4;
+            margin-bottom: 6mm;
+            text-align: justify;
+            background: white;
+            padding: 3mm;
+            border-radius: 2mm;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .introduction strong {
+            color: #2c3e50;
+            font-weight: 700;
+        }
+
+        .sefirot-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3mm;
+            margin-bottom: 6mm;
+        }
+
+        .sefirah-card {
+            background: var(--sefirah-bg);
+            padding: 3mm;
+            border-radius: 2mm;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--sefirah-border);
+        }
+
+        .sefirah-card.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .sefirah-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--sefirah-color, #2c3e50);
+        }
+
+        .sefirah-card a {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .sefirah-icon {
+            font-size: 24px;
+            margin-bottom: 1mm;
+            text-align: center;
+        }
+
+        .sefirah-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 1mm;
+            color: var(--sefirah-text);
+            text-align: center;
+        }
+
+        .sefirah-description {
+            font-size: 11px;
+            line-height: 1.3;
+            color: var(--sefirah-text);
+            margin: 0 0 1mm;
+            text-align: center;
+        }
+
+        .sefirah-explanation {
+            font-size: 10px;
+            color: var(--sefirah-text);
+            text-align: justify;
+            border-top: 1px solid #eee;
+            margin-top: 2mm;
+            padding-top: 2mm;
+            opacity: 0.8;
+            line-height: 1.4;
+        }
+
+        .sefirah-card:hover .sefirah-explanation {
+            display: block;
+        }
+
+        /* ספציפי לכל ספירה */
+        .keter {
+            --sefirah-color: #ffffff;
+            --sefirah-bg: rgba(255, 255, 255, 0.1);
+            --sefirah-border: #e0e0e0;
+            --sefirah-text: #2c3e50;
+            background: var(--sefirah-bg);
+            border: 1px solid var(--sefirah-border);
+        }
+
+        .chochma {
+            --sefirah-color: #0066cc;
+            --sefirah-bg: rgba(0, 102, 204, 0.1);
+            --sefirah-border: #0066cc;
+            --sefirah-text: #0066cc;
+            background: var(--sefirah-bg);
+            border: 1px solid var(--sefirah-border);
+        }
+
+        .bina {
+            --sefirah-color: #cc0000;
+            --sefirah-bg: rgba(204, 0, 0, 0.1);
+            --sefirah-border: #cc0000;
+            --sefirah-text: #cc0000;
+            background: var(--sefirah-bg);
+            border: 1px solid var(--sefirah-border);
+        }
+
+        .daat {
+            --sefirah-color: #800080;
+            --sefirah-bg: rgba(128, 0, 128, 0.1);
+            --sefirah-border: #800080;
+            --sefirah-text: #800080;
+            background: var(--sefirah-bg);
+            border: 1px solid var(--sefirah-border);
+        }
+
+        .chesed {
+            --sefirah-color: #ffffff;
+            --sefirah-bg: rgba(255, 255, 255, 0.1);
+            --sefirah-border: #e0e0e0;
+            --sefirah-text: #2c3e50;
+            background: var(--sefirah-bg);
+            border: 1px solid var(--sefirah-border);
+        }
+
+        .gevura {
+            --sefirah-color: #ff0000;
+            --sefirah-bg: rgba(255, 0, 0, 0.1);
+            --sefirah-border: #ff0000;
+            --sefirah-text: #ff0000;
+            background: var(--sefirah-bg);
+            border: 1px solid var(--sefirah-border);
+        }
+
+        .tiferet {
+            --sefirah-color: #ffd700;
+            --sefirah-bg: rgba(255, 215, 0, 0.1);
+            --sefirah-border: #ffd700;
+            --sefirah-text: #b8860b;
+            background: var(--sefirah-bg);
+            border: 1px solid var(--sefirah-border);
+        }
+
+        .netzach {
+            --sefirah-color: #228b22;
+            --sefirah-bg: rgba(34, 139, 34, 0.1);
+            --sefirah-border: #228b22;
+            --sefirah-text: #228b22;
+            background: var(--sefirah-bg);
+            border: 1px solid var(--sefirah-border);
+        }
+
+        .hod {
+            --sefirah-color: #ffa500;
+            --sefirah-bg: rgba(255, 165, 0, 0.1);
+            --sefirah-border: #ffa500;
+            --sefirah-text: #ffa500;
+            background: var(--sefirah-bg);
+            border: 1px solid var(--sefirah-border);
+        }
+
+        .yesod {
+            --sefirah-color: #00bfff;
+            --sefirah-bg: rgba(0, 191, 255, 0.1);
+            --sefirah-border: #00bfff;
+            --sefirah-text: #00bfff;
+            background: var(--sefirah-bg);
+            border: 1px solid var(--sefirah-border);
+        }
+
+        .malchut {
+            --sefirah-color: #4b0082;
+            --sefirah-bg: rgba(75, 0, 130, 0.1);
+            --sefirah-border: #4b0082;
+            --sefirah-text: #4b0082;
+            background: var(--sefirah-bg);
+            border: 1px solid var(--sefirah-border);
+        }
+
+        .footer {
+            text-align: justify;
+            margin-top: 6mm;
+            padding: 4mm;
+            background: white;
+            border-radius: 2mm;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer-section {
+            margin-bottom: 3mm;
+        }
+
+        .footer-title {
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 1mm;
+            font-size: 12px;
+        }
+
+        .footer p {
+            margin: 0 0 2mm;
+            color: #444;
+            line-height: 1.4;
+            font-size: 11px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3mm;
+            margin: 3mm 0;
+        }
+
+        .footer-box {
+            background: #f8f9fa;
+            padding: 2mm;
+            border-radius: 1mm;
+        }
+
+        @media print {
+            .container {
+                margin: 0 auto;
+                border: none;
+                box-shadow: none;
+                background: white;
+            }
+
+            .container::before,
+            .container::after {
+                display: none;
+            }
+
+            body::before {
+                display: none;
+            }
+
+            .sefirah-card {
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+
+            .sefirah-explanation {
+                display: block;
+            }
+        }
+
+        /* הסרת אנימציות והובר */
+        .sefirah-card {
+            transition: none;
+        }
+
+        .sefirah-card:hover {
+            transform: none;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .bsd {
+            position: absolute;
+            top: 2mm;
+            right: 2mm;
+            font-size: 14px;
+            color: #2c3e50;
+            font-weight: bold;
+        }
+
+        .credits {
+            text-align: center;
+            margin-top: 3mm;
+            font-size: 10px;
+            color: #666;
+        }
+
+        .credits .name {
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .credits .nickname {
+            color: #666;
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="bsd">בס"ד</div>
+        <div class="header">
+            <h1>🌟 עשר הספירות 🌟</h1>
+            <h2>👀 דע מה למעלה ממך – עין רואה ואוזן שומעת וכל מעשיך בספר נכתבים 👀 </h2>
+            <div class="subtitle">מפתח להבנת כוחות הנפש והמציאות</div>
+        </div>
+
+        <div class="sefirot-grid">
+            <!-- כתר - שורה מלאה -->
+            <div class="sefirah-card keter full-width">
+                <a href="keter_analysis.html">
+                    <div class="sefirah-icon">🎩</div>
+                    <div class="sefirah-title"> 👑 כתר 👑 </div>
+                    <p class="sefirah-description">הרצון העליון והשורש של כל הכוחות</p>
+                    <div class="sefirah-explanation">
+                        כתר הוא השורש העליון של כל הכוחות, המקום שבו הרצון האלוקי מתגלה כמקור לכל המציאות. בקבלה, כתר
+                        מייצג את הדרגה הגבוהה ביותר של רצון וביטול לאין סוף. הוא מעל השכל והרגש, ומהווה את החיבור הישיר
+                        לאור האינסופי. בנפש האדם, כתר מתבטא כרצון הטהור והעמוק ביותר, הנקודה שממנה נובעים כל הכוחות
+                        והיכולות.
+                    </div>
+                </a>
+            </div>
+
+            <!-- חכמה בינה דעת - שורה אחת -->
+            <div class="sefirah-card chochma">
+                <a href="wisdom_analysis.html">
+                    <!-- <div class="sefirah-icon">🧠</div> -->
+                    <div class="sefirah-title"> 🧠 חכמה 🧠 </div>
+                    <p class="sefirah-description">הברק הראשוני של ההשגה והתובנה</p>
+                    <div class="sefirah-explanation">
+                        חכמה היא נקודת ההברקה הראשונית, הרגע שבו מתגלה תובנה חדשה בשכל. היא מייצגת את כוח ההשכלה בטהרתו,
+                        לפני שהוא מתפתח להבנה מפורטת. בקבלה, חכמה היא הכלי הראשון לקבלת האור האלוקי, והיא מקבילה ליו"ד
+                        של שם הוי'ה. בעבודת ה', חכמה היא היכולת לראות את האמת האלוקית בכל דבר.
+                    </div>
+                </a>
+            </div>
+
+            <div class="sefirah-card bina">
+                <a href="understanding_analysis.html">
+                    <!-- <div class="sefirah-icon">🏛</div> -->
+                    <div class="sefirah-title">🏛 בינה 🏛</div>
+                    <p class="sefirah-description">העמקה, ניתוח והבנה מקיפה</p>
+                    <div class="sefirah-explanation">
+                        בינה היא כוח ההתבוננות וההעמקה, היכולת לקחת את נקודת החכמה ולפתח אותה לכדי הבנה מלאה ומפורטת.
+                        היא מייצגת את התהליך של ניתוח, הסקת מסקנות והבנת הקשרים. בקבלה, בינה מקבילה לה"א ראשונה של שם
+                        הוי'ה ומייצגת את ההתרחבות וההתפתחות של הרעיון האלוקי.
+                    </div>
+                </a>
+            </div>
+
+            <div class="sefirah-card daat">
+                <a href="daat_analysis.html">
+                    <!-- <div class="sefirah-icon">🔥</div> -->
+                    <div class="sefirah-title">🔥 דעת 🔥</div>
+                    <p class="sefirah-description">חיבור והפנמה של החכמה והבינה</p>
+                    <div class="sefirah-explanation">
+                        דעת היא כוח החיבור וההתקשרות, המחבר בין השכל לרגש ובין ההבנה לחוויה. היא מייצגת את היכולת להפנים
+                        ידע ולהפוך אותו לחלק מהאישיות. בקבלה, דעת היא הגשר בין המוחין (חכמה ובינה) למידות, ומאפשרת את
+                        המעבר מהבנה תיאורטית ליישום מעשי.
+                    </div>
+                </a>
+            </div>
+
+            <!-- חסד גבורה תפארת - שורה אחת -->
+            <div class="sefirah-card chesed">
+                <a href="chesed_analysis.html">
+                    <!-- <div class="sefirah-icon">❤️</div> -->
+                    <div class="sefirah-title">❤️ חסד ❤️</div>
+                    <p class="sefirah-description">אהבה, נתינה והשפעה ללא גבול</p>
+                    <div class="sefirah-explanation">
+                        חסד הוא מידת האהבה והנתינה האינסופית, הרצון להשפיע טוב לזולת ללא גבולות. בקבלה, חסד מקביל לזרוע
+                        ימין ומייצג את ההתפשטות וההשפעה החיובית. בעבודת ה', חסד מתבטא באהבת ה', אהבת ישראל ורצון להיטיב
+                        עם הזולת בכל דרך אפשרית.
+                    </div>
+                </a>
+            </div>
+
+            <div class="sefirah-card gevura">
+                <a href="gevura_analysis.html">
+                    <!-- <div class="sefirah-icon">⚔</div> -->
+                    <div class="sefirah-title">⚔ גבורה ⚔</div>
+                    <p class="sefirah-description">כוח, גבולות ומשמעת פנימית</p>
+                    <div class="sefirah-explanation">
+                        גבורה היא מידת הדין והצמצום, היכולת להציב גבולות ולרסן את ההשפעה. בקבלה, גבורה מקבילה לזרוע שמאל
+                        ומייצגת את הכוח לשלוט ולהגביל. בעבודת ה', גבורה מתבטאת ביראת שמים, במשמעת עצמית ובהתגברות על
+                        היצר הרע.
+                    </div>
+                </a>
+            </div>
+
+            <div class="sefirah-card tiferet">
+                <a href="tiferet_analysis.html">
+                    <!-- <div class="sefirah-icon">🎨</div> -->
+                    <div class="sefirah-title">🎨 תפארת 🎨</div>
+                    <p class="sefirah-description">איזון, הרמוניה ויופי פנימי</p>
+                    <div class="sefirah-explanation">
+                        תפארת היא נקודת האיזון המושלם בין חסד לגבורה, המיזוג של אהבה ויראה. בקבלה, תפארת מקבילה לגוף
+                        ולו"ו של שם הוי'ה, ומייצגת את האמת והיופי שנוצרים מחיבור הניגודים. בעבודת ה', תפארת מתבטאת
+                        ברחמים ובחמלה, וביכולת למצוא את דרך האמצע.
+                    </div>
+                </a>
+            </div>
+
+            <!-- נצח הוד יסוד - שורה אחת -->
+            <div class="sefirah-card netzach">
+                <a href="netzach_analysis.html">
+                    <!-- <div class="sefirah-icon">🏆</div> -->
+                    <div class="sefirah-title">🏆 נצח 🏆</div>
+                    <p class="sefirah-description">התמדה, נחישות וניצחון</p>
+                    <div class="sefirah-explanation">
+                        נצח הוא כוח ההתמדה והניצחון, היכולת להתגבר על כל המכשולים ולהגיע למטרה. בקבלה, נצח מקביל לרגל
+                        ימין ומייצג את הנחישות והעקביות בעבודת ה'. זוהי היכולת להמשיך ולהתקדם גם כשקשה, ולא לוותר על
+                        המטרות הרוחניות.
+                    </div>
+                </a>
+            </div>
+
+            <div class="sefirah-card hod">
+                <a href="hod_analysis.html">
+                    <!-- <div class="sefirah-icon">🙏</div> -->
+                    <div class="sefirah-title">🙏 הוד 🙏</div>
+                    <p class="sefirah-description">ענווה, קבלה והודיה</p>
+                    <div class="sefirah-explanation">
+                        הוד הוא מידת הענווה וההודיה, היכולת להכיר בגדולת הבורא ובמגבלות עצמנו. בקבלה, הוד מקביל לרגל
+                        שמאל ומייצג את הביטול וההתבטלות כלפי הקדושה. בעבודת ה', הוד מתבטא בהכרת תודה, בצניעות ובקבלת
+                        האמת ממי שאומרה.
+                    </div>
+                </a>
+            </div>
+
+            <div class="sefirah-card yesod">
+                <a href="yesod_analysis.html">
+                    <!-- <div class="sefirah-icon">🔗</div> -->
+                    <div class="sefirah-title">🔗 יסוד 🔗</div>
+                    <p class="sefirah-description">חיבור, יישום והוצאה לפועל</p>
+                    <div class="sefirah-explanation">
+                        יסוד הוא כוח החיבור והיישום, היכולת לקחת את כל הכוחות העליונים ולהביאם לידי ביטוי מעשי. בקבלה,
+                        יסוד מקביל לאיבר הברית ומייצג את כוח ההשפעה וההולדה. זהו הכוח לחבר בין עולמות ולהוציא מהכוח אל
+                        הפועל.
+                    </div>
+                </a>
+            </div>
+
+            <!-- מלכות - שורה מלאה -->
+            <div class="sefirah-card malchut full-width">
+                <a href="malchut_analysis.html">
+                    <!-- <div class="sefirah-icon">👑</div> -->
+                    <div class="sefirah-title">👑 מלכות 👑</div>
+                    <p class="sefirah-description">ביטוי מעשי והשפעה בעולם</p>
+                    <div class="sefirah-explanation">
+                        מלכות היא הביטוי הסופי של כל הכוחות במציאות, היכולת לקבל את כל האורות העליונים ולהביאם לידי
+                        גילוי בעולם הזה. בקבלה, מלכות מקבילה לה"א אחרונה של שם הוי'ה ומייצגת את השכינה. היא המידה שדרכה
+                        מתגלה אלוקות בעולם הגשמי.
+                    </div>
+                </a>
+            </div>
+
+            <div class="section-divider"></div>
+
+            <div class="final-thoughts">
+                <strong>המסר הסופי:</strong> הספירות אינן רק מושגים תיאורטיים – הן מפת דרכים לחיים שלמים ומאוזנים.
+                כשאנחנו מבינים איך הן פועלות יחד, אנחנו יכולים ליצור חיים שיש בהם גם עומק רוחני וגם יישום מעשי,
+                גם אהבה וגם גבולות, גם שאיפות גבוהות וגם מימוש בפועל.
+                <div class="quote">
+                    ✧ "דע את עצמך, דע את כוחותיך, ודע איך להשתמש בהם בחכמה" ✧
+                </div>
+            </div>
+
+            <div class="credits">
+                © כל הזכויות שמורות • נכתב ועוצב בידי משה לאון יעקובוב • תשפ״ד
+            </div>
+
+            <style>
+                .section-divider {
+                    text-align: center;
+                    margin: 4mm 0;
+                    height: 5mm;
+                    position: relative;
+                    overflow: hidden;
+                }
+
+                .section-divider::before {
+                    content: '✧ ❦ ✧';
+                    color: #d4af37;
+                    font-size: 14px;
+                    position: relative;
+                    padding: 0 10mm;
+                    background: white;
+                    z-index: 1;
+                }
+
+                .section-divider::after {
+                    content: '';
+                    position: absolute;
+                    top: 50%;
+                    left: 0;
+                    right: 0;
+                    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+                    z-index: 0;
+                }
+
+                .final-thoughts {
+                    font-size: 12px;
+                    line-height: 1.4;
+                    color: #34495e;
+                    background: rgba(212, 175, 55, 0.05);
+                    padding: 4mm;
+                    border-radius: 2mm;
+                    margin-top: 3mm;
+                    border: 1px solid rgba(212, 175, 55, 0.2);
+                    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+                }
+
+                .final-thoughts::before,
+                .final-thoughts::after {
+                    content: '❧';
+                    color: #d4af37;
+                    position: absolute;
+                    font-size: 16px;
+                    opacity: 0.5;
+                }
+
+                .final-thoughts::before {
+                    top: 2mm;
+                    right: 2mm;
+                }
+
+                .final-thoughts::after {
+                    bottom: 2mm;
+                    left: 2mm;
+                    transform: rotate(180deg);
+                }
+
+                .quote {
+                    text-align: center;
+                    font-weight: bold;
+                    color: #d4af37;
+                    font-size: 14px;
+                    margin-top: 3mm;
+                    padding: 2mm;
+                    border-top: 1px solid rgba(212, 175, 55, 0.2);
+                    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+                }
+
+                .credits {
+                    position: absolute;
+                    bottom: 8mm;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    text-align: center;
+                    font-size: 10px;
+                    color: rgba(212, 175, 55, 0.7);
+                    width: 100%;
+                }
+            </style>
+        </div>
+
+
+    </div>
+</body>
+
+</html>
