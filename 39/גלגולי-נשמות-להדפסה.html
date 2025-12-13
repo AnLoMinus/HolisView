@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔄 גלגולי נשמות ותיקון - תורה עמוקה</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #f5f5f5;
+            direction: rtl;
+        }
+
+        .page {
+            width: 210mm;
+            height: 297mm;
+            padding: 0.3cm;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            page-break-after: always;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 10px;
+            padding: 12px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .main-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 4px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .subtitle {
+            font-size: 12px;
+            color: #f3e5f5;
+            font-weight: 500;
+        }
+
+        .intro-box {
+            background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%);
+            border: 2px solid #9c27b0;
+            border-radius: 8px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        .intro-title {
+            font-size: 13px;
+            font-weight: 700;
+            color: #6a1b9a;
+            margin-bottom: 5px;
+            text-align: center;
+        }
+
+        .intro-text {
+            font-size: 9px;
+            color: #333;
+            line-height: 1.4;
+            text-align: justify;
+        }
+
+        .section-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #6a1b9a;
+            margin: 10px 0 6px 0;
+            padding: 6px;
+            background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%);
+            border-right: 4px solid #9c27b0;
+            border-radius: 5px;
+        }
+
+        .worlds-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 6px;
+            margin-bottom: 10px;
+        }
+
+        .world-card {
+            background: white;
+            padding: 6px;
+            border-radius: 6px;
+            border-right: 3px solid #ba68c8;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .world-number {
+            display: inline-block;
+            background: #9c27b0;
+            color: white;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 20px;
+            font-weight: 700;
+            font-size: 9px;
+            margin-left: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            float: right;
+        }
+
+        .world-title {
+            font-size: 10px;
+            font-weight: 700;
+            color: #6a1b9a;
+            margin-bottom: 3px;
+        }
+
+        .world-text {
+            font-size: 8px;
+            color: #555;
+            line-height: 1.3;
+        }
+
+        .types-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 6px;
+            margin-bottom: 10px;
+        }
+
+        .type-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 6px;
+            border-radius: 6px;
+            border: 2px solid #7e57c2;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .type-icon {
+            font-size: 16px;
+            margin-bottom: 3px;
+        }
+
+        .type-title {
+            font-size: 9px;
+            font-weight: 700;
+            color: #7e57c2;
+            margin-bottom: 2px;
+        }
+
+        .type-text {
+            font-size: 7px;
+            color: #333;
+            line-height: 1.2;
+        }
+
+        .signs-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 6px;
+            margin-bottom: 10px;
+        }
+
+        .sign-card {
+            background: white;
+            padding: 6px;
+            border-radius: 6px;
+            border-right: 3px solid #f06292;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .sign-number {
+            display: inline-block;
+            background: #e91e63;
+            color: white;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 18px;
+            font-weight: 700;
+            font-size: 8px;
+            margin-left: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            float: right;
+        }
+
+        .sign-title {
+            font-size: 9px;
+            font-weight: 700;
+            color: #c2185b;
+            margin-bottom: 2px;
+        }
+
+        .sign-text {
+            font-size: 7px;
+            color: #333;
+            line-height: 1.2;
+        }
+
+        .tools-box {
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            border: 2px solid #4caf50;
+            border-radius: 8px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        .tools-title {
+            font-size: 12px;
+            font-weight: 700;
+            color: #2e7d32;
+            margin-bottom: 6px;
+            text-align: center;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 6px;
+        }
+
+        .tool-item {
+            background: white;
+            padding: 5px;
+            border-radius: 4px;
+            border-right: 3px solid #66bb6a;
+            font-size: 8px;
+            color: #333;
+        }
+
+        .page-footer {
+            text-align: center;
+            font-size: 8px;
+            color: #666;
+            margin-top: 10px;
+            padding-top: 8px;
+            border-top: 2px solid #ddd;
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+
+            .page {
+                width: 210mm;
+                height: 297mm;
+                margin: 0;
+                box-shadow: none;
+                page-break-after: always;
+            }
+
+            @page {
+                size: A4;
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- דף 1 -->
+    <div class="page">
+        <div class="header">
+            <div class="main-title">🔄 גלגולי נשמות ותיקון - תורת האר״י והעץ חיים 🔄</div>
+            <div class="subtitle">מסלול הנשמה | תיקון דרך הגלגולים | עץ חיים לרבי חיים ויטאל</div>
+        </div>
+
+        <div class="intro-box">
+            <div class="intro-title">🌳 מבוא לתורת הגלגולים</div>
+            <div class="intro-text">
+                תורת הגלגולים, כפי שמובאת בספר "עץ חיים" ובכתבי האר"י הקדוש, מסבירה את תהליך תיקון הנשמות דרך מחזורי
+                חיים שונים. כל גלגול מביא הזדמנות חדשה לתיקון ולהתעלות. הנשמה יורדת מהעולמות העליונים לעולם העשייה עם
+                שליחות ותיקון מדויק. הניסיונות שאנו עוברים בחיים הם רמזים למה שבאנו לתקן.
+            </div>
+        </div>
+
+        <div class="section-title">🌌 חמשת העולמות - מסלול ירידת הנשמה</div>
+        <div class="worlds-grid">
+            <div class="world-card">
+                <div class="world-number">1</div>
+                <div class="world-title">✨ אדם קדמון</div>
+                <div class="world-text">המקור של כל הנשמות, אור אין-סוף טהור - השורש העליון</div>
+            </div>
+            <div class="world-card">
+                <div class="world-number">2</div>
+                <div class="world-title">👑 אצילות</div>
+                <div class="world-text">עולם האחדות, הנשמות קרובות מאוד לאור האלוקי - אין הפרדה</div>
+            </div>
+            <div class="world-card">
+                <div class="world-number">3</div>
+                <div class="world-title">💫 בריאה</div>
+                <div class="world-text">עולם הנשמות, כאן הן מתחילות לקבל זהות פרטית - יש מי</div>
+            </div>
+            <div class="world-card">
+                <div class="world-number">4</div>
+                <div class="world-title">🌟 יצירה</div>
+                <div class="world-text">עולם המלאכים והכוחות הרוחניים - הכנה לירידה</div>
+            </div>
+            <div class="world-card">
+                <div class="world-number">5</div>
+                <div class="world-title">🌍 עשייה</div>
+                <div class="world-text">העולם שלנו, העולם הגשמי - הנשמות מתנסות בניסיונות</div>
+            </div>
+        </div>
+
+        <div class="section-title">🔄 שלושה סוגי גלגולים</div>
+        <div class="types-grid">
+            <div class="type-card">
+                <div class="type-icon">🌱</div>
+                <div class="type-title">גלגול ראשון</div>
+                <div class="type-text">נשמה חדשה שיורדת לעולם בפעם הראשונה - התחלת המסלול</div>
+            </div>
+            <div class="type-card">
+                <div class="type-icon">🔧</div>
+                <div class="type-title">גלגול תיקון</div>
+                <div class="type-text">נשמה חוזרת להשלים משימה שלא הצליחה בגלגול קודם - השלמה</div>
+            </div>
+            <div class="type-card">
+                <div class="type-icon">🤝</div>
+                <div class="type-title">גלגול סיוע</div>
+                <div class="type-text">נשמה גבוהה שיורדת לעזור לאחרים ולברר ניצוצות - שליחות</div>
+            </div>
+        </div>
+
+        <div class="section-title">🔍 סימנים לזיהוי גלגול קודם</div>
+        <div class="signs-grid">
+            <div class="sign-card">
+                <div class="sign-number">1</div>
+                <div class="sign-title">💭 משיכה לתחומים מסוימים</div>
+                <div class="sign-text">
+                    חיבור מיוחד ללימוד תורה, קבלה, חסידות או נושא ספציפי - רמז לשורש הנשמה ולגלגולים קודמים
+                </div>
+            </div>
+            <div class="sign-card">
+                <div class="sign-number">2</div>
+                <div class="sign-title">🌙 חלומות וזכרונות עמומים</div>
+                <div class="sign-text">
+                    חלומות חוזרים על מקומות, אנשים או תקופות - זיכרונות של הנשמה מגלגולים קודמים
+                </div>
+            </div>
+            <div class="sign-card">
+                <div class="sign-number">3</div>
+                <div class="sign-title">🔁 קשיים חוזרים</div>
+                <div class="sign-text">
+                    אתגרים שחוזרים שוב ושוב - רמז לתיקון שהנשמה צריכה להשלים בגלגול הזה
+                </div>
+            </div>
+            <div class="sign-card">
+                <div class="sign-number">4</div>
+                <div class="sign-title">✨ תחושות "דז'ה וו"</div>
+                <div class="sign-text">
+                    תחושה שכבר היית במקום או פגשת מישהו - זיכרון נשמתי מגלגול קודם
+                </div>
+            </div>
+            <div class="sign-card">
+                <div class="sign-number">5</div>
+                <div class="sign-title">🎯 כישרונות טבעיים</div>
+                <div class="sign-text">
+                    כישרון טבעי בתחום מסוים ללא לימוד - הנשמה כבר עסקה בזה בגלגול קודם
+                </div>
+            </div>
+            <div class="sign-card">
+                <div class="sign-number">6</div>
+                <div class="sign-title">💖 אהבה ממבט ראשון</div>
+                <div class="sign-text">
+                    חיבור עמוק לאדם או מקום - ייתכן שהנשמות הכירו בגלגולים קודמים
+                </div>
+            </div>
+        </div>
+
+        <div class="section-title">🛠️ כלים לזיהוי התיקון האישי</div>
+        <div class="tools-box">
+            <div class="tools-title">🔍 איך אדע מה באתי לתקן?</div>
+            <div class="tools-grid">
+                <div class="tool-item">
+                    <strong>1️⃣ האתגרים בחיים:</strong> הניסיונות שלך הם רמזים למה שצריך לתקן - לא סתם!
+                </div>
+                <div class="tool-item">
+                    <strong>2️⃣ המשיכות הרוחניות:</strong> לאיזה סוג תורה נמשך? גמרא, קבלה, חסידות?
+                </div>
+                <div class="tool-item">
+                    <strong>3️⃣ השם שלך:</strong> יש בו רמז קבלי לתיקון - כל אות ומספר
+                </div>
+                <div class="tool-item">
+                    <strong>4️⃣ תאריך הלידה:</strong> יום, חודש, שנה - רמזים לשורש הנשמה
+                </div>
+                <div class="tool-item">
+                    <strong>5️⃣ נטיות טבעיות:</strong> למה אתה טוב מטבע? זה חיבור לגלגולים
+                </div>
+                <div class="tool-item">
+                    <strong>6️⃣ דפוסים חוזרים:</strong> מה חוזר שוב ושוב? זה התיקון שלך!
+                </div>
+                <div class="tool-item">
+                    <strong>7️⃣ המשפחה שלך:</strong> התפקיד שלך במשפחה - רמז לתיקון משפחתי
+                </div>
+                <div class="tool-item">
+                    <strong>8️⃣ התקופה שנולדת בה:</strong> דור זה, זמן זה - יש משמעות לתיקון הדור
+                </div>
+            </div>
+        </div>
+
+        <div class="section-title">🗺️ מפת התיקון האישי</div>
+        <div class="signs-grid">
+            <div class="sign-card">
+                <div class="sign-number">🌟</div>
+                <div class="sign-title">שורש הנשמה</div>
+                <div class="sign-text">
+                    מאיזו ספירה הנשמה שלך? חסד, גבורה, תפארת? - קובע את הכיוון הרוחני שלך
+                </div>
+            </div>
+            <div class="sign-card">
+                <div class="sign-number">🔧</div>
+                <div class="sign-title">תיקונים נדרשים</div>
+                <div class="sign-text">
+                    מה צריך לתקן? מידות, מצוות, יחסים? - זה מה שבאת לעולם בשבילו
+                </div>
+            </div>
+            <div class="sign-card">
+                <div class="sign-number">💪</div>
+                <div class="sign-title">כוחות מיוחדים</div>
+                <div class="sign-text">
+                    מה אתה טוב בו? - אלו כלים שהנשמה שלך כבר פיתחה בגלגולים קודמים
+                </div>
+            </div>
+            <div class="sign-card">
+                <div class="sign-number">⚡</div>
+                <div class="sign-title">אתגרים ספציפיים</div>
+                <div class="sign-text">
+                    מה קשה לך? - אלו התחומים שזקוקים לתיקון מיוחד בגלגול הזה
+                </div>
+            </div>
+        </div>
+
+        <div class="page-footer">
+            תלמיד חכם • משה לאון יעקובוב | גלגולי נשמות ותיקון | ז' בתשרי ה'תשפ"ו • 30.09.2025
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>שערי האורה - לימוד וחכמה</title>
+
+    <!-- Bootstrap RTL CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="styles.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- תפריט ניווט -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="bi bi-book"></i>
+                שערי האורה
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">דף הבית</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="intro.html">מבוא ויסודות</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="study.html">לימוד ועיון</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="practice.html">עבודה מעשית</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="tables.html">טבלאות ומידע</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="kabbalah.html">העמקה וקבלה</a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control ms-2" type="search" placeholder="חיפוש...">
+                    <button class="btn btn-primary" type="submit">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <!-- תוכן ראשי -->
+    <main class="container my-5">
+        <div class="row">
+            <!-- תוכן מרכזי -->
+            <div class="col-lg-8">
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+                        <h1 class="card-title mb-4">ברוכים הבאים לשערי האורה</h1>
+                        <p class="card-text lead">מסע רוחני דרך 39 שערי האור והקדושה - לימוד, העמקה וחכמה בספר שערי
+                            אורה.</p>
+                        <div class="mt-4">
+                            <a href="intro.html" class="btn btn-primary">
+                                <i class="bi bi-journal-text"></i>
+                                התחל את המסע
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- קטגוריות לימוד -->
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <div class="card shadow-sm h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <i class="bi bi-book"></i>
+                                    מבוא ויסודות
+                                </h5>
+                                <p class="card-text">הכרות ראשונית עם עולם הקבלה והחכמה היהודית.</p>
+                                <a href="intro.html" class="btn btn-outline-primary">למד עוד</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <div class="card shadow-sm h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <i class="bi bi-journal-album"></i>
+                                    לימוד ועיון
+                                </h5>
+                                <p class="card-text">שיעורים מעמיקים בספר שערי אורה.</p>
+                                <a href="study.html" class="btn btn-outline-primary">התחל ללמוד</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <div class="card shadow-sm h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <i class="bi bi-gear"></i>
+                                    עבודה מעשית
+                                </h5>
+                                <p class="card-text">יישום והטמעה של הלימוד בחיי היומיום.</p>
+                                <a href="practice.html" class="btn btn-outline-primary">התחל לתרגל</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <div class="card shadow-sm h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <i class="bi bi-table"></i>
+                                    טבלאות ומידע
+                                </h5>
+                                <p class="card-text">מידע מאורגן וטבלאות להעמקת הלימוד.</p>
+                                <a href="tables.html" class="btn btn-outline-primary">צפה במידע</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- סרגל צד -->
+            <div class="col-lg-4">
+                <!-- שיעור יומי -->
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">שיעור יומי</h5>
+                        <div class="alert alert-info">
+                            <i class="bi bi-calendar-check"></i>
+                            שיעור יומי לתאריך <span id="currentDate"></span>
+                        </div>
+                        <a href="study.html#daily" class="btn btn-primary w-100">
+                            <i class="bi bi-play-circle"></i>
+                            צפה בשיעור
+                        </a>
+                    </div>
+                </div>
+
+                <!-- מדריך מהיר -->
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">מדריך מהיר</h5>
+                        <div class="list-group">
+                            <a href="intro.html#guide" class="list-group-item list-group-item-action">
+                                <i class="bi bi-signpost-2"></i>
+                                איך להתחיל?
+                            </a>
+                            <a href="study.html#structure" class="list-group-item list-group-item-action">
+                                <i class="bi bi-diagram-3"></i>
+                                מבנה הלימוד
+                            </a>
+                            <a href="practice.html#methods" class="list-group-item list-group-item-action">
+                                <i class="bi bi-list-check"></i>
+                                שיטות לימוד
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- כלים שימושיים -->
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">כלים שימושיים</h5>
+                        <ul class="list-unstyled">
+                            <li class="mb-2">
+                                <i class="bi bi-calculator"></i>
+                                <a href="tools.html#gematria" class="text-decoration-none">מחשבון גימטריה</a>
+                            </li>
+                            <li class="mb-2">
+                                <i class="bi bi-book-half"></i>
+                                <a href="tools.html#dictionary" class="text-decoration-none">מילון מושגים</a>
+                            </li>
+                            <li class="mb-2">
+                                <i class="bi bi-calendar3"></i>
+                                <a href="tools.html#schedule" class="text-decoration-none">לוח זמנים</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- פוטר -->
+    <footer class="bg-light py-4 mt-5">
+        <div class="container text-center">
+            <p class="mb-0">© כל הזכויות שמורות - שערי האורה</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="scripts.js"></script>
+</body>
+
+</html>
+
+</html>
+
+</html>

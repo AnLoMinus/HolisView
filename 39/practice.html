@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>עבודה מעשית - שערי האורה</title>
+
+    <!-- Bootstrap RTL CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="styles.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- תפריט ניווט -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="bi bi-book"></i>
+                שערי האורה
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">דף הבית</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="intro.html">מבוא ויסודות</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="study.html">לימוד ועיון</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="practice.html">עבודה מעשית</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="tables.html">טבלאות ומידע</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="kabbalah.html">העמקה וקבלה</a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control ms-2" type="search" placeholder="חיפוש...">
+                    <button class="btn btn-primary" type="submit">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <!-- נתיב פירורי לחם -->
+    <div class="container mt-3">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">דף הבית</a></li>
+                <li class="breadcrumb-item active">עבודה מעשית</li>
+            </ol>
+        </nav>
+    </div>
+
+    <!-- תוכן ראשי -->
+    <main class="container my-5">
+        <div class="row">
+            <!-- תוכן מרכזי -->
+            <div class="col-lg-8">
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+                        <h1 class="card-title">עבודה מעשית</h1>
+                        <p class="lead">יישום והטמעה של הלימוד בחיי היומיום</p>
+
+                        <!-- לשוניות -->
+                        <ul class="nav nav-tabs mb-4" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-bs-toggle="tab" href="#daily-practice">תרגול יומי</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-bs-toggle="tab" href="#meditations">מדיטציות</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-bs-toggle="tab" href="#exercises">תרגילים</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-bs-toggle="tab" href="#personal-journal">יומן אישי</a>
+                            </li>
+                        </ul>
+
+                        <!-- תוכן הלשוניות -->
+                        <div class="tab-content">
+                            <!-- תרגול יומי -->
+                            <div class="tab-pane fade show active" id="daily-practice">
+                                <h2>תרגול יומי</h2>
+                                <div class="alert alert-info">
+                                    <i class="bi bi-calendar-check"></i>
+                                    תרגול לתאריך <span id="currentDate"></span>
+                                </div>
+
+                                <div class="practice-content">
+                                    <h3>כוונה יומית</h3>
+                                    <p class="practice-text">התבוננות בשם...</p>
+
+                                    <h3>תרגול מעשי</h3>
+                                    <ol class="practice-steps">
+                                        <li>התבודדות - 15 דקות</li>
+                                        <li>לימוד השם - 10 דקות</li>
+                                        <li>יישום בחיי היומיום</li>
+                                    </ol>
+
+                                    <div class="d-flex align-items-center mt-4">
+                                        <button id="startPracticeBtn" class="btn btn-primary me-3"
+                                            onclick="startPractice()">
+                                            <i class="bi bi-play-circle"></i>
+                                            התחל תרגול
+                                        </button>
+                                        <div id="practiceTimer" class="h4 mb-0">00:00</div>
+                                    </div>
+
+                                    <div class="progress mt-4">
+                                        <div class="progress-bar" role="progressbar" style="width: 0%"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- מדיטציות -->
+                            <div class="tab-pane fade" id="meditations">
+                                <h2>מדיטציות</h2>
+                                <div class="accordion" id="meditationsAccordion">
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header">
+                                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                                data-bs-target="#meditation1">
+                                                מדיטציה על השם הראשון
+                                            </button>
+                                        </h2>
+                                        <div id="meditation1" class="accordion-collapse collapse show"
+                                            data-bs-parent="#meditationsAccordion">
+                                            <div class="accordion-body">
+                                                <p>הנחיות למדיטציה...</p>
+                                                <button class="btn btn-primary"
+                                                    onclick="startMeditation('meditation1')">
+                                                    <i class="bi bi-play-circle"></i>
+                                                    התחל מדיטציה
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- תרגילים -->
+                            <div class="tab-pane fade" id="exercises">
+                                <h2>תרגילים</h2>
+                                <div class="list-group">
+                                    <div class="list-group-item">
+                                        <h5 class="mb-1">תרגיל 1: התבוננות בשמות</h5>
+                                        <p class="mb-1">תיאור התרגיל...</p>
+                                        <small class="text-muted">משך: 15 דקות</small>
+                                        <div class="form-check mt-2">
+                                            <input class="form-check-input" type="checkbox" id="exercise1">
+                                            <label class="form-check-label" for="exercise1">
+                                                סמן כהושלם
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- יומן אישי -->
+                            <div class="tab-pane fade" id="personal-journal">
+                                <h2>יומן אישי</h2>
+                                <div class="mb-3">
+                                    <label for="journalDate" class="form-label">תאריך</label>
+                                    <input type="date" class="form-control" id="journalDate">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="journalEntry" class="form-label">רשומה</label>
+                                    <textarea class="form-control" id="journalEntry" rows="5"></textarea>
+                                </div>
+                                <button class="btn btn-primary" onclick="saveJournalEntry()">
+                                    <i class="bi bi-save"></i>
+                                    שמור רשומה
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- סרגל צד -->
+            <div class="col-lg-4">
+                <!-- טיפים והמלצות -->
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">טיפים והמלצות</h5>
+                        <ul class="list-unstyled">
+                            <li class="mb-3">
+                                <i class="bi bi-lightbulb"></i>
+                                קבע זמן קבוע לתרגול
+                            </li>
+                            <li class="mb-3">
+                                <i class="bi bi-clock"></i>
+                                התחל ב-15 דקות ביום
+                            </li>
+                            <li class="mb-3">
+                                <i class="bi bi-journal-text"></i>
+                                נהל יומן התקדמות
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- התקדמות -->
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">התקדמות</h5>
+                        <div class="progress mb-3">
+                            <div class="progress-bar" role="progressbar" style="width: 0%"></div>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <span>תרגילים שהושלמו:</span>
+                            <span id="completedExercises">0/10</span>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <span>זמן תרגול השבוע:</span>
+                            <span id="weeklyPracticeTime">0 דקות</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- פוטר -->
+    <footer class="bg-light py-4 mt-5">
+        <div class="container text-center">
+            <p class="mb-0">© כל הזכויות שמורות - שערי האורה</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="scripts.js"></script>
+    <!-- Practice Page JavaScript -->
+    <script src="practice.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>39 שערי האורה - טבלאות</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css">
+    <style>
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        body {
+            width: 210mm;
+            height: 297mm;
+            margin: 0;
+            padding: 5mm;
+            font-size: 7pt;
+        }
+
+        .main-title {
+            text-align: center;
+            font-size: 9pt;
+            font-weight: bold;
+            margin-bottom: 1mm;
+            color: #1565c0;
+            border-bottom: 2px solid #90caf9;
+            padding-bottom: 1mm;
+        }
+
+        .table {
+            font-size: 7pt;
+            margin-bottom: 2mm;
+        }
+
+        .table th {
+            padding: 1mm;
+            font-size: 7pt;
+            white-space: nowrap;
+            text-align: center;
+        }
+
+        .table td {
+            padding: 1mm;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        /* סגנונות לשלב ראשון - בירור */
+        .stage-1 .stage-header {
+            background-color: #e3f2fd;
+            color: #1565c0;
+        }
+
+        .stage-1 .table {
+            border-color: #90caf9;
+        }
+
+        .stage-1 .table th {
+            background-color: #bbdefb;
+        }
+
+        /* סגנונות לשלב שני - תיקון */
+        .stage-2 .stage-header {
+            background-color: #f3e5f5;
+            color: #7b1fa2;
+        }
+
+        .stage-2 .table {
+            border-color: #ce93d8;
+        }
+
+        .stage-2 .table th {
+            background-color: #e1bee7;
+        }
+
+        /* סגנונות לשלב שלישי - השלמה */
+        .stage-3 .stage-header {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .stage-3 .table {
+            border-color: #a5d6a7;
+        }
+
+        .stage-3 .table th {
+            background-color: #c8e6c9;
+        }
+
+        .stage-header {
+            font-weight: bold;
+            text-align: center;
+            padding: 1mm;
+            margin-bottom: 1mm;
+            font-size: 7pt;
+        }
+
+        .table-responsive {
+            margin-bottom: 2mm;
+        }
+
+        @media print {
+            body {
+                width: 210mm;
+                height: 297mm;
+                margin: 0;
+                padding: 5mm;
+            }
+
+            .no-print {
+                display: none;
+            }
+
+            /* סימון שורות זוגיות ואי-זוגיות */
+            .table tbody tr:nth-child(even) {
+                background-color: rgba(0, 0, 0, 0.02);
+            }
+
+            .table tbody tr:hover {
+                background-color: rgba(0, 0, 0, 0.05);
+            }
+
+            /* הדגשת מספר השער */
+            .table td:first-child {
+                font-weight: bold;
+                color: #1565c0;
+            }
+        }
+
+        /* הדגשת טור המלאכה ושער האורה */
+        .table td:nth-child(2) {
+            /* שער האורה */
+            font-weight: bold;
+            color: #1565c0;
+            background-color: rgba(25, 118, 210, 0.05);
+        }
+
+        .table td:nth-child(4) {
+            /* מלאכה */
+            font-weight: bold;
+            color: #2e7d32;
+            background-color: rgba(46, 125, 50, 0.05);
+        }
+
+        /* התאמת צבעים לכל שלב */
+        .stage-1 .table td:nth-child(2) {
+            color: #1565c0;
+            background-color: rgba(25, 118, 210, 0.05);
+        }
+
+        .stage-1 .table td:nth-child(4) {
+            color: #1565c0;
+            background-color: rgba(25, 118, 210, 0.05);
+        }
+
+        .stage-2 .table td:nth-child(2) {
+            color: #7b1fa2;
+            background-color: rgba(123, 31, 162, 0.05);
+        }
+
+        .stage-2 .table td:nth-child(4) {
+            color: #7b1fa2;
+            background-color: rgba(123, 31, 162, 0.05);
+        }
+
+        .stage-3 .table td:nth-child(2) {
+            color: #2e7d32;
+            background-color: rgba(46, 125, 50, 0.05);
+        }
+
+        .stage-3 .table td:nth-child(4) {
+            color: #2e7d32;
+            background-color: rgba(46, 125, 50, 0.05);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid p-0">
+        <div class="main-title">39 שערי האורה - טבלאות המלאכות והתיקון 📚</div>
+
+        <!-- שלב ראשון -->
+        <div class="stage-1">
+            <div class="stage-header">שלב ראשון - בירור הניצוצות 🌟 (הכנה לתיקון)</div>
+            <div class="table-responsive">
+                <table class="table table-bordered table-sm">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>שער האורה ⭐</th>
+                            <th>משמעות השער 💡</th>
+                            <th>מלאכה 🛠️</th>
+                            <th>משמעות המלאכה 🔍</th>
+                            <th>פעולה להנעה ✨</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>כתר עליון</td>
+                            <td>מקור השפע</td>
+                            <td>זורע 🌱</td>
+                            <td>התחלה חדשה</td>
+                            <td>התחל בפרויקט חדש</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>חכמה</td>
+                            <td>אור האינסוף הראשון</td>
+                            <td>חורש 🌾</td>
+                            <td>הכנת הקרקע</td>
+                            <td>הכן תוכנית מפורטת</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>בינה</td>
+                            <td>ההבנה העליונה</td>
+                            <td>קוצר ✂️</td>
+                            <td>הפרדת הטוב מהרע</td>
+                            <td>זהה את הכישרונות</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>חסד</td>
+                            <td>כוח הנתינה</td>
+                            <td>מעמר 🏵️</td>
+                            <td>איסוף הטוב</td>
+                            <td>התנדב מכישרונותיך</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>גבורה</td>
+                            <td>כוח הדין והצמצום</td>
+                            <td>דש 🏚️</td>
+                            <td>שבירת הקליפות</td>
+                            <td>צור גבולות ברורים</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>תפארת</td>
+                            <td>איזון בין חסד לדין</td>
+                            <td>זורה 💨</td>
+                            <td>הפרדת המוץ מהתבן</td>
+                            <td>מצא את האיזון</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>נצח</td>
+                            <td>התמדה והתמודדות</td>
+                            <td>בורר ⚖️</td>
+                            <td>בחירת הטוב</td>
+                            <td>קבע זמן קבוע ללימוד</td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td>הוד</td>
+                            <td>קבלת עול</td>
+                            <td>טוחן 🌾</td>
+                            <td>פירוק לגורמים</td>
+                            <td>קבל משימה מאתגרת</td>
+                        </tr>
+                        <tr>
+                            <td>9</td>
+                            <td>יסוד</td>
+                            <td>קשר בין עליונים לתחתונים</td>
+                            <td>מרקד 🍚</td>
+                            <td>חיבור חלקים</td>
+                            <td>חבר בין לימוד למעשה</td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td>מלכות</td>
+                            <td>גילוי האור בעולם</td>
+                            <td>לש 🍞</td>
+                            <td>יצירת צורה חדשה</td>
+                            <td>יישם את הלימוד בפועל</td>
+                        </tr>
+                        <tr>
+                            <td>11</td>
+                            <td>חכמה נסתרת</td>
+                            <td>הבנה שמעבר לגילוי</td>
+                            <td>אופה 🔥</td>
+                            <td>הפיכת החומר לרוח</td>
+                            <td>התבונן בתהליכים</td>
+                        </tr>
+                        <tr>
+                            <td>12</td>
+                            <td>דעת קדושה</td>
+                            <td>החיבור השלם לידיעה</td>
+                            <td>גוזז צמר ✂️</td>
+                            <td>הפרדת החומר מהרוח</td>
+                            <td>חקור שורשי מחשבות</td>
+                        </tr>
+                        <tr>
+                            <td>13</td>
+                            <td>התבוננות פנימית</td>
+                            <td>ראיית הנסתר בעומק</td>
+                            <td>מלבנו 🧼</td>
+                            <td>ניקוי וזיכוך</td>
+                            <td>ערוך חשבון נפש יומי</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- שלב שני -->
+        <div class="stage-2">
+            <div class="stage-header">שלב שני - תיקון הכוחות 💪 (העבודה הפנימית)</div>
+            <div class="table-responsive">
+                <table class="table table-bordered table-sm">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>שער האורה ⭐</th>
+                            <th>משמעות השער 💡</th>
+                            <th>מלאכה 🛠️</th>
+                            <th>משמעות המלאכה 🔍</th>
+                            <th>פעולה להנעה ✨</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>14</td>
+                            <td>שער הרצון</td>
+                            <td>גילוי הכוונה הפנימית</td>
+                            <td>מנפצו 🌀</td>
+                            <td>שבירת המחסומים</td>
+                            <td>כתוב את החזון האישי</td>
+                        </tr>
+                        <tr>
+                            <td>15</td>
+                            <td>שער היראה</td>
+                            <td>הכרת מקומך מול הבורא</td>
+                            <td>צובע 🎨</td>
+                            <td>הענקת משמעות</td>
+                            <td>התבונן בגדולת הבורא</td>
+                        </tr>
+                        <tr>
+                            <td>16</td>
+                            <td>שער התשובה</td>
+                            <td>היכולת לשוב ולהשתנות</td>
+                            <td>טווה 🧵</td>
+                            <td>יצירת חיבור חדש</td>
+                            <td>בחר תחום לשינוי</td>
+                        </tr>
+                        <tr>
+                            <td>17</td>
+                            <td>שער הנבואה</td>
+                            <td>קבלת שפע עליון</td>
+                            <td>מיסך 🏗️</td>
+                            <td>יצירת מסגרת</td>
+                            <td>קבע זמן להתבודדות</td>
+                        </tr>
+                        <tr>
+                            <td>18</td>
+                            <td>שער הקדושה</td>
+                            <td>עלייה לרמת קדושה גבוהה</td>
+                            <td>עושה שתי בתי נירין 🔗</td>
+                            <td>יצירת חיבור כפול</td>
+                            <td>הוסף הידור במצווה</td>
+                        </tr>
+                        <tr>
+                            <td>19</td>
+                            <td>שער הטהרה</td>
+                            <td>ניקיון רוחני מוחלט</td>
+                            <td>אורג 🎭</td>
+                            <td>יצירת תבנית</td>
+                            <td>טהר את סביבתך</td>
+                        </tr>
+                        <tr>
+                            <td>20</td>
+                            <td>שער התיקון הפנימי</td>
+                            <td>תיקון אמיתי מהשורש</td>
+                            <td>פוצע ✂️</td>
+                            <td>פתיחת חלון</td>
+                            <td>זהה דפוס התנהגות שלילי</td>
+                        </tr>
+                        <tr>
+                            <td>21</td>
+                            <td>שער הברכה</td>
+                            <td>שפע מתוך שלמות פנימית</td>
+                            <td>קושר 🎀</td>
+                            <td>יצירת חיבור</td>
+                            <td>הודה על הטוב</td>
+                        </tr>
+                        <tr>
+                            <td>22</td>
+                            <td>שער התפילה</td>
+                            <td>חיבור עמוק עם הבורא</td>
+                            <td>מתיר 🔗</td>
+                            <td>שחרור הקשרים</td>
+                            <td>הוסף כוונה בתפילה</td>
+                        </tr>
+                        <tr>
+                            <td>23</td>
+                            <td>שער החסדים הנעלים</td>
+                            <td>הבנת חסדי השם</td>
+                            <td>תופר 🧷</td>
+                            <td>חיבור חלקים</td>
+                            <td>עשה חסד באופן קבוע</td>
+                        </tr>
+                        <tr>
+                            <td>24</td>
+                            <td>שער הגילוי האלוקי</td>
+                            <td>חוויית אור ה' בעולם</td>
+                            <td>קורע ❌</td>
+                            <td>הסרת המחיצות</td>
+                            <td>זהה אמונות מוטעות</td>
+                        </tr>
+                        <tr>
+                            <td>25</td>
+                            <td>שער החיים</td>
+                            <td>חיבור לחיים נצחיים</td>
+                            <td>צד 🦊</td>
+                            <td>לכידת האמת</td>
+                            <td>חפש את נקודות האמת</td>
+                        </tr>
+                        <tr>
+                            <td>26</td>
+                            <td>שער הקשר לאבות</td>
+                            <td>חיבור לשורשים ולנשמות האבות</td>
+                            <td>שוחט 🔪</td>
+                            <td>הפרדת החי מהמת</td>
+                            <td>למד על האבות</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- שלב שלישי -->
+        <div class="stage-3">
+            <div class="stage-header">שלב שלישי - השלמת התיקון ✨ (השלב העליון)</div>
+            <div class="table-responsive">
+                <table class="table table-bordered table-sm">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>שער האורה ⭐</th>
+                            <th>משמעות השער 💡</th>
+                            <th>מלאכה 🛠️</th>
+                            <th>משמעות המלאכה 🔍</th>
+                            <th>פעולה להנעה ✨</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>27</td>
+                            <td>שער התגלות השכינה</td>
+                            <td>חוויית נוכחות ה' בעולם</td>
+                            <td>מפשיט 🦌</td>
+                            <td>הסרת המעטפת החיצונית</td>
+                            <td>ראה את הטוב האלוקי</td>
+                        </tr>
+                        <tr>
+                            <td>28</td>
+                            <td>שער חיבור העליונים והתחתונים</td>
+                            <td>אחדות בין עולמות</td>
+                            <td>מעבד 🏺</td>
+                            <td>עיבוד החומר</td>
+                            <td>חבר בין חומר לרוח</td>
+                        </tr>
+                        <tr>
+                            <td>29</td>
+                            <td>שער מידת הרחמים</td>
+                            <td>התעלות מעל הדין</td>
+                            <td>ממחק 🏷️</td>
+                            <td>מחיקת הכתמים</td>
+                            <td>דון לכף זכות</td>
+                        </tr>
+                        <tr>
+                            <td>30</td>
+                            <td>שער סודות הבריאה</td>
+                            <td>הבנת תהליך הבריאה</td>
+                            <td>משרטט ✍️</td>
+                            <td>ציור המבנה</td>
+                            <td>למד את סודות הבריאה</td>
+                        </tr>
+                        <tr>
+                            <td>31</td>
+                            <td>שער גאולת ישראל</td>
+                            <td>איך מגיעים לתיקון העולם</td>
+                            <td>חותר ⛏️</td>
+                            <td>חפירת יסודות</td>
+                            <td>פעל למען תיקון עם ישראל</td>
+                        </tr>
+                        <tr>
+                            <td>32</td>
+                            <td>שער עבודת הנשמה</td>
+                            <td>העבודה הפנימית העמוקה</td>
+                            <td>כותב 🖋️</td>
+                            <td>תיעוד התובנות</td>
+                            <td>כתוב את התובנות</td>
+                        </tr>
+                        <tr>
+                            <td>33</td>
+                            <td>שער ההארה האלוקית</td>
+                            <td>קבלת אור הנשמה</td>
+                            <td>מוחק 🧽</td>
+                            <td>ניקוי המחשבות</td>
+                            <td>טהר את המחשבות</td>
+                        </tr>
+                        <tr>
+                            <td>34</td>
+                            <td>שער תיקון העולם</td>
+                            <td>איך לתקן את העולם כולו</td>
+                            <td>בונה 🏗️</td>
+                            <td>בניית המבנה</td>
+                            <td>בנה מיזם לתיקון החברה</td>
+                        </tr>
+                        <tr>
+                            <td>35</td>
+                            <td>שער הידיעה השלמה</td>
+                            <td>השגת חכמה שלמה</td>
+                            <td>סותר 🔨</td>
+                            <td>פירוק המבנה</td>
+                            <td>הפץ את החכמה</td>
+                        </tr>
+                        <tr>
+                            <td>36</td>
+                            <td>שער החכמה הפנימית</td>
+                            <td>ההבנה השלמה של המציאות</td>
+                            <td>מכבה 🔥</td>
+                            <td>כיבוי היצרים</td>
+                            <td>שלוט ביצרים</td>
+                        </tr>
+                        <tr>
+                            <td>37</td>
+                            <td>שער גילוי משיח</td>
+                            <td>קבלת תפקיד הגאולה</td>
+                            <td>מבעיר 🔥</td>
+                            <td>הדלקת האור</td>
+                            <td>הדלק את אור הגאולה</td>
+                        </tr>
+                        <tr>
+                            <td>38</td>
+                            <td>שער התענוג העליון</td>
+                            <td>חוויית האור העליון</td>
+                            <td>מכה בפטיש ⚒️</td>
+                            <td>השלמת המלאכה</td>
+                            <td>מצא את השמחה בעבודת ה'</td>
+                        </tr>
+                        <tr>
+                            <td>39</td>
+                            <td>שער הדבקות השלמה</td>
+                            <td>השגת דבקות מוחלטת באלוקים</td>
+                            <td>מוציא מרשות לרשות 🚀</td>
+                            <td>העברת האור</td>
+                            <td>העבר את האור לאחרים</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>

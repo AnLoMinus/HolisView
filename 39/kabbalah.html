@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>העמקה וקבלה - שערי האורה</title>
+
+    <!-- Bootstrap RTL CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="styles.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- תפריט ניווט -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="bi bi-book"></i>
+                שערי האורה
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">דף הבית</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="intro.html">מבוא ויסודות</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="study.html">לימוד ועיון</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="practice.html">עבודה מעשית</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="tables.html">טבלאות ומידע</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="kabbalah.html">העמקה וקבלה</a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control ms-2" type="search" placeholder="חיפוש...">
+                    <button class="btn btn-primary" type="submit">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <!-- נתיב פירורי לחם -->
+    <div class="container mt-3">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">דף הבית</a></li>
+                <li class="breadcrumb-item active">העמקה וקבלה</li>
+            </ol>
+        </nav>
+    </div>
+
+    <!-- תוכן ראשי -->
+    <main class="container my-5">
+        <div class="row">
+            <!-- תוכן מרכזי -->
+            <div class="col-lg-8">
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+                        <h1 class="card-title">העמקה וקבלה</h1>
+                        <p class="lead">העמקה בסודות התורה ותורת הקבלה</p>
+
+                        <!-- לשוניות -->
+                        <ul class="nav nav-tabs mb-4" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-bs-toggle="tab" href="#sefirot">עולם הספירות</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-bs-toggle="tab" href="#names">שמות הקודש</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-bs-toggle="tab" href="#combinations">צירופי אותיות</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-bs-toggle="tab" href="#meditations">מדיטציות עמוקות</a>
+                            </li>
+                        </ul>
+
+                        <!-- תוכן הלשוניות -->
+                        <div class="tab-content">
+                            <!-- עולם הספירות -->
+                            <div class="tab-pane fade show active" id="sefirot">
+                                <div class="sefirot-content">
+                                    <h2>עולם הספירות</h2>
+                                    <div class="alert alert-warning">
+                                        <i class="bi bi-exclamation-triangle"></i>
+                                        תוכן זה מיועד למתקדמים בלבד. יש ללמוד את היסודות לפני העמקה בחומר זה.
+                                    </div>
+
+                                    <div class="sefirot-diagram text-center my-4">
+                                        <!-- כאן יתווסף תרשים הספירות -->
+                                        <img src="images/sefirot.svg" alt="תרשים עץ החיים" class="img-fluid">
+                                    </div>
+
+                                    <div class="accordion" id="sefirotAccordion">
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header">
+                                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                                    data-bs-target="#sefirah1">
+                                                    כתר - רצון עליון
+                                                </button>
+                                            </h2>
+                                            <div id="sefirah1" class="accordion-collapse collapse show"
+                                                data-bs-parent="#sefirotAccordion">
+                                                <div class="accordion-body">
+                                                    <p>הספירה הראשונה והגבוהה ביותר...</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- שמות הקודש -->
+                            <div class="tab-pane fade" id="names">
+                                <h2>שמות הקודש</h2>
+                                <div class="names-content">
+                                    <div class="mb-4">
+                                        <h3>שער ראשון - שם הויה</h3>
+                                        <p>העמקה בשם המפורש...</p>
+                                    </div>
+
+                                    <div class="practice-section">
+                                        <h4>תרגול והתבוננות</h4>
+                                        <ol class="practice-steps">
+                                            <li>התבוננות בכל אות</li>
+                                            <li>הבנת הקשרים</li>
+                                            <li>מדיטציה על המשמעות</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- צירופי אותיות -->
+                            <div class="tab-pane fade" id="combinations">
+                                <h2>צירופי אותיות</h2>
+                                <div class="combinations-content">
+                                    <div class="mb-4">
+                                        <div class="input-group">
+                                            <input type="text" id="letterInput" class="form-control"
+                                                placeholder="הכנס אותיות...">
+                                            <button class="btn btn-primary" onclick="generateCombinations()">
+                                                <i class="bi bi-shuffle"></i>
+                                                צור צירופים
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <div id="combinationsResult" class="d-none">
+                                        <h4>צירופים אפשריים:</h4>
+                                        <div class="combinations-grid">
+                                            <!-- כאן יוצגו הצירופים -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- מדיטציות עמוקות -->
+                            <div class="tab-pane fade" id="meditations">
+                                <h2>מדיטציות עמוקות</h2>
+                                <div class="meditations-content">
+                                    <div class="alert alert-info">
+                                        <i class="bi bi-info-circle"></i>
+                                        מומלץ לתרגל מדיטציות אלו בהדרכת מורה מוסמך.
+                                    </div>
+
+                                    <div class="meditation-exercise mb-4">
+                                        <h4>מדיטציית יחודים</h4>
+                                        <p>הנחיות לתרגול...</p>
+                                        <button class="btn btn-primary" onclick="startAdvancedMeditation('yichudim')">
+                                            <i class="bi bi-play-circle"></i>
+                                            התחל מדיטציה
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- סרגל צד -->
+            <div class="col-lg-4">
+                <!-- רמת התקדמות -->
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">רמת התקדמות</h5>
+                        <div class="progress mb-3">
+                            <div class="progress-bar" role="progressbar" style="width: 0%"></div>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <span>שיעורים שהושלמו:</span>
+                            <span id="completedLessons">0/10</span>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <span>רמה נוכחית:</span>
+                            <span id="currentLevel">מתחיל</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- הערות אישיות -->
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">הערות אישיות</h5>
+                        <div class="mb-3">
+                            <label for="personalNotes" class="form-label">רשום את תובנותיך</label>
+                            <textarea class="form-control" id="personalNotes" rows="4"></textarea>
+                        </div>
+                        <button class="btn btn-primary w-100" onclick="savePersonalNotes()">
+                            <i class="bi bi-save"></i>
+                            שמור הערות
+                        </button>
+                    </div>
+                </div>
+
+                <!-- מקורות נוספים -->
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">מקורות נוספים</h5>
+                        <ul class="list-unstyled">
+                            <li class="mb-2">
+                                <i class="bi bi-book"></i>
+                                <a href="#" class="text-decoration-none">עץ חיים</a>
+                            </li>
+                            <li class="mb-2">
+                                <i class="bi bi-book"></i>
+                                <a href="#" class="text-decoration-none">פרדס רימונים</a>
+                            </li>
+                            <li class="mb-2">
+                                <i class="bi bi-book"></i>
+                                <a href="#" class="text-decoration-none">ספר יצירה</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- פוטר -->
+    <footer class="bg-light py-4 mt-5">
+        <div class="container text-center">
+            <p class="mb-0">© כל הזכויות שמורות - שערי האורה</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="scripts.js"></script>
+    <!-- Kabbalah Page JavaScript -->
+    <script src="kabbalah.js"></script>
+</body>
+
+</html>

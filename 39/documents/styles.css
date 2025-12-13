@@ -1,0 +1,1288 @@
+body {
+  background-color: #f8f9fa;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.card {
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.display-4 {
+  color: #2c3e50;
+}
+
+.table {
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.table thead th {
+  background-color: #2c3e50;
+  color: white;
+  border: none;
+}
+
+.badge {
+  padding: 8px 16px;
+  font-size: 1rem;
+}
+
+.table-responsive {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.lead {
+  color: #666;
+  font-size: 1.25rem;
+}
+
+/* סגנונות תפריט */
+.menu-button {
+  position: fixed;
+  top: 72px;
+  right: 20px;
+  z-index: 1000;
+  padding: 10px 15px;
+  background-color: #6f42c1;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.2em;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.menu-button:hover {
+  background-color: #5a32a3;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.side-menu {
+  position: fixed;
+  top: 0;
+  right: -300px;
+  width: 300px;
+  height: 100vh;
+  background-color: white;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+  transition: right 0.3s ease;
+  z-index: 1001;
+  overflow-y: auto;
+  direction: rtl;
+}
+
+.side-menu.open {
+  right: 0;
+}
+
+.menu-header {
+  padding: 20px;
+  background: linear-gradient(45deg, #6f42c1, #5a32a3);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.menu-header h3 {
+  margin: 0;
+  font-size: 1.4em;
+  font-weight: bold;
+}
+
+.close-menu {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5em;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.close-menu:hover {
+  transform: rotate(90deg);
+}
+
+.menu-content {
+  padding: 20px;
+}
+
+.menu-link {
+  display: flex;
+  align-items: center;
+  padding: 12px 15px;
+  color: #333;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+.menu-link:hover {
+  background-color: rgba(111, 66, 193, 0.1);
+  transform: translateX(-5px);
+  color: #6f42c1;
+}
+
+.main-link {
+  background-color: #f8f9fa;
+  border: 1px solid #e9ecef;
+  margin-bottom: 15px;
+}
+
+.menu-icon {
+  margin-left: 10px;
+  font-size: 1.2em;
+  min-width: 25px;
+  text-align: center;
+}
+
+.menu-section {
+  margin: 25px 0;
+}
+
+.menu-section h4 {
+  color: #6f42c1;
+  margin-bottom: 15px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #6f42c1;
+  display: flex;
+  align-items: center;
+  font-size: 1.1em;
+}
+
+.menu-section h4 .menu-icon {
+  margin-left: 8px;
+  color: #6f42c1;
+}
+
+.submenu {
+  padding-right: 15px;
+}
+
+.submenu .menu-link {
+  font-size: 0.95em;
+  padding: 8px 12px;
+}
+
+/* סגנון גלילה מותאם */
+.side-menu::-webkit-scrollbar {
+  width: 8px;
+}
+
+.side-menu::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.side-menu::-webkit-scrollbar-thumb {
+  background: #6f42c1;
+  border-radius: 4px;
+}
+
+.side-menu::-webkit-scrollbar-thumb:hover {
+  background: #5a32a3;
+}
+
+/* אנימציות לתפריט */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.menu-section {
+  animation: slideIn 0.3s ease-out forwards;
+}
+
+.menu-section:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.menu-section:nth-child(3) {
+  animation-delay: 0.2s;
+}
+.menu-section:nth-child(4) {
+  animation-delay: 0.3s;
+}
+.menu-section:nth-child(5) {
+  animation-delay: 0.4s;
+}
+.menu-section:nth-child(6) {
+  animation-delay: 0.5s;
+}
+
+/* עיצוב בסיסי לכל המקטעים */
+.document-section {
+  margin-bottom: 30px;
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.document-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 5px;
+  height: 100%;
+}
+
+/* עיצוב ייחודי לחלק א׳ - מבוא ויסודות */
+.document-section:nth-of-type(1) {
+  background: linear-gradient(to left, rgba(255, 223, 186, 0.2), white);
+  border: 1px solid #ffd7b5;
+}
+
+.document-section:nth-of-type(1)::before {
+  background-color: #ff9f43;
+}
+
+.document-section:nth-of-type(1) h2 {
+  color: #e67e22;
+}
+
+/* עיצוב ייחודי לחלק ב׳ - העמקה בתורת עץ חיים */
+.document-section:nth-of-type(2) {
+  background: linear-gradient(to left, rgba(162, 213, 242, 0.2), white);
+  border: 1px solid #a2d5f2;
+}
+
+.document-section:nth-of-type(2)::before {
+  background-color: #3498db;
+}
+
+.document-section:nth-of-type(2) h2 {
+  color: #2980b9;
+}
+
+/* עיצוב ייחודי לחלק ג׳ - גלגולי נשמות ותיקון */
+.document-section:nth-of-type(3) {
+  background: linear-gradient(to left, rgba(162, 242, 223, 0.2), white);
+  border: 1px solid #a2f2df;
+}
+
+.document-section:nth-of-type(3)::before {
+  background-color: #2ecc71;
+}
+
+.document-section:nth-of-type(3) h2 {
+  color: #27ae60;
+}
+
+/* עיצוב ייחודי לחלק ד׳ - טבלאות וחלוקות מעשיות */
+.document-section:nth-of-type(4) {
+  background: linear-gradient(to left, rgba(214, 162, 242, 0.2), white);
+  border: 1px solid #d6a2f2;
+}
+
+.document-section:nth-of-type(4)::before {
+  background-color: #9b59b6;
+}
+
+.document-section:nth-of-type(4) h2 {
+  color: #8e44ad;
+}
+
+/* עיצוב ייחודי להערות והמלצות */
+.document-section:nth-of-type(5) {
+  background: linear-gradient(to left, rgba(242, 162, 162, 0.2), white);
+  border: 1px solid #f2a2a2;
+}
+
+.document-section:nth-of-type(5)::before {
+  background-color: #e74c3c;
+}
+
+.document-section:nth-of-type(5) h2 {
+  color: #c0392b;
+}
+
+/* עיצוב משופר לכותרות */
+.document-section h2 {
+  border-bottom: 2px solid currentColor;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.document-section h3 {
+  color: #666;
+  font-size: 1.3em;
+  margin-top: 20px;
+  padding-right: 15px;
+  position: relative;
+}
+
+.document-section h3::before {
+  content: "◆";
+  position: absolute;
+  right: 0;
+  color: currentColor;
+}
+
+/* עיצוב משופר לרשימת המסמכים */
+.document-list {
+  list-style: none;
+  padding: 0;
+}
+
+.document-item {
+  padding: 15px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+.document-item:hover {
+  background-color: rgba(255, 255, 255, 0.9);
+  transform: translateX(-5px);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.document-item a {
+  color: #333;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  font-size: 1.1em;
+}
+
+.document-item a:hover {
+  color: #6f42c1;
+}
+
+.document-icon {
+  margin-left: 15px;
+  font-size: 1.3em;
+  min-width: 30px;
+  text-align: center;
+}
+
+/* עיצוב משופר לטיפים */
+.alert-info {
+  background-color: rgba(52, 152, 219, 0.1);
+  border-color: #3498db;
+  color: #2c3e50;
+  border-radius: 10px;
+}
+
+.alert-info h4 {
+  color: #2980b9;
+  margin-bottom: 15px;
+}
+
+.alert-info ol {
+  padding-right: 20px;
+}
+
+.alert-info li {
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+
+/* אנימציות */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.document-section {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.document-section:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.document-section:nth-child(3) {
+  animation-delay: 0.2s;
+}
+.document-section:nth-child(4) {
+  animation-delay: 0.3s;
+}
+.document-section:nth-child(5) {
+  animation-delay: 0.4s;
+}
+
+/* סגנונות לעמוד חלוקת השערים */
+.stage-section .card {
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stage-section .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.stage-section .card-header {
+  border-radius: 10px 10px 0 0;
+  padding: 1.5rem;
+}
+
+.stage-section .list-group-item {
+  border: none;
+  padding: 0.8rem 1.2rem;
+  position: relative;
+  padding-right: 2rem;
+}
+
+.stage-section .list-group-item::before {
+  content: "•";
+  position: absolute;
+  right: 0.8rem;
+  color: #6f42c1;
+}
+
+.comparison-section table {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.comparison-section th {
+  background-color: #2c3e50;
+  color: white;
+  font-weight: 600;
+}
+
+.notes-section .card {
+  background: linear-gradient(45deg, #f8f9fa, #ffffff);
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* סגנונות לטבלת השערים והמלאכות */
+.table-responsive {
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.table thead th {
+  background: linear-gradient(45deg, #2c3e50, #34495e);
+  color: white;
+  font-weight: 600;
+  padding: 1.2rem;
+  text-align: center;
+}
+
+.table tbody td {
+  padding: 1rem;
+  vertical-align: middle;
+}
+
+.table-primary td {
+  background: linear-gradient(45deg, #e3f2fd, #bbdefb);
+}
+
+.table-success td {
+  background: linear-gradient(45deg, #e8f5e9, #c8e6c9);
+}
+
+.table-warning td {
+  background: linear-gradient(45deg, #fff3e0, #ffe0b2);
+}
+
+.explanations .card,
+.study-tips .card {
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.explanations .card:hover,
+.study-tips .card:hover {
+  transform: translateY(-5px);
+}
+
+.explanations .card-header,
+.study-tips .card-header {
+  padding: 1.2rem;
+  font-weight: 600;
+}
+
+.explanations .list-group-item,
+.study-tips .list-group-item {
+  padding: 1rem 2rem 1rem 1rem;
+  position: relative;
+}
+
+.explanations .list-group-item::before,
+.study-tips .list-group-item::before {
+  content: "•";
+  position: absolute;
+  right: 0.8rem;
+  color: #6f42c1;
+}
+
+/* אנימציות */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.stage-section,
+.comparison-section,
+.notes-section,
+.explanations .card,
+.study-tips .card {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.stage-section:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.stage-section:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+.comparison-section {
+  animation-delay: 0.6s;
+}
+
+.notes-section {
+  animation-delay: 0.8s;
+}
+
+/* התאמה למובייל */
+@media (max-width: 768px) {
+  .table thead th {
+    padding: 0.8rem;
+    font-size: 0.9rem;
+  }
+
+  .table tbody td {
+    padding: 0.8rem;
+    font-size: 0.9rem;
+  }
+
+  .stage-section .card-header {
+    padding: 1rem;
+  }
+
+  .explanations .card,
+  .study-tips .card {
+    margin-bottom: 1rem;
+  }
+}
+
+/* עיצובי טבלאות */
+.table {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.table th {
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-align: center;
+  padding: 15px;
+}
+
+/* עיצוב עמודת מספר */
+.table td:first-child {
+  font-weight: bold;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.02);
+  width: 50px;
+}
+
+/* עיצוב עמודת שער האורה */
+.table td:nth-child(2) {
+  font-weight: bold;
+  background: linear-gradient(
+    45deg,
+    rgba(255, 223, 186, 0.2),
+    rgba(255, 236, 179, 0.1)
+  );
+  color: #2c3e50;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+  padding: 12px 15px;
+}
+
+/* עיצוב עמודת משמעות השער */
+.table td:nth-child(3) {
+  font-style: italic;
+  color: #34495e;
+  background-color: rgba(236, 240, 241, 0.3);
+  padding: 12px 15px;
+}
+
+/* עיצוב עמודת המלאכה */
+.table td:nth-child(4) {
+  font-weight: bold;
+  background: linear-gradient(
+    45deg,
+    rgba(189, 195, 199, 0.2),
+    rgba(236, 240, 241, 0.1)
+  );
+  text-align: center;
+  font-size: 1.1rem;
+}
+
+/* עיצוב עמודת משמעות המלאכה */
+.table td:nth-child(5) {
+  font-style: italic;
+  color: #2c3e50;
+  padding: 12px 15px;
+}
+
+/* עיצובים לפי שלבים */
+.table-primary th {
+  background: linear-gradient(45deg, #4a90e2, #357abd);
+  color: white;
+}
+
+.table-success th {
+  background: linear-gradient(45deg, #2ecc71, #27ae60);
+  color: white;
+}
+
+.table-warning th {
+  background: linear-gradient(45deg, #f1c40f, #f39c12);
+  color: white;
+}
+
+/* אנימציה בהובר */
+.table tbody tr {
+  transition: all 0.3s ease;
+}
+
+.table tbody tr:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.95);
+}
+
+/* עיצוב טבלת השוואה */
+.comparison-section .table td {
+  padding: 15px;
+  vertical-align: middle;
+}
+
+.comparison-section .table td strong {
+  font-size: 1.1rem;
+  color: #2c3e50;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.comparison-section .table td br {
+  display: block;
+  margin: 5px 0;
+}
+
+/* הוספת אייקונים לכותרות */
+.stage-section .card-header h2::before {
+  margin-left: 10px;
+  vertical-align: middle;
+}
+
+.stage-section:nth-child(1) .card-header h2::before {
+  content: "🌱";
+}
+
+.stage-section:nth-child(2) .card-header h2::before {
+  content: "⚡";
+}
+
+.stage-section:nth-child(3) .card-header h2::before {
+  content: "✨";
+}
+
+/* עיצוב נוסף לכרטיסיות */
+.card-header {
+  border-bottom: none;
+  padding: 1rem 1.5rem;
+}
+
+.card-body {
+  padding: 1.5rem;
+}
+
+/* עיצוב טקסט מיוחד */
+.lead {
+  font-size: 1.15rem;
+  color: #34495e;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  padding: 0 1rem;
+}
+
+/* תיקון תצוגה במובייל */
+@media (max-width: 768px) {
+  .table td,
+  .table th {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+
+  .table td:nth-child(2) {
+    font-size: 0.95rem;
+  }
+}
+
+/* עיצובים חדשים למקטעי תוכן */
+.content-section {
+  margin-bottom: 2rem;
+  padding: 2rem;
+  border-radius: 15px;
+  background: linear-gradient(
+    to left,
+    rgba(255, 255, 255, 0.95),
+    rgba(248, 249, 250, 0.95)
+  );
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.content-section:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.content-header {
+  border-bottom: 2px solid #6f42c1;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.content-header h2 {
+  margin: 0;
+  color: #2c3e50;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.content-header .icon {
+  font-size: 2rem;
+  color: #6f42c1;
+}
+
+.content-body {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #34495e;
+}
+
+/* עיצוב מיוחד לציטוטים */
+.quote-box {
+  background: linear-gradient(
+    45deg,
+    rgba(111, 66, 193, 0.1),
+    rgba(52, 73, 94, 0.1)
+  );
+  border-right: 4px solid #6f42c1;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  border-radius: 0 10px 10px 0;
+}
+
+.quote-box p {
+  margin: 0;
+  font-style: italic;
+  color: #2c3e50;
+}
+
+/* עיצוב לרשימות מיוחדות */
+.special-list {
+  list-style: none;
+  padding: 0;
+}
+
+.special-list li {
+  position: relative;
+  padding: 0.8rem 2rem 0.8rem 0;
+  margin-bottom: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.special-list li::before {
+  content: "✦";
+  position: absolute;
+  right: 0;
+  color: #6f42c1;
+  font-size: 1.2rem;
+}
+
+.special-list li:hover {
+  transform: translateX(-10px);
+  color: #6f42c1;
+}
+
+/* עיצוב לקופסאות מידע */
+.info-box {
+  background: linear-gradient(45deg, #f8f9fa, #ffffff);
+  border: 1px solid rgba(111, 66, 193, 0.2);
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin: 1rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.info-box::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(to bottom, #6f42c1, #5a32a3);
+}
+
+/* עיצוב לטבלאות מיוחדות */
+.special-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 1.5rem 0;
+}
+
+.special-table th {
+  background: linear-gradient(45deg, #6f42c1, #5a32a3);
+  color: white;
+  padding: 1rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.special-table td {
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.8);
+  border-bottom: 1px solid rgba(111, 66, 193, 0.1);
+}
+
+.special-table tr:hover td {
+  background: rgba(111, 66, 193, 0.05);
+}
+
+/* עיצוב לכפתורי פעולה */
+.action-button {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  background: linear-gradient(45deg, #6f42c1, #5a32a3);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  margin: 1rem 0;
+}
+
+.action-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(111, 66, 193, 0.3);
+}
+
+/* אנימציות למקטעים */
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.content-section {
+  animation: fadeInRight 0.5s ease-out forwards;
+}
+
+.content-section:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.content-section:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+/* התאמה למובייל */
+@media (max-width: 768px) {
+  .content-section {
+    padding: 1.5rem;
+  }
+
+  .content-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .content-body {
+    font-size: 1rem;
+  }
+
+  .special-table {
+    display: block;
+    overflow-x: auto;
+  }
+}
+
+/* עיצוב מיוחד לאייקונים */
+.icon-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(45deg, #6f42c1, #5a32a3);
+  border-radius: 50%;
+  color: white;
+  font-size: 1.2rem;
+  margin-left: 1rem;
+}
+
+/* עיצוב לתגיות */
+.tag {
+  display: inline-block;
+  padding: 0.3rem 0.8rem;
+  background: rgba(111, 66, 193, 0.1);
+  color: #6f42c1;
+  border-radius: 15px;
+  font-size: 0.9rem;
+  margin: 0.2rem;
+  transition: all 0.3s ease;
+}
+
+.tag:hover {
+  background: rgba(111, 66, 193, 0.2);
+  transform: translateY(-2px);
+}
+
+/* סגנונות לאקורדיון */
+.accordion-item {
+  border: none;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.accordion-button {
+  background-color: #f8f9fa;
+  border: none;
+  padding: 1.25rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: #e7f1ff;
+  color: #0d6efd;
+  box-shadow: none;
+}
+
+.accordion-button:focus {
+  box-shadow: none;
+  border-color: rgba(13, 110, 253, 0.25);
+}
+
+.accordion-button::after {
+  margin-right: auto;
+  margin-left: 0;
+}
+
+.accordion-body {
+  padding: 1.5rem;
+  background-color: #fff;
+}
+
+.icon-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: rgba(13, 110, 253, 0.1);
+  margin-left: 10px;
+}
+
+/* אנימציה לפתיחה וסגירה */
+.accordion-collapse {
+  transition: all 0.3s ease-in-out;
+}
+
+.accordion-button:not(.collapsed) .icon-box {
+  background-color: rgba(13, 110, 253, 0.2);
+  transform: scale(1.1);
+  transition: all 0.3s ease-in-out;
+}
+
+/* התאמה למובייל */
+@media (max-width: 768px) {
+  .accordion-button {
+    padding: 1rem;
+    font-size: 1rem;
+  }
+
+  .accordion-body {
+    padding: 1rem;
+  }
+
+  .icon-box {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+/* עיצוב תיאורי שלבים */
+.stage-description {
+  background: linear-gradient(
+    to left,
+    rgba(255, 255, 255, 0.95),
+    rgba(248, 249, 250, 0.95)
+  );
+  border-radius: 15px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.stage-details {
+  margin-top: 1.5rem;
+}
+
+.detail-item {
+  display: flex;
+  align-items: flex-start;
+  /* margin-bottom: 1rem; */
+  padding: 0.1rem;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.detail-item:hover {
+  transform: translateX(10px);
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.detail-icon {
+  font-size: 1.5rem;
+  margin-left: 1rem;
+  min-width: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.detail-item p {
+  margin: 0;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #2c3e50;
+}
+
+/* התאמה למובייל */
+@media (max-width: 768px) {
+  .stage-description {
+    padding: 1.5rem;
+  }
+
+  .detail-item {
+    padding: 0.8rem;
+  }
+
+  .detail-item p {
+    font-size: 1rem;
+  }
+
+  .detail-icon {
+    font-size: 1.2rem;
+  }
+}
+
+/* עיצוב טור פעולה להנעה */
+.table td:nth-child(6) {
+  font-size: 1rem;
+  color: #2c3e50;
+  background: linear-gradient(
+    45deg,
+    rgba(111, 66, 193, 0.1),
+    rgba(255, 255, 255, 0.1)
+  );
+  padding: 15px;
+  line-height: 1.4;
+  border-right: 3px solid rgba(111, 66, 193, 0.2);
+}
+
+.table td:nth-child(6):hover {
+  background: linear-gradient(
+    45deg,
+    rgba(111, 66, 193, 0.15),
+    rgba(255, 255, 255, 0.15)
+  );
+  transform: translateX(-5px);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+/* התאמה למובייל */
+@media (max-width: 768px) {
+  .table td:nth-child(6) {
+    font-size: 0.9rem;
+    padding: 10px;
+  }
+}
+
+/* הרחבת המקטעים והטבלאות */
+.container {
+  max-width: 95% !important;
+  width: 95% !important;
+}
+
+.stage-section {
+  margin: 2rem -2rem;
+  padding: 0 2rem;
+}
+
+.stage-section .card {
+  margin: 0 -1rem;
+}
+
+.table-responsive {
+  margin: 0 -1rem;
+  width: calc(100% + 2rem);
+}
+
+.stage-description {
+  margin: 0 -1rem;
+  padding: 2rem 3rem;
+  width: calc(100% + 2rem);
+}
+
+/* התאמת גודל טקסט בטבלה */
+.table td {
+  font-size: 1.1rem;
+  padding: 1.2rem 1rem;
+}
+
+.table th {
+  font-size: 1.2rem;
+  padding: 1.5rem 1rem;
+}
+
+/* התאמה למסכים גדולים */
+@media (min-width: 1400px) {
+  .container {
+    max-width: 98% !important;
+    width: 98% !important;
+  }
+
+  .table td {
+    font-size: 1.15rem;
+    padding: 1.3rem 1.2rem;
+  }
+
+  .table th {
+    font-size: 1.25rem;
+    padding: 1.6rem 1.2rem;
+  }
+}
+
+/* התאמה למובייל */
+@media (max-width: 768px) {
+  .container {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding: 0.5rem;
+  }
+
+  .stage-section {
+    margin: 1rem -0.5rem;
+    padding: 0 0.5rem;
+  }
+
+  .stage-description {
+    margin: 0 -0.5rem;
+    padding: 1.5rem;
+    width: calc(100% + 1rem);
+  }
+
+  .table-responsive {
+    margin: 0 -0.5rem;
+    width: calc(100% + 1rem);
+  }
+}
+
+/* שיפור נראות הטבלה */
+.table {
+  width: 100%;
+  margin-bottom: 0;
+}
+
+.table td:nth-child(2),
+.table td:nth-child(3),
+.table td:nth-child(6) {
+  min-width: 200px;
+}
+
+.table td:nth-child(4),
+.table td:nth-child(5) {
+  min-width: 150px;
+}
+
+/* סגנון בס״ד */
+.bsd {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  font-size: 1.8rem;
+  color: #2c3e50;
+  font-weight: bold;
+  z-index: 1001;
+  background-color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* התאמת מיקום בס״ד כשהתפריט פתוח */
+.side-menu.open ~ .bsd {
+  right: 310px;
+  transition: right 0.3s ease;
+}

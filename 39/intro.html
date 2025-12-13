@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מבוא ויסודות - שערי האורה</title>
+
+    <!-- Bootstrap RTL CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="styles.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- תפריט ניווט -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="bi bi-book"></i>
+                שערי האורה
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">דף הבית</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="intro.html">מבוא ויסודות</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="study.html">לימוד ועיון</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="practice.html">עבודה מעשית</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="tables.html">טבלאות ומידע</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="kabbalah.html">העמקה וקבלה</a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control ms-2" type="search" placeholder="חיפוש...">
+                    <button class="btn btn-primary" type="submit">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <!-- תוכן ראשי -->
+    <main class="container my-5">
+        <!-- נתיב פירורי לחם -->
+        <nav aria-label="breadcrumb" class="mb-4">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">דף הבית</a></li>
+                <li class="breadcrumb-item active">מבוא ויסודות</li>
+            </ol>
+        </nav>
+
+        <div class="row">
+            <!-- תוכן מרכזי -->
+            <div class="col-lg-8">
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+                        <h1 class="card-title">מבוא לשערי האורה</h1>
+                        <div class="study-content">
+                            <p class="lead">ספר "שערי אורה" הוא אחד מספרי היסוד החשובים בחכמת הקבלה, שנכתב על ידי המקובל
+                                רבי יוסף גיקטיליה.</p>
+
+                            <div class="alert alert-info">
+                                <i class="bi bi-info-circle"></i>
+                                הספר מחולק ל-39 שערים, המהווים מסע רוחני דרך שערי האור והקדושה.
+                            </div>
+
+                            <h2>מבנה הלימוד</h2>
+                            <div class="row mb-4">
+                                <div class="col-md-6">
+                                    <div class="card h-100">
+                                        <div class="card-body">
+                                            <h5 class="card-title">
+                                                <i class="bi bi-1-circle"></i>
+                                                שלב ראשון
+                                            </h5>
+                                            <p>הכרת המושגים הבסיסיים והיסודות הרוחניים</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card h-100">
+                                        <div class="card-body">
+                                            <h5 class="card-title">
+                                                <i class="bi bi-2-circle"></i>
+                                                שלב שני
+                                            </h5>
+                                            <p>העמקה בשערים ובמשמעותם הפנימית</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <h2>נושאי יסוד</h2>
+                            <div class="accordion" id="basicTopics">
+                                <div class="accordion-item">
+                                    <h3 class="accordion-header">
+                                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                            data-bs-target="#topic1">
+                                            מהות השערים
+                                        </button>
+                                    </h3>
+                                    <div id="topic1" class="accordion-collapse collapse show">
+                                        <div class="accordion-body">
+                                            <p>הבנת המשמעות הרוחנית של כל שער והקשר ביניהם</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h3 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#topic2">
+                                            סדר הלימוד
+                                        </button>
+                                    </h3>
+                                    <div id="topic2" class="accordion-collapse collapse">
+                                        <div class="accordion-body">
+                                            <p>הדרכה מעשית לאופן הלימוד והתקדמות בשערים</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- סרגל צד -->
+            <div class="col-lg-4">
+                <!-- מדריך מהיר -->
+                <div class="card shadow-sm mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">מדריך מהיר</h5>
+                        <div class="list-group">
+                            <a href="#" class="list-group-item list-group-item-action">
+                                <i class="bi bi-journal-text"></i>
+                                מושגי יסוד
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action">
+                                <i class="bi bi-signpost-2"></i>
+                                מפת דרכים ללימוד
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action">
+                                <i class="bi bi-question-circle"></i>
+                                שאלות נפוצות
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- משאבים נוספים -->
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">משאבים נוספים</h5>
+                        <ul class="list-unstyled">
+                            <li class="mb-2">
+                                <i class="bi bi-file-pdf"></i>
+                                <a href="#" class="text-decoration-none">מדריך למתחילים (PDF)</a>
+                            </li>
+                            <li class="mb-2">
+                                <i class="bi bi-play-circle"></i>
+                                <a href="#" class="text-decoration-none">הרצאות מבוא</a>
+                            </li>
+                            <li class="mb-2">
+                                <i class="bi bi-book"></i>
+                                <a href="#" class="text-decoration-none">ביבליוגרפיה מומלצת</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- פוטר -->
+    <footer class="bg-light py-4 mt-5">
+        <div class="container text-center">
+            <p class="mb-0">© כל הזכויות שמורות - שערי האורה</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="scripts.js"></script>
+</body>
+
+</html>
