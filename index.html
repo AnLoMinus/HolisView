@@ -263,9 +263,84 @@
     }
     button.primary:hover { transform: translateY(-1px); box-shadow: 0 10px 24px rgba(0,0,0,0.28); }
 
+    .footer {
+      margin: 0 auto;
+      max-width: 1200px;
+      padding: 32px 18px 56px;
+      display: grid;
+      gap: 18px;
+      background: linear-gradient(145deg, var(--panel), var(--panel-2));
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      color: var(--text);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+    }
+
+    .footer-title {
+      margin: 0 0 8px;
+      font-size: 1rem;
+      letter-spacing: 0.2px;
+    }
+
+    .footer p { margin: 0; color: var(--muted); }
+
+    .footer-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 8px;
+    }
+
+    .footer-links a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 700;
+    }
+    .footer-links a:hover { color: #9ef0ff; }
+
+    .footer-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.14), transparent);
+      border: none;
+    }
+
+    .footer-credit {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .footer-badges {
+      display: inline-flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .footer-badge {
+      padding: 6px 10px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.03);
+      color: var(--text);
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
     @media (max-width: 640px) {
       header h1 { font-size: 2rem; }
       .section { padding: 16px; }
+      .footer { padding: 24px 16px 40px; }
     }
   </style>
 </head>
@@ -578,6 +653,43 @@
         </ul>
       </section>
     </main>
+
+    <footer class="footer">
+      <div class="footer-grid">
+        <div>
+          <h3 class="footer-title">HolisView</h3>
+          <p>אינדקס מאוחד לכל המסלולים, הקלפים והדפי לימוד. המטרה: נגישות מהירה וחוויית משתמש נעימה.</p>
+        </div>
+        <div>
+          <h3 class="footer-title">ניווט מהיר</h3>
+          <ul class="footer-links">
+            <li><a href="AI-Flow/index.html">AI-Flow</a></li>
+            <li><a href="ReMatrix%20/index.html">ReMatrix</a></li>
+            <li><a href="4/CARDS/4-sefirot-box-cover.html">חבילת 4 ספירות</a></li>
+            <li><a href="10/ten_sefirot.html">חבילת 10 ספירות</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer-title">משאבים</h3>
+          <ul class="footer-links">
+            <li><a href="scripts/chatgpt-api.js">API Toolkit</a></li>
+            <li><a href="scripts/chatgpt-ui.js">UI Controller</a></li>
+            <li><a href="README.md">README</a></li>
+            <li><a href="הנחיות_לבניית_אתר.md">הנחיות לבנייה</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <hr class="footer-divider" aria-hidden="true">
+
+      <div class="footer-credit">
+        <span>בעיצוב אהבה ופוקוס על חוויית משתמש.</span>
+        <div class="footer-badges">
+          <span class="footer-badge">קרדיט: HolisView Lab</span>
+          <span class="footer-badge">Dark Mode Ready</span>
+        </div>
+      </div>
+    </footer>
 
     <script type="module" src="scripts/chatgpt-ui.js"></script>
   </body>
