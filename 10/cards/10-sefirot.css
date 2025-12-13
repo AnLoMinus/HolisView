@@ -1,0 +1,2288 @@
+@page {
+  size: A4;
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Frank Ruhl Libre", serif;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    45deg,
+    rgba(212, 181, 149, 0.1) 0%,
+    rgba(255, 255, 255, 0.05) 50%,
+    rgba(212, 181, 149, 0.1) 100%
+  );
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* מסגרת הדפסה */
+.print-container {
+  width: 210mm;
+  height: 297mm;
+  position: relative;
+  background: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  /* padding: 10mm; */
+  box-sizing: border-box;
+}
+
+/* מסגרת A4 עם מידות */
+.print-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 1px dashed #000;
+  pointer-events: none;
+}
+
+/* מידות A4 */
+.print-container::after {
+  content: "A4 (210mm × 297mm)";
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 12px;
+  color: #666;
+  background: white;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.kamea-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10mm;
+  padding: 5mm;
+}
+
+.kamea-card {
+  position: relative;
+  width: 100%;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 5mm;
+  padding: 2mm;
+  box-sizing: border-box;
+  transform: rotate(0deg);
+  transition: transform 0.3s ease;
+}
+
+/* פסי גזירה */
+.kamea-card::before,
+.kamea-card::after {
+  content: "";
+  position: absolute;
+  background: #000;
+  opacity: 0.2;
+}
+
+/* פס גזירה עליון */
+.kamea-card::before {
+  top: -5mm;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20mm;
+  height: 1mm;
+}
+
+/* פס גזירה תחתון */
+.kamea-card::after {
+  bottom: -5mm;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20mm;
+  height: 1mm;
+}
+
+/* מידות קלף */
+.kamea-card .card-dimensions {
+  position: absolute;
+  font-size: 8px;
+  color: #666;
+  background: white;
+  padding: 1px 4px;
+  border-radius: 2px;
+}
+
+/* מידות רוחב */
+.kamea-card .width-dimension {
+  top: -8mm;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* מידות גובה */
+.kamea-card .height-dimension {
+  right: -8mm;
+  top: 50%;
+  transform: translateY(-50%) rotate(90deg);
+}
+
+.kamea-card:hover {
+  transform: rotate(0deg) scale(1.02);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.emoji-corner {
+  position: absolute;
+  width: 5mm;
+  height: 5mm;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3mm;
+}
+
+.top-right {
+  top: 1mm;
+  right: 1mm;
+}
+.top-left {
+  top: 1mm;
+  left: 1mm;
+}
+.bottom-right {
+  bottom: 1mm;
+  right: 1mm;
+}
+.bottom-left {
+  bottom: 1mm;
+  left: 1mm;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 2mm;
+  position: relative;
+}
+
+.hebrew-text {
+  font-size: 2.5mm;
+  color: #666;
+  margin-bottom: 1mm;
+}
+
+.symbol {
+  font-size: 4mm;
+  margin: 1mm 0;
+}
+
+.title {
+  font-size: 3mm;
+  font-weight: bold;
+  color: #333;
+}
+
+.content-wrapper {
+  padding: 1mm;
+  height: calc(100% - 15mm);
+  overflow: hidden;
+}
+
+.blessing {
+  font-size: 2mm;
+  line-height: 1.4;
+  text-align: justify;
+  margin-bottom: 2mm;
+  color: #444;
+}
+
+.practical-tips {
+  margin-top: 2mm;
+  padding: 1mm;
+  background: rgba(0, 0, 0, 0.02);
+  border-radius: 2mm;
+}
+
+.tips-title {
+  font-size: 2.2mm;
+  font-weight: bold;
+  color: #555;
+  margin-bottom: 1mm;
+}
+
+.tips-list {
+  font-size: 2mm;
+  line-height: 1.4;
+  color: #666;
+}
+
+.keywords {
+  position: absolute;
+  bottom: 1mm;
+  left: 1mm;
+  right: 1mm;
+  font-size: 1.8mm;
+  color: #888;
+  text-align: center;
+}
+
+/* סגנונות ספציפיים לכל סוג קמע */
+[data-type="שמירה"] {
+  background: linear-gradient(135deg, #e0f2f1 0%, #b2dfdb 100%);
+}
+
+[data-type="חיזוק"] {
+  background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+}
+
+[data-type="ריפוי"] {
+  background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%);
+}
+
+[data-type="מחשבה"] {
+  background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+}
+
+[data-type="משפחה"] {
+  background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%);
+}
+
+[data-type="אור"] {
+  background: linear-gradient(135deg, #fff8e1 0%, #ffecb3 100%);
+}
+
+[data-type="שלום"] {
+  background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+}
+
+[data-type="צמיחה"] {
+  background: linear-gradient(135deg, #f1f8e9 0%, #dcedc8 100%);
+}
+
+[data-type="אש"] {
+  background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%);
+}
+
+[data-type="טהרה"] {
+  background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 100%);
+}
+
+/* ספירת כתר - זהב יוקרתי */
+[data-type="כתר"] {
+  background: linear-gradient(135deg, #ffd700 0%, #ffa500 50%, #ffd700 100%);
+  color: #333;
+  border: 2px solid #daa520;
+  box-shadow: inset 0 0 44px rgb(0 0 0 / 50%);
+  position: relative;
+  overflow: hidden;
+}
+
+[data-type="כתר"] .header {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.98),
+    rgba(255, 255, 255, 0.95)
+  );
+  border-bottom: 2px solid rgba(218, 165, 32, 0.3);
+  padding: 2mm;
+  margin-bottom: 2mm;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  position: relative;
+}
+
+[data-type="כתר"] .hebrew-text {
+  color: #333;
+  text-shadow: 1px 1px 1px rgba(255, 215, 0, 0.3);
+  font-weight: bold;
+  letter-spacing: 0.2mm;
+  font-size: 2.2mm;
+  line-height: 1.4;
+  margin-bottom: 0.5mm;
+}
+
+[data-type="כתר"] .symbol {
+  font-size: 4.5mm;
+  margin: 1mm 0;
+  text-shadow: 1px 1px 1px rgba(255, 215, 0, 0.3),
+    0 0 5px rgba(255, 215, 0, 0.2);
+  color: #333;
+}
+
+[data-type="כתר"] .title {
+  color: #333;
+  text-shadow: 1px 1px 1px rgba(255, 215, 0, 0.3);
+  font-weight: bold;
+  letter-spacing: 0.2mm;
+  font-size: 3.2mm;
+  line-height: 1.3;
+  margin-top: 0.5mm;
+}
+
+[data-type="כתר"] .blessing {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.98),
+    rgba(255, 255, 255, 0.95)
+  );
+  padding: 3mm;
+  border-radius: 2mm;
+  border: 1px solid rgba(218, 165, 32, 0.3);
+  box-shadow: inset 0 0 5px rgba(255, 215, 0, 0.2),
+    0 2px 4px rgba(0, 0, 0, 0.05);
+  margin-bottom: 2mm;
+  position: relative;
+  font-size: 2.1mm;
+  line-height: 1.5;
+  text-align: justify;
+  color: #333;
+  text-shadow: 0.5px 0.5px 0.5px rgba(255, 215, 0, 0.2);
+}
+
+[data-type="כתר"] .practical-tips {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 215, 0, 0.1),
+    rgba(255, 165, 0, 0.05)
+  );
+  border: 1px solid rgba(218, 165, 32, 0.2);
+  border-radius: 2mm;
+  padding: 2mm;
+  box-shadow: inset 0 0 5px rgba(255, 215, 0, 0.2),
+    0 2px 4px rgba(0, 0, 0, 0.05);
+  position: relative;
+}
+
+[data-type="כתר"] .tips-title {
+  color: #333;
+  text-shadow: 1px 1px 1px rgba(255, 215, 0, 0.3);
+  font-weight: bold;
+  margin-bottom: 1mm;
+  position: relative;
+  display: inline-block;
+  letter-spacing: 0.2mm;
+  font-size: 2.3mm;
+  line-height: 1.3;
+}
+
+[data-type="כתר"] .tips-list {
+  color: #444;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.98),
+    rgba(255, 255, 255, 0.95)
+  );
+  padding: 1.5mm;
+  border-radius: 1mm;
+  font-size: 2mm;
+  line-height: 1.4;
+  text-align: justify;
+}
+
+[data-type="כתר"] .keywords {
+  color: #666;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.98),
+    rgba(255, 255, 255, 0.95)
+  );
+  padding: 1.5mm;
+  border-radius: 1mm;
+  border: 1px solid rgba(218, 165, 32, 0.2);
+  text-shadow: 0.5px 0.5px 0.5px rgba(255, 215, 0, 0.2);
+  margin-top: 2mm;
+  position: relative;
+  font-size: 1.9mm;
+  line-height: 1.4;
+  text-align: center;
+  letter-spacing: 0.1mm;
+}
+
+[data-type="כתר"] ol {
+  margin: 0;
+  padding-right: 4mm;
+  position: relative;
+}
+
+[data-type="כתר"] li {
+  margin-bottom: 0.8mm;
+  line-height: 1.4;
+  position: relative;
+  padding-right: 1.5mm;
+  text-align: justify;
+  font-size: 2mm;
+  color: #444;
+}
+
+[data-type="כתר"] li::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 0.6mm;
+  height: 0.6mm;
+  background: rgba(218, 165, 32, 0.5);
+  border-radius: 50%;
+  transform: translateY(-50%);
+  box-shadow: 0 0 2px rgba(255, 215, 0, 0.3);
+}
+
+[data-type="כתר"] .emoji-corner {
+  text-shadow: 1px 1px 1px rgba(255, 215, 0, 0.5);
+  font-size: 1.2em;
+  filter: drop-shadow(0 0 2px rgba(255, 215, 0, 0.3));
+}
+
+/* ספירת חכמה - כחול */
+[data-type="חכמה"] {
+  background: linear-gradient(135deg, #1e88e5 0%, #1565c0 50%, #1e88e5 100%);
+  color: #ffffff;
+  border: 2px solid #1565c0;
+  box-shadow: inset 0 0 44px rgb(0 0 0 / 50%);
+  position: relative;
+  overflow: hidden;
+}
+
+[data-type="חכמה"] .header {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.98),
+    rgba(255, 255, 255, 0.95)
+  );
+  border-bottom: 2px solid rgba(30, 136, 229, 0.3);
+  padding: 2mm;
+  margin-bottom: 2mm;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  position: relative;
+}
+
+[data-type="חכמה"] .hebrew-text {
+  color: #333;
+  text-shadow: 1px 1px 1px rgba(30, 136, 229, 0.3);
+  font-weight: bold;
+  letter-spacing: 0.2mm;
+  font-size: 2.2mm;
+  line-height: 1.4;
+  margin-bottom: 0.5mm;
+}
+
+[data-type="חכמה"] .symbol {
+  font-size: 4.5mm;
+  margin: 1mm 0;
+  text-shadow: 1px 1px 1px rgba(30, 136, 229, 0.3),
+    0 0 5px rgba(30, 136, 229, 0.2);
+  color: #333;
+}
+
+[data-type="חכמה"] .title {
+  color: #333;
+  text-shadow: 1px 1px 1px rgba(30, 136, 229, 0.3);
+  font-weight: bold;
+  letter-spacing: 0.2mm;
+  font-size: 3.2mm;
+  line-height: 1.3;
+  margin-top: 0.5mm;
+}
+
+[data-type="חכמה"] .blessing {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.98),
+    rgba(255, 255, 255, 0.95)
+  );
+  padding: 3mm;
+  border-radius: 2mm;
+  border: 1px solid rgba(30, 136, 229, 0.3);
+  box-shadow: inset 0 0 5px rgba(30, 136, 229, 0.2),
+    0 2px 4px rgba(0, 0, 0, 0.05);
+  margin-bottom: 2mm;
+  position: relative;
+  font-size: 2.1mm;
+  line-height: 1.5;
+  text-align: justify;
+  color: #333;
+  text-shadow: 0.5px 0.5px 0.5px rgba(30, 136, 229, 0.2);
+}
+
+[data-type="חכמה"] .practical-tips {
+  background: linear-gradient(
+    135deg,
+    rgba(30, 136, 229, 0.1),
+    rgba(21, 101, 192, 0.05)
+  );
+  border: 1px solid rgba(30, 136, 229, 0.2);
+  border-radius: 2mm;
+  padding: 2mm;
+  box-shadow: inset 0 0 5px rgba(30, 136, 229, 0.2),
+    0 2px 4px rgba(0, 0, 0, 0.05);
+  position: relative;
+}
+
+[data-type="חכמה"] .tips-title {
+  color: #ffffff;
+  text-shadow: 1px 1px 1px rgba(30, 136, 229, 0.3);
+  font-weight: bold;
+  margin-bottom: 1mm;
+  position: relative;
+  display: inline-block;
+  letter-spacing: 0.2mm;
+  font-size: 2.3mm;
+  line-height: 1.3;
+}
+
+[data-type="חכמה"] .tips-list {
+  color: #ffffff;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.98),
+    rgba(255, 255, 255, 0.95)
+  );
+  padding: 1.5mm;
+  border-radius: 1mm;
+  font-size: 2mm;
+  line-height: 1.4;
+  text-align: justify;
+  color: #333;
+}
+
+[data-type="חכמה"] .keywords {
+  color: #ffffff;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.98),
+    rgba(255, 255, 255, 0.95)
+  );
+  padding: 1.5mm;
+  border-radius: 1mm;
+  border: 1px solid rgba(30, 136, 229, 0.2);
+  text-shadow: 0.5px 0.5px 0.5px rgba(30, 136, 229, 0.2);
+  margin-top: 2mm;
+  position: relative;
+  font-size: 1.9mm;
+  line-height: 1.4;
+  text-align: center;
+  letter-spacing: 0.1mm;
+  color: #333;
+}
+
+[data-type="חכמה"] ol {
+  margin: 0;
+  padding-right: 4mm;
+  position: relative;
+}
+
+[data-type="חכמה"] li {
+  margin-bottom: 0.8mm;
+  line-height: 1.4;
+  position: relative;
+  padding-right: 1.5mm;
+  text-align: justify;
+  font-size: 2mm;
+  color: #333;
+}
+
+[data-type="חכמה"] li::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 0.6mm;
+  height: 0.6mm;
+  background: rgba(30, 136, 229, 0.5);
+  border-radius: 50%;
+  transform: translateY(-50%);
+  box-shadow: 0 0 2px rgba(30, 136, 229, 0.3);
+}
+
+[data-type="חכמה"] .emoji-corner {
+  text-shadow: 1px 1px 1px rgba(30, 136, 229, 0.5);
+  font-size: 1.2em;
+  filter: drop-shadow(0 0 2px rgba(30, 136, 229, 0.3));
+}
+
+/* ספירת דעת - כחול-אדום */
+[data-type="דעת"] {
+  background: linear-gradient(135deg, #1e88e5 0%, #e53935 50%, #1e88e5 100%);
+  color: #ffffff;
+  border: 2px solid #1565c0;
+  box-shadow: inset 0 0 44px rgb(0 0 0 / 50%);
+  position: relative;
+  overflow: hidden;
+}
+
+[data-type="דעת"] .header {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.98),
+    rgba(255, 255, 255, 0.95)
+  );
+  border-bottom: 2px solid rgba(229, 57, 53, 0.3);
+  padding: 2mm;
+  margin-bottom: 2mm;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  position: relative;
+}
+
+[data-type="דעת"] .hebrew-text {
+  color: #333;
+  text-shadow: 1px 1px 1px rgba(229, 57, 53, 0.3);
+  font-weight: bold;
+  letter-spacing: 0.2mm;
+  font-size: 2.2mm;
+  line-height: 1.4;
+  margin-bottom: 0.5mm;
+}
+
+[data-type="דעת"] .symbol {
+  font-size: 4.5mm;
+  margin: 1mm 0;
+  text-shadow: 1px 1px 1px rgba(229, 57, 53, 0.3),
+    0 0 5px rgba(229, 57, 53, 0.2);
+  color: #333;
+}
+
+[data-type="דעת"] .title {
+  color: #333;
+  text-shadow: 1px 1px 1px rgba(229, 57, 53, 0.3);
+  font-weight: bold;
+  letter-spacing: 0.2mm;
+  font-size: 3.2mm;
+  line-height: 1.3;
+  margin-top: 0.5mm;
+}
+
+[data-type="דעת"] .blessing {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.98),
+    rgba(255, 255, 255, 0.95)
+  );
+  padding: 3mm;
+  border-radius: 2mm;
+  border: 1px solid rgba(229, 57, 53, 0.3);
+  box-shadow: inset 0 0 5px rgba(229, 57, 53, 0.2),
+    0 2px 4px rgba(0, 0, 0, 0.05);
+  margin-bottom: 2mm;
+  position: relative;
+  font-size: 2.1mm;
+  line-height: 1.5;
+  text-align: justify;
+  color: #333;
+  text-shadow: 0.5px 0.5px 0.5px rgba(229, 57, 53, 0.2);
+}
+
+[data-type="דעת"] .practical-tips {
+  background: linear-gradient(
+    135deg,
+    rgba(229, 57, 53, 0.1),
+    rgba(198, 40, 40, 0.05)
+  );
+  border: 1px solid rgba(229, 57, 53, 0.2);
+  border-radius: 2mm;
+  padding: 2mm;
+  box-shadow: inset 0 0 5px rgba(229, 57, 53, 0.2),
+    0 2px 4px rgba(0, 0, 0, 0.05);
+  position: relative;
+}
+
+[data-type="דעת"] .tips-title {
+  color: #ffffff;
+  text-shadow: 1px 1px 1px rgba(229, 57, 53, 0.3);
+  font-weight: bold;
+  margin-bottom: 1mm;
+  position: relative;
+  display: inline-block;
+  letter-spacing: 0.2mm;
+  font-size: 2.3mm;
+  line-height: 1.3;
+}
+
+[data-type="דעת"] .tips-list {
+  color: #ffffff;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.98),
+    rgba(255, 255, 255, 0.95)
+  );
+  padding: 1.5mm;
+  border-radius: 1mm;
+  font-size: 2mm;
+  line-height: 1.4;
+  text-align: justify;
+  color: #333;
+}
+
+[data-type="דעת"] .keywords {
+  color: #ffffff;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.98),
+    rgba(255, 255, 255, 0.95)
+  );
+  padding: 1.5mm;
+  border-radius: 1mm;
+  border: 1px solid rgba(229, 57, 53, 0.2);
+  text-shadow: 0.5px 0.5px 0.5px rgba(229, 57, 53, 0.2);
+  margin-top: 2mm;
+  position: relative;
+  font-size: 1.9mm;
+  line-height: 1.4;
+  text-align: center;
+  letter-spacing: 0.1mm;
+  color: #333;
+}
+
+[data-type="דעת"] ol {
+  margin: 0;
+  padding-right: 4mm;
+  position: relative;
+}
+
+[data-type="דעת"] li {
+  margin-bottom: 0.8mm;
+  line-height: 1.4;
+  position: relative;
+  padding-right: 1.5mm;
+  text-align: justify;
+  font-size: 2mm;
+  color: #333;
+}
+
+[data-type="דעת"] li::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 0.6mm;
+  height: 0.6mm;
+  background: rgba(229, 57, 53, 0.5);
+  border-radius: 50%;
+  transform: translateY(-50%);
+  box-shadow: 0 0 2px rgba(229, 57, 53, 0.3);
+}
+
+[data-type="דעת"] .emoji-corner {
+  text-shadow: 1px 1px 1px rgba(229, 57, 53, 0.5);
+  font-size: 1.2em;
+  filter: drop-shadow(0 0 2px rgba(229, 57, 53, 0.3));
+}
+
+/* ספירת בינה - אדום */
+[data-type="בינה"] {
+  background: linear-gradient(135deg, #e53935 0%, #c62828 50%, #e53935 100%);
+  color: #ffffff;
+  border: 2px solid #c62828;
+  box-shadow: inset 0 0 44px rgb(0 0 0 / 50%);
+  position: relative;
+  overflow: hidden;
+}
+
+[data-type="בינה"] .header {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.98),
+    rgba(255, 255, 255, 0.95)
+  );
+  border-bottom: 2px solid rgba(229, 57, 53, 0.3);
+  padding: 2mm;
+  margin-bottom: 2mm;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  position: relative;
+}
+
+[data-type="בינה"] .hebrew-text {
+  color: #333;
+  text-shadow: 1px 1px 1px rgba(229, 57, 53, 0.3);
+  font-weight: bold;
+  letter-spacing: 0.2mm;
+  font-size: 2.2mm;
+  line-height: 1.4;
+  margin-bottom: 0.5mm;
+}
+
+[data-type="בינה"] .symbol {
+  font-size: 4.5mm;
+  margin: 1mm 0;
+  text-shadow: 1px 1px 1px rgba(229, 57, 53, 0.3),
+    0 0 5px rgba(229, 57, 53, 0.2);
+  color: #333;
+}
+
+[data-type="בינה"] .title {
+  color: #333;
+  text-shadow: 1px 1px 1px rgba(229, 57, 53, 0.3);
+  font-weight: bold;
+  letter-spacing: 0.2mm;
+  font-size: 3.2mm;
+  line-height: 1.3;
+  margin-top: 0.5mm;
+}
+
+[data-type="בינה"] .blessing {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.98),
+    rgba(255, 255, 255, 0.95)
+  );
+  padding: 3mm;
+  border-radius: 2mm;
+  border: 1px solid rgba(229, 57, 53, 0.3);
+  box-shadow: inset 0 0 5px rgba(229, 57, 53, 0.2),
+    0 2px 4px rgba(0, 0, 0, 0.05);
+  margin-bottom: 2mm;
+  position: relative;
+  font-size: 2.1mm;
+  line-height: 1.5;
+  text-align: justify;
+  color: #333;
+  text-shadow: 0.5px 0.5px 0.5px rgba(229, 57, 53, 0.2);
+}
+
+[data-type="בינה"] .practical-tips {
+  background: linear-gradient(
+    135deg,
+    rgba(229, 57, 53, 0.1),
+    rgba(198, 40, 40, 0.05)
+  );
+  border: 1px solid rgba(229, 57, 53, 0.2);
+  border-radius: 2mm;
+  padding: 2mm;
+  box-shadow: inset 0 0 5px rgba(229, 57, 53, 0.2),
+    0 2px 4px rgba(0, 0, 0, 0.05);
+  position: relative;
+}
+
+[data-type="בינה"] .tips-title {
+  color: #ffffff;
+  text-shadow: 1px 1px 1px rgba(229, 57, 53, 0.3);
+  font-weight: bold;
+  margin-bottom: 1mm;
+  position: relative;
+  display: inline-block;
+  letter-spacing: 0.2mm;
+  font-size: 2.3mm;
+  line-height: 1.3;
+}
+
+[data-type="בינה"] .tips-list {
+  color: #ffffff;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.98),
+    rgba(255, 255, 255, 0.95)
+  );
+  padding: 1.5mm;
+  border-radius: 1mm;
+  font-size: 2mm;
+  line-height: 1.4;
+  text-align: justify;
+  color: #333;
+}
+
+[data-type="בינה"] .keywords {
+  color: #ffffff;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.98),
+    rgba(255, 255, 255, 0.95)
+  );
+  padding: 1.5mm;
+  border-radius: 1mm;
+  border: 1px solid rgba(229, 57, 53, 0.2);
+  text-shadow: 0.5px 0.5px 0.5px rgba(229, 57, 53, 0.2);
+  margin-top: 2mm;
+  position: relative;
+  font-size: 1.9mm;
+  line-height: 1.4;
+  text-align: center;
+  letter-spacing: 0.1mm;
+  color: #333;
+}
+
+[data-type="בינה"] ol {
+  margin: 0;
+  padding-right: 4mm;
+  position: relative;
+}
+
+[data-type="בינה"] li {
+  margin-bottom: 0.8mm;
+  line-height: 1.4;
+  position: relative;
+  padding-right: 1.5mm;
+  text-align: justify;
+  font-size: 2mm;
+  color: #333;
+}
+
+[data-type="בינה"] li::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 0.6mm;
+  height: 0.6mm;
+  background: rgba(229, 57, 53, 0.5);
+  border-radius: 50%;
+  transform: translateY(-50%);
+  box-shadow: 0 0 2px rgba(229, 57, 53, 0.3);
+}
+
+[data-type="בינה"] .emoji-corner {
+  text-shadow: 1px 1px 1px rgba(229, 57, 53, 0.5);
+  font-size: 1.2em;
+  filter: drop-shadow(0 0 2px rgba(229, 57, 53, 0.3));
+}
+
+/* ספירת חסד - לבן */
+[data-type="חסד"] {
+  background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 50%, #ffffff 100%);
+  color: #333;
+  border: 2px solid #e0e0e0;
+  box-shadow: inset 0 0 44px rgb(0 0 0 / 50%);
+  position: relative;
+  overflow: hidden;
+}
+
+[data-type="חסד"] .header {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.98),
+    rgba(255, 255, 255, 0.95)
+  );
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+  padding: 2mm;
+  margin-bottom: 2mm;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  position: relative;
+}
+
+[data-type="חסד"] .hebrew-text {
+  color: #333;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+  font-weight: bold;
+  letter-spacing: 0.2mm;
+  font-size: 2.2mm;
+  line-height: 1.4;
+  margin-bottom: 0.5mm;
+}
+
+[data-type="חסד"] .symbol {
+  font-size: 4.5mm;
+  margin: 1mm 0;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.05);
+  color: #333;
+}
+
+[data-type="חסד"] .title {
+  color: #333;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+  font-weight: bold;
+  letter-spacing: 0.2mm;
+  font-size: 3.2mm;
+  line-height: 1.3;
+  margin-top: 0.5mm;
+}
+
+[data-type="חסד"] .blessing {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.98),
+    rgba(255, 255, 255, 0.95)
+  );
+  padding: 3mm;
+  border-radius: 2mm;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.05), 0 2px 4px rgba(0, 0, 0, 0.05);
+  margin-bottom: 2mm;
+  position: relative;
+  font-size: 2.1mm;
+  line-height: 1.5;
+  text-align: justify;
+  color: #333;
+  text-shadow: 0.5px 0.5px 0.5px rgba(0, 0, 0, 0.1);
+}
+
+[data-type="חסד"] .practical-tips {
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.01));
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 2mm;
+  padding: 2mm;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.05), 0 2px 4px rgba(0, 0, 0, 0.05);
+  position: relative;
+}
+
+[data-type="חסד"] .tips-title {
+  color: #333;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+  font-weight: bold;
+  margin-bottom: 1mm;
+  position: relative;
+  display: inline-block;
+  letter-spacing: 0.2mm;
+  font-size: 2.3mm;
+  line-height: 1.3;
+}
+
+[data-type="חסד"] .tips-list {
+  color: #333;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.98),
+    rgba(255, 255, 255, 0.95)
+  );
+  padding: 1.5mm;
+  border-radius: 1mm;
+  font-size: 2mm;
+  line-height: 1.4;
+  text-align: justify;
+}
+
+[data-type="חסד"] .keywords {
+  color: #333;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.98),
+    rgba(255, 255, 255, 0.95)
+  );
+  padding: 1.5mm;
+  border-radius: 1mm;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  text-shadow: 0.5px 0.5px 0.5px rgba(0, 0, 0, 0.1);
+  margin-top: 2mm;
+  position: relative;
+  font-size: 1.9mm;
+  line-height: 1.4;
+  text-align: center;
+  letter-spacing: 0.1mm;
+}
+
+[data-type="חסד"] ol {
+  margin: 0;
+  padding-right: 4mm;
+  position: relative;
+}
+
+[data-type="חסד"] li {
+  margin-bottom: 0.8mm;
+  line-height: 1.4;
+  position: relative;
+  padding-right: 1.5mm;
+  text-align: justify;
+  font-size: 2mm;
+  color: #333;
+}
+
+[data-type="חסד"] li::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 0.6mm;
+  height: 0.6mm;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+  transform: translateY(-50%);
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+}
+
+[data-type="חסד"] .emoji-corner {
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+  font-size: 1.2em;
+  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.1));
+}
+
+/* ספירת גבורה - אדום */
+[data-type="גבורה"] {
+  background: linear-gradient(135deg, #d32f2f 0%, #b71c1c 50%, #d32f2f 100%);
+  color: #ffffff;
+  border: 2px solid #b71c1c;
+  box-shadow: inset 0 0 44px rgb(0 0 0 / 50%);
+  position: relative;
+  overflow: hidden;
+}
+
+[data-type="גבורה"] .header {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.98),
+    rgba(255, 255, 255, 0.95)
+  );
+  border-bottom: 2px solid rgba(211, 47, 47, 0.3);
+  padding: 2mm;
+  margin-bottom: 2mm;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  position: relative;
+}
+
+[data-type="גבורה"] .hebrew-text {
+  color: #333;
+  text-shadow: 1px 1px 1px rgba(211, 47, 47, 0.3);
+  font-weight: bold;
+  letter-spacing: 0.2mm;
+  font-size: 2.2mm;
+  line-height: 1.4;
+  margin-bottom: 0.5mm;
+}
+
+[data-type="גבורה"] .symbol {
+  font-size: 4.5mm;
+  margin: 1mm 0;
+  text-shadow: 1px 1px 1px rgba(211, 47, 47, 0.3),
+    0 0 5px rgba(211, 47, 47, 0.2);
+  color: #333;
+}
+
+[data-type="גבורה"] .title {
+  color: #333;
+  text-shadow: 1px 1px 1px rgba(211, 47, 47, 0.3);
+  font-weight: bold;
+  letter-spacing: 0.2mm;
+  font-size: 3.2mm;
+  line-height: 1.3;
+  margin-top: 0.5mm;
+}
+
+[data-type="גבורה"] .blessing {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.98),
+    rgba(255, 255, 255, 0.95)
+  );
+  padding: 3mm;
+  border-radius: 2mm;
+  border: 1px solid rgba(211, 47, 47, 0.3);
+  box-shadow: inset 0 0 5px rgba(211, 47, 47, 0.2),
+    0 2px 4px rgba(0, 0, 0, 0.05);
+  margin-bottom: 2mm;
+  position: relative;
+  font-size: 2.1mm;
+  line-height: 1.5;
+  text-align: justify;
+  color: #333;
+  text-shadow: 0.5px 0.5px 0.5px rgba(211, 47, 47, 0.2);
+}
+
+[data-type="גבורה"] .practical-tips {
+  background: linear-gradient(
+    135deg,
+    rgba(211, 47, 47, 0.1),
+    rgba(183, 28, 28, 0.05)
+  );
+  border: 1px solid rgba(211, 47, 47, 0.2);
+  border-radius: 2mm;
+  padding: 2mm;
+  box-shadow: inset 0 0 5px rgba(211, 47, 47, 0.2),
+    0 2px 4px rgba(0, 0, 0, 0.05);
+  position: relative;
+}
+
+[data-type="גבורה"] .tips-title {
+  color: #ffffff;
+  text-shadow: 1px 1px 1px rgba(211, 47, 47, 0.3);
+  font-weight: bold;
+  margin-bottom: 1mm;
+  position: relative;
+  display: inline-block;
+  letter-spacing: 0.2mm;
+  font-size: 2.3mm;
+  line-height: 1.3;
+}
+
+[data-type="גבורה"] .tips-list {
+  color: #ffffff;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.98),
+    rgba(255, 255, 255, 0.95)
+  );
+  padding: 1.5mm;
+  border-radius: 1mm;
+  font-size: 2mm;
+  line-height: 1.4;
+  text-align: justify;
+  color: #333;
+}
+
+[data-type="גבורה"] .keywords {
+  color: #ffffff;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.98),
+    rgba(255, 255, 255, 0.95)
+  );
+  padding: 1.5mm;
+  border-radius: 1mm;
+  border: 1px solid rgba(211, 47, 47, 0.2);
+  text-shadow: 0.5px 0.5px 0.5px rgba(211, 47, 47, 0.2);
+  margin-top: 2mm;
+  position: relative;
+  font-size: 1.9mm;
+  line-height: 1.4;
+  text-align: center;
+  letter-spacing: 0.1mm;
+  color: #333;
+}
+
+[data-type="גבורה"] ol {
+  margin: 0;
+  padding-right: 4mm;
+  position: relative;
+}
+
+[data-type="גבורה"] li {
+  margin-bottom: 0.8mm;
+  line-height: 1.4;
+  position: relative;
+  padding-right: 1.5mm;
+  text-align: justify;
+  font-size: 2mm;
+  color: #333;
+}
+
+[data-type="גבורה"] li::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 0.6mm;
+  height: 0.6mm;
+  background: rgba(211, 47, 47, 0.5);
+  border-radius: 50%;
+  transform: translateY(-50%);
+  box-shadow: 0 0 2px rgba(211, 47, 47, 0.3);
+}
+
+[data-type="גבורה"] .emoji-corner {
+  text-shadow: 1px 1px 1px rgba(211, 47, 47, 0.5);
+  font-size: 1.2em;
+  filter: drop-shadow(0 0 2px rgba(211, 47, 47, 0.3));
+}
+
+/* ספירת תפארת - זהב/סגול */
+[data-type="תפארת"] {
+  background: linear-gradient(135deg, #ffd700 0%, #9c27b0 50%, #ffd700 100%);
+  color: #ffffff;
+  border: 2px solid #9c27b0;
+  box-shadow: inset 0 0 44px rgb(0 0 0 / 50%);
+  position: relative;
+  overflow: hidden;
+}
+
+[data-type="תפארת"] .header {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.98),
+    rgba(255, 255, 255, 0.95)
+  );
+  border-bottom: 2px solid rgba(156, 39, 176, 0.3);
+  padding: 2mm;
+  margin-bottom: 2mm;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  position: relative;
+}
+
+[data-type="תפארת"] .hebrew-text {
+  color: #333;
+  text-shadow: 1px 1px 1px rgba(156, 39, 176, 0.3);
+  font-weight: bold;
+  letter-spacing: 0.2mm;
+  font-size: 2.2mm;
+  line-height: 1.4;
+  margin-bottom: 0.5mm;
+}
+
+[data-type="תפארת"] .symbol {
+  font-size: 4.5mm;
+  margin: 1mm 0;
+  text-shadow: 1px 1px 1px rgba(156, 39, 176, 0.3),
+    0 0 5px rgba(255, 215, 0, 0.2);
+  color: #333;
+}
+
+[data-type="תפארת"] .title {
+  color: #333;
+  text-shadow: 1px 1px 1px rgba(156, 39, 176, 0.3);
+  font-weight: bold;
+  letter-spacing: 0.2mm;
+  font-size: 3.2mm;
+  line-height: 1.3;
+  margin-top: 0.5mm;
+}
+
+[data-type="תפארת"] .blessing {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.98),
+    rgba(255, 255, 255, 0.95)
+  );
+  padding: 3mm;
+  border-radius: 2mm;
+  border: 1px solid rgba(156, 39, 176, 0.3);
+  box-shadow: inset 0 0 5px rgba(156, 39, 176, 0.2),
+    0 2px 4px rgba(0, 0, 0, 0.05);
+  margin-bottom: 2mm;
+  position: relative;
+  font-size: 2.1mm;
+  line-height: 1.5;
+  text-align: justify;
+  color: #333;
+  text-shadow: 0.5px 0.5px 0.5px rgba(156, 39, 176, 0.2);
+}
+
+[data-type="תפארת"] .practical-tips {
+  background: linear-gradient(
+    135deg,
+    rgba(156, 39, 176, 0.1),
+    rgba(255, 215, 0, 0.05)
+  );
+  border: 1px solid rgba(156, 39, 176, 0.2);
+  border-radius: 2mm;
+  padding: 2mm;
+  box-shadow: inset 0 0 5px rgba(156, 39, 176, 0.2),
+    0 2px 4px rgba(0, 0, 0, 0.05);
+  position: relative;
+}
+
+[data-type="תפארת"] .tips-title {
+  color: #ffffff;
+  text-shadow: 1px 1px 1px rgba(156, 39, 176, 0.3);
+  font-weight: bold;
+  margin-bottom: 1mm;
+  position: relative;
+  display: inline-block;
+  letter-spacing: 0.2mm;
+  font-size: 2.3mm;
+  line-height: 1.3;
+}
+
+[data-type="תפארת"] .tips-list {
+  color: #ffffff;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.98),
+    rgba(255, 255, 255, 0.95)
+  );
+  padding: 1.5mm;
+  border-radius: 1mm;
+  font-size: 2mm;
+  line-height: 1.4;
+  text-align: justify;
+  color: #333;
+}
+
+[data-type="תפארת"] .keywords {
+  color: #ffffff;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.98),
+    rgba(255, 255, 255, 0.95)
+  );
+  padding: 1.5mm;
+  border-radius: 1mm;
+  border: 1px solid rgba(156, 39, 176, 0.2);
+  text-shadow: 0.5px 0.5px 0.5px rgba(156, 39, 176, 0.2);
+  margin-top: 2mm;
+  position: relative;
+  font-size: 1.9mm;
+  line-height: 1.4;
+  text-align: center;
+  letter-spacing: 0.1mm;
+  color: #333;
+}
+
+[data-type="תפארת"] ol {
+  margin: 0;
+  padding-right: 4mm;
+  position: relative;
+}
+
+[data-type="תפארת"] li {
+  margin-bottom: 0.8mm;
+  line-height: 1.4;
+  position: relative;
+  padding-right: 1.5mm;
+  text-align: justify;
+  font-size: 2mm;
+  color: #333;
+}
+
+[data-type="תפארת"] li::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 0.6mm;
+  height: 0.6mm;
+  background: rgba(156, 39, 176, 0.5);
+  border-radius: 50%;
+  transform: translateY(-50%);
+  box-shadow: 0 0 2px rgba(156, 39, 176, 0.3);
+}
+
+[data-type="תפארת"] .emoji-corner {
+  text-shadow: 1px 1px 1px rgba(156, 39, 176, 0.5);
+  font-size: 1.2em;
+  filter: drop-shadow(0 0 2px rgba(156, 39, 176, 0.3));
+}
+
+/* ספירת נצח - ירוק */
+[data-type="נצח"] {
+  background: linear-gradient(135deg, #4caf50 0%, #2e7d32 50%, #4caf50 100%);
+  color: #ffffff;
+  border: 2px solid #2e7d32;
+  box-shadow: inset 0 0 44px rgb(0 0 0 / 50%);
+  position: relative;
+  overflow: hidden;
+}
+
+[data-type="נצח"] .header {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.98),
+    rgba(255, 255, 255, 0.95)
+  );
+  border-bottom: 2px solid rgba(46, 125, 50, 0.3);
+  padding: 2mm;
+  margin-bottom: 2mm;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  position: relative;
+}
+
+[data-type="נצח"] .hebrew-text {
+  color: #333;
+  text-shadow: 1px 1px 1px rgba(46, 125, 50, 0.3);
+  font-weight: bold;
+  letter-spacing: 0.2mm;
+  font-size: 2.2mm;
+  line-height: 1.4;
+  margin-bottom: 0.5mm;
+}
+
+[data-type="נצח"] .symbol {
+  font-size: 4.5mm;
+  margin: 1mm 0;
+  text-shadow: 1px 1px 1px rgba(46, 125, 50, 0.3),
+    0 0 5px rgba(76, 175, 80, 0.2);
+  color: #333;
+}
+
+[data-type="נצח"] .title {
+  color: #333;
+  text-shadow: 1px 1px 1px rgba(46, 125, 50, 0.3);
+  font-weight: bold;
+  letter-spacing: 0.2mm;
+  font-size: 3.2mm;
+  line-height: 1.3;
+  margin-top: 0.5mm;
+}
+
+[data-type="נצח"] .blessing {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.98),
+    rgba(255, 255, 255, 0.95)
+  );
+  padding: 3mm;
+  border-radius: 2mm;
+  border: 1px solid rgba(46, 125, 50, 0.3);
+  box-shadow: inset 0 0 5px rgba(46, 125, 50, 0.2),
+    0 2px 4px rgba(0, 0, 0, 0.05);
+  margin-bottom: 2mm;
+  position: relative;
+  font-size: 2.1mm;
+  line-height: 1.5;
+  text-align: justify;
+  color: #333;
+  text-shadow: 0.5px 0.5px 0.5px rgba(46, 125, 50, 0.2);
+}
+
+[data-type="נצח"] .practical-tips {
+  background: linear-gradient(
+    135deg,
+    rgba(46, 125, 50, 0.1),
+    rgba(76, 175, 80, 0.05)
+  );
+  border: 1px solid rgba(46, 125, 50, 0.2);
+  border-radius: 2mm;
+  padding: 2mm;
+  box-shadow: inset 0 0 5px rgba(46, 125, 50, 0.2),
+    0 2px 4px rgba(0, 0, 0, 0.05);
+  position: relative;
+}
+
+[data-type="נצח"] .tips-title {
+  color: #ffffff;
+  text-shadow: 1px 1px 1px rgba(46, 125, 50, 0.3);
+  font-weight: bold;
+  margin-bottom: 1mm;
+  position: relative;
+  display: inline-block;
+  letter-spacing: 0.2mm;
+  font-size: 2.3mm;
+  line-height: 1.3;
+}
+
+[data-type="נצח"] .tips-list {
+  color: #ffffff;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.98),
+    rgba(255, 255, 255, 0.95)
+  );
+  padding: 1.5mm;
+  border-radius: 1mm;
+  font-size: 2mm;
+  line-height: 1.4;
+  text-align: justify;
+  color: #333;
+}
+
+[data-type="נצח"] .keywords {
+  color: #ffffff;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.98),
+    rgba(255, 255, 255, 0.95)
+  );
+  padding: 1.5mm;
+  border-radius: 1mm;
+  border: 1px solid rgba(46, 125, 50, 0.2);
+  text-shadow: 0.5px 0.5px 0.5px rgba(46, 125, 50, 0.2);
+  margin-top: 2mm;
+  position: relative;
+  font-size: 1.9mm;
+  line-height: 1.4;
+  text-align: center;
+  letter-spacing: 0.1mm;
+  color: #333;
+}
+
+[data-type="נצח"] ol {
+  margin: 0;
+  padding-right: 4mm;
+  position: relative;
+}
+
+[data-type="נצח"] li {
+  margin-bottom: 0.8mm;
+  line-height: 1.4;
+  position: relative;
+  padding-right: 1.5mm;
+  text-align: justify;
+  font-size: 2mm;
+  color: #333;
+}
+
+[data-type="נצח"] li::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 0.6mm;
+  height: 0.6mm;
+  background: rgba(46, 125, 50, 0.5);
+  border-radius: 50%;
+  transform: translateY(-50%);
+  box-shadow: 0 0 2px rgba(46, 125, 50, 0.3);
+}
+
+[data-type="נצח"] .emoji-corner {
+  text-shadow: 1px 1px 1px rgba(46, 125, 50, 0.5);
+  font-size: 1.2em;
+  filter: drop-shadow(0 0 2px rgba(46, 125, 50, 0.3));
+}
+
+/* ספירת הוד - כתום/ורוד */
+[data-type="הוד"] {
+  background: linear-gradient(135deg, #ff9800 0%, #e91e63 50%, #ff9800 100%);
+  color: #ffffff;
+  border: 2px solid #e91e63;
+  box-shadow: inset 0 0 44px rgb(0 0 0 / 50%);
+  position: relative;
+  overflow: hidden;
+}
+
+[data-type="הוד"] .header {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.98),
+    rgba(255, 255, 255, 0.95)
+  );
+  border-bottom: 2px solid rgba(233, 30, 99, 0.3);
+  padding: 2mm;
+  margin-bottom: 2mm;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  position: relative;
+}
+
+[data-type="הוד"] .hebrew-text {
+  color: #333;
+  text-shadow: 1px 1px 1px rgba(233, 30, 99, 0.3);
+  font-weight: bold;
+  letter-spacing: 0.2mm;
+  font-size: 2.2mm;
+  line-height: 1.4;
+  margin-bottom: 0.5mm;
+}
+
+[data-type="הוד"] .symbol {
+  font-size: 4.5mm;
+  margin: 1mm 0;
+  text-shadow: 1px 1px 1px rgba(233, 30, 99, 0.3),
+    0 0 5px rgba(255, 152, 0, 0.2);
+  color: #333;
+}
+
+[data-type="הוד"] .title {
+  color: #333;
+  text-shadow: 1px 1px 1px rgba(233, 30, 99, 0.3);
+  font-weight: bold;
+  letter-spacing: 0.2mm;
+  font-size: 3.2mm;
+  line-height: 1.3;
+  margin-top: 0.5mm;
+}
+
+[data-type="הוד"] .blessing {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.98),
+    rgba(255, 255, 255, 0.95)
+  );
+  padding: 3mm;
+  border-radius: 2mm;
+  border: 1px solid rgba(233, 30, 99, 0.3);
+  box-shadow: inset 0 0 5px rgba(233, 30, 99, 0.2),
+    0 2px 4px rgba(0, 0, 0, 0.05);
+  margin-bottom: 2mm;
+  position: relative;
+  font-size: 2.1mm;
+  line-height: 1.5;
+  text-align: justify;
+  color: #333;
+  text-shadow: 0.5px 0.5px 0.5px rgba(233, 30, 99, 0.2);
+}
+
+[data-type="הוד"] .practical-tips {
+  background: linear-gradient(
+    135deg,
+    rgba(233, 30, 99, 0.1),
+    rgba(255, 152, 0, 0.05)
+  );
+  border: 1px solid rgba(233, 30, 99, 0.2);
+  border-radius: 2mm;
+  padding: 2mm;
+  box-shadow: inset 0 0 5px rgba(233, 30, 99, 0.2),
+    0 2px 4px rgba(0, 0, 0, 0.05);
+  position: relative;
+}
+
+[data-type="הוד"] .tips-title {
+  color: #ffffff;
+  text-shadow: 1px 1px 1px rgba(233, 30, 99, 0.3);
+  font-weight: bold;
+  margin-bottom: 1mm;
+  position: relative;
+  display: inline-block;
+  letter-spacing: 0.2mm;
+  font-size: 2.3mm;
+  line-height: 1.3;
+}
+
+[data-type="הוד"] .tips-list {
+  color: #ffffff;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.98),
+    rgba(255, 255, 255, 0.95)
+  );
+  padding: 1.5mm;
+  border-radius: 1mm;
+  font-size: 2mm;
+  line-height: 1.4;
+  text-align: justify;
+  color: #333;
+}
+
+[data-type="הוד"] .keywords {
+  color: #ffffff;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.98),
+    rgba(255, 255, 255, 0.95)
+  );
+  padding: 1.5mm;
+  border-radius: 1mm;
+  border: 1px solid rgba(233, 30, 99, 0.2);
+  text-shadow: 0.5px 0.5px 0.5px rgba(233, 30, 99, 0.2);
+  margin-top: 2mm;
+  position: relative;
+  font-size: 1.9mm;
+  line-height: 1.4;
+  text-align: center;
+  letter-spacing: 0.1mm;
+  color: #333;
+}
+
+[data-type="הוד"] ol {
+  margin: 0;
+  padding-right: 4mm;
+  position: relative;
+}
+
+[data-type="הוד"] li {
+  margin-bottom: 0.8mm;
+  line-height: 1.4;
+  position: relative;
+  padding-right: 1.5mm;
+  text-align: justify;
+  font-size: 2mm;
+  color: #333;
+}
+
+[data-type="הוד"] li::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 0.6mm;
+  height: 0.6mm;
+  background: rgba(233, 30, 99, 0.5);
+  border-radius: 50%;
+  transform: translateY(-50%);
+  box-shadow: 0 0 2px rgba(233, 30, 99, 0.3);
+}
+
+[data-type="הוד"] .emoji-corner {
+  text-shadow: 1px 1px 1px rgba(233, 30, 99, 0.5);
+  font-size: 1.2em;
+  filter: drop-shadow(0 0 2px rgba(233, 30, 99, 0.3));
+}
+
+/* ספירת יסוד - כחול-תכלת */
+[data-type="יסוד"] {
+  background: linear-gradient(135deg, #03a9f4 0%, #0288d1 50%, #03a9f4 100%);
+  color: #ffffff;
+  border: 2px solid #0288d1;
+  box-shadow: inset 0 0 44px rgb(0 0 0 / 50%);
+  position: relative;
+  overflow: hidden;
+}
+
+[data-type="יסוד"] .header {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.98),
+    rgba(255, 255, 255, 0.95)
+  );
+  border-bottom: 2px solid rgba(2, 136, 209, 0.3);
+  padding: 2mm;
+  margin-bottom: 2mm;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  position: relative;
+}
+
+[data-type="יסוד"] .hebrew-text {
+  color: #333;
+  text-shadow: 1px 1px 1px rgba(2, 136, 209, 0.3);
+  font-weight: bold;
+  letter-spacing: 0.2mm;
+  font-size: 2.2mm;
+  line-height: 1.4;
+  margin-bottom: 0.5mm;
+}
+
+[data-type="יסוד"] .symbol {
+  font-size: 4.5mm;
+  margin: 1mm 0;
+  text-shadow: 1px 1px 1px rgba(2, 136, 209, 0.3),
+    0 0 5px rgba(3, 169, 244, 0.2);
+  color: #333;
+}
+
+[data-type="יסוד"] .title {
+  color: #333;
+  text-shadow: 1px 1px 1px rgba(2, 136, 209, 0.3);
+  font-weight: bold;
+  letter-spacing: 0.2mm;
+  font-size: 3.2mm;
+  line-height: 1.3;
+  margin-top: 0.5mm;
+}
+
+[data-type="יסוד"] .blessing {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.98),
+    rgba(255, 255, 255, 0.95)
+  );
+  padding: 3mm;
+  border-radius: 2mm;
+  border: 1px solid rgba(2, 136, 209, 0.3);
+  box-shadow: inset 0 0 5px rgba(2, 136, 209, 0.2),
+    0 2px 4px rgba(0, 0, 0, 0.05);
+  margin-bottom: 2mm;
+  position: relative;
+  font-size: 2.1mm;
+  line-height: 1.5;
+  text-align: justify;
+  color: #333;
+  text-shadow: 0.5px 0.5px 0.5px rgba(2, 136, 209, 0.2);
+}
+
+[data-type="יסוד"] .practical-tips {
+  background: linear-gradient(
+    135deg,
+    rgba(2, 136, 209, 0.1),
+    rgba(3, 169, 244, 0.05)
+  );
+  border: 1px solid rgba(2, 136, 209, 0.2);
+  border-radius: 2mm;
+  padding: 2mm;
+  box-shadow: inset 0 0 5px rgba(2, 136, 209, 0.2),
+    0 2px 4px rgba(0, 0, 0, 0.05);
+  position: relative;
+}
+
+[data-type="יסוד"] .tips-title {
+  color: #ffffff;
+  text-shadow: 1px 1px 1px rgba(2, 136, 209, 0.3);
+  font-weight: bold;
+  margin-bottom: 1mm;
+  position: relative;
+  display: inline-block;
+  letter-spacing: 0.2mm;
+  font-size: 2.3mm;
+  line-height: 1.3;
+}
+
+[data-type="יסוד"] .tips-list {
+  color: #ffffff;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.98),
+    rgba(255, 255, 255, 0.95)
+  );
+  padding: 1.5mm;
+  border-radius: 1mm;
+  font-size: 2mm;
+  line-height: 1.4;
+  text-align: justify;
+  color: #333;
+}
+
+[data-type="יסוד"] .keywords {
+  color: #ffffff;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.98),
+    rgba(255, 255, 255, 0.95)
+  );
+  padding: 1.5mm;
+  border-radius: 1mm;
+  border: 1px solid rgba(2, 136, 209, 0.2);
+  text-shadow: 0.5px 0.5px 0.5px rgba(2, 136, 209, 0.2);
+  margin-top: 2mm;
+  position: relative;
+  font-size: 1.9mm;
+  line-height: 1.4;
+  text-align: center;
+  letter-spacing: 0.1mm;
+  color: #333;
+}
+
+[data-type="יסוד"] ol {
+  margin: 0;
+  padding-right: 4mm;
+  position: relative;
+}
+
+[data-type="יסוד"] li {
+  margin-bottom: 0.8mm;
+  line-height: 1.4;
+  position: relative;
+  padding-right: 1.5mm;
+  text-align: justify;
+  font-size: 2mm;
+  color: #333;
+}
+
+[data-type="יסוד"] li::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 0.6mm;
+  height: 0.6mm;
+  background: rgba(2, 136, 209, 0.5);
+  border-radius: 50%;
+  transform: translateY(-50%);
+  box-shadow: 0 0 2px rgba(2, 136, 209, 0.3);
+}
+
+[data-type="יסוד"] .emoji-corner {
+  text-shadow: 1px 1px 1px rgba(2, 136, 209, 0.5);
+  font-size: 1.2em;
+  filter: drop-shadow(0 0 2px rgba(2, 136, 209, 0.3));
+}
+
+/* ספירת מלכות - שחור/סגול כהה */
+[data-type="מלכות"] {
+  background: linear-gradient(135deg, #424242 0%, #6a1b9a 50%, #424242 100%);
+  color: #ffffff;
+  border: 2px solid #6a1b9a;
+  box-shadow: inset 0 0 44px rgb(0 0 0 / 50%);
+  position: relative;
+  overflow: hidden;
+}
+
+[data-type="מלכות"] .header {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.98),
+    rgba(255, 255, 255, 0.95)
+  );
+  border-bottom: 2px solid rgba(106, 27, 154, 0.3);
+  padding: 2mm;
+  margin-bottom: 2mm;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  position: relative;
+}
+
+[data-type="מלכות"] .hebrew-text {
+  color: #333;
+  text-shadow: 1px 1px 1px rgba(106, 27, 154, 0.3);
+  font-weight: bold;
+  letter-spacing: 0.2mm;
+  font-size: 2.2mm;
+  line-height: 1.4;
+  margin-bottom: 0.5mm;
+}
+
+[data-type="מלכות"] .symbol {
+  font-size: 4.5mm;
+  margin: 1mm 0;
+  text-shadow: 1px 1px 1px rgba(106, 27, 154, 0.3),
+    0 0 5px rgba(66, 66, 66, 0.2);
+  color: #333;
+}
+
+[data-type="מלכות"] .title {
+  color: #333;
+  text-shadow: 1px 1px 1px rgba(106, 27, 154, 0.3);
+  font-weight: bold;
+  letter-spacing: 0.2mm;
+  font-size: 3.2mm;
+  line-height: 1.3;
+  margin-top: 0.5mm;
+}
+
+[data-type="מלכות"] .blessing {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.98),
+    rgba(255, 255, 255, 0.95)
+  );
+  padding: 3mm;
+  border-radius: 2mm;
+  border: 1px solid rgba(106, 27, 154, 0.3);
+  box-shadow: inset 0 0 5px rgba(106, 27, 154, 0.2),
+    0 2px 4px rgba(0, 0, 0, 0.05);
+  margin-bottom: 2mm;
+  position: relative;
+  font-size: 2.1mm;
+  line-height: 1.5;
+  text-align: justify;
+  color: #333;
+  text-shadow: 0.5px 0.5px 0.5px rgba(106, 27, 154, 0.2);
+}
+
+[data-type="מלכות"] .practical-tips {
+  background: linear-gradient(
+    135deg,
+    rgba(106, 27, 154, 0.1),
+    rgba(66, 66, 66, 0.05)
+  );
+  border: 1px solid rgba(106, 27, 154, 0.2);
+  border-radius: 2mm;
+  padding: 2mm;
+  box-shadow: inset 0 0 5px rgba(106, 27, 154, 0.2),
+    0 2px 4px rgba(0, 0, 0, 0.05);
+  position: relative;
+}
+
+[data-type="מלכות"] .tips-title {
+  color: #ffffff;
+  text-shadow: 1px 1px 1px rgba(106, 27, 154, 0.3);
+  font-weight: bold;
+  margin-bottom: 1mm;
+  position: relative;
+  display: inline-block;
+  letter-spacing: 0.2mm;
+  font-size: 2.3mm;
+  line-height: 1.3;
+}
+
+[data-type="מלכות"] .tips-list {
+  color: #ffffff;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.98),
+    rgba(255, 255, 255, 0.95)
+  );
+  padding: 1.5mm;
+  border-radius: 1mm;
+  font-size: 2mm;
+  line-height: 1.4;
+  text-align: justify;
+  color: #333;
+}
+
+[data-type="מלכות"] .keywords {
+  color: #ffffff;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.98),
+    rgba(255, 255, 255, 0.95)
+  );
+  padding: 1.5mm;
+  border-radius: 1mm;
+  border: 1px solid rgba(106, 27, 154, 0.2);
+  text-shadow: 0.5px 0.5px 0.5px rgba(106, 27, 154, 0.2);
+  margin-top: 2mm;
+  position: relative;
+  font-size: 1.9mm;
+  line-height: 1.4;
+  text-align: center;
+  letter-spacing: 0.1mm;
+  color: #333;
+}
+
+[data-type="מלכות"] ol {
+  margin: 0;
+  padding-right: 4mm;
+  position: relative;
+}
+
+[data-type="מלכות"] li {
+  margin-bottom: 0.8mm;
+  line-height: 1.4;
+  position: relative;
+  padding-right: 1.5mm;
+  text-align: justify;
+  font-size: 2mm;
+  color: #333;
+}
+
+[data-type="מלכות"] li::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 0.6mm;
+  height: 0.6mm;
+  background: rgba(106, 27, 154, 0.5);
+  border-radius: 50%;
+  transform: translateY(-50%);
+  box-shadow: 0 0 2px rgba(106, 27, 154, 0.3);
+}
+
+[data-type="מלכות"] .emoji-corner {
+  text-shadow: 1px 1px 1px rgba(106, 27, 154, 0.5);
+  font-size: 1.2em;
+  filter: drop-shadow(0 0 2px rgba(106, 27, 154, 0.3));
+}
+
+/* ספירת כתר - זהב יוקרתי */
+[data-type="כתר"]::before {
+  content: "👑";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 50mm;
+  opacity: 0.24;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ספירת חכמה - כחול */
+[data-type="חכמה"]::before {
+  content: "💡";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 50mm;
+  opacity: 0.24;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ספירת דעת - כחול-אדום */
+[data-type="דעת"]::before {
+  content: "🎯";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 50mm;
+  opacity: 0.24;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ספירת בינה - אדום */
+[data-type="בינה"]::before {
+  content: "🧠";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 50mm;
+  opacity: 0.24;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ספירת חסד - לבן */
+[data-type="חסד"]::before {
+  content: "🤍";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 50mm;
+  opacity: 0.24;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ספירת גבורה - אדום */
+[data-type="גבורה"]::before {
+  content: "⚔️";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 50mm;
+  opacity: 0.24;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ספירת תפארת - זהב/סגול */
+[data-type="תפארת"]::before {
+  content: "🌟";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 50mm;
+  opacity: 0.24;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ספירת נצח - ירוק */
+[data-type="נצח"]::before {
+  content: "🌳";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 50mm;
+  opacity: 0.24;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ספירת הוד - כתום/ורוד */
+[data-type="הוד"]::before {
+  content: "🎨";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 50mm;
+  opacity: 0.24;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ספירת יסוד - כחול-תכלת */
+[data-type="יסוד"]::before {
+  content: "🔗";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 50mm;
+  opacity: 0.24;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ספירת מלכות - שחור/סגול כהה */
+[data-type="מלכות"]::before {
+  content: "👑";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 50mm;
+  opacity: 0.24;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* סגנונות הדפסה */
+@media print {
+  body {
+    background: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .margin-control {
+    box-shadow: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .kamea-card {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .kamea-card:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .cut-lines {
+    border: none;
+  }
+}

@@ -1,0 +1,340 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Rubik", sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #f5e6d3 0%, #f9f2ea 100%);
+  color: #2c3e50;
+  line-height: 1.6;
+  padding: 20px;
+  margin: 0;
+  direction: rtl;
+}
+
+.page-title {
+  text-align: center;
+  color: #d4af37;
+  font-size: 2.5em;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.page-subtitle {
+  text-align: center;
+  color: #666;
+  font-size: 1.2em;
+  margin-bottom: 30px;
+}
+
+.summary-table {
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  margin: 20px auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 1200px;
+}
+
+.summary-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.summary-table th {
+  background: #f5e6d3;
+  padding: 15px;
+  text-align: center;
+  color: #2c3e50;
+  border: 1px solid #eee;
+  font-weight: bold;
+}
+
+.summary-table td {
+  padding: 12px;
+  text-align: center;
+  border: 1px solid #eee;
+  position: relative;
+}
+
+.summary-table td::before {
+  content: attr(data-emoji);
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  font-size: 1.2em;
+  opacity: 0.7;
+}
+
+.summary-table tr:nth-child(1) td {
+  background-color: rgba(212, 175, 55, 0.1);
+} /* כתר */
+.summary-table tr:nth-child(2) td {
+  background-color: rgba(52, 152, 219, 0.1);
+} /* חכמה */
+.summary-table tr:nth-child(3) td {
+  background-color: rgba(46, 204, 113, 0.1);
+} /* בינה */
+.summary-table tr:nth-child(4) td {
+  background-color: rgba(155, 89, 182, 0.1);
+} /* דעת */
+.summary-table tr:nth-child(5) td {
+  background-color: rgba(231, 76, 60, 0.1);
+} /* חסד */
+.summary-table tr:nth-child(6) td {
+  background-color: rgba(139, 0, 0, 0.1);
+} /* גבורה */
+.summary-table tr:nth-child(7) td {
+  background-color: rgba(22, 160, 133, 0.1);
+} /* תפארת */
+.summary-table tr:nth-child(8) td {
+  background-color: rgba(230, 126, 34, 0.1);
+} /* נצח */
+.summary-table tr:nth-child(9) td {
+  background-color: rgba(39, 174, 96, 0.1);
+} /* הוד */
+.summary-table tr:nth-child(10) td {
+  background-color: rgba(52, 152, 219, 0.1);
+} /* יסוד */
+.summary-table tr:nth-child(11) td {
+  background-color: rgba(155, 89, 182, 0.1);
+} /* מלכות */
+
+.summary-title {
+  text-align: center;
+  color: #d4af37;
+  margin-bottom: 20px;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.category-title {
+  grid-column: 1/-1;
+  color: #d4af37;
+  text-align: center;
+  font-size: 1.8em;
+  margin: 30px 0 20px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px 0;
+}
+
+.card {
+  background: white;
+  border-radius: 15px;
+  padding: 20px;
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  overflow: hidden;
+}
+
+.card::before {
+  content: attr(data-emoji);
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  font-size: 8em;
+  opacity: 0.1;
+  transform: rotate(-15deg);
+  pointer-events: none;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card.crown {
+  border-top: 5px solid #d4af37;
+}
+.card.crown::before {
+  content: "👑";
+}
+
+.card.wisdom {
+  border-top: 5px solid #3498db;
+}
+.card.wisdom::before {
+  content: "🧠";
+}
+
+.card.understanding {
+  border-top: 5px solid #2ecc71;
+}
+.card.understanding::before {
+  content: "📚";
+}
+
+.card.knowledge {
+  border-top: 5px solid #9b59b6;
+}
+.card.knowledge::before {
+  content: "💡";
+}
+
+.card.kindness {
+  border-top: 5px solid #e74c3c;
+}
+.card.kindness::before {
+  content: "❤️";
+}
+
+.card.strength {
+  border-top: 5px solid #8b0000;
+}
+.card.strength::before {
+  content: "⚔️";
+}
+
+.card.beauty {
+  border-top: 5px solid #16a085;
+}
+.card.beauty::before {
+  content: "🎨";
+}
+
+.card.victory {
+  border-top: 5px solid #e67e22;
+}
+.card.victory::before {
+  content: "🏆";
+}
+
+.card.humility {
+  border-top: 5px solid #27ae60;
+}
+.card.humility::before {
+  content: "🙏";
+}
+
+.card.foundation {
+  border-top: 5px solid #3498db;
+}
+.card.foundation::before {
+  content: "🔗";
+}
+
+.card.kingdom {
+  border-top: 5px solid #9b59b6;
+}
+.card.kingdom::before {
+  content: "👑";
+}
+
+.card-number {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #d4af37;
+  color: white;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  z-index: 1;
+}
+
+.time-recommended {
+  color: #666;
+  font-size: 0.9em;
+  margin-bottom: 5px;
+  position: relative;
+  z-index: 1;
+}
+
+.difficulty-level {
+  color: #d4af37;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 1;
+}
+
+.card-title {
+  font-size: 1.3em;
+  color: #2c3e50;
+  margin-bottom: 15px;
+  font-weight: bold;
+  position: relative;
+  z-index: 1;
+}
+
+.card-content {
+  margin-bottom: 15px;
+  line-height: 1.6;
+  position: relative;
+  z-index: 1;
+}
+
+.quick-tip {
+  background: #f5e6d3;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 0.9em;
+  margin-bottom: 15px;
+  position: relative;
+  z-index: 1;
+}
+
+.card-footer {
+  color: #666;
+  font-style: italic;
+  margin-bottom: 10px;
+  position: relative;
+  z-index: 1;
+}
+
+.emotional-connection {
+  color: #d4af37;
+  font-size: 0.9em;
+  text-align: center;
+  margin-top: 10px;
+  position: relative;
+  z-index: 1;
+}
+
+.credits {
+  text-align: center;
+  margin-top: 50px;
+  color: #666;
+  font-size: 0.9em;
+}
+
+@media (max-width: 768px) {
+  .cards-container {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    margin: 10px;
+  }
+
+  .summary-table {
+    overflow-x: auto;
+  }
+}
+
+@media print {
+  body {
+    background: white;
+  }
+
+  .card {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    box-shadow: none;
+    border: 1px solid #ddd;
+  }
+}

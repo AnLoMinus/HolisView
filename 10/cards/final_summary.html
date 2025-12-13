@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>סיכום מסע הספירות – מבט על והתבוננות מסכמת</title>
+    <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <style>
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Frank Ruhl Libre', serif;
+            background: white;
+            color: #2c3e50;
+        }
+
+        .page {
+            width: 210mm;
+            height: 297mm;
+            margin: 0 auto;
+            padding: 15mm;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(to bottom, #ffffff, #f8f9fa);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page::before {
+            content: '';
+            position: absolute;
+            top: 5mm;
+            left: 5mm;
+            right: 5mm;
+            bottom: 5mm;
+            border: 1px solid #d4af37;
+            pointer-events: none;
+        }
+
+        .page::after {
+            content: '';
+            position: absolute;
+            top: 6mm;
+            left: 6mm;
+            right: 6mm;
+            bottom: 6mm;
+            border: 1px solid #d4af37;
+            pointer-events: none;
+            opacity: 0.5;
+        }
+
+        .bsd {
+            position: absolute;
+            top: 8mm;
+            right: 8mm;
+            color: #d4af37;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #d4af37;
+            margin: 0 0 5mm;
+            text-align: center;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            position: relative;
+            padding: 3mm 0;
+        }
+
+        h1::before,
+        h1::after {
+            content: '✧';
+            color: #d4af37;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 20px;
+        }
+
+        h1::before {
+            right: 20%;
+        }
+
+        h1::after {
+            left: 20%;
+        }
+
+        .introduction {
+            font-size: 12px;
+            line-height: 1.4;
+            margin: 0 0 5mm;
+            text-align: justify;
+            color: #34495e;
+            background: rgba(212, 175, 55, 0.05);
+            padding: 4mm;
+            border-radius: 2mm;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .section-divider {
+            text-align: center;
+            margin: 4mm 0;
+            height: 5mm;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-divider::before {
+            content: '✧ ❦ ✧';
+            color: #d4af37;
+            font-size: 14px;
+            position: relative;
+            padding: 0 10mm;
+            background: white;
+            z-index: 1;
+        }
+
+        .section-divider::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            z-index: 0;
+        }
+
+        .summary-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0 0 5mm;
+            font-size: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            background: white;
+        }
+
+        .summary-table th,
+        .summary-table td {
+            padding: 2px 4px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            text-align: right;
+        }
+
+        .summary-table th {
+            background: rgba(212, 175, 55, 0.1);
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .summary-table .emoji {
+            font-size: 16px;
+            margin-left: 4px;
+        }
+
+        .summary-table tr:hover {
+            background: rgba(212, 175, 55, 0.05);
+        }
+
+        .practical-insights {
+            background: rgba(212, 175, 55, 0.05);
+            padding: 4mm;
+            border-radius: 2mm;
+            margin: 0 0 5mm;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .insights-title {
+            font-size: 14px;
+            font-weight: bold;
+            margin: 0 0 2mm;
+            color: #d4af37;
+            text-align: center;
+            position: relative;
+        }
+
+        .insights-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .insights-list li {
+            margin-bottom: 1mm;
+            padding-right: 12px;
+            position: relative;
+            font-size: 11px;
+            line-height: 1.4;
+        }
+
+        .insights-list li::before {
+            content: "✧";
+            position: absolute;
+            right: 0;
+            color: #d4af37;
+        }
+
+        .final-thoughts {
+            font-size: 12px;
+            line-height: 1.4;
+            color: #34495e;
+            background: rgba(212, 175, 55, 0.05);
+            padding: 4mm;
+            border-radius: 2mm;
+            margin-top: 3mm;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .final-thoughts::before,
+        .final-thoughts::after {
+            content: '❧';
+            color: #d4af37;
+            position: absolute;
+            font-size: 16px;
+            opacity: 0.5;
+        }
+
+        .final-thoughts::before {
+            top: 2mm;
+            right: 2mm;
+        }
+
+        .final-thoughts::after {
+            bottom: 2mm;
+            left: 2mm;
+            transform: rotate(180deg);
+        }
+
+        .quote {
+            text-align: center;
+            font-weight: bold;
+            color: #d4af37;
+            font-size: 14px;
+            margin-top: 3mm;
+            padding: 2mm;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .credits {
+            position: absolute;
+            bottom: 8mm;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            font-size: 10px;
+            color: rgba(212, 175, 55, 0.7);
+            width: 100%;
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+
+            .page {
+                width: 210mm;
+                height: 297mm;
+                margin: 0;
+                padding: 15mm;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <div class="bsd">(בס״ד)</div>
+        <h1>✧ סיכום מסע הספירות ✧</h1>
+
+        <div class="introduction">
+            <strong>מסע הספירות הוא מסע אל תוך עצמנו</strong> – אל המבנה העמוק של המציאות והנפש.
+            כל ספירה היא כמו מראה שמשקפת חלק אחר של האישיות שלנו, וביחד הן יוצרות תמונה שלמה של מי שאנחנו יכולים להיות.
+            <br><br>
+            בדפים הקודמים חקרנו כל ספירה לעומק. כעת נראה איך הן עובדות יחד כמערכת אחת שלמה.
+        </div>
+
+        <div class="section-divider"></div>
+
+        <table class="summary-table">
+            <tr>
+                <th>ספירה</th>
+                <th>תפקיד מרכזי</th>
+                <th>איך משתלבת במכלול</th>
+                <th>עבודה פנימית</th>
+                <th>סימן להצלחה</th>
+            </tr>
+            <tr>
+                <td><span class="emoji">👑</span> כתר</td>
+                <td>מקור הרצון והשאיפות</td>
+                <td>מניע את כל התהליך מלמעלה</td>
+                <td>התבוננות במטרות החיים העמוקות שלנו</td>
+                <td>תחושת כיוון ברורה וחיבור לייעוד</td>
+            </tr>
+            <tr>
+                <td><span class="emoji">🧠</span> חכמה</td>
+                <td>תובנה ראשונית</td>
+                <td>מספקת את הניצוץ הראשוני להבנה</td>
+                <td>פתיחות לרעיונות חדשים והשראה</td>
+                <td>רגעי "אהה!" והברקות תכופים</td>
+            </tr>
+            <tr>
+                <td><span class="emoji">🏛</span> בינה</td>
+                <td>פיתוח והעמקה</td>
+                <td>מרחיבה את התובנה לכדי הבנה מלאה</td>
+                <td>לימוד מעמיק וניתוח יסודי</td>
+                <td>יכולת להסביר רעיונות מורכבים בבהירות</td>
+            </tr>
+            <tr>
+                <td><span class="emoji">💡</span> דעת</td>
+                <td>חיבור והפנמה</td>
+                <td>מחברת בין השכל לרגש</td>
+                <td>חיבור אישי לכל דבר שלומדים</td>
+                <td>הידע הופך לחלק טבעי מהאישיות</td>
+            </tr>
+            <tr>
+                <td><span class="emoji">❤️</span> חסד</td>
+                <td>נתינה ואהבה</td>
+                <td>מביאה את האור החוצה</td>
+                <td>פיתוח נדיבות ורצון להיטיב</td>
+                <td>שמחה אמיתית בנתינה לאחרים</td>
+            </tr>
+            <tr>
+                <td><span class="emoji">⚔️</span> גבורה</td>
+                <td>גבולות ומשמעת</td>
+                <td>מווסתת ומכוונת את החסד</td>
+                <td>אימון בשליטה עצמית ומשמעת</td>
+                <td>יכולת לומר 'לא' כשצריך</td>
+            </tr>
+            <tr>
+                <td><span class="emoji">🎨</span> תפארת</td>
+                <td>איזון והרמוניה</td>
+                <td>משלבת בין חסד לגבורה</td>
+                <td>חיפוש האיזון בכל מצב</td>
+                <td>קבלת החלטות מאוזנות ונכונות</td>
+            </tr>
+            <tr>
+                <td><span class="emoji">🏆</span> נצח</td>
+                <td>התמדה וניצחון</td>
+                <td>מבטיחה המשכיות</td>
+                <td>פיתוח נחישות והתמדה</td>
+                <td>הצלחה למרות כישלונות בדרך</td>
+            </tr>
+            <tr>
+                <td><span class="emoji">🙏</span> הוד</td>
+                <td>ענווה וקבלה</td>
+                <td>מאזנת את הנצח</td>
+                <td>עבודה על הענווה וקבלת האחר</td>
+                <td>יכולת להודות בטעויות ולקבל ביקורת</td>
+            </tr>
+            <tr>
+                <td><span class="emoji">🔗</span> יסוד</td>
+                <td>חיבור ויישום</td>
+                <td>מחברת את כל הכוחות יחד</td>
+                <td>יצירת גשרים בין רעיון למעשה</td>
+                <td>הוצאה לפועל של תכניות באופן עקבי</td>
+            </tr>
+            <tr>
+                <td><span class="emoji">👑</span> מלכות</td>
+                <td>ביטוי בפועל</td>
+                <td>מביאה הכל לידי מימוש בעולם</td>
+                <td>מימוש הפוטנציאל בעולם המעשה</td>
+                <td>השפעה מוחשית וחיובית על הסביבה</td>
+            </tr>
+        </table>
+
+        <div class="section-divider"></div>
+
+        <div class="practical-insights">
+            <div class="insights-title">✧ תובנות מעשיות ליישום יומיומי ✧</div>
+            <ul class="insights-list">
+                <li>כל פעולה שלנו צריכה להתחיל מ<strong>כתר</strong> – מהרצון הטהור והמטרה האמיתית</li>
+                <li>השילוב של <strong>חכמה ובינה</strong> מלמד אותנו לאזן בין תובנות מהירות לבין עיבוד מעמיק</li>
+                <li><strong>דעת</strong> מזכירה לנו שידע אמיתי הוא זה שחודר ללב, לא רק לשכל</li>
+                <li>האיזון בין <strong>חסד וגבורה</strong> נחוץ בכל תחום – בחינוך, בעבודה, במערכות יחסים</li>
+                <li><strong>תפארת</strong> מלמדת שהאמת צריכה להיות יפה ומאוזנת, לא קיצונית</li>
+                <li><strong>נצח והוד</strong> מזכירים לנו לשלב בין נחישות לענווה</li>
+                <li><strong>יסוד</strong> מדגיש שכל למידה צריכה להוביל למעשה</li>
+                <li><strong>מלכות</strong> מראה שהמטרה הסופית היא להשפיע על העולם</li>
+            </ul>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <div class="final-thoughts">
+            <strong>המסר הסופי:</strong> הספירות אינן רק מושגים תיאורטיים – הן מפת דרכים לחיים שלמים ומאוזנים.
+            כשאנחנו מבינים איך הן פועלות יחד, אנחנו יכולים ליצור חיים שיש בהם גם עומק רוחני וגם יישום מעשי,
+            גם אהבה וגם גבולות, גם שאיפות גבוהות וגם מימוש בפועל.
+            <div class="quote">
+                ✧ "דע את עצמך, דע את כוחותיך, ודע איך להשתמש בהם בחכמה" ✧
+            </div>
+        </div>
+
+        <div class="credits">
+            © כל הזכויות שמורות • נכתב ועוצב בידי משה לאון יעקובוב • תשפ״ד
+        </div>
+    </div>
+</body>
+
+</html>

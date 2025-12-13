@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10 הספירות - קלפים מעוצבים</title>
+    <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <style>
+        @page {
+            size: A4;
+            /* margin: 0px; */
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Frank Ruhl Libre', serif;
+            font-weight: 500;
+            background: white;
+            color: #2c3e50;
+        }
+
+        .page {
+            width: 210mm;
+            height: 297mm;
+            margin: 0 auto;
+            padding: 10mm;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(to bottom, #ffffff, #f8f9fa);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page::before {
+            content: '';
+            position: absolute;
+            top: 5mm;
+            left: 5mm;
+            right: 5mm;
+            bottom: 5mm;
+            border: 1px solid #d4af37;
+            pointer-events: none;
+        }
+
+        .page::after {
+            content: '';
+            position: absolute;
+            top: 6mm;
+            left: 6mm;
+            right: 6mm;
+            bottom: 6mm;
+            border: 1px solid #d4af37;
+            pointer-events: none;
+            opacity: 0.5;
+        }
+
+        .bsd {
+            position: absolute;
+            top: 8mm;
+            right: 8mm;
+            color: #d4af37;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #d4af37;
+            margin: 0 0 0mm;
+            text-align: center;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            position: relative;
+            padding: 3mm 0;
+        }
+
+        h1::before,
+        h1::after {
+            content: '✧';
+            color: #d4af37;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 20px;
+        }
+
+        h1::before {
+            right: 20%;
+        }
+
+        h1::after {
+            left: 20%;
+        }
+
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1mm;
+            /* margin-top: 10mm; */
+        }
+
+        .card {
+            background: rgb(212, 175, 55, 0.2);
+            position: relative;
+            padding: 5mm;
+            box-shadow: inset 0px 0px 44px rgba(212, 175, 55, 1);
+            transition: transform 0.3s ease;
+            overflow: hidden;
+        }
+
+        /* סגנון חדש לקלפי הקליפה */
+        .card.dark-card {
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(139, 0, 0, 0.8));
+            box-shadow: inset 0px 0px 44px rgba(139, 0, 0, 0.8);
+        }
+
+        .card.dark-card .card-title {
+            color: #ff4444;
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+        }
+
+        .card.dark-card .card-emoji {
+            color: #ff4444;
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+        }
+
+        .card.dark-card .card-content {
+            color: #ffcccc;
+        }
+
+        .card.dark-card .card-list li::before {
+            color: #ff4444;
+        }
+
+        .card.dark-card .card-keywords {
+            color: #ff4444;
+        }
+
+        .card.dark-card .star-of-david {
+            color: #ff4444;
+            text-shadow: 0px 0px 24px #ff0000;
+        }
+
+        .card.dark-card .star-corner {
+            color: #ff4444;
+        }
+
+        .card.dark-card::before,
+        .card.dark-card::after {
+            border-color: #ff4444;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 1mm;
+            left: 1mm;
+            right: 1mm;
+            bottom: 1mm;
+            border: 2px solid #d4af37;
+            pointer-events: none;
+        }
+
+        .card::after {
+            content: '';
+            position: absolute;
+            top: 2mm;
+            left: 2mm;
+            right: 2mm;
+            bottom: 2mm;
+            border: 2px solid #d4af37;
+            pointer-events: none;
+            opacity: 0.5;
+        }
+
+        .card .star-corner {
+            position: absolute;
+            color: #d4af37;
+            font-size: 14px;
+            z-index: 1;
+        }
+
+        .card .star-corner.top-right {
+            top: 3mm;
+            right: 3mm;
+        }
+
+        .card .star-corner.top-left {
+            top: 3mm;
+            left: 3mm;
+        }
+
+        .card .star-corner.bottom-right {
+            bottom: 3mm;
+            right: 3mm;
+        }
+
+        .card .star-corner.bottom-left {
+            bottom: 3mm;
+            left: 3mm;
+        }
+
+        .card:hover {
+            transform: translateY(-2mm);
+        }
+
+        .card-header {
+            text-align: center;
+            margin-bottom: 3mm;
+            position: relative;
+            z-index: 1;
+        }
+
+        .card-bsd {
+            position: absolute;
+            top: 0;
+            right: 3mm;
+            color: #d4af37;
+            font-size: 10px;
+            font-weight: bold;
+        }
+
+        .card-title {
+            font-size: 18px;
+            color: #d4af37;
+            margin: 0;
+            font-weight: bold;
+        }
+
+        .card-emoji {
+            font-size: 24px;
+            margin: 2mm 0;
+        }
+
+        .card-content {
+            font-size: 12px;
+            line-height: 1.4;
+            color: #34495e;
+            position: relative;
+            z-index: 1;
+        }
+
+        .card-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .card-list li {
+            margin-bottom: 1mm;
+            padding-right: 12px;
+            position: relative;
+        }
+
+        .card-list li::before {
+            content: "✡";
+            position: absolute;
+            right: 0;
+            color: #d4af37;
+        }
+
+        .card-keywords {
+            margin-top: 3mm;
+            font-size: 10px;
+            color: #d4af37;
+            text-align: center;
+            font-style: italic;
+            position: relative;
+            z-index: 1;
+        }
+
+        .summary-table-card {
+            /* transform: rotate(90deg); */
+            transform-origin: center;
+            font-size: 8px;
+            line-height: 1.2;
+            width: 100%;
+            height: 100%;
+            /* display: flex; */
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            /* z-index: 1; */
+        }
+
+        .summary-table-card table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 0;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .summary-table-card th,
+        .summary-table-card td {
+            padding: 1px 2px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            text-align: right;
+        }
+
+        .summary-table-card th {
+            background: rgba(212, 175, 55, 0.1);
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .summary-table-card .emoji {
+            font-size: 12px;
+            margin-left: 2px;
+        }
+
+        .star-of-david {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 240px;
+            text-shadow: 0px 0px 24px gold;
+            color: #d4af37;
+            opacity: 0.2;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+
+            .page {
+                width: 210mm;
+                height: 297mm;
+                margin: 0;
+                padding: 15mm;
+            }
+
+            .card {
+                break-inside: avoid;
+            }
+        }
+
+        /* סגנון מיוחד לקלפי זהב וסגול */
+        .card.special-gold-card {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.3), rgba(147, 112, 219, 0.3));
+            box-shadow: inset 0px 0px 44px rgba(212, 175, 55, 0.8),
+                0 0 20px rgba(147, 112, 219, 0.3);
+            border: 2px solid #d4af37;
+        }
+
+        .card.special-gold-card .card-title {
+            color: #d4af37;
+            text-shadow: 0 0 15px rgba(212, 175, 55, 0.8),
+                0 0 5px rgba(147, 112, 219, 0.5);
+            font-size: 20px;
+            letter-spacing: 1px;
+            background: linear-gradient(45deg, #d4af37, #9370db);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .card.special-gold-card .card-emoji {
+            color: #d4af37;
+            text-shadow: 0 0 15px rgba(212, 175, 55, 0.8),
+                0 0 5px rgba(147, 112, 219, 0.5);
+            font-size: 28px;
+        }
+
+        .card.special-gold-card .card-content {
+            color: #4a4a4a;
+            text-shadow: 0 0 5px rgba(212, 175, 55, 0.3);
+        }
+
+        .card.special-gold-card .card-list li::before {
+            color: #d4af37;
+            text-shadow: 0 0 5px rgba(147, 112, 219, 0.5);
+        }
+
+        .card.special-gold-card .card-keywords {
+            background: linear-gradient(45deg, #d4af37, #9370db);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+        }
+
+        .card.special-gold-card .star-of-david {
+            color: #d4af37;
+            text-shadow: 0px 0px 24px #d4af37,
+                0px 0px 12px rgba(147, 112, 219, 0.5);
+            opacity: 0.3;
+        }
+
+        .card.special-gold-card .star-corner {
+            color: #d4af37;
+            text-shadow: 0 0 5px rgba(147, 112, 219, 0.5);
+        }
+
+        .card.special-gold-card::before,
+        .card.special-gold-card::after {
+            border-color: #d4af37;
+            box-shadow: 0 0 10px rgba(147, 112, 219, 0.3);
+        }
+
+        .card.special-gold-card .card-bsd {
+            color: #d4af37;
+            text-shadow: 0 0 5px rgba(147, 112, 219, 0.5);
+        }
+
+        .card.special-gold-card:hover {
+            transform: translateY(-2mm);
+            box-shadow: inset 0px 0px 44px rgba(212, 175, 55, 0.9),
+                0 0 30px rgba(147, 112, 219, 0.4);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <!-- <div class="bsd">(בס״ד)</div> -->
+        <!-- <h1>✧ 10 הספירות ✧</h1> -->
+        <div class="cards-container">
+
+            <!-- ספירת יסוד -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-bsd">בס״ד</div>
+                    <div class="card-title">ספירת יסוד</div>
+                    <div class="card-emoji">🌱</div>
+                </div>
+                <div class="card-content">
+                    <ul class="card-list">
+                        <li>לשמור על ברית קודש</li>
+                        <li>להתחזק בטהרה</li>
+                        <li>לשמור על קדושת המשפחה</li>
+                        <li>להתחזק באמונה</li>
+                        <li>לשמור על צניעות</li>
+                        <li>להתחזק בקדושה</li>
+                        <li>לשמור על טהרת המחשבה</li>
+                        <li>להתחזק ביראת שמים</li>
+                        <li>לשמור על קדושת הבית</li>
+                        <li>להתחזק בעבודת ה'</li>
+                    </ul>
+                </div>
+                <div class="card-keywords">יסוד • טהרה • קדושה • צניעות • אמונה</div>
+            </div>
+
+            <!-- ספירת מלכות -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-bsd">בס״ד</div>
+                    <div class="card-title">ספירת מלכות</div>
+                    <div class="card-emoji">👑</div>
+                </div>
+                <div class="card-content">
+                    <ul class="card-list">
+                        <li>לשמור על כבוד התורה</li>
+                        <li>להתפלל בכוונה</li>
+                        <li>לשמור על כבוד הבריות</li>
+                        <li>להתפלל מתוך שמחה</li>
+                        <li>לשמור על כבוד החכמים</li>
+                        <li>להתפלל בחן ובחסד</li>
+                        <li>לשמור על כבוד המשפחה</li>
+                        <li>להתפלל מתוך אמונה</li>
+                        <li>לשמור על כבוד הבית</li>
+                        <li>להתפלל מתוך ענווה</li>
+                    </ul>
+                </div>
+                <div class="card-keywords">מלכות • כבוד • תפילה • אמונה • ענווה</div>
+            </div>
+
+            <!-- קלף טבלת סיכום -->
+            <div class="card" style="display: none;">
+                <div class="card-header">
+                    <div class="card-bsd">בס״ד</div>
+                    <div class="card-title">סיכום הספירות</div>
+                    <div class="card-emoji">📊</div>
+                </div>
+                <div class="summary-table-card">
+                    <table>
+                        <tr>
+                            <th>ספירה</th>
+                            <th>תפקיד מרכזי</th>
+                            <th>איך משתלבת במכלול</th>
+                            <th>עבודה פנימית</th>
+                            <th>סימן להצלחה</th>
+                        </tr>
+                        <tr>
+                            <td><span class="emoji">👑</span> כתר</td>
+                            <td>מקור הרצון והשאיפות</td>
+                            <td>מניע את כל התהליך מלמעלה</td>
+                            <td>התבוננות במטרות החיים העמוקות שלנו</td>
+                            <td>תחושת כיוון ברורה וחיבור לייעוד</td>
+                        </tr>
+                        <tr>
+                            <td><span class="emoji">🧠</span> חכמה</td>
+                            <td>תובנה ראשונית</td>
+                            <td>מספקת את הניצוץ הראשוני להבנה</td>
+                            <td>פתיחות לרעיונות חדשים והשראה</td>
+                            <td>רגעי "אהה!" והברקות תכופים</td>
+                        </tr>
+                        <tr>
+                            <td><span class="emoji">💭</span> בינה</td>
+                            <td>פיתוח והעמקה</td>
+                            <td>מרחיבה את התובנה לכדי הבנה מלאה</td>
+                            <td>לימוד מעמיק וניתוח יסודי</td>
+                            <td>יכולת להסביר רעיונות מורכבים בבהירות</td>
+                        </tr>
+                        <tr>
+                            <td><span class="emoji">🎯</span> דעת</td>
+                            <td>חיבור והפנמה</td>
+                            <td>מחברת בין השכל לרגש</td>
+                            <td>חיבור אישי לכל דבר שלומדים</td>
+                            <td>הידע הופך לחלק טבעי מהאישיות</td>
+                        </tr>
+                        <tr>
+                            <td><span class="emoji">❤️</span> חסד</td>
+                            <td>נתינה ואהבה</td>
+                            <td>מביאה את האור החוצה</td>
+                            <td>פיתוח נדיבות ורצון להיטיב</td>
+                            <td>שמחה אמיתית בנתינה לאחרים</td>
+                        </tr>
+                        <tr>
+                            <td><span class="emoji">💪</span> גבורה</td>
+                            <td>גבולות ומשמעת</td>
+                            <td>מווסתת ומכוונת את החסד</td>
+                            <td>אימון בשליטה עצמית ומשמעת</td>
+                            <td>יכולת לומר 'לא' כשצריך</td>
+                        </tr>
+                        <tr>
+                            <td><span class="emoji">✨</span> תפארת</td>
+                            <td>איזון והרמוניה</td>
+                            <td>משלבת בין חסד לגבורה</td>
+                            <td>חיפוש האיזון בכל מצב</td>
+                            <td>קבלת החלטות מאוזנות ונכונות</td>
+                        </tr>
+                        <tr>
+                            <td><span class="emoji">🏆</span> נצח</td>
+                            <td>התמדה וניצחון</td>
+                            <td>מבטיחה המשכיות</td>
+                            <td>פיתוח נחישות והתמדה</td>
+                            <td>הצלחה למרות כישלונות בדרך</td>
+                        </tr>
+                        <tr>
+                            <td><span class="emoji">🙏</span> הוד</td>
+                            <td>ענווה וקבלה</td>
+                            <td>מאזנת את הנצח</td>
+                            <td>עבודה על הענווה וקבלת האחר</td>
+                            <td>יכולת להודות בטעויות ולקבל ביקורת</td>
+                        </tr>
+                        <tr>
+                            <td><span class="emoji">🌱</span> יסוד</td>
+                            <td>חיבור ויישום</td>
+                            <td>מחברת את כל הכוחות יחד</td>
+                            <td>יצירת גשרים בין רעיון למעשה</td>
+                            <td>הוצאה לפועל של תכניות באופן עקבי</td>
+                        </tr>
+                        <tr>
+                            <td><span class="emoji">👑</span> מלכות</td>
+                            <td>ביטוי בפועל</td>
+                            <td>מביאה הכל לידי מימוש בעולם</td>
+                            <td>מימוש הפוטנציאל בעולם המעשה</td>
+                            <td>השפעה מוחשית וחיובית על הסביבה</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <!-- קלף רשימת הספירות -->
+            <div class="card special-gold-card">
+                <div class="card-header">
+                    <div class="card-bsd">בס״ד</div>
+                    <div class="card-title">רשימת הספירות</div>
+                    <div class="card-emoji">📝</div>
+                </div>
+                <div class="card-content">
+                    <ul class="card-list">
+                        <li><span class="emoji">👑</span> ספירת כתר - מקור הרצון והשאיפות</li>
+                        <li><span class="emoji">🧠</span> ספירת חכמה - תובנה ראשונית והשראה</li>
+                        <li><span class="emoji">💭</span> ספירת בינה - פיתוח והעמקה</li>
+                        <li><span class="emoji">🎯</span> ספירת דעת - חיבור והפנמה</li>
+                        <li><span class="emoji">❤️</span> ספירת חסד - נתינה ואהבה</li>
+                        <li><span class="emoji">💪</span> ספירת גבורה - גבולות ומשמעת</li>
+                        <li><span class="emoji">✨</span> ספירת תפארת - איזון והרמוניה</li>
+                        <li><span class="emoji">🏆</span> ספירת נצח - התמדה וניצחון</li>
+                        <li><span class="emoji">🙏</span> ספירת הוד - ענווה וקבלה</li>
+                        <li><span class="emoji">🌱</span> ספירת יסוד - חיבור ויישום</li>
+                        <li><span class="emoji">👑</span> ספירת מלכות - ביטוי בפועל</li>
+                    </ul>
+                </div>
+                <div class="card-keywords">ספירות • רשימה • סיכום • מבט כולל • תזכורת</div>
+            </div>
+
+            <!-- קלף הסבר -->
+            <div class="card special-gold-card">
+                <div class="card-header">
+                    <div class="card-bsd">בס״ד</div>
+                    <div class="card-title">הסבר הקלפים</div>
+                    <div class="card-emoji">📚</div>
+                </div>
+                <div class="card-content">
+                    <ul class="card-list">
+                        <li>קלפי הספירות - כל קלף מכיל את החוקים המעשיים של הספירה</li>
+                        <li>קלף טבלת סיכום - מבט כולל על כל הספירות ותפקידיהן</li>
+                        <li>קלף רשימת הספירות - תזכורת מהירה לכל הספירות</li>
+                        <li>קלף בונוס - תרגיל מיוחד לשילוב הספירות</li>
+                        <li>קלף דרכון - מעקב אישי אחר התקדמות</li>
+                        <li>קלף מפת דרכים - תכנית פעולה יומית</li>
+                    </ul>
+                </div>
+                <div class="card-keywords">הסבר • מדריך • תקציר • מבט כולל • התחלה</div>
+            </div>
+
+            <!-- קלף בונוס - תרגיל מיוחד -->
+            <div class="card special-gold-card">
+                <div class="card-header">
+                    <div class="card-bsd">בס״ד</div>
+                    <div class="card-title">תרגיל מיוחד</div>
+                    <div class="card-emoji">🎯</div>
+                </div>
+                <div class="card-content">
+                    <ul class="card-list">
+                        <li>בחר ספירה אחת</li>
+                        <li>התבונן בה במשך 5 דקות</li>
+                        <li>כתוב 3 תובנות חדשות</li>
+                        <li>צור תכנית פעולה קטנה</li>
+                        <li>בצע אותה היום</li>
+                        <li>תיעוד התוצאות</li>
+                        <li>שיתוף עם חבר</li>
+                        <li>הערכה עצמית</li>
+                        <li>תכנון המשך</li>
+                        <li>תודה והכרת הטוב</li>
+                    </ul>
+                </div>
+                <div class="card-keywords">תרגיל • תרגול • התנסות • למידה • התקדמות</div>
+            </div>
+
+            <!-- קלף דרכון אישי -->
+            <div class="card special-gold-card">
+                <div class="card-header">
+                    <div class="card-bsd">בס״ד</div>
+                    <div class="card-title">דרכון אישי</div>
+                    <div class="card-emoji">📖</div>
+                </div>
+                <div class="card-content">
+                    <ul class="card-list">
+                        <li>תאריך: _____________</li>
+                        <li>שם: _____________</li>
+                        <li>מטרה: _____________</li>
+                        <li>ספירה נוכחית: _____________</li>
+                        <li>הישגים: _____________</li>
+                        <li>אתגרים: _____________</li>
+                        <li>תובנות: _____________</li>
+                        <li>תכניות: _____________</li>
+                        <li>הבטחות: _____________</li>
+                        <li>חתימה: _____________</li>
+                    </ul>
+                </div>
+                <div class="card-keywords">דרכון • מעקב • תיעוד • התקדמות • אישי</div>
+            </div>
+
+            <!-- קלף מפת דרכים -->
+            <div class="card special-gold-card">
+                <div class="card-header">
+                    <div class="card-bsd">בס״ד</div>
+                    <div class="card-title">מפת דרכים יומית</div>
+                    <div class="card-emoji">🗺️</div>
+                </div>
+                <div class="card-content">
+                    <ul class="card-list">
+                        <li>בוקר - התבוננות בכתר</li>
+                        <li>תפילה - חסד וגבורה</li>
+                        <li>לימוד - חכמה ובינה</li>
+                        <li>עבודה - תפארת</li>
+                        <li>משפחה - נצח</li>
+                        <li>חברים - הוד</li>
+                        <li>תפילת מנחה - יסוד</li>
+                        <li>ערב - מלכות</li>
+                        <li>סיכום - דעת</li>
+                        <li>תכנון מחר</li>
+                    </ul>
+                </div>
+                <div class="card-keywords">תכנון • סדר יום • איזון • התקדמות • יומי</div>
+            </div>
+
+            <!-- קלף יוקרה - מפתח הזהב -->
+            <div class="card special-gold-card">
+                <div class="card-header">
+                    <div class="card-bsd">בס״ד</div>
+                    <div class="card-title">מפתח הזהב</div>
+                    <div class="card-emoji">🔑</div>
+                </div>
+                <div class="card-content">
+                    <ul class="card-list">
+                        <li>כתר - פתיחת שערי השמים</li>
+                        <li>חכמה - מפתח להבנה עמוקה</li>
+                        <li>בינה - מפתח להעמקה פנימית</li>
+                        <li>דעת - מפתח לחיבור אמיתי</li>
+                        <li>חסד - מפתח לנתינה אמיתית</li>
+                        <li>גבורה - מפתח לכוח פנימי</li>
+                        <li>תפארת - מפתח לאיזון מושלם</li>
+                        <li>נצח - מפתח להצלחה מתמשכת</li>
+                        <li>הוד - מפתח לענווה אמיתית</li>
+                        <li>יסוד - מפתח ליציבות נצחית</li>
+                        <li>מלכות - מפתח לשלמות מלאה</li>
+                    </ul>
+                </div>
+                <div class="card-keywords">מפתח • יוקרה • סוד • חכמה • שלמות</div>
+            </div>
+
+            <!-- קלף יוקרה - אוצר החוכמה -->
+            <div class="card special-gold-card">
+                <div class="card-header">
+                    <div class="card-bsd">בס״ד</div>
+                    <div class="card-title">אוצר החוכמה</div>
+                    <div class="card-emoji">💎</div>
+                </div>
+                <div class="card-content">
+                    <ul class="card-list">
+                        <li>כתר - אוצר הרצונות הנעלים</li>
+                        <li>חכמה - אוצר התובנות העמוקות</li>
+                        <li>בינה - אוצר ההבנות המלאות</li>
+                        <li>דעת - אוצר החיבורים האמיתיים</li>
+                        <li>חסד - אוצר הנתינה האמיתית</li>
+                        <li>גבורה - אוצר הכוחות הפנימיים</li>
+                        <li>תפארת - אוצר ההרמוניה המושלמת</li>
+                        <li>נצח - אוצר ההצלחות המתמשכות</li>
+                        <li>הוד - אוצר הענווה האמיתית</li>
+                        <li>יסוד - אוצר היציבות הנצחית</li>
+                        <li>מלכות - אוצר השלמות המלאה</li>
+                    </ul>
+                </div>
+                <div class="card-keywords">אוצר • יוקרה • חכמה • ערך • שלמות</div>
+            </div>
+
+            <!-- קלף יוקרה - מפתח האזהרה -->
+            <div class="card special-gold-card">
+                <div class="card-header">
+                    <div class="card-bsd">בס״ד</div>
+                    <div class="card-title">מפתח האזהרה</div>
+                    <div class="card-emoji">🔒</div>
+                </div>
+                <div class="card-content">
+                    <ul class="card-list">
+                        <li>כתר דטומאה - נעילת שערי הטוב</li>
+                        <li>חכמה דטומאה - נעילת הבנה אמיתית</li>
+                        <li>בינה דטומאה - נעילת העמקה פנימית</li>
+                        <li>דעת דטומאה - נעילת חיבור אמיתי</li>
+                        <li>חסד דטומאה - נעילת נתינה אמיתית</li>
+                        <li>גבורה דטומאה - נעילת כוח פנימי</li>
+                        <li>תפארת דטומאה - נעילת איזון מושלם</li>
+                        <li>נצח דטומאה - נעילת הצלחה אמיתית</li>
+                        <li>הוד דטומאה - נעילת ענווה אמיתית</li>
+                        <li>יסוד דטומאה - נעילת יציבות נצחית</li>
+                        <li>מלכות דטומאה - נעילת שלמות מלאה</li>
+                    </ul>
+                </div>
+                <div class="card-keywords">נעילה • אזהרה • שמירה • הגנה • טומאה</div>
+            </div>
+
+            <!-- קלף יוקרה - אוצר ההגנה -->
+            <div class="card special-gold-card">
+                <div class="card-header">
+                    <div class="card-bsd">בס״ד</div>
+                    <div class="card-title">אוצר ההגנה</div>
+                    <div class="card-emoji">🛡️</div>
+                </div>
+                <div class="card-content">
+                    <ul class="card-list">
+                        <li>כתר דטומאה - מגן מפני יהירות</li>
+                        <li>חכמה דטומאה - מגן מפני תחכום רע</li>
+                        <li>בינה דטומאה - מגן מפני עיוות האמת</li>
+                        <li>דעת דטומאה - מגן מפני חיבור שלילי</li>
+                        <li>חסד דטומאה - מגן מפני נתינה פסולה</li>
+                        <li>גבורה דטומאה - מגן מפני אכזריות</li>
+                        <li>תפארת דטומאה - מגן מפני יופי כוזב</li>
+                        <li>נצח דטומאה - מגן מפני התמדה ברוע</li>
+                        <li>הוד דטומאה - מגן מפני חיקוי של קדושה</li>
+                        <li>יסוד דטומאה - מגן מפני טומאת הברית</li>
+                        <li>מלכות דטומאה - מגן מפני שליטה רעה</li>
+                    </ul>
+                </div>
+                <div class="card-keywords">מגן • הגנה • שמירה • ביטחון • טומאה</div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- עמוד שני - הספירות הנגדיות -->
+    <div class="page">
+        <div class="bsd">(בס״ד)</div>
+        <h1 style="color: #ff4444; text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);">עשר הספירות של הקליפה</h1>
+        <div class="cards-container">
+            <!-- כתר דטומאה -->
+            <div class="card dark-card">
+                <div class="card-header">
+                    <div class="card-bsd">בס״ד</div>
+                    <div class="card-title">כתר דטומאה</div>
+                    <div class="card-emoji">👿</div>
+                </div>
+                <div class="card-content">
+                    <ul class="card-list">
+                        <li>יהירות גמורה</li>
+                        <li>גאווה מופרזת</li>
+                        <li>התנשאות על אחרים</li>
+                        <li>חוסר ענווה</li>
+                        <li>התעלמות מבורא עולם</li>
+                        <li>חוסר הכרת הטוב</li>
+                        <li>התנשאות רוחנית</li>
+                        <li>חוסר יראת שמים</li>
+                        <li>התעלמות מהאמת</li>
+                        <li>חוסר הכרת מקום</li>
+                    </ul>
+                </div>
+                <div class="card-keywords">יהירות • גאווה • התנשאות • חוסר ענווה • טומאה</div>
+            </div>
+
+            <!-- חכמה דטומאה -->
+            <div class="card dark-card">
+                <div class="card-header">
+                    <div class="card-bsd">בס״ד</div>
+                    <div class="card-title">חכמה דטומאה</div>
+                    <div class="card-emoji">🌑</div>
+                </div>
+                <div class="card-content">
+                    <ul class="card-list">
+                        <li>תחכום רע</li>
+                        <li>ערמומיות</li>
+                        <li>מניפולציה</li>
+                        <li>תכנון רע</li>
+                        <li>חוכמה שלילית</li>
+                        <li>תכסיסי רמאות</li>
+                        <li>תכנון זדוני</li>
+                        <li>ערמומיות</li>
+                        <li>תכנון רע</li>
+                        <li>חוכמה שלילית</li>
+                    </ul>
+                </div>
+                <div class="card-keywords">תחכום • ערמומיות • מניפולציה • רמאות • טומאה</div>
+            </div>
+
+            <!-- בינה דטומאה -->
+            <div class="card dark-card">
+                <div class="card-header">
+                    <div class="card-bsd">בס״ד</div>
+                    <div class="card-title">בינה דטומאה</div>
+                    <div class="card-emoji">🔮</div>
+                </div>
+                <div class="card-content">
+                    <ul class="card-list">
+                        <li>עיוות האמת</li>
+                        <li>הטעיית אחרים</li>
+                        <li>סילוף המציאות</li>
+                        <li>הסתרת האמת</li>
+                        <li>עיוות הדרך</li>
+                        <li>הטעיית הציבור</li>
+                        <li>סילוף העובדות</li>
+                        <li>הסתרת האמת</li>
+                        <li>עיוות הדרך</li>
+                        <li>הטעיית הציבור</li>
+                    </ul>
+                </div>
+                <div class="card-keywords">עיוות • הטעייה • סילוף • הסתרה • טומאה</div>
+            </div>
+
+            <!-- חסד דטומאה -->
+            <div class="card dark-card">
+                <div class="card-header">
+                    <div class="card-bsd">בס״ד</div>
+                    <div class="card-title">חסד דטומאה</div>
+                    <div class="card-emoji">🎭</div>
+                </div>
+                <div class="card-content">
+                    <ul class="card-list">
+                        <li>נתינה פסולה</li>
+                        <li>חסד כוזב</li>
+                        <li>תמיכה ברע</li>
+                        <li>עידוד שלילי</li>
+                        <li>נתינה למטרות רעות</li>
+                        <li>תמיכה בדרך רעה</li>
+                        <li>עידוד שלילי</li>
+                        <li>נתינה למטרות רעות</li>
+                        <li>תמיכה בדרך רעה</li>
+                        <li>עידוד שלילי</li>
+                    </ul>
+                </div>
+                <div class="card-keywords">נתינה פסולה • חסד כוזב • תמיכה ברע • עידוד שלילי • טומאה</div>
+            </div>
+
+            <!-- גבורה דטומאה -->
+            <div class="card dark-card">
+                <div class="card-header">
+                    <div class="card-bsd">בס״ד</div>
+                    <div class="card-title">גבורה דטומאה</div>
+                    <div class="card-emoji">⚔️</div>
+                </div>
+                <div class="card-content">
+                    <ul class="card-list">
+                        <li>אכזריות</li>
+                        <li>אלימות</li>
+                        <li>התעללות</li>
+                        <li>פגיעה באחרים</li>
+                        <li>שימוש בכוח לרעה</li>
+                        <li>התעללות פיזית</li>
+                        <li>פגיעה נפשית</li>
+                        <li>שימוש בכוח לרעה</li>
+                        <li>התעללות פיזית</li>
+                        <li>פגיעה נפשית</li>
+                    </ul>
+                </div>
+                <div class="card-keywords">אכזריות • אלימות • התעללות • פגיעה • טומאה</div>
+            </div>
+
+            <!-- תפארת דטומאה -->
+            <div class="card dark-card">
+                <div class="card-header">
+                    <div class="card-bsd">בס״ד</div>
+                    <div class="card-title">תפארת דטומאה</div>
+                    <div class="card-emoji">💔</div>
+                </div>
+                <div class="card-content">
+                    <ul class="card-list">
+                        <li>יופי כוזב</li>
+                        <li>הצגה שקרית</li>
+                        <li>מראה מטעה</li>
+                        <li>יופי חיצוני בלבד</li>
+                        <li>הצגה כוזבת</li>
+                        <li>מראה מטעה</li>
+                        <li>יופי חיצוני בלבד</li>
+                        <li>הצגה כוזבת</li>
+                        <li>מראה מטעה</li>
+                        <li>יופי חיצוני בלבד</li>
+                    </ul>
+                </div>
+                <div class="card-keywords">יופי כוזב • הצגה שקרית • מראה מטעה • חיצוניות • טומאה</div>
+            </div>
+
+            <!-- נצח דטומאה -->
+            <div class="card dark-card">
+                <div class="card-header">
+                    <div class="card-bsd">בס״ד</div>
+                    <div class="card-title">נצח דטומאה</div>
+                    <div class="card-emoji">⛓️</div>
+                </div>
+                <div class="card-content">
+                    <ul class="card-list">
+                        <li>התמדה ברוע</li>
+                        <li>עקשנות שלילית</li>
+                        <li>התעקשות על טעות</li>
+                        <li>התמדה בדרך רעה</li>
+                        <li>עקשנות שלילית</li>
+                        <li>התעקשות על טעות</li>
+                        <li>התמדה בדרך רעה</li>
+                        <li>עקשנות שלילית</li>
+                        <li>התעקשות על טעות</li>
+                        <li>התמדה בדרך רעה</li>
+                    </ul>
+                </div>
+                <div class="card-keywords">התמדה ברוע • עקשנות • התעקשות • התמדה שלילית • טומאה</div>
+            </div>
+
+            <!-- הוד דטומאה -->
+            <div class="card dark-card">
+                <div class="card-header">
+                    <div class="card-bsd">בס״ד</div>
+                    <div class="card-title">הוד דטומאה</div>
+                    <div class="card-emoji">🎭</div>
+                </div>
+                <div class="card-content">
+                    <ul class="card-list">
+                        <li>חיקוי של קדושה</li>
+                        <li>הצגה כוזבת</li>
+                        <li>זיוף רוחני</li>
+                        <li>חיקוי חיצוני</li>
+                        <li>הצגה כוזבת</li>
+                        <li>זיוף רוחני</li>
+                        <li>חיקוי חיצוני</li>
+                        <li>הצגה כוזבת</li>
+                        <li>זיוף רוחני</li>
+                        <li>חיקוי חיצוני</li>
+                    </ul>
+                </div>
+                <div class="card-keywords">חיקוי • הצגה כוזבת • זיוף • חיצוניות • טומאה</div>
+            </div>
+
+            <!-- יסוד דטומאה -->
+            <div class="card dark-card">
+                <div class="card-header">
+                    <div class="card-bsd">בס״ד</div>
+                    <div class="card-title">יסוד דטומאה</div>
+                    <div class="card-emoji">🕳️</div>
+                </div>
+                <div class="card-content">
+                    <ul class="card-list">
+                        <li>טומאת הברית</li>
+                        <li>חוסר שליטה</li>
+                        <li>פריצות</li>
+                        <li>חוסר צניעות</li>
+                        <li>טומאת הברית</li>
+                        <li>חוסר שליטה</li>
+                        <li>פריצות</li>
+                        <li>חוסר צניעות</li>
+                        <li>טומאת הברית</li>
+                        <li>חוסר שליטה</li>
+                    </ul>
+                </div>
+                <div class="card-keywords">טומאת הברית • חוסר שליטה • פריצות • חוסר צניעות • טומאה</div>
+            </div>
+
+            <!-- מלכות דטומאה -->
+            <div class="card dark-card">
+                <div class="card-header">
+                    <div class="card-bsd">בס״ד</div>
+                    <div class="card-title">מלכות דטומאה</div>
+                    <div class="card-emoji">👑</div>
+                </div>
+                <div class="card-content">
+                    <ul class="card-list">
+                        <li>שליטה רעה</li>
+                        <li>עריצות</li>
+                        <li>שליטה שלילית</li>
+                        <li>עריצות</li>
+                        <li>שליטה רעה</li>
+                        <li>עריצות</li>
+                        <li>שליטה שלילית</li>
+                        <li>עריצות</li>
+                        <li>שליטה רעה</li>
+                        <li>עריצות</li>
+                    </ul>
+                </div>
+                <div class="card-keywords">שליטה רעה • עריצות • שליטה שלילית • עריצות • טומאה</div>
+            </div>
+
+            <!-- קלף סיכום נגדי -->
+            <div class="card dark-card">
+                <div class="card-header">
+                    <div class="card-bsd">בס״ד</div>
+                    <div class="card-title">סיכום הספירות הנגדיות</div>
+                    <div class="card-emoji">⚠️</div>
+                </div>
+                <div class="card-content">
+                    <ul class="card-list">
+                        <li>כתר דטומאה - יהירות גמורה</li>
+                        <li>חכמה דטומאה - תחכום רע</li>
+                        <li>בינה דטומאה - עיוות האמת</li>
+                        <li>חסד דטומאה - נתינה פסולה</li>
+                        <li>גבורה דטומאה - אכזריות</li>
+                        <li>תפארת דטומאה - יופי כוזב</li>
+                        <li>נצח דטומאה - התמדה ברוע</li>
+                        <li>הוד דטומאה - חיקוי של קדושה</li>
+                        <li>יסוד דטומאה - טומאת הברית</li>
+                        <li>מלכות דטומאה - שליטה רעה</li>
+                    </ul>
+                </div>
+                <div class="card-keywords">סיכום • ספירות נגדיות • טומאה • שלילה • אזהרה</div>
+            </div>
+
+            <!-- קלף אזהרה -->
+            <div class="card dark-card">
+                <div class="card-header">
+                    <div class="card-bsd">בס״ד</div>
+                    <div class="card-title">אזהרה</div>
+                    <div class="card-emoji">⚠️</div>
+                </div>
+                <div class="card-content">
+                    <ul class="card-list">
+                        <li>הכרת הטוב והרע</li>
+                        <li>זיהוי כוחות שליליים</li>
+                        <li>התרחקות מהרע</li>
+                        <li>שמירה על טהרה</li>
+                        <li>התחזקות בטוב</li>
+                        <li>הכרת הטוב והרע</li>
+                        <li>זיהוי כוחות שליליים</li>
+                        <li>התרחקות מהרע</li>
+                        <li>שמירה על טהרה</li>
+                        <li>התחזקות בטוב</li>
+                    </ul>
+                </div>
+                <div class="card-keywords">אזהרה • הכרת הטוב והרע • זיהוי • התרחקות • שמירה</div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                // הוספת מגן דוד
+                const starOfDavid = document.createElement('div');
+                starOfDavid.className = 'star-of-david';
+                starOfDavid.textContent = '✡';
+                card.appendChild(starOfDavid);
+
+                // הוספת הכוכבים בפינות
+                const corners = ['top-right', 'top-left', 'bottom-right', 'bottom-left'];
+                corners.forEach(corner => {
+                    const star = document.createElement('div');
+                    star.className = `star-corner ${corner}`;
+                    star.textContent = '✡';
+                    card.appendChild(star);
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
