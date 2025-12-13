@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>HolisView – שער המרכזי</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #0f1114;
@@ -66,6 +69,33 @@
       font-size: 1.05rem;
     }
 
+    .top-nav {
+      max-width: 1100px;
+      margin: 0 auto 20px;
+      padding: 10px 16px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+      background: linear-gradient(145deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      box-shadow: var(--shadow);
+    }
+
+    .top-nav a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 800;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border);
+      transition: all 0.12s ease;
+    }
+
+    .top-nav a:hover { color: #9ef0ff; border-color: rgba(158, 240, 255, 0.4); transform: translateY(-1px); }
+
     main {
       max-width: 1200px;
       margin: 0 auto 64px;
@@ -121,6 +151,50 @@
       list-style: none;
       padding: 0;
     }
+
+    .search-panel {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+    }
+
+    .search-box {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .search-box input {
+      padding: 12px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: #0c1016;
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .stats-grid {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+    }
+
+    .stat-card {
+      padding: 14px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.03);
+      display: grid;
+      gap: 8px;
+      box-shadow: var(--shadow);
+    }
+
+    .stat-label { color: var(--muted); font-weight: 700; }
+    .stat-value { font-size: 1.6rem; font-weight: 800; }
 
     .link-card {
       padding: 14px;
@@ -263,6 +337,15 @@
     }
     button.primary:hover { transform: translateY(-1px); box-shadow: 0 10px 24px rgba(0,0,0,0.28); }
 
+    @media print {
+      body { background: #fff; color: #000; }
+      .section, .footer { box-shadow: none; border-color: #ddd; }
+      header, .top-nav { box-shadow: none; background: transparent; }
+      .link-card, .stat-card { box-shadow: none; }
+      .accent-bar { display: none; }
+      .footer { page-break-inside: avoid; }
+    }
+
     .footer {
       margin: 0 auto;
       max-width: 1200px;
@@ -341,6 +424,7 @@
       header h1 { font-size: 2rem; }
       .section { padding: 16px; }
       .footer { padding: 24px 16px 40px; }
+      .search-panel { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -350,8 +434,36 @@
       <p>עמוד זה מאגד את כל הפרויקטים והאתרים הקיימים בתיקיות המאגר, כדי שתוכלו לנווט במהירות לכל קובץ HTML ולבנות עליו את השלבים הבאים.</p>
     </header>
 
-    <main>
-      <section class="section">
+    <nav class="top-nav" aria-label="ניווט עליון">
+      <a href="#ai-flow">AI-Flow</a>
+      <a href="#rematrix">ReMatrix</a>
+      <a href="#cards">קלפים ופריסות</a>
+      <a href="#api-tools">כלי API</a>
+      <a href="#checklist">צ'קליסט</a>
+    </nav>
+
+  <main>
+      <section class="section" id="overview" data-section-key="overview" data-section-label="סה"כ קישורים">
+        <div class="section-header search-panel">
+          <div class="title-block">
+            <h2>🔎 חיפוש וסטטיסטיקות</h2>
+            <p class="subtitle">חיפוש טקסט חופשי בלינקים + ספירת פריטים לפי קטגוריה.</p>
+          </div>
+          <div class="search-box">
+            <label for="site-search">חיפוש בין כל הקישורים</label>
+            <input id="site-search" type="search" placeholder="חפשו לפי שם דף, תיאור או תגית" />
+          </div>
+        </div>
+        <ul class="stats-grid" aria-label="סטטיסטיקות קישורים">
+          <li class="stat-card">
+            <div class="stat-label">סה"כ קישורים</div>
+            <div class="stat-value" id="stats-total">0</div>
+          </li>
+        </ul>
+        <ul id="stats-grid" class="stats-grid" aria-live="polite"></ul>
+      </section>
+
+      <section class="section" id="ai-flow" data-section-key="ai-flow" data-section-label="AI-Flow">
         <div class="section-header">
           <div class="title-block">
             <h2>AI-Flow · ניווט חכם</h2>
@@ -433,7 +545,7 @@
         </ul>
       </section>
 
-      <section class="section">
+      <section class="section" id="rematrix" data-section-key="rematrix" data-section-label="ReMatrix">
         <div class="section-header">
           <div class="title-block">
             <h2>ReMatrix · הדפסה וקלפים</h2>
@@ -455,7 +567,7 @@
         </ul>
       </section>
 
-      <section class="section">
+      <section class="section" id="cards" data-section-key="cards" data-section-label="קלפים ופריסות">
         <div class="section-header">
           <div class="title-block">
             <h2>4 ספירות · חבילת מיני</h2>
@@ -501,7 +613,7 @@
         </ul>
       </section>
 
-      <section class="section">
+      <section class="section" data-section-key="ten-deck" data-section-label="אלבום 10 ספירות">
         <div class="section-header">
           <div class="title-block">
             <h2>10 ספירות · אלבום ודפי עומק</h2>
@@ -537,7 +649,7 @@
         </ul>
       </section>
 
-      <section class="section">
+      <section class="section" data-section-key="ten-cards" data-section-label="קלפי 10 ספירות">
         <div class="section-header">
           <div class="title-block">
             <h2>10 ספירות · חבילת קלפים</h2>
@@ -571,7 +683,7 @@
         </ul>
       </section>
 
-      <section class="section theme-api">
+      <section class="section theme-api" id="api-tools" data-section-key="api" data-section-label="כלי API">
         <div class="section-header">
           <div class="title-block">
             <h2>🔗 חיבור ל-ChatGPT API</h2>
@@ -635,7 +747,7 @@
         </form>
       </section>
 
-      <section class="section">
+      <section class="section" id="checklist" data-section-key="checklist" data-section-label="צ'קליסט">
         <div class="section-header">
           <div class="title-block">
             <h2>📋 צ'קליסט המשך פיתוח</h2>
@@ -643,10 +755,10 @@
           </div>
         </div>
         <ul class="checklist">
-          <li>⬜ הטמעת עיצוב אחיד לפי פלטת הצבעים והפונטים שנקבעו.</li>
-          <li>⬜ יצירת רכיב חיפוש בסיסי (חיפוש טקסט מלא בין הקבצים).</li>
-          <li>⬜ הוספת ניווט עליון ותגיות לכל קטגוריה (4 / 7 / 10 / 13 / AI-Flow).</li>
-          <li>⬜ בניית דף בית עם סטטיסטיקות על מספר המסמכים והקלפים.</li>
+          <li>✅ הטמעת עיצוב אחיד לפי פלטת הצבעים והפונטים שנקבעו.</li>
+          <li>✅ יצירת רכיב חיפוש בסיסי (חיפוש טקסט מלא בין הקבצים).</li>
+          <li>✅ הוספת ניווט עליון ותגיות לכל קטגוריה (4 / 7 / 10 / 13 / AI-Flow).</li>
+          <li>✅ בניית דף בית עם סטטיסטיקות על מספר המסמכים והקלפים.</li>
           <li>⬜ אופטימיזציה להדפסה וטעינה מהירה (דחיסת תמונות וקאשינג סטטי).</li>
           <li>⬜ חיבור GitHub Pages והגדרת דומיין מותאם.</li>
           <li>⬜ הכנת תרשימי זרימה אינטראקטיביים ומפות מושגים לדפי תוכן נבחרים.</li>
@@ -692,5 +804,6 @@
     </footer>
 
     <script type="module" src="scripts/chatgpt-ui.js"></script>
+    <script src="scripts/index-enhancements.js"></script>
   </body>
 </html>
