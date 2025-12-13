@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>תבניות חוכמה - שיטות עם 7 מאפיינים</title>
+
+    <!-- Google Fonts - Heebo -->
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* A4 Page Settings */
+        @page {
+            size: A4;
+            margin: 0;
+            size: 210mm 297mm;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            width: 210mm;
+            height: 297mm;
+            font-family: "Heebo", sans-serif;
+            background: white;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Page Container */
+        .page {
+            width: 200mm;
+            height: 287mm;
+            box-sizing: border-box;
+            position: relative;
+            background: white;
+            margin: 5mm auto;
+        }
+
+        /* בס״ד Styles */
+        .bsd {
+            position: absolute;
+            top: 3mm;
+            right: 5mm;
+            font-size: 0.8rem;
+            color: #333;
+            font-weight: 500;
+        }
+
+        /* Header Styles */
+        .header {
+            text-align: center;
+            position: relative;
+        }
+
+        .title {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: #527496;
+            margin-bottom: 0.25rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .subtitle {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Content Styles */
+        .content {
+            font-size: 0.7rem;
+            line-height: 1.3;
+        }
+
+        .section {
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #527496;
+            margin-bottom: 0.25rem;
+            border-bottom: 1px solid #527496;
+            padding-bottom: 0.25rem;
+        }
+
+        /* Grid Layout */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .grid-item {
+            background: #f9f9f9;
+            padding: 0.5rem;
+            border-radius: 3px;
+            border: 1px solid #ddd;
+        }
+
+        /* Card Styles */
+        .card {
+            /* margin-bottom: 1rem; */
+            padding: 0.5rem;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+        }
+
+        .card-title {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #527496;
+            margin-bottom: 0.25rem;
+        }
+
+        /* List Styles */
+        ol {
+            padding-right: 1.2rem;
+            margin: 0.25rem 0;
+        }
+
+        li {
+            font-size: 0.65rem;
+            margin-bottom: 0.15rem;
+        }
+
+        /* Footer */
+        .footer {
+            /* position: absolute; */
+            bottom: 0;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: 0.7rem;
+            color: #666;
+            padding: 1rem;
+            background: white;
+        }
+
+        /* Print Specific Styles */
+        @media print {
+            body {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .page {
+                page-break-after: always;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <div class="bsd">בס״ד</div>
+        <div class="header">
+            <h1 class="title">תבניות חוכמה - שיטות עם 7 מאפיינים</h1>
+            <p class="subtitle">מאגר ניתוח טקסטים בשיטות מוצלבות</p>
+        </div>
+
+        <div class="content">
+            <div class="section">
+                <h2 class="section-title">שיטות ניתוח עם 7 מאפיינים</h2>
+                <div class="grid-container">
+                    <div class="grid-item">
+                        <div class="card">
+                            <h3 class="card-title">🌍 מעשה בראשית</h3>
+                            <ol>
+                                <li>💡 <strong>יום ראשון</strong> - ניתוח התחלה ובהירות ראשונית</li>
+                                <li>🌊 <strong>יום שני</strong> - ניתוח הבחנה והפרדה</li>
+                                <li>🏞️ <strong>יום שלישי</strong> - ניתוח יציבות וגבולות</li>
+                                <li>🌟 <strong>יום רביעי</strong> - ניתוח חכמה ומנהיגות</li>
+                                <li>🐠 <strong>יום חמישי</strong> - ניתוח חיבור וחיות</li>
+                                <li>🧍‍♂️ <strong>יום שישי</strong> - ניתוח תכלית ושלמות</li>
+                                <li>⏳ <strong>שבת</strong> - ניתוח התבוננות והשלמה</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="grid-item">
+                        <div class="card">
+                            <h3 class="card-title">🧘‍♂️ שבעה עקרונות לתודעה גבוהה</h3>
+                            <ol>
+                                <li>🧘‍♀️ <strong>התבוננות פנימית</strong> - ניתוח חשבון נפש עמוק</li>
+                                <li>💫 <strong>שליטה עצמית</strong> - ניתוח ענווה וצניעות</li>
+                                <li>✨ <strong>התחברות לאור</strong> - ניתוח שאיפה רוחנית</li>
+                                <li>💖 <strong>אהבת הבריות</strong> - ניתוח קשרים חיוביים</li>
+                                <li>⏳ <strong>סבלנות</strong> - ניתוח אמונה בתהליך</li>
+                                <li>🌍 <strong>תודעת האחדות</strong> - ניתוח חיבור כללי</li>
+                                <li>🥳 <strong>שמחת החיים</strong> - ניתוח שמחה פנימית</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="grid-item">
+                        <div class="card">
+                            <h3 class="card-title">🔄 שבעה שלבים של תהליך תשובה</h3>
+                            <ol>
+                                <li>🔍 <strong>הכרה במצב</strong> - ניתוח הבנת הצורך בשינוי</li>
+                                <li>💔 <strong>חרטה</strong> - ניתוח תהליך החרטה</li>
+                                <li>🛑 <strong>עזיבת החטא</strong> - ניתוח ההימנעות מהרע</li>
+                                <li>🌟 <strong>קבלה על העתיד</strong> - ניתוח ההחלטה לשינוי</li>
+                                <li>🙏 <strong>תפילה ותשובה</strong> - ניתוח העבודה הפנימית</li>
+                                <li>💖 <strong>צדקה ותיקון</strong> - ניתוח פעולות התיקון</li>
+                                <li>🥳 <strong>שמחה</strong> - ניתוח שמחת התשובה</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="grid-item">
+                        <div class="card">
+                            <h3 class="card-title">🧑‍⚖️ שבעה מרכיבים של תיקון האדם</h3>
+                            <ol>
+                                <li>🔍 <strong>הכרה במצב</strong> - ניתוח עמידה מול האמת</li>
+                                <li>🛠 <strong>תשובה</strong> - ניתוח תיקון המעשים</li>
+                                <li>🙏 <strong>תפילה</strong> - ניתוח חיבור אלוקי</li>
+                                <li>💖 <strong>צדקה</strong> - ניתוח נתינה וחסד</li>
+                                <li>📜 <strong>תורה</strong> - ניתוח לימוד והעמקה</li>
+                                <li>💫 <strong>השתעשעות בקודש</strong> - ניתוח התעלות בשמחה</li>
+                                <li>🤝 <strong>אהבת ישראל</strong> - ניתוח חיבור כללי</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>© כל הזכויות שמורות - תבניות חוכמה</p>
+        </div>
+    </div>
+</body>
+
+</html>

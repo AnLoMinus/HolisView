@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>תבניות חוכמה - שיטות עם 13 מאפיינים</title>
+
+    <!-- Google Fonts - Heebo -->
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* A4 Page Settings */
+        @page {
+            size: A4;
+            margin: 0;
+            size: 210mm 297mm;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            width: 210mm;
+            height: 297mm;
+            font-family: "Heebo", sans-serif;
+            background: white;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Page Container */
+        .page {
+            width: 200mm;
+            height: 287mm;
+            box-sizing: border-box;
+            position: relative;
+            background: white;
+            margin: 5mm auto;
+        }
+
+        /* בס״ד Styles */
+        .bsd {
+            position: absolute;
+            top: 3mm;
+            right: 5mm;
+            font-size: 0.8rem;
+            color: #333;
+            font-weight: 500;
+        }
+
+        /* Header Styles */
+        .header {
+            text-align: center;
+            position: relative;
+        }
+
+        .title {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: #527496;
+            margin-bottom: 0.25rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .subtitle {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Content Styles */
+        .content {
+            font-size: 0.7rem;
+            line-height: 1.3;
+        }
+
+        .section {
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #527496;
+            margin-bottom: 0.25rem;
+            border-bottom: 1px solid #527496;
+            padding-bottom: 0.25rem;
+        }
+
+        /* Grid Layout */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .grid-item {
+            background: #f9f9f9;
+            padding: 0.5rem;
+            border-radius: 3px;
+            border: 1px solid #ddd;
+        }
+
+        /* Card Styles */
+        .card {
+            /* margin-bottom: 1rem; */
+            padding: 0.5rem;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+        }
+
+        .card-title {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #527496;
+            margin-bottom: 0.25rem;
+        }
+
+        /* List Styles */
+        ol {
+            padding-right: 1.2rem;
+            margin: 0.25rem 0;
+        }
+
+        li {
+            font-size: 0.65rem;
+            margin-bottom: 0.15rem;
+        }
+
+        /* Footer */
+        .footer {
+            /* position: absolute; */
+            bottom: 0;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: 0.7rem;
+            color: #666;
+            padding: 1rem;
+            background: white;
+        }
+
+        /* Print Specific Styles */
+        @media print {
+            body {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .page {
+                page-break-after: always;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <div class="bsd">בס״ד</div>
+        <div class="header">
+            <h1 class="title">תבניות חוכמה - שיטות עם 13 מאפיינים</h1>
+            <p class="subtitle">מאגר ניתוח טקסטים בשיטות מוצלבות</p>
+        </div>
+
+        <div class="content">
+            <div class="section">
+                <h2 class="section-title">שיטות ניתוח עם 13 מאפיינים</h2>
+                <div class="grid-container">
+                    <div class="grid-item">
+                        <div class="card">
+                            <h3 class="card-title">📚 יג' דרכי הלימוד בתורה</h3>
+                            <ol>
+                                <li>📖 <strong>מקרא</strong> - לימוד הפשט</li>
+                                <li>📜 <strong>משנה</strong> - לימוד עקרונות ההלכה</li>
+                                <li>📚 <strong>גמרא</strong> - הבנה מעמיקה של המקורות</li>
+                                <li>⚖️ <strong>הלכה</strong> - יישום הלכה למעשה</li>
+                                <li>💡 <strong>מדרש</strong> - רמזים ומשלים נסתרי תורה</li>
+                                <li>📖 <strong>אגדה</strong> - מוסר וסיפורי חז"ל</li>
+                                <li>✨ <strong>קבלה</strong> - סודות הבריאה</li>
+                                <li>🙏 <strong>חסידות</strong> - חיבור פנימי לעבודה רוחנית</li>
+                                <li>🎯 <strong>מוסר</strong> - תיקון המידות ושיפור עצמי</li>
+                                <li>🧠 <strong>פילוסופיה יהודית</strong> - הבנת יסודות האמונה</li>
+                                <li>🔄 <strong>דרוש</strong> - יצירת חיבורים בין מקורות</li>
+                                <li>⚖️ <strong>פסיקת הלכה</strong> - הכרעה מעשית בחיי היומיום</li>
+                                <li>🔍 <strong>ביאור שיטות לימוד</strong> - חיבור בין הדרכים השונות</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="grid-item">
+                        <div class="card">
+                            <h3 class="card-title">💙 יג' מידות הרחמים</h3>
+                            <ol>
+                                <li>✨ <strong>ה'</strong> - חסד ללא גבול</li>
+                                <li>💫 <strong>ה'</strong> - גם לאחר חטא, רחמיו נמשכים</li>
+                                <li>💪 <strong>א-ל</strong> - כוח החסד בפועל</li>
+                                <li>💗 <strong>רחום</strong> - רגש של חמלה עמוקה</li>
+                                <li>🎁 <strong>חנון</strong> - נתינה לפנים משורת הדין</li>
+                                <li>⏳ <strong>ארך אפיים</strong> - סבלנות וסלחנות</li>
+                                <li>💝 <strong>רב חסד</strong> - חסד מרובה</li>
+                                <li>⚖️ <strong>אמת</strong> - רחמים המבוססים על יושר</li>
+                                <li>🔄 <strong>נוצר חסד לאלפים</strong> - המשכיות החסד</li>
+                                <li>🧹 <strong>נושא עוון</strong> - מחיקת החטא עצמו</li>
+                                <li>🛡️ <strong>ופשע</strong> - תיקון של מרידה מודעת</li>
+                                <li>🌱 <strong>וחטאה</strong> - סלחנות גם על כשלונות קטנים</li>
+                                <li>✨ <strong>ונקה</strong> - טהרה מוחלטת מהחטא</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="grid-item">
+                        <div class="card">
+                            <h3 class="card-title">🔮 יג' שבילים בתורת הסוד</h3>
+                            <ol>
+                                <li>✨ <strong>סוד האור</strong> - חקר מהות האור האלוקי</li>
+                                <li>📝 <strong>סוד האותיות</strong> - כוחות האותיות והשפעתן</li>
+                                <li>👑 <strong>סוד השמות</strong> - גילוי שמות קדושים והשפעתם</li>
+                                <li>🔱 <strong>סוד השבטים</strong> - המבנה הפנימי של נשמות ישראל</li>
+                                <li>🌍 <strong>סוד העולמות</strong> - הבריאה במבנה ארבעת העולמות</li>
+                                <li>🌟 <strong>סוד הספירות</strong> - הבנת הנהגת האל דרך עשר הספירות</li>
+                                <li>7️⃣ <strong>סוד השביעיות</strong> - מחזוריות הבריאה</li>
+                                <li>🙏 <strong>סוד התפילה</strong> - מבנה התפילה כעלייה בעולמות</li>
+                                <li>🌅 <strong>סוד הגאולה</strong> - חוקי הזמן והתהליך של תיקון העולם</li>
+                                <li>❤️ <strong>סוד האהבה האלוקית</strong> - הקשר בין האדם והבורא</li>
+                                <li>👁️ <strong>סוד הנבואה</strong> - איך האור האלוקי יורד לנביאים</li>
+                                <li>🔄 <strong>סוד הגלגולים</strong> - הבנת תהליכי הנשמות</li>
+                                <li>✨ <strong>סוד תחיית המתים</strong> - תהליך החזרת העולם למדרגתו העליונה</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="grid-item">
+                        <div class="card">
+                            <h3 class="card-title">✨ יג' שערים בחכמת הקבלה</h3>
+                            <ol>
+                                <li>👑 <strong>שער הכתר</strong> - מקור האור האלוקי</li>
+                                <li>🧠 <strong>שער החכמה</strong> - עיקרי החכמה האלוקית</li>
+                                <li>🌌 <strong>שער הבינה</strong> - הבנה מעמיקה של היקום</li>
+                                <li>❤️ <strong>שער החסד</strong> - אור של אהבה והשפעה</li>
+                                <li>🛡️ <strong>שער הגבורה</strong> - הצבת גבולות</li>
+                                <li>⚖️ <strong>שער התפארת</strong> - האיזון האלוקי</li>
+                                <li>💪 <strong>שער הנצח</strong> - התמדה ושימור</li>
+                                <li>🙏 <strong>שער ההוד</strong> - ענוה ויראה</li>
+                                <li>🔗 <strong>שער היסוד</strong> - חיבור הרוח לחומר</li>
+                                <li>👑 <strong>שער המלכות</strong> - גילוי האלוקות בעולם</li>
+                                <li>✨ <strong>שער השמות</strong> - גילוי כוחות השם בעולם</li>
+                                <li>📝 <strong>שער הצירופים</strong> - הבנת הכוחות באותיות</li>
+                                <li>🌟 <strong>שער הספירות</strong> - הסבר מבנה ההנהגה האלוקית</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="grid-item">
+                        <div class="card">
+                            <h3 class="card-title">🌿 יג' תיקוני דיקנא</h3>
+                            <ol>
+                                <li>👑 <strong>כתר עליון</strong> - החכמה העליונה</li>
+                                <li>✨ <strong>י"ג תיקונים בזקן הקדוש</strong> - דרכי ההנהגה האלוקית</li>
+                                <li>⏳ <strong>ארך אפיים</strong> - הנהגת האריכות</li>
+                                <li>💝 <strong>רב חסד</strong> - אור של חסד</li>
+                                <li>⚖️ <strong>אמת</strong> - דייקנות ותיקון העולם</li>
+                                <li>🧹 <strong>נושא עוון</strong> - מחילה ללא גבול</li>
+                                <li>🕊️ <strong>סבלנות אין קץ</strong> - חסד בלתי מוגבל</li>
+                                <li>✨ <strong>תיקון הברית</strong> - שמירת הטוהר</li>
+                                <li>👄 <strong>תיקון הלשון</strong> - דיבור קדוש</li>
+                                <li>🧠 <strong>תיקון המחשבה</strong> - חשיבה נכונה</li>
+                                <li>🤝 <strong>תיקון המעשים</strong> - השפעה חיובית</li>
+                                <li>💫 <strong>תיקון הרצון</strong> - להיטהר מבפנים</li>
+                                <li>⚖️ <strong>תיקון המידות</strong> - איזון ותיקון המידות</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="grid-item">
+                        <div class="card">
+                            <h3 class="card-title">🚀 יג' מדרגות בסולם המרכבה</h3>
+                            <ol>
+                                <li>🙏 <strong>יראה בסיסית</strong> - קבלת עול</li>
+                                <li>✨ <strong>אמונה יציבה</strong> - חיבור פנימי למקור</li>
+                                <li>🔄 <strong>תשובה</strong> - יכולת לתקן ולשוב</li>
+                                <li>🧠 <strong>התבוננות</strong> - הבנת החכמה האלוקית</li>
+                                <li>🤔 <strong>עבודה פנימית</strong> - שינוי עצמי מתוך מודעות</li>
+                                <li>✨ <strong>קדושה אישית</strong> - טהרת הרצון והמחשבה</li>
+                                <li>❤️ <strong>אהבה עילאית</strong> - אהבת ה' ללא גבול</li>
+                                <li>👑 <strong>יראת רוממות</strong> - הכרה בעוצמת האלוקות</li>
+                                <li>🔗 <strong>דבקות</strong> - חיבור מוחלט לרצון הבורא</li>
+                                <li>🕊️ <strong>רוח הקודש</strong> - השראה ישירה מלמעלה</li>
+                                <li>👁️ <strong>נבואה</strong> - תקשורת אלוקית עליונה</li>
+                                <li>🌟 <strong>הארת הספירות</strong> - השגת מבנה העולמות</li>
+                                <li>✨ <strong>יחוד עליון</strong> - התמזגות מוחלטת עם האלוקות</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="grid-item">
+                        <div class="card">
+                            <h3 class="card-title">📖 יג' יסודות האמונה</h3>
+                            <ol>
+                                <li>✨ <strong>מציאות ה'</strong> - הכרה בכך שה' קיים</li>
+                                <li>☝️ <strong>אחדות ה'</strong> - אין לו שותף</li>
+                                <li>🌌 <strong>אין לו גוף</strong> - אין לו מגבלות פיזיות</li>
+                                <li>⌛️ <strong>קדמות ה'</strong> - ה' תמיד היה ותמיד יהיה</li>
+                                <li>🙏 <strong>לעבוד רק לו</strong> - אין זולת ה'</li>
+                                <li>👁️ <strong>נבואה</strong> - תקשורת עם הנביאים</li>
+                                <li>📜 <strong>נבואת משה</strong> - משה היה הנביא הגדול ביותר</li>
+                                <li>🕊️ <strong>התורה מן השמים</strong> - התורה ניתנה ישירות מה'</li>
+                                <li>📖 <strong>התורה נצחית</strong> - אינה משתנה</li>
+                                <li>👁️ <strong>השגחה פרטית</strong> - ה' משגיח על הבריות</li>
+                                <li>⚖️ <strong>שכר ועונש</strong> - צדיק מקבל שכר ורשע נענש</li>
+                                <li>👑 <strong>ביאת המשיח</strong> - האמונה בגאולה</li>
+                                <li>✨ <strong>תחיית המתים</strong> - חיים מחודשים בעולם הבא</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="grid-item">
+                        <div class="card">
+                            <h3 class="card-title">⏳ יג' שלבים בתהליך גאולה</h3>
+                            <ol>
+                                <li>😰 <strong>חבלי משיח</strong> - קשיים עולמיים לפני הגאולה</li>
+                                <li>👑 <strong>ביאת המשיח</strong> - הופעת המשיח</li>
+                                <li>👑 <strong>הכרזת המלכות</strong> - קבלת מנהיגות המשיח</li>
+                                <li>⚖️ <strong>כינון המשפט</strong> - משפט צדק לכל העמים</li>
+                                <li>👁️ <strong>חזרת הנבואה</strong> - התחדשות הנבואה</li>
+                                <li>🌍 <strong>קיבוץ גלויות</strong> - שיבת עם ישראל לארצו</li>
+                                <li>🏛️ <strong>בניין בית המקדש</strong> - חזרת הקדושה</li>
+                                <li>🙏 <strong>חידוש העבודה</strong> - עבודת הקרבנות והמקדש</li>
+                                <li>🕊️ <strong>שלום עולמי</strong> - סיום המלחמות</li>
+                                <li>🧹 <strong>בירור הרע מהעולם</strong> - תיקון העולם ממידות רעות</li>
+                                <li>✨ <strong>השגת חכמה אלוקית</strong> - גילוי האלוקות בעולם</li>
+                                <li>💫 <strong>תחיית המתים</strong> - החזרת הנשמות לגוף</li>
+                                <li>🌟 <strong>העולם הבא</strong> - חיים נצחיים ברמת קיום חדשה</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="grid-item">
+                        <div class="card">
+                            <h3 class="card-title">🕊️ יג' ערוצי התיקון בנפש</h3>
+                            <ol>
+                                <li>👄 <strong>תיקון הדיבור</strong> - שמירה על טהרת הדיבור</li>
+                                <li>🧠 <strong>תיקון המחשבה</strong> - מחשבות קדושות בלבד</li>
+                                <li>👁️ <strong>תיקון העיניים</strong> - לראות טוב ולא שלילי</li>
+                                <li>👂 <strong>תיקון השמיעה</strong> - להאזין לדברי אמת</li>
+                                <li>❤️ <strong>תיקון הרגש</strong> - לשלוט בכעס, קנאה וגאווה</li>
+                                <li>🍽️ <strong>תיקון האכילה</strong> - אכילה בקדושה ובכוונה</li>
+                                <li>💪 <strong>תיקון התאוות</strong> - שליטה על היצרים</li>
+                                <li>✨ <strong>תיקון הברית</strong> - שמירת הקדושה האישית</li>
+                                <li>🎯 <strong>תיקון המידות</strong> - יושר, ענווה, נתינה ועוד</li>
+                                <li>🧠 <strong>תיקון הזיכרון</strong> - לזכור מהות החיים</li>
+                                <li>🙏 <strong>תיקון ההודאה</strong> - הכרת תודה תמידית</li>
+                                <li>😊 <strong>תיקון השמחה</strong> - להיות חיובי ולשמוח בחלקך</li>
+                                <li>🙌 <strong>תיקון התפילה</strong> - להתפלל מתוך כוונה ותשוקה</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="grid-item">
+                        <div class="card">
+                            <h3 class="card-title">🧠 יג' כוחות הנפש</h3>
+                            <ol>
+                                <li>👑 <strong>כתר</strong> - רצון פנימי ושאיפות</li>
+                                <li>💡 <strong>חכמה</strong> - הבזק של הבנה ותובנה</li>
+                                <li>🧠 <strong>בינה</strong> - עיבוד והעמקת הבנה</li>
+                                <li>🔗 <strong>דעת</strong> - החיבור בין שכל לרגש</li>
+                                <li>❤️ <strong>חסד</strong> - אהבה, נתינה וחום</li>
+                                <li>💪 <strong>גבורה</strong> - משמעת ושליטה עצמית</li>
+                                <li>⚖️ <strong>תפארת</strong> - איזון והרמוניה</li>
+                                <li>🎯 <strong>נצח</strong> - התמדה ונחישות</li>
+                                <li>🙏 <strong>הוד</strong> - קבלה וענווה</li>
+                                <li>🤝 <strong>יסוד</strong> - תקשורת וחיבור רגשי</li>
+                                <li>👑 <strong>מלכות</strong> - מימוש וכוח השפעה</li>
+                                <li>✨ <strong>תענוג</strong> - חוויית שמחה והשראה</li>
+                                <li>🌟 <strong>אמונה</strong> - הכוח שמחבר את הכל</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>© כל הזכויות שמורות - תבניות חוכמה</p>
+        </div>
+    </div>
+</body>
+
+</html>

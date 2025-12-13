@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>תבניות חוכמה - שיטות עם 10 מאפיינים</title>
+
+    <!-- Google Fonts - Heebo -->
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* A4 Page Settings */
+        @page {
+            size: A4;
+            margin: 0;
+            size: 210mm 297mm;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            width: 210mm;
+            height: 297mm;
+            font-family: "Heebo", sans-serif;
+            background: white;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Page Container */
+        .page {
+            width: 200mm;
+            height: 287mm;
+            box-sizing: border-box;
+            position: relative;
+            background: white;
+            margin: 5mm auto;
+        }
+
+        /* בס״ד Styles */
+        .bsd {
+            position: absolute;
+            top: 3mm;
+            right: 5mm;
+            font-size: 0.8rem;
+            color: #333;
+            font-weight: 500;
+        }
+
+        /* Header Styles */
+        .header {
+            text-align: center;
+            position: relative;
+        }
+
+        .title {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: #527496;
+            margin-bottom: 0.25rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .subtitle {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Content Styles */
+        .content {
+            font-size: 0.7rem;
+            line-height: 1.3;
+        }
+
+        .section {
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #527496;
+            margin-bottom: 0.25rem;
+            border-bottom: 1px solid #527496;
+            padding-bottom: 0.25rem;
+        }
+
+        /* Grid Layout */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .grid-item {
+            background: #f9f9f9;
+            padding: 0.5rem;
+            border-radius: 3px;
+            border: 1px solid #ddd;
+        }
+
+        /* Card Styles */
+        .card {
+            /* margin-bottom: 1rem; */
+            padding: 0.5rem;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+        }
+
+        .card-title {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #527496;
+            margin-bottom: 0.25rem;
+        }
+
+        /* List Styles */
+        ol {
+            padding-right: 1.2rem;
+            margin: 0.25rem 0;
+        }
+
+        li {
+            font-size: 0.65rem;
+            margin-bottom: 0.15rem;
+        }
+
+        /* Footer */
+        .footer {
+            /* position: absolute; */
+            bottom: 0;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: 0.7rem;
+            color: #666;
+            padding: 1rem;
+            background: white;
+        }
+
+        /* Print Specific Styles */
+        @media print {
+            body {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .page {
+                page-break-after: always;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <div class="bsd">בס״ד</div>
+        <div class="header">
+            <h1 class="title">תבניות חוכמה - שיטות עם 10 מאפיינים</h1>
+            <p class="subtitle">מאגר ניתוח טקסטים בשיטות מוצלבות</p>
+        </div>
+
+        <div class="content">
+            <div class="section">
+                <h2 class="section-title">שיטות ניתוח עם 10 מאפיינים</h2>
+                <div class="grid-container">
+                    <div class="grid-item">
+                        <div class="card">
+                            <h3 class="card-title">⭐ עשר הספירות</h3>
+                            <ol>
+                                <li>👑 <strong>כתר</strong> - ניתוח רצון ורוממות</li>
+                                <li>🧠 <strong>חכמה</strong> - ניתוח ראשוני וידע</li>
+                                <li>🧠 <strong>בינה</strong> - הבנה מעמיקה</li>
+                                <li>💖 <strong>חסד</strong> - ניתוח רגשי וערכי</li>
+                                <li>💪 <strong>גבורה</strong> - ניתוח ביקורתי</li>
+                                <li>💄 <strong>תפארת</strong> - ניתוח איזון ויופי</li>
+                                <li>🌟 <strong>נצח</strong> - ניתוח תחזיות</li>
+                                <li>💚 <strong>הוד</strong> - ניתוח מעשי</li>
+                                <li>💎 <strong>יסוד</strong> - ניתוח החיבור</li>
+                                <li>👑 <strong>מלכות</strong> - ניתוח השפעה</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="grid-item">
+                        <div class="card">
+                            <h3 class="card-title">📜 עשרת הדיברות</h3>
+                            <ol>
+                                <li>✨ <strong>אנוכי ה' אלוקיך</strong> - אמונה בבורא עולם</li>
+                                <li>🚫 <strong>לא יהיה לך</strong> - איסור עבודה זרה</li>
+                                <li>🗣️ <strong>לא תשא</strong> - כבוד השם ודיבור אמת</li>
+                                <li>🕊️ <strong>זכור את יום השבת</strong> - קדושת הזמן</li>
+                                <li>👨‍👩‍👦 <strong>כבד את אביך</strong> - כיבוד הורים ומסורת</li>
+                                <li>💔 <strong>לא תרצח</strong> - קדושת החיים</li>
+                                <li>💑 <strong>לא תנאף</strong> - קדושת המשפחה</li>
+                                <li>🤝 <strong>לא תגנוב</strong> - כבוד הרכוש</li>
+                                <li>👄 <strong>לא תענה</strong> - אמת בדיבור ובמשפט</li>
+                                <li>❤️ <strong>לא תחמוד</strong> - שמחה בחלקך</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="grid-item">
+                        <div class="card">
+                            <h3 class="card-title">⚡ עשר המכות</h3>
+                            <ol>
+                                <li>🩸 <strong>דם</strong> - שינוי יסודות החיים</li>
+                                <li>🐸 <strong>צפרדע</strong> - חדירה לפרטיות</li>
+                                <li>🦟 <strong>כינים</strong> - יסוד קטן ומשמעותי</li>
+                                <li>🐺 <strong>ערוב</strong> - התמודדות עם כאוס</li>
+                                <li>🐄 <strong>דבר</strong> - פירוק שקרים</li>
+                                <li>🤒 <strong>שחין</strong> - סבל אישי וציבורי</li>
+                                <li>🌨️ <strong>ברד</strong> - שילוב הפכים (אש ומים)</li>
+                                <li>🦗 <strong>ארבה</strong> - ריקון מהות</li>
+                                <li>🌑 <strong>חושך</strong> - עיוורון מחשבתי</li>
+                                <li>⚰️ <strong>מכת בכורות</strong> - הכרה סופית באמת</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="grid-item">
+                        <div class="card">
+                            <h3 class="card-title">⚔️ עשרת חוקי המלחמה</h3>
+                            <ol>
+                                <li>🎭 <strong>חוק ההפתעה</strong> - היריב לא צריך לדעת מה אתה מתכנן</li>
+                                <li>⚡️ <strong>חוק הזריזות</strong> - מי שמגיב מהר, מנצח</li>
+                                <li>🛡️ <strong>חוק ההגנה</strong> - קודם כל תבצר את עצמך</li>
+                                <li>⚔️ <strong>חוק ההתקפה</strong> - התקפה טובה יותר מהגנה ממושכת</li>
+                                <li>💪 <strong>חוק המשאבים</strong> - השתמש נכון בכוחות שלך</li>
+                                <li>🦁 <strong>חוק המורל</strong> - מי שמאמין בצד שלו – חזק יותר</li>
+                                <li>🔍 <strong>חוק המודיעין</strong> - תדע כל פרט על האויב</li>
+                                <li>🗺️ <strong>חוק השטח</strong> - שלוט במגרש שאתה נלחם בו</li>
+                                <li>🤝 <strong>חוק הבריתות</strong> - שותפים נכונים מביאים ניצחון</li>
+                                <li>⏳ <strong>חוק ההתשה</strong> - לפעמים הניצחון בא בסבלנות</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="grid-item">
+                        <div class="card">
+                            <h3 class="card-title">🌍 עשרת חוקי העולם הטבעי</h3>
+                            <ol>
+                                <li>🔄 <strong>חוק המחזוריות</strong> - הכול עובד בסיבובים</li>
+                                <li>🌱 <strong>חוק ההסתגלות</strong> - מי שלא משתנה – נכחד</li>
+                                <li>🕸️ <strong>חוק החיבור</strong> - כל דבר בטבע קשור לאחרים</li>
+                                <li>☯️ <strong>חוק הניגודים</strong> - קור וחום, אור וחושך – הכול קיים יחד</li>
+                                <li>🌱 <strong>חוק הכוח החבוי</strong> - מה שנראה חלש, לפעמים הוא הכי חזק</li>
+                                <li>🌊 <strong>חוק השפע</strong> - הטבע מייצר מספיק לכולם</li>
+                                <li>🐿️ <strong>חוק החיסכון</strong> - בעלי חיים יודעים לאגור לשעת חירום</li>
+                                <li>🌳 <strong>חוק הזרע</strong> - עץ שלם יוצא מגרעין קטן</li>
+                                <li>⏳ <strong>חוק הזמן</strong> - בטבע הכול קורה בקצב שלו</li>
+                                <li>🦁 <strong>חוק ההשרדות</strong> - רק החזקים או המתוחכמים שורדים</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="grid-item">
+                        <div class="card">
+                            <h3 class="card-title">⚖️ עשרת חוקי הצדק והמשפט</h3>
+                            <ol>
+                                <li>🎯 <strong>חוק היושר</strong> - לא לשקר ולא לרמות</li>
+                                <li>✋ <strong>חוק האחריות</strong> - לקחת אחריות על מעשים</li>
+                                <li>🔄 <strong>חוק הגמול</strong> - כל מעשה גורר תגובה</li>
+                                <li>🛡️ <strong>חוק ההגנה</strong> - חובה להגן על חפים מפשע</li>
+                                <li>⚖️ <strong>חוק השוויון</strong> - כולם שווים בפני החוק</li>
+                                <li>⚡️ <strong>חוק הענישה</strong> - מי שעושה רע – משלם על כך</li>
+                                <li>🕊️ <strong>חוק החנינה</strong> - יש מקום למחילה בתנאים מסוימים</li>
+                                <li>💭 <strong>חוק הכוונה</strong> - גם לכוונות יש משקל במשפט</li>
+                                <li>👁️ <strong>חוק העדות</strong> - יש צורך בראיות ברורות</li>
+                                <li>🌍 <strong>חוק ההשפעה</strong> - חוק טוב משפיע על כל החברה לטובה</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>© כל הזכויות שמורות - תבניות חוכמה</p>
+        </div>
+    </div>
+</body>
+
+</html>

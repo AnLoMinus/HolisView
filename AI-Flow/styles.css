@@ -1,0 +1,198 @@
+/* General Styles */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  background-color: #f8f9fa;
+}
+
+/* Header Styles */
+header {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+header img {
+  max-height: 60px;
+}
+
+/* Navbar Styles */
+.navbar {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.nav-link {
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #0d6efd !important;
+}
+
+/* Card Styles */
+.card {
+  border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card-title {
+  color: #0d6efd;
+  margin-bottom: 1.5rem;
+}
+
+/* Analysis Method Styles */
+.analysis-method {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.method-step {
+  margin-bottom: 1rem;
+}
+
+.method-step h5 {
+  color: #495057;
+  margin-bottom: 0.5rem;
+}
+
+textarea {
+  min-height: 100px;
+  resize: vertical;
+  border: 1px solid #dee2e6;
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+  transition: border-color 0.3s ease;
+}
+
+textarea:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+/* Results Container */
+.results-container {
+  min-height: 200px;
+  padding: 1rem;
+  background-color: #fff;
+  border-radius: 0.25rem;
+  border: 1px solid #dee2e6;
+}
+
+/* Footer Styles */
+footer {
+  margin-top: 3rem;
+}
+
+footer a {
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+footer a:hover {
+  color: #fff !important;
+  opacity: 0.8;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .card {
+    margin-bottom: 1rem;
+  }
+
+  .method-step textarea {
+    min-height: 80px;
+  }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #212529;
+    color: #f8f9fa;
+  }
+
+  .card {
+    background-color: #343a40;
+    color: #f8f9fa;
+  }
+
+  .card-title {
+    color: #0d6efd;
+  }
+
+  .method-step h5 {
+    color: #f8f9fa;
+  }
+
+  textarea {
+    background-color: #495057;
+    color: #f8f9fa;
+    border-color: #6c757d;
+  }
+
+  textarea:focus {
+    background-color: #495057;
+    color: #f8f9fa;
+  }
+
+  .results-container {
+    background-color: #343a40;
+    border-color: #6c757d;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Dropdown Menu Styles */
+.dropdown-menu {
+  border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 0.5rem 0;
+}
+
+.dropdown-item {
+  padding: 0.5rem 1rem;
+  color: #495057;
+  transition: all 0.3s ease;
+}
+
+.dropdown-item:hover {
+  background-color: #f8f9fa;
+  color: #0d6efd;
+}
+
+.dropdown-item i {
+  margin-left: 0.5rem;
+  width: 1rem;
+  text-align: center;
+}
+
+/* Dark Mode Support for Dropdown */
+@media (prefers-color-scheme: dark) {
+  .dropdown-menu {
+    background-color: #343a40;
+    border-color: #6c757d;
+  }
+
+  .dropdown-item {
+    color: #f8f9fa;
+  }
+
+  .dropdown-item:hover {
+    background-color: #495057;
+    color: #0d6efd;
+  }
+}

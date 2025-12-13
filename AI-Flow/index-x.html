@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מאגר ניתוח טקסטים בשיטות מוצלבות</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="bg-primary text-white py-3">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-2">
+                    <img src="logo.png" alt="לוגו" class="img-fluid">
+                </div>
+                <div class="col-md-10">
+                    <h1 class="text-center">מאגר ניתוח טקסטים בשיטות מוצלבות</h1>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="methodsDropdown" role="button"
+                            data-bs-toggle="dropdown">
+                            <i class="fas fa-book"></i> שיטות ניתוח
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#pardes">פרד"ס</a></li>
+                            <li><a class="dropdown-item" href="#abiya">אביע עולמות</a></li>
+                            <li><a class="dropdown-item" href="#elements">ארבעת היסודות</a></li>
+                            <li><a class="dropdown-item" href="#sefirot">עשר הספירות</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about"><i class="fas fa-info-circle"></i> אודות</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact"><i class="fas fa-envelope"></i> צור קשר</a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="חיפוש בשיטות...">
+                    <button class="btn btn-outline-primary" type="submit">חיפוש</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container my-5">
+        <!-- Hero Section -->
+        <div class="row mb-5">
+            <div class="col-12">
+                <div class="card bg-primary text-white">
+                    <div class="card-body text-center">
+                        <h2>ברוכים הבאים למאגר ניתוח טקסטים בשיטות מוצלבות</h2>
+                        <p>כלי מתקדם לניתוח מעמיק של טקסטים בשיטות שונות</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Analysis Methods -->
+        <div class="row mb-5">
+            <!-- פרד"ס -->
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title"><i class="fas fa-book"></i> פרד"ס</h3>
+                        <div class="analysis-method">
+                            <div class="method-step">
+                                <h5>פשט</h5>
+                                <textarea class="form-control" placeholder="הכנס טקסט לניתוח פשט..."></textarea>
+                            </div>
+                            <div class="method-step">
+                                <h5>רמז</h5>
+                                <textarea class="form-control" placeholder="הכנס טקסט לניתוח רמז..."></textarea>
+                            </div>
+                            <div class="method-step">
+                                <h5>דרש</h5>
+                                <textarea class="form-control" placeholder="הכנס טקסט לניתוח דרש..."></textarea>
+                            </div>
+                            <div class="method-step">
+                                <h5>סוד</h5>
+                                <textarea class="form-control" placeholder="הכנס טקסט לניתוח סוד..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- אביע עולמות -->
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title"><i class="fas fa-globe"></i> אביע עולמות</h3>
+                        <div class="analysis-method">
+                            <div class="method-step">
+                                <h5>אצילות</h5>
+                                <textarea class="form-control" placeholder="הכנס טקסט לניתוח אצילות..."></textarea>
+                            </div>
+                            <div class="method-step">
+                                <h5>בריאה</h5>
+                                <textarea class="form-control" placeholder="הכנס טקסט לניתוח בריאה..."></textarea>
+                            </div>
+                            <div class="method-step">
+                                <h5>יצירה</h5>
+                                <textarea class="form-control" placeholder="הכנס טקסט לניתוח יצירה..."></textarea>
+                            </div>
+                            <div class="method-step">
+                                <h5>עשייה</h5>
+                                <textarea class="form-control" placeholder="הכנס טקסט לניתוח עשייה..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ארבעת היסודות -->
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title"><i class="fas fa-fire"></i> ארבעת היסודות</h3>
+                        <div class="analysis-method">
+                            <div class="method-step">
+                                <h5>רוח</h5>
+                                <textarea class="form-control" placeholder="הכנס טקסט לניתוח רוח..."></textarea>
+                            </div>
+                            <div class="method-step">
+                                <h5>אש</h5>
+                                <textarea class="form-control" placeholder="הכנס טקסט לניתוח אש..."></textarea>
+                            </div>
+                            <div class="method-step">
+                                <h5>מים</h5>
+                                <textarea class="form-control" placeholder="הכנס טקסט לניתוח מים..."></textarea>
+                            </div>
+                            <div class="method-step">
+                                <h5>אדמה</h5>
+                                <textarea class="form-control" placeholder="הכנס טקסט לניתוח אדמה..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- עשר הספירות -->
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title"><i class="fas fa-star"></i> עשר הספירות</h3>
+                        <div class="analysis-method">
+                            <div class="method-step">
+                                <h5>חכמה</h5>
+                                <textarea class="form-control" placeholder="הכנס טקסט לניתוח חכמה..."></textarea>
+                            </div>
+                            <div class="method-step">
+                                <h5>בינה</h5>
+                                <textarea class="form-control" placeholder="הכנס טקסט לניתוח בינה..."></textarea>
+                            </div>
+                            <div class="method-step">
+                                <h5>חסד</h5>
+                                <textarea class="form-control" placeholder="הכנס טקסט לניתוח חסד..."></textarea>
+                            </div>
+                            <div class="method-step">
+                                <h5>גבורה</h5>
+                                <textarea class="form-control" placeholder="הכנס טקסט לניתוח גבורה..."></textarea>
+                            </div>
+                            <div class="method-step">
+                                <h5>תפארת</h5>
+                                <textarea class="form-control" placeholder="הכנס טקסט לניתוח תפארת..."></textarea>
+                            </div>
+                            <div class="method-step">
+                                <h5>נצח</h5>
+                                <textarea class="form-control" placeholder="הכנס טקסט לניתוח נצח..."></textarea>
+                            </div>
+                            <div class="method-step">
+                                <h5>הוד</h5>
+                                <textarea class="form-control" placeholder="הכנס טקסט לניתוח הוד..."></textarea>
+                            </div>
+                            <div class="method-step">
+                                <h5>יסוד</h5>
+                                <textarea class="form-control" placeholder="הכנס טקסט לניתוח יסוד..."></textarea>
+                            </div>
+                            <div class="method-step">
+                                <h5>מלכות</h5>
+                                <textarea class="form-control" placeholder="הכנס טקסט לניתוח מלכות..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results Section -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h3>תוצאות הניתוח</h3>
+                        <div id="analysis-results" class="results-container">
+                            <!-- תוצאות הניתוח יוכנסו כאן -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>אודות המאגר</h5>
+                    <p>מאגר מידע לניתוח טקסטים בשיטות מוצלבות</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>קישורים מהירים</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#pardes" class="text-white">פרד"ס</a></li>
+                        <li><a href="#abiya" class="text-white">אביע עולמות</a></li>
+                        <li><a href="#elements" class="text-white">ארבעת היסודות</a></li>
+                        <li><a href="#sefirot" class="text-white">עשר הספירות</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>צור קשר</h5>
+                    <p>שאלות והצעות לשיפור המאגר</p>
+                    <button class="btn btn-outline-light">צור קשר</button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/your-code.js"></script>
+    <script src="scripts.js"></script>
+</body>
+
+</html>

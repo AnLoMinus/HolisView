@@ -1,0 +1,1517 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מאגר ניתוח טקסטים בשיטות מוצלבות</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        h4 {
+            font-weight: 700;
+        }
+
+        dl,
+        ol,
+        ul {
+            padding-inline-start: 0px;
+        }
+
+        /* עיצוב כללי */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            /* background-color: #f5f7fa; */
+            background-color: rgba(128, 128, 128, 0.5);
+        }
+
+        /* עיצוב כרטיסיות */
+        .card {
+            transition: all 0.3s ease;
+            box-shadow: 0 0px 3px rgba(222, 222, 222, 0.5);
+            border: 1px solid #52749655;
+            background-color: rgba(128, 128, 128, 0.5);
+            margin-bottom: 1rem;
+        }
+
+        .card:hover {
+            box-shadow: 0 0px 7px rgba(0, 0, 0, 0.9);
+        }
+
+        .card-body {
+            /* padding: 1.5rem; */
+        }
+
+        /* עיצוב כותרות */
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #527496;
+            margin-bottom: 1.5rem;
+            text-shadow: 0px 0px 2px rgb(255, 255, 255);
+        }
+
+        .card-title i {
+            margin-left: 0.5rem;
+            color: #3498db;
+        }
+
+        /* עיצוב רשימות */
+        .card ol {
+            padding-right: 1.5rem;
+        }
+
+        .card li {
+            padding: 0.3rem;
+            border-radius: 4px;
+            transition: background-color 0.2s ease;
+        }
+
+        .card li:hover {
+            background-color: rgba(128, 128, 128, 0.5);
+            color: #000000;
+        }
+
+        /* עיצוב כפתורים */
+        .btn-primary {
+            transition: all 0.3s ease;
+            padding: 0.8rem 1.5rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* עיצוב כותרות סקציות */
+        .text-center {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #2c3e50;
+            margin: 2rem 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* עיצוב תיאור */
+        .card p {
+            color: #527496;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        /* הדגשת מילות מפתח */
+        .card li strong {
+            color: #2980b9;
+            font-weight: 600;
+        }
+
+        /* אנימציית טעינה */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card {
+            animation: fadeIn 0.5s ease-out;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="bg-primary text-white py-3">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-2">
+                    <!-- <img src="logo.png" alt="לוגו" class="img-fluid"> -->
+                    <h1 class="text-center"></h1>שיטות התבוננות והשקפות</h1>
+                </div>
+                <div class="col-md-10">
+                    <h1 class="text-center">מאגר ניתוח טקסטים בשיטות מוצלבות</h1>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html"><i class="fas fa-home"></i> דף הבית</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="methodsDropdown" role="button"
+                            data-bs-toggle="dropdown">
+                            <i class="fas fa-book"></i> שיטות ניתוח
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="pardes.html">פרד"ס</a></li>
+                            <li><a class="dropdown-item" href="abiya.html">אביע עולמות</a></li>
+                            <li><a class="dropdown-item" href="elements.html">ארבעת היסודות</a></li>
+                            <li><a class="dropdown-item" href="sefirot.html">עשר הספירות</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about"><i class="fas fa-info-circle"></i> אודות</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact"><i class="fas fa-envelope"></i> צור קשר</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="structure.html"><i class="fas fa-sitemap"></i> מבנה המאגר</a>
+                    </li>
+                </ul>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="חיפוש בשיטות...">
+                    <button class="btn btn-outline-primary" type="submit">חיפוש</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container my-5">
+        <!-- Welcome Section -->
+        <div class="row mb-5">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h2>ברוכים הבאים למאגר ניתוח טקסטים בשיטות מוצלבות</h2>
+                        <p>בחרו את שיטת הניתוח הרצויה מתוך האפשרויות הבאות:</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- תוכן עניינים ומקטע סיכום -->
+        <div class="row mb-5">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="text-center mb-4">📊 סיכום השיטות במאגר</h2>
+                        <p class="text-center mb-4">סדר ההשתלשלות מהמבנה הכללי של הבריאה, דרך תהליכי העבודה והתיקון, ועד
+                            לכלים המעשיים</p>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        <h4>שיטות ניתוח עם 10 מאפיינים (18)</h4>
+                                        <p class="text-muted">המבנה הבסיסי של הבריאה והתפתחות האדם</p>
+                                        <ul class="list-unstyled">
+                                            <li>⭐ <strong>עשר הספירות</strong><br><small class="text-muted">המערכת
+                                                    הבסיסית של הבריאה, מכתר עד מלכות</small></li>
+                                            <li>📖 <strong>עשרת המאמרות</strong><br><small class="text-muted">כלי הבריאה
+                                                    הראשוניים שדרכם נברא העולם</small></li>
+                                            <li>🛡️ <strong>עשרת השלבים של בריאת האדם הרוחני</strong><br><small
+                                                    class="text-muted">התפתחות האדם מנפש בהמית עד דבקות</small></li>
+                                            <li>🙏 <strong>עשרת השלבים של חוויות רוחניות</strong><br><small
+                                                    class="text-muted">תהליך ההתעלות התודעתית</small></li>
+                                            <li>🎓 <strong>עשרת המידות של תורה</strong><br><small
+                                                    class="text-muted">כלים להבנה והפנמה של החכמה האלוקית</small></li>
+                                            <li>📈 <strong>עשרת חוקי ההצלחה</strong><br><small class="text-muted">יישום
+                                                    החכמה בעולם המעשה</small></li>
+                                            <li>💀 <strong>עשר הספירות של הקליפה</strong><br><small
+                                                    class="text-muted">הצד המנוגד שצריך להתמודד איתו</small></li>
+                                            <li>⏳ <strong>עשרת חוקי הזמן</strong><br><small class="text-muted">איך אנשים
+                                                    או רעיונות מתנהלים בזמן</small></li>
+                                            <li>⚔️ <strong>עשרת חוקי המלחמה</strong><br><small class="text-muted">לא רק
+                                                    מלחמות פיזיות – גם מלחמות רוחניות</small></li>
+                                            <li>🌍 <strong>עשרת חוקי העולם הטבעי</strong><br><small
+                                                    class="text-muted">תהליכי החיים משתקפים בטבע</small></li>
+                                            <li>⚖️ <strong>עשרת חוקי הצדק והמשפט</strong><br><small
+                                                    class="text-muted">חוקי הצדק האוניברסליים</small></li>
+                                            <li>📜 <strong>עשרת הדיברות</strong><br><small class="text-muted">יסודות
+                                                    המוסר והאמונה</small></li>
+                                            <li>🔄 <strong>עשרת הביטויים של תשובה</strong><br><small
+                                                    class="text-muted">חזרה לתיקון עצמי</small></li>
+                                            <li>📚 <strong>עשרת המידות של תורה לפי המשנה</strong><br><small
+                                                    class="text-muted">כלים להשגת חוכמה</small></li>
+                                            <li>🧬 <strong>עשר מערכות החיים בגוף האדם</strong><br><small
+                                                    class="text-muted">חיבור בין הגוף לנשמה</small></li>
+                                            <li>⚡ <strong>עשר המכות</strong><br><small class="text-muted">שבירת האשליות
+                                                    וחינוך למציאות אמיתית</small></li>
+                                            <li>🔄 <strong>עשרת הביטויים של תשובה לפי הרמב"ם</strong><br><small
+                                                    class="text-muted">תהליך התיקון העצמי</small></li>
+                                            <li>📖 <strong>עשרת המידות לפי מסילת ישרים</strong><br><small
+                                                    class="text-muted">סולם רוחני מזהירות ועד רוח הקודש - דרך הרמח"ל
+                                                    להשגת שלמות רוחנית</small></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        <h4>שיטות ניתוח עם 7 מאפיינים (8)</h4>
+                                        <p class="text-muted">תהליכי העבודה והתיקון האישי והכללי</p>
+                                        <ul class="list-unstyled">
+                                            <li>🌍 <strong>מעשה בראשית</strong><br><small class="text-muted">תבנית
+                                                    הבריאה המקורית כבסיס לכל תיקון</small></li>
+                                            <li>🧘‍♂️ <strong>שבעה עקרונות לתודעה גבוהה</strong><br><small
+                                                    class="text-muted">הכלים הבסיסיים לעבודה רוחנית</small></li>
+                                            <li>🙏 <strong>שבעה שלבים בתפילה</strong><br><small
+                                                    class="text-muted">החיבור היומיומי עם הבורא</small></li>
+                                            <li>🌱 <strong>שבעה שלבים של צמיחה רוחנית</strong><br><small
+                                                    class="text-muted">התפתחות אישית מהתעוררות לאחדות</small></li>
+                                            <li>🔄 <strong>שבעה שלבים של תהליך תשובה</strong><br><small
+                                                    class="text-muted">תיקון הפגמים וחזרה למקור</small></li>
+                                            <li>🧑‍⚖️ <strong>שבעה מרכיבים של תיקון האדם</strong><br><small
+                                                    class="text-muted">עבודה מעשית על המידות והמעשים</small></li>
+                                            <li>🌱 <strong>שבעה שלבים בגאולה האישית</strong><br><small
+                                                    class="text-muted">התהליך האישי של גאולה</small></li>
+                                            <li>🌍 <strong>שבעה עקרונות של תיקון עולם</strong><br><small
+                                                    class="text-muted">הרחבת התיקון האישי לתיקון כללי</small></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        <h4>שיטות ניתוח עם 4 מאפיינים (12)</h4>
+                                        <p class="text-muted">כלי העבודה המעשיים ליישום</p>
+                                        <ul class="list-unstyled">
+                                            <li>💡 <strong>פרד"ס</strong><br><small class="text-muted">שיטת הלימוד
+                                                    הבסיסית להבנת כל דבר</small></li>
+                                            <li>🌍 <strong>אביע עולמות</strong><br><small class="text-muted">הבנת הרבדים
+                                                    השונים בכל דבר</small></li>
+                                            <li>🔥 <strong>ארבעת היסודות</strong><br><small class="text-muted">הבנת
+                                                    הכוחות הפועלים בכל דבר</small></li>
+                                            <li>🕊️ <strong>ארבע חיות הקודש</strong><br><small class="text-muted">הבנת
+                                                    הכוחות הרוחניים</small></li>
+                                            <li>🙏 <strong>ארבע מדרגות בעבודת ה'</strong><br><small
+                                                    class="text-muted">שלבי ההתקרבות לבורא</small></li>
+                                            <li>👁️ <strong>ארבעה אופני השגחה</strong><br><small class="text-muted">הבנת
+                                                    דרכי ההשגחה</small></li>
+                                            <li>🕊️ <strong>ארבע דרגות האמונה</strong><br><small
+                                                    class="text-muted">התפתחות האמונה</small></li>
+                                            <li>🚪 <strong>ארבע לשונות הגאולה</strong><br><small class="text-muted">שלבי
+                                                    היציאה מהגלות</small></li>
+                                            <li>🧠 <strong>ארבעת הבנים</strong><br><small class="text-muted">סוגי
+                                                    המתמודדים עם האתגר</small></li>
+                                            <li>🌞 <strong>ארבע תקופות השנה</strong><br><small
+                                                    class="text-muted">מחזוריות הזמן והתיקון</small></li>
+                                            <li>🚩 <strong>ארבע מחנות ישראל</strong><br><small
+                                                    class="text-muted">הכיוונים השונים בעבודת ה'</small></li>
+                                            <li>⚖️ <strong>ארבעה חטאים מרכזיים ותיקונם</strong><br><small
+                                                    class="text-muted">תיקון השורשים השליליים</small></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        <h4>שיטות ניתוח עם 13 מאפיינים (10)</h4>
+                                        <p class="text-muted">שיטות מתקדמות ומעמיקות</p>
+                                        <ul class="list-unstyled">
+                                            <li>📚 <strong>יג' דרכי הלימוד בתורה</strong><br><small
+                                                    class="text-muted">שיטות לימוד מסורתיות</small></li>
+                                            <li>📖 <strong>יג' יסודות האמונה</strong><br><small class="text-muted">עיקרי
+                                                    האמונה של הרמב"ם</small></li>
+                                            <li>💙 <strong>יג' מידות הרחמים</strong><br><small class="text-muted">דרכי
+                                                    הרחמים האלוקיים</small></li>
+                                            <li>⏳ <strong>יג' שלבים בתהליך גאולה</strong><br><small
+                                                    class="text-muted">תהליך הגאולה העתידי</small></li>
+                                            <li>🕊️ <strong>יג' ערוצי התיקון בנפש</strong><br><small
+                                                    class="text-muted">ניתוח תיקוני הנשמה, מבוסס על כתבי האר"י ורבי נחמן
+                                                    מברסלב</small></li>
+                                            <li>🔮 <strong>יג' שבילים בתורת הסוד</strong><br><small
+                                                    class="text-muted">ניתוח מסלולי חכמה קבליים, מבוסס על חכמת הקבלה
+                                                    והאופן שבו נחשפים הסודות האלוקיים</small></li>
+                                            <li>✨ <strong>יג' שערים בחכמת הקבלה</strong><br><small
+                                                    class="text-muted">ניתוח עיוני בקבלה</small></li>
+                                            <li>🌿 <strong>יג' תיקוני דיקנא</strong><br><small
+                                                    class="text-muted">תיקונים רוחניים של הנהגת ה'</small></li>
+                                            <li>🚀 <strong>יג' מדרגות בסולם המרכבה</strong><br><small
+                                                    class="text-muted">ניתוח התעלות רוחנית</small></li>
+                                            <li>🧠 <strong>יג' כוחות הנפש</strong><br><small class="text-muted">ניתוח
+                                                    פסיכולוגי ורוחני</small></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center mt-4">
+                            <h3>סה"כ: 48 שיטות ניתוח שונות</h3>
+                            <p class="text-muted">מהמבנה הכללי של הבריאה, דרך תהליכי העבודה והתיקון, ועד לכלים המעשיים
+                                והשיטות המתקדמות</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Analysis Methods -->
+        <div class="row">
+            <div class="col-12 mb-4">
+                <h2 class="text-center">שיטות ניתוח עם 4 מאפיינים</h2>
+            </div>
+
+            <!-- פרד"ס -->
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title"><i class="fas fa-book"></i>💡 פרד"ס</h3>
+                        <p>שיטת ניתוח טקסטים המבוססת על ארבע רמות הבנה:</p>
+                        <ol>
+                            <li>💭 <strong>פשט</strong> - ניתוח בסיסי</li>
+                            <li>💡 <strong>רמז</strong> - ניתוח אסוציאטיבי</li>
+                            <li>🔍 <strong>דרש</strong> - ניתוח הקשרי</li>
+                            <li>🔒 <strong>סוד</strong> - ניתוח מטאפיזי</li>
+                        </ol>
+                        <a href="pardes.html" class="btn btn-primary">לניתוח בשיטת פרד"ס</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- אביע עולמות -->
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title"><i class="fas fa-globe"></i>🌍 אביע עולמות</h3>
+                        <p>שיטת ניתוח טקסטים המבוססת על ארבעה עולמות:</p>
+                        <ol>
+                            <li>⚡️ <strong>אצילות</strong> - ניתוח עקרוני ורוחני</li>
+                            <li>🌱 <strong>בריאה</strong> - ניתוח יצירתיות וחדשנות</li>
+                            <li>🎨 <strong>יצירה</strong> - ניתוח תהליך יצירתי</li>
+                            <li>🔨 <strong>עשייה</strong> - ניתוח פעולה מעשית</li>
+                        </ol>
+                        <a href="abiya.html" class="btn btn-primary">לניתוח בשיטת אביע עולמות</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ארבעת היסודות -->
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title"><i class="fas fa-fire"></i>🔥 ארבעת היסודות</h3>
+                        <p>שיטת ניתוח טקסטים המבוססת על ארבעת היסודות:</p>
+                        <ol>
+                            <li>💨 <strong>רוח</strong> - ניתוח רעיוני ומופשט</li>
+                            <li>🔥 <strong>אש</strong> - ניתוח תעוזה והתלהבות</li>
+                            <li>💧 <strong>מים</strong> - ניתוח רגש ודינמיקה רגשית</li>
+                            <li>🌱 <strong>אדמה</strong> - ניתוח מעשי ויציב</li>
+                        </ol>
+                        <a href="elements.html" class="btn btn-primary">לניתוח בשיטת ארבעת היסודות</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ארבע לשונות הגאולה -->
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title"><i class="fas fa-door-open"></i>🚪 ארבע לשונות הגאולה</h3>
+                        <p>שיטת ניתוח טקסטים המבוססת על ארבעה שלבי גאולה:</p>
+                        <ol>
+                            <li>💨 <strong>והוצאתי</strong> - ניתוח היציאה מהמצב הקיים</li>
+                            <li>🛡️ <strong>והצלתי</strong> - ניתוח ההגנה וההתייצבות</li>
+                            <li>🌱 <strong>וגאלתי</strong> - ניתוח השינוי המהותי</li>
+                            <li>🔗 <strong>ולקחתי</strong> - ניתוח החיבור והשלמות</li>
+                        </ol>
+                        <a href="geula.html" class="btn btn-primary">לניתוח בשיטת לשונות הגאולה</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ארבעת הבנים -->
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title"><i class="fas fa-users"></i>🧠 ארבעת הבנים</h3>
+                        <p>שיטת ניתוח טקסטים המבוססת על ארבעה סוגי לומדים:</p>
+                        <ol>
+                            <li>🧠 <strong>חכם</strong> - ניתוח מעמיק ומפורט</li>
+                            <li>👹 <strong>רשע</strong> - ניתוח ביקורתי ומאתגר</li>
+                            <li>💬 <strong>תם</strong> - ניתוח פשוט וישיר</li>
+                            <li>🤷‍♂️ <strong>שאינו יודע לשאול</strong> - ניתוח בסיסי והתפתחותי</li>
+                        </ol>
+                        <a href="banim.html" class="btn btn-primary">לניתוח בשיטת ארבעת הבנים</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ארבע חיות הקודש -->
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title"><i class="fas fa-dove"></i>🕊️ ארבע חיות הקודש</h3>
+                        <p>שיטת ניתוח טקסטים המבוססת על ארבע חיות המרכבה:</p>
+                        <ol>
+                            <li>🦁 <strong>אריה</strong> - ניתוח עוצמה ומלכות</li>
+                            <li>🐂 <strong>שור</strong> - ניתוח התמדה ויציבות</li>
+                            <li>🦅 <strong>נשר</strong> - ניתוח ראייה רחבה והתעלות</li>
+                            <li>👤 <strong>אדם</strong> - ניתוח שכל ובחירה חופשית</li>
+                        </ol>
+                        <a href="chayot.html" class="btn btn-primary">לניתוח בשיטת חיות הקודש</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ארבע תקופות השנה -->
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title"><i class="fas fa-sun"></i>🌞 ארבע תקופות השנה</h3>
+                        <p>שיטת ניתוח טקסטים המבוססת על מחזוריות הזמן:</p>
+                        <ol>
+                            <li>🌸 <strong>סתיו</strong> - ניתוח שינוי והתחדשות</li>
+                            <li>❄️ <strong>חורף</strong> - ניתוח התכנסות והעמקה</li>
+                            <li>🌱 <strong>אביב</strong> - ניתוח צמיחה והתפתחות</li>
+                            <li>☀️ <strong>קיץ</strong> - ניתוח בשלות ומימוש</li>
+                        </ol>
+                        <a href="seasons.html" class="btn btn-primary">לניתוח בשיטת תקופות השנה</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ארבע מדרגות בעבודת ה' -->
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title"><i class="fas fa-praying-hands"></i>🙏 ארבע מדרגות בעבודת ה'</h3>
+                        <p>שיטת ניתוח טקסטים המבוססת על התפתחות רוחנית:</p>
+                        <ol>
+                            <li>🙏 <strong>יראה</strong> - ניתוח מתוך כבוד ואחריות</li>
+                            <li>💖 <strong>אהבה</strong> - ניתוח מתוך חיבור ורצון</li>
+                            <li>💡 <strong>תורה</strong> - ניתוח מתוך חכמה והבנה</li>
+                            <li>🤝 <strong>דבקות</strong> - ניתוח מתוך חיבור מוחלט</li>
+                        </ol>
+                        <a href="avoda.html" class="btn btn-primary">לניתוח בשיטת מדרגות העבודה</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ארבעה אופנים של השגחה אלוקית -->
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title"><i class="fas fa-eye"></i>👁️ ארבעה אופני השגחה</h3>
+                        <p>שיטת ניתוח טקסטים המבוססת על דרכי ההשגחה:</p>
+                        <ol>
+                            <li>🌿 <strong>טבע</strong> - ניתוח דרך חוקיות קבועה</li>
+                            <li>🔒 <strong>נס נסתר</strong> - ניתוח דרך מקריות מכוונת</li>
+                            <li>💡 <strong>נס גלוי</strong> - ניתוח דרך שינוי סדרי בראשית</li>
+                            <li>👁️ <strong>השגחה ישירה</strong> - ניתוח דרך התערבות מיידית</li>
+                        </ol>
+                        <a href="hashgacha.html" class="btn btn-primary">לניתוח בשיטת אופני ההשגחה</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ארבע מחנות ישראל -->
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title"><i class="fas fa-compass"></i>🚩 ארבע מחנות ישראל</h3>
+                        <p>שיטת ניתוח טקסטים המבוססת על ארבעה כיוונים רוחניים:</p>
+                        <ol>
+                            <li>🌄 <strong>מזרח</strong> - ניתוח התחלות וחידוש</li>
+                            <li>🌆 <strong>מערב</strong> - ניתוח השלמה וסיום</li>
+                            <li>🌐 <strong>צפון</strong> - ניתוח כוח ומשמעת</li>
+                            <li>🌇 <strong>דרום</strong> - ניתוח חכמה והבנה</li>
+                        </ol>
+                        <a href="machanot.html" class="btn btn-primary">לניתוח בשיטת מחנות ישראל</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ארבעה חטאים מרכזיים ותיקונם -->
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title"><i class="fas fa-balance-scale"></i>⚖️ ארבעה חטאים מרכזיים ותיקונם
+                        </h3>
+                        <p>שיטת ניתוח טקסטים המבוססת על תיקון החטאים המרכזיים:</p>
+                        <ol>
+                            <li>🕊️ <strong>עבודה זרה</strong> - ניתוח תיקון האמונה והביטחון</li>
+                            <li>💑 <strong>גילוי עריות</strong> - ניתוח תיקון הקשרים והזוגיות</li>
+                            <li>❤️ <strong>שפיכות דמים</strong> - ניתוח תיקון הכבוד לחיים</li>
+                            <li>💬 <strong>לשון הרע</strong> - ניתוח תיקון הדיבור והתקשורת</li>
+                        </ol>
+                        <a href="tikun.html" class="btn btn-primary">לניתוח בשיטת תיקון החטאים</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ארבע דרגות האמונה -->
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title"><i class="fas fa-dove"></i>🕊️ ארבע דרגות האמונה</h3>
+                        <p>שיטת ניתוח טקסטים המבוססת על רבדי האמונה:</p>
+                        <ol>
+                            <li>🙏 <strong>אמונה פשוטה</strong> - ניתוח אמון בסיסי</li>
+                            <li>✨ <strong>אמונה שלימה</strong> - ניתוח אמונה מוחלטת</li>
+                            <li>👁️ <strong>אמונה חושית</strong> - ניתוח חוויה אישית</li>
+                            <li>🧠 <strong>אמונה שכלית</strong> - ניתוח הבנה והכרה</li>
+                        </ol>
+                        <a href="emuna.html" class="btn btn-primary">לניתוח בשיטת דרגות האמונה</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- שיטות ניתוח עם 7 מאפיינים -->
+        <div class="row mt-5">
+            <div class="col-12 mb-4">
+                <h2 class="text-center">שיטות ניתוח עם 7 מאפיינים</h2>
+            </div>
+
+            <!-- מעשה בראשית -->
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title"><i class="fas fa-globe-americas"></i>🌍 מעשה בראשית</h3>
+                        <p>שיטת ניתוח טקסטים המבוססת על שבעת ימי הבריאה:</p>
+                        <ol>
+                            <li>💡 <strong>יום ראשון</strong> - ניתוח התחלה ובהירות ראשונית</li>
+                            <li>🌊 <strong>יום שני</strong> - ניתוח הבחנה והפרדה</li>
+                            <li>🏞️ <strong>יום שלישי</strong> - ניתוח יציבות וגבולות</li>
+                            <li>🌟 <strong>יום רביעי</strong> - ניתוח חכמה ומנהיגות</li>
+                            <li>🐠 <strong>יום חמישי</strong> - ניתוח חיבור וחיות</li>
+                            <li>🧍‍♂️ <strong>יום שישי</strong> - ניתוח תכלית ושלמות</li>
+                            <li>⏳ <strong>שבת</strong> - ניתוח התבוננות והשלמה</li>
+                        </ol>
+                        <a href="bereishit.html" class="btn btn-primary">לניתוח בשיטת מעשה בראשית</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- שבעה עקרונות לתודעה גבוהה -->
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title"><i class="fas fa-om"></i>🧘‍♂️ שבעה עקרונות לתודעה גבוהה</h3>
+                        <p>שיטת ניתוח טקסטים המבוססת על עקרונות התודעה הרוחנית:</p>
+                        <ol>
+                            <li>🧘‍♀️ <strong>התבוננות פנימית</strong> - ניתוח חשבון נפש עמוק</li>
+                            <li>💫 <strong>שליטה עצמית</strong> - ניתוח ענווה וצניעות</li>
+                            <li>✨ <strong>התחברות לאור</strong> - ניתוח שאיפה רוחנית</li>
+                            <li>💖 <strong>אהבת הבריות</strong> - ניתוח קשרים חיוביים</li>
+                            <li>⏳ <strong>סבלנות</strong> - ניתוח אמונה בתהליך</li>
+                            <li>🌍 <strong>תודעת האחדות</strong> - ניתוח חיבור כללי</li>
+                            <li>🥳 <strong>שמחת החיים</strong> - ניתוח שמחה פנימית</li>
+                        </ol>
+                        <a href="consciousness.html" class="btn btn-primary">לניתוח בשיטת עקרונות התודעה</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- שבעה שלבים בגאולה האישית -->
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title"><i class="fas fa-seedling"></i>🌱 שבעה שלבים בגאולה האישית</h3>
+                        <p>שיטת ניתוח טקסטים המבוססת על תהליך הגאולה האישית:</p>
+                        <ol>
+                            <li>🔍 <strong>הכרה במצב הקיים</strong> - ניתוח הצורך בתיקון</li>
+                            <li>🛁 <strong>תשובה על החטאים</strong> - ניתוח תהליכי טהרה</li>
+                            <li>🙏 <strong>תפילה וצדקה</strong> - ניתוח חיבור רוחני</li>
+                            <li>🤝 <strong>חיים של חסד</strong> - ניתוח פעולות נתינה</li>
+                            <li>📖 <strong>התחברות לתורה</strong> - ניתוח הבנה עמוקה</li>
+                            <li>💫 <strong>קשר עם הצדיקים</strong> - ניתוח חיבור למורים</li>
+                            <li>🌍 <strong>השתלבות במלכות</strong> - ניתוח ביטוי הגאולה</li>
+                        </ol>
+                        <a href="personal_geula.html" class="btn btn-primary">לניתוח בשיטת הגאולה האישית</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- שבעה עקרונות של תיקון עולם -->
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title"><i class="fas fa-globe-americas"></i>🌍 שבעה עקרונות של תיקון עולם
+                        </h3>
+                        <p>שיטת ניתוח טקסטים המבוססת על תיקון עולם:</p>
+                        <ol>
+                            <li>💭 <strong>הכרה במציאות הרוחנית</strong> - ניתוח המצב הרוחני</li>
+                            <li>✨ <strong>תשובה כללית</strong> - ניתוח תיקון מקיף</li>
+                            <li>🧑‍⚖️ <strong>שמירה על הדינים</strong> - ניתוח קיום מצוות</li>
+                            <li>🌟 <strong>חיבור לאור</strong> - ניתוח הארה אלוקית</li>
+                            <li>💪 <strong>התמודדות עם יצרים</strong> - ניתוח עבודה פנימית</li>
+                            <li>🌈 <strong>חיזוק האמונה</strong> - ניתוח גשר תודעתי</li>
+                            <li>👫 <strong>אהבת ישראל</strong> - ניתוח חיבור לכלל</li>
+                        </ol>
+                        <a href="tikun_olam.html" class="btn btn-primary">לניתוח בשיטת תיקון עולם</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- שבעה שלבים בתפילה -->
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title"><i class="fas fa-praying-hands"></i>🙏 שבעה שלבים בתפילה</h3>
+                        <p>שיטת ניתוח טקסטים המבוססת על תהליך התפילה:</p>
+                        <ol>
+                            <li>💫 <strong>הכנה</strong> - ניתוח הכנה והיטהרות</li>
+                            <li>❤️ <strong>כוונה</strong> - ניתוח מיקוד ומטרה</li>
+                            <li>🌟 <strong>הודיה</strong> - ניתוח הכרת תודה</li>
+                            <li>🙌 <strong>בקשה</strong> - ניתוח צרכים ומשאלות</li>
+                            <li>🌈 <strong>קבלה</strong> - ניתוח קבלת רצון ה'</li>
+                            <li>💭 <strong>התבוננות</strong> - ניתוח משמעות עמוקה</li>
+                            <li>✨ <strong>דבקות</strong> - ניתוח חיבור מוחלט</li>
+                        </ol>
+                        <a href="tefila.html" class="btn btn-primary">לניתוח בשיטת שלבי התפילה</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- שבעה שלבים של צמיחה רוחנית -->
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title"><i class="fas fa-seedling"></i>🌱 שבעה שלבים של צמיחה רוחנית</h3>
+                        <p>שיטת ניתוח טקסטים המבוססת על תהליך הצמיחה הרוחנית:</p>
+                        <ol>
+                            <li>🌅 <strong>התעוררות</strong> - ניתוח זיהוי הצורך בשינוי</li>
+                            <li>🙏 <strong>הכנעה</strong> - ניתוח ביטול האגו</li>
+                            <li>🔍 <strong>הבדלה</strong> - ניתוח גבולות קודש וחול</li>
+                            <li>💫 <strong>טהרה</strong> - ניתוח זיכוך פנימי</li>
+                            <li>✨ <strong>קדושה</strong> - ניתוח חיבור לאור</li>
+                            <li>📚 <strong>דבקות</strong> - ניתוח התמדה בעבודה</li>
+                            <li>❤️ <strong>אחדות</strong> - ניתוח חיבור כללי</li>
+                        </ol>
+                        <a href="spiritual_growth.html" class="btn btn-primary">לניתוח בשיטת הצמיחה הרוחנית</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- שבעה שלבים של תהליך תשובה -->
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title"><i class="fas fa-sync-alt"></i>🔄 שבעה שלבים של תהליך תשובה</h3>
+                        <p>שיטת ניתוח טקסטים המבוססת על תהליך התשובה הרוחני:</p>
+                        <ol>
+                            <li>🔍 <strong>הכרה במצב</strong> - ניתוח הבנת הצורך בשינוי</li>
+                            <li>💔 <strong>חרטה</strong> - ניתוח תהליך החרטה</li>
+                            <li>🛑 <strong>עזיבת החטא</strong> - ניתוח ההימנעות מהרע</li>
+                            <li>🌟 <strong>קבלה על העתיד</strong> - ניתוח ההחלטה לשינוי</li>
+                            <li>🙏 <strong>תפילה ותשובה</strong> - ניתוח העבודה הפנימית</li>
+                            <li>💖 <strong>צדקה ותיקון</strong> - ניתוח פעולות התיקון</li>
+                            <li>🥳 <strong>שמחה</strong> - ניתוח שמחת התשובה</li>
+                        </ol>
+                        <a href="teshuva.html" class="btn btn-primary">לניתוח בשיטת תהליך התשובה</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- שבעה מרכיבים של תיקון האדם -->
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title"><i class="fas fa-user-edit"></i>🧑‍⚖️ שבעה מרכיבים של תיקון האדם</h3>
+                        <p>שיטת ניתוח טקסטים המבוססת על תורת החסידות לתיקון האדם:</p>
+                        <ol>
+                            <li>🔍 <strong>הכרה במצב</strong> - ניתוח עמידה מול האמת</li>
+                            <li>🛠 <strong>תשובה</strong> - ניתוח תיקון המעשים</li>
+                            <li>🙏 <strong>תפילה</strong> - ניתוח חיבור אלוקי</li>
+                            <li>💖 <strong>צדקה</strong> - ניתוח נתינה וחסד</li>
+                            <li>📜 <strong>תורה</strong> - ניתוח לימוד והעמקה</li>
+                            <li>💫 <strong>השתעשעות בקודש</strong> - ניתוח התעלות בשמחה</li>
+                            <li>🤝 <strong>אהבת ישראל</strong> - ניתוח חיבור כללי</li>
+                        </ol>
+                        <a href="tikun_adam.html" class="btn btn-primary">לניתוח בשיטת תיקון האדם</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- שיטות ניתוח עם 10 מאפיינים -->
+        <div class="row mt-5">
+            <div class="col-12 mb-4">
+                <h2 class="text-center">שיטות ניתוח עם 10 מאפיינים</h2>
+            </div>
+
+            <!-- עשר הספירות -->
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title"><i class="fas fa-star"></i> עשר הספירות</h3>
+                        <p>שיטת ניתוח טקסטים המבוססת על עשר הספירות:</p>
+                        <ol>
+                            <li>👑 <strong>כתר</strong> - ניתוח רצון ורוממות</li>
+                            <li>🧠 <strong>חכמה</strong> - ניתוח ראשוני וידע</li>
+                            <li>🧠 <strong>בינה</strong> - הבנה מעמיקה</li>
+                            <li>💖 <strong>חסד</strong> - ניתוח רגשי וערכי</li>
+                            <li>💪 <strong>גבורה</strong> - ניתוח ביקורתי</li>
+                            <li>💄 <strong>תפארת</strong> - ניתוח איזון ויופי</li>
+                            <li>🌟 <strong>נצח</strong> - ניתוח תחזיות</li>
+                            <li>💚 <strong>הוד</strong> - ניתוח מעשי</li>
+                            <li>💎 <strong>יסוד</strong> - ניתוח החיבור</li>
+                            <li>👑 <strong>מלכות</strong> - ניתוח השפעה</li>
+                        </ol>
+                        <a href="sefirot.html" class="btn btn-primary">לניתוח בשיטת עשר הספירות</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- עשר הספירות של הקליפה -->
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title"><i class="fas fa-skull"></i> עשר הספירות של הקליפה</h3>
+                        <p>שיטת ניתוח טקסטים המבוססת על הצד השני של הספירות:</p>
+                        <ol>
+                            <li>👿 <strong>כתר דטומאה</strong> - ניתוח יהירות גמורה</li>
+                            <li>🌑 <strong>חכמה דטומאה</strong> - ניתוח תחכום רע</li>
+                            <li>🔮 <strong>בינה דטומאה</strong> - ניתוח עיוות האמת</li>
+                            <li>🎭 <strong>חסד דטומאה</strong> - ניתוח נתינה פסולה</li>
+                            <li>⚔️ <strong>גבורה דטומאה</strong> - ניתוח אכזריות</li>
+                            <li>💔 <strong>תפארת דטומאה</strong> - ניתוח יופי כוזב</li>
+                            <li>⛓️ <strong>נצח דטומאה</strong> - ניתוח התמדה ברוע</li>
+                            <li>🎭 <strong>הוד דטומאה</strong> - ניתוח חיקוי של קדושה</li>
+                            <li>🕳️ <strong>יסוד דטומאה</strong> - ניתוח טומאת הברית</li>
+                            <li>👑 <strong>מלכות דטומאה</strong> - ניתוח שליטה רעה</li>
+                        </ol>
+                        <a href="klipot.html" class="btn btn-primary">לניתוח בשיטת ספירות הקליפה</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- עשרת השלבים של בריאת האדם הרוחני -->
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title"><i class="fas fa-user-shield"></i> עשרת השלבים של בריאת האדם הרוחני
+                        </h3>
+                        <p>שיטת ניתוח טקסטים המבוססת על התפתחות רוחנית:</p>
+                        <ol>
+                            <li>🐯 <strong>נפש בהמית</strong> - ניתוח יצרים טבעיים בסיסיים</li>
+                            <li>🧠 <strong>נפש שכלית</strong> - ניתוח התחלת הבנת מוסר והשכל</li>
+                            <li>✨ <strong>נפש רוחנית</strong> - ניתוח התעוררות לחיפוש משמעות</li>
+                            <li>👻 <strong>נשמה</strong> - ניתוח חיבור פנימי עמוק יותר</li>
+                            <li>🌟 <strong>חיה</strong> - ניתוח השראה עליונה</li>
+                            <li>💫 <strong>יחידה</strong> - ניתוח חיבור לעצמות האלוקית</li>
+                            <li>🎯 <strong>תיקון המידות</strong> - ניתוח זיכוך האופי</li>
+                            <li>❤️ <strong>עבודת ה' מעומק הלב</strong> - ניתוח חיבור אישי</li>
+                            <li>🙇‍♂️ <strong>התבטלות מוחלטת</strong> - ניתוח הכרה שאין נפרדות מאלוקים</li>
+                            <li>✨ <strong>דבקות מוחלטת</strong> - ניתוח השגת אחדות אמיתית</li>
+                        </ol>
+                        <a href="spiritual.html" class="btn btn-primary">לניתוח בשיטת האדם הרוחני</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- עשרת השלבים של חוויות רוחניות -->
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title"><i class="fas fa-pray"></i> עשרת השלבים של חוויות רוחניות</h3>
+                        <p>שיטת ניתוח טקסטים המבוססת על התעלות תודעתית:</p>
+                        <ol>
+                            <li>🚫 <strong>התרחקות מהרע</strong> - ניתוח ניתוק מהפרעות חיצוניות</li>
+                            <li>🧘‍♂️ <strong>שליטה על המחשבות</strong> - ניתוח מניעת מחשבות מיותרות</li>
+                            <li>🎯 <strong>חיזוק הכוונה</strong> - ניתוח ידיעת המטרה</li>
+                            <li>🧘‍♀️ <strong>כניסה לשקט</strong> - ניתוח הקשבה פנימית</li>
+                            <li>👁️ <strong>התבוננות</strong> - ניתוח ראייה מזווית רחבה</li>
+                            <li>💡 <strong>חיבור לידע עמוק</strong> - ניתוח הבנה מעבר למילים</li>
+                            <li>🌠 <strong>תחושת התעלות</strong> - ניתוח הרגשת משהו מעבר לעצמי</li>
+                            <li>🔄 <strong>התמזגות</strong> - ניתוח אחדות עם הבריאה</li>
+                            <li>✨ <strong>תובנה חדשה</strong> - ניתוח שינוי צורת החשיבה</li>
+                            <li>🎯 <strong>יישום בחיים</strong> - ניתוח הפיכת החוויה למעשית</li>
+                        </ol>
+                        <a href="spiritual_experience.html" class="btn btn-primary">לניתוח בשיטת חוויות רוחניות</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- עשרת המאמרות -->
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title"><i class="fas fa-book-open"></i> עשרת המאמרות</h3>
+                        <p>שיטת ניתוח טקסטים המבוססת על עשרת המאמרות:</p>
+                        <ol>
+                            <li>🌅 <strong>בראשית ברא</strong> - ניתוח התחלה וסדר</li>
+                            <li>💡 <strong>יהי אור</strong> - ניתוח גילוי והתבהרות</li>
+                            <li>🌌 <strong>יהי רקיע</strong> - ניתוח הבחנה וגבולות</li>
+                            <li>🌊 <strong>יקוו המים</strong> - ניתוח יצירת מרחב</li>
+                            <li>🌱 <strong>תדשא הארץ</strong> - ניתוח חיים והתחדשות</li>
+                            <li>🌞 <strong>יהי מאורות</strong> - ניתוח זמן ותודעה</li>
+                            <li>🐠 <strong>ישרצו המים</strong> - ניתוח חיים בתנועה</li>
+                            <li>🦁 <strong>תוצא הארץ נפש חיה</strong> - ניתוח מורכבות ובריאה מתקדמת</li>
+                            <li>👥 <strong>נעשה אדם</strong> - ניתוח ייעוד ותכלית</li>
+                            <li>🎁 <strong>הנה נתתי לכם</strong> - ניתוח אחריות ושליטה</li>
+                        </ol>
+                        <a href="maamarot.html" class="btn btn-primary">לניתוח בשיטת עשרת המאמרות</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- עשרת המידות של תורה -->
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title"><i class="fas fa-graduation-cap"></i> עשרת המידות של תורה</h3>
+                        <p>שיטת ניתוח טקסטים המבוססת על מידות התורה:</p>
+                        <ol>
+                            <li>📚 <strong>תלמוד</strong> - ניתוח לימוד יסודי</li>
+                            <li>👂 <strong>שמיעה</strong> - ניתוח הקשבה עמוקה</li>
+                            <li>👄 <strong>עריכת שפתיים</strong> - ניתוח חזרה והטמעה</li>
+                            <li>❤️ <strong>בינה הלב</strong> - ניתוח הבנת המסר לעומק</li>
+                            <li>🙏 <strong>יראת שמיים</strong> - ניתוח כבוד וקדושה</li>
+                            <li>🙇‍♂️ <strong>ענווה</strong> - ניתוח קבלת חוכמה מאחרים</li>
+                            <li>👨‍🏫 <strong>שימוש חכמים</strong> - ניתוח חיבור למורים</li>
+                            <li>👥 <strong>דקדוק חברים</strong> - ניתוח לימוד בקבוצה</li>
+                            <li>🤔 <strong>פלפול התלמידים</strong> - ניתוח שאלות מחדדות</li>
+                            <li>💭 <strong>יישוב הדעת</strong> - ניתוח חשיבה מעמיקה</li>
+                        </ol>
+                        <a href="torah.html" class="btn btn-primary">לניתוח בשיטת מידות התורה</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- עשרת חוקי ההצלחה -->
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title"><i class="fas fa-chart-line"></i> עשרת חוקי ההצלחה</h3>
+                        <p>שיטת ניתוח טקסטים המבוססת על חוקי ההצלחה:</p>
+                        <ol>
+                            <li>🎯 <strong>חוק המטרה</strong> - ניתוח כיוון והתקדמות</li>
+                            <li>💪 <strong>חוק ההתמדה</strong> - ניתוח עקביות</li>
+                            <li>✨ <strong>חוק הגישה החיובית</strong> - ניתוח מחשבה יוצרת מציאות</li>
+                            <li>📚 <strong>חוק הלמידה</strong> - ניתוח התפתחות מתמדת</li>
+                            <li>⚡️ <strong>חוק הפעולה</strong> - ניתוח יישום מעשי</li>
+                            <li>🦁 <strong>חוק האומץ</strong> - ניתוח התמודדות עם אתגרים</li>
+                            <li>🤝 <strong>חוק הרשתות</strong> - ניתוח חיבורים ושותפויות</li>
+                            <li>⏰ <strong>חוק הזמן</strong> - ניתוח ניהול זמן נכון</li>
+                            <li>🧘‍♂️ <strong>חוק הבריאות</strong> - ניתוח שמירה על כוחות</li>
+                            <li>🤲 <strong>חוק הנתינה</strong> - ניתוח עזרה לאחרים</li>
+                        </ol>
+                        <a href="success.html" class="btn btn-primary">לניתוח בשיטת חוקי ההצלחה</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- עשרת חוקי ההצלחה בחיים -->
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title"><i class="fas fa-lightbulb"></i>💡 עשרת חוקי ההצלחה בחיים</h3>
+                        <p>כל הצלחה מבוססת על עקרונות:</p>
+                        <ol>
+                            <li>🎯 <strong>חוק המטרה</strong> - בלי מטרה, אין התקדמות</li>
+                            <li>💪 <strong>חוק ההתמדה</strong> - לא לוותר, גם כשקשה</li>
+                            <li>🌟 <strong>חוק הגישה החיובית</strong> - המחשבה יוצרת מציאות</li>
+                            <li>📚 <strong>חוק הלמידה</strong> - תמיד להיות בתהליך התפתחות</li>
+                            <li>⚡️ <strong>חוק הפעולה</strong> - חלומות בלי עשייה = כלום</li>
+                            <li>🦁 <strong>חוק האומץ</strong> - מי שלא מעז, לא מתקדם</li>
+                            <li>🤝 <strong>חוק הרשתות</strong> - החיבורים שלך הם הכוח שלך</li>
+                            <li>⏰ <strong>חוק הזמן</strong> - הזמן הוא הנכס היקר ביותר</li>
+                            <li>💪 <strong>חוק הבריאות</strong> - בלי גוף בריא, אי אפשר להצליח</li>
+                            <li>🤲 <strong>חוק הנתינה</strong> - עזרה לאחרים מחזירה פי כמה</li>
+                        </ol>
+                        <p class="text-muted">🔹 שימוש בניתוח: האם הדמות בטקסט פועלת על פי חוקי ההצלחה או נכשלת בהם?
+                        </p>
+                        <a href="success_laws.html" class="btn btn-primary">לניתוח בשיטת חוקי ההצלחה בחיים</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- עשרת חוקי הזמן -->
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title"><i class="fas fa-hourglass"></i>⏳ עשרת חוקי הזמן</h3>
+                        <p>איך אנשים או רעיונות מתנהלים בזמן:</p>
+                        <ol>
+                            <li>⚡️ <strong>חוק המיידיות</strong> - עשה עכשיו, אל תדחה</li>
+                            <li>📊 <strong>חוק התעדוף</strong> - עשה קודם את מה שהכי חשוב</li>
+                            <li>🌱 <strong>חוק ההשקעה בזמן</strong> - מה שתשקיע בו זמן, יצמח</li>
+                            <li>⚖️ <strong>חוק הקצב</strong> - לפעמים מהר, לפעמים לאט – תלוי במטרה</li>
+                            <li>🎯 <strong>חוק הריכוז</strong> - אל תתפזר, התמקד במטרה אחת בכל רגע</li>
+                            <li>⌛️ <strong>חוק הזמן האבוד</strong> - זמן שעבר לא חוזר – נצל אותו בחוכמה</li>
+                            <li>🧘‍♂️ <strong>חוק הפסקות</strong> - מנוחה היא חלק מההצלחה</li>
+                            <li>📅 <strong>חוק הזמן היעיל</strong> - תכנון נכון מביא לתוצאות טובות יותר</li>
+                            <li>⏰ <strong>חוק התזמון</strong> - לא רק מה אתה עושה, אלא מתי</li>
+                            <li>🔄 <strong>חוק החזרה</strong> - דברים גדולים נוצרים על ידי התמדה</li>
+                        </ol>
+                        <p class="text-muted">🔹 שימוש בניתוח: האם הדמות/הטקסט מתנהלת נכון בזמן או מבזבזת אותו?
+                            (למשל,
+                            נוח בנה את התיבה לאט ובזהירות – חוק הקצב!)</p>
+                        <a href="time_laws.html" class="btn btn-primary">לניתוח בשיטת חוקי הזמן</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- עשר מערכות החיים בגוף האדם -->
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title"><i class="fas fa-dna"></i>🧬 עשר מערכות החיים בגוף האדם</h3>
+                        <p>חיבור בין הפיזי לרוחני דרך גוף האדם:</p>
+                        <ol>
+                            <li>🧠 <strong>מערכת העצבים</strong> - התודעה, הקשר בין מחשבה לגוף</li>
+                            <li>❤️ <strong>מערכת הדם</strong> - כוח החיים, זרימה, נתינה</li>
+                            <li>🫁 <strong>מערכת הנשימה</strong> - חיבור לחיים (נשמת חיים)</li>
+                            <li>🍽️ <strong>מערכת העיכול</strong> - ספיגה ועיכול מידע/מזון</li>
+                            <li>🦴 <strong>מערכת השלד</strong> - תמיכה, מסגרת, עקרונות</li>
+                            <li>💪 <strong>מערכת השרירים</strong> - פעולה, יישום, כוח</li>
+                            <li>🧹 <strong>מערכת ההפרשה</strong> - ניקוי ותיקון</li>
+                            <li>🌱 <strong>מערכת הרבייה</strong> - יצירה, דור העתיד</li>
+                            <li>🛡️ <strong>מערכת החיסון</strong> - הגנה, חסינות מול השפעות חיצוניות</li>
+                            <li>⚖️ <strong>המערכת האנדוקרינית</strong> - איזון, ויסות תהליכים</li>
+                        </ol>
+                        <p class="text-muted">🔹 שימוש בניתוח: האם הדמות/הרעיון בטקסט קשור לאחד ממערכות הגוף? (למשל,
+                            צדק
+                            זה מערכת החיסון, עוצמה זה השרירים, קביעת חוקים זה השלד)</p>
+                        <a href="body_systems.html" class="btn btn-primary">לניתוח בשיטת מערכות הגוף</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- עשר המכות -->
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title"><i class="fas fa-bolt"></i>⚡ עשר המכות</h3>
+                        <p>שבירת האשליה וחינוך למציאות אמיתית:</p>
+                        <ol>
+                            <li>🩸 <strong>דם</strong> - שינוי יסודות החיים</li>
+                            <li>🐸 <strong>צפרדע</strong> - חדירה לפרטיות</li>
+                            <li>🦟 <strong>כינים</strong> - יסוד קטן ומשמעותי</li>
+                            <li>🐺 <strong>ערוב</strong> - התמודדות עם כאוס</li>
+                            <li>🐄 <strong>דבר</strong> - פירוק שקרים</li>
+                            <li>🤒 <strong>שחין</strong> - סבל אישי וציבורי</li>
+                            <li>🌨️ <strong>ברד</strong> - שילוב הפכים (אש ומים)</li>
+                            <li>🦗 <strong>ארבה</strong> - ריקון מהות</li>
+                            <li>🌑 <strong>חושך</strong> - עיוורון מחשבתי</li>
+                            <li>⚰️ <strong>מכת בכורות</strong> - הכרה סופית באמת</li>
+                        </ol>
+                        <p class="text-muted">🔹 שימוש בניתוח: בחינת שלבי פירוק האשליה ומעבר לגילוי האמת.</p>
+                        <a href="plagues.html" class="btn btn-primary">לניתוח בשיטת עשר המכות</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- עשרת הביטויים של תשובה לפי הרמב"ם -->
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title"><i class="fas fa-sync-alt"></i>🔄 עשרת הביטויים של תשובה לפי הרמב"ם
+                        </h3>
+                        <p>חזרה לתיקון עצמי:</p>
+                        <ol>
+                            <li>👁️ <strong>הכרת החטא</strong> - מודעות</li>
+                            <li>💔 <strong>חרטה</strong> - חיבור לרגש הפנימי</li>
+                            <li>🛑 <strong>עזיבת החטא</strong> - שינוי מעשי</li>
+                            <li>💭 <strong>וידוי</strong> - הכרה מילולית</li>
+                            <li>🎯 <strong>קבלה לעתיד</strong> - בניית כיוון חדש</li>
+                            <li>🔧 <strong>תיקון המעוות</strong> - השבת הנזק</li>
+                            <li>💪 <strong>כיבוש היצר</strong> - התמודדות פנימית</li>
+                            <li>❤️ <strong>אהבת ה'</strong> - רצון לקדושה</li>
+                            <li>📈 <strong>התמדה בטוב</strong> - לא רק תיקון, אלא עלייה</li>
+                            <li>✨ <strong>ניסיון חוזר</strong> - עמידה בניסיון חדש</li>
+                        </ol>
+                        <p class="text-muted">🔹 שימוש בניתוח: להבחין אם הטקסט מתאר תהליך של חזרה למקור.</p>
+                        <a href="rambam_teshuva.html" class="btn btn-primary">לניתוח בשיטת תשובת הרמב"ם</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- עשרת המידות של תורה לפי המשנה באבות -->
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title"><i class="fas fa-book"></i>📚 עשרת המידות של תורה לפי המשנה באבות
+                        </h3>
+                        <p>כלים להשגת חוכמה:</p>
+                        <ol>
+                            <li>📖 <strong>תלמוד</strong> - לימוד יסודי</li>
+                            <li>👂 <strong>שמיעה</strong> - הקשבה עמוקה</li>
+                            <li>🗣️ <strong>עריכת שפתיים</strong> - חזרה על הדברים בקול</li>
+                            <li>💭 <strong>בינה הלב</strong> - הבנת המסר לעומק</li>
+                            <li>🙏 <strong>יראת שמיים</strong> - ללמוד מתוך כבוד לקודש</li>
+                            <li>🌱 <strong>ענווה</strong> - לקבל חוכמה מאחרים</li>
+                            <li>👨‍🏫 <strong>שימוש חכמים</strong> - חיבור לרבנים ומורים</li>
+                            <li>👥 <strong>דקדוק חברים</strong> - לימוד בקבוצה</li>
+                            <li>❓ <strong>פלפול התלמידים</strong> - שאלות שמחדדות את ההבנה</li>
+                            <li>🧠 <strong>יישוב הדעת</strong> - לחשוב לפני שמסיקים מסקנות</li>
+                        </ol>
+                        <p class="text-muted">🔹 שימוש בניתוח: בחינת איך מושגת חוכמה אמיתית בתוך הטקסט.</p>
+                        <a href="torah_midot.html" class="btn btn-primary">לניתוח בשיטת מידות התורה</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- עשרת חוקי המלחמה -->
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title"><i class="fas fa-sword"></i>⚔️ עשרת חוקי המלחמה</h3>
+                        <p>לא רק מלחמות פיזיות – גם מלחמות רוחניות!</p>
+                        <ol>
+                            <li>🎭 <strong>חוק ההפתעה</strong> - היריב לא צריך לדעת מה אתה מתכנן</li>
+                            <li>⚡️ <strong>חוק הזריזות</strong> - מי שמגיב מהר, מנצח</li>
+                            <li>🛡️ <strong>חוק ההגנה</strong> - קודם כל תבצר את עצמך</li>
+                            <li>⚔️ <strong>חוק ההתקפה</strong> - התקפה טובה יותר מהגנה ממושכת</li>
+                            <li>💪 <strong>חוק המשאבים</strong> - השתמש נכון בכוחות שלך</li>
+                            <li>🦁 <strong>חוק המורל</strong> - מי שמאמין בצד שלו – חזק יותר</li>
+                            <li>🔍 <strong>חוק המודיעין</strong> - תדע כל פרט על האויב</li>
+                            <li>🗺️ <strong>חוק השטח</strong> - שלוט במגרש שאתה נלחם בו</li>
+                            <li>🤝 <strong>חוק הבריתות</strong> - שותפים נכונים מביאים ניצחון</li>
+                            <li>⏳ <strong>חוק ההתשה</strong> - לפעמים הניצחון בא בסבלנות</li>
+                        </ol>
+                        <p class="text-muted">🔹 שימוש בניתוח: האם הדמות בטקסט נלחמת נכון? (דוד המלך השתמש בחוק
+                            ההפתעה
+                            נגד גוליית!)</p>
+                        <a href="war_laws.html" class="btn btn-primary">לניתוח בשיטת חוקי המלחמה</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- עשרת חוקי העולם הטבעי -->
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title"><i class="fas fa-globe"></i>🌍 עשרת חוקי העולם הטבעי</h3>
+                        <p>תהליכי החיים משתקפים בטבע:</p>
+                        <ol>
+                            <li>🔄 <strong>חוק המחזוריות</strong> - הכול עובד בסיבובים (עונות השנה, לידה ומוות)</li>
+                            <li>🦎 <strong>חוק ההסתגלות</strong> - מי שלא משתנה – נכחד</li>
+                            <li>🕸️ <strong>חוק החיבור</strong> - כל דבר בטבע קשור לאחרים</li>
+                            <li>☯️ <strong>חוק הניגודים</strong> - קור וחום, אור וחושך – הכול קיים יחד</li>
+                            <li>🌱 <strong>חוק הכוח החבוי</strong> - מה שנראה חלש, לפעמים הוא הכי חזק</li>
+                            <li>🌊 <strong>חוק השפע</strong> - הטבע מייצר מספיק לכולם</li>
+                            <li>🐿️ <strong>חוק החיסכון</strong> - בעלי חיים יודעים לאגור לשעת חירום</li>
+                            <li>🌳 <strong>חוק הזרע</strong> - עץ שלם יוצא מגרעין קטן</li>
+                            <li>⏳ <strong>חוק הזמן</strong> - בטבע הכול קורה בקצב שלו</li>
+                            <li>🦁 <strong>חוק ההשרדות</strong> - רק החזקים או המתוחכמים שורדים</li>
+                        </ol>
+                        <p class="text-muted">🔹 שימוש בניתוח: האם הרעיון/הדמות מתנהלת לפי חוקי הטבע או נאבקת נגדם?
+                        </p>
+                        <a href="natural_laws.html" class="btn btn-primary">לניתוח בשיטת חוקי העולם הטבעי</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- עשרת חוקי הצדק והמשפט -->
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title"><i class="fas fa-balance-scale"></i>⚖️ עשרת חוקי הצדק והמשפט</h3>
+                        <p>חוקי הצדק האוניברסליים – האם הדמות/הרעיון הוגן או לא?</p>
+                        <ol>
+                            <li>🎯 <strong>חוק היושר</strong> - לא לשקר ולא לרמות</li>
+                            <li>✋ <strong>חוק האחריות</strong> - לקחת אחריות על מעשים</li>
+                            <li>🔄 <strong>חוק הגמול</strong> - כל מעשה גורר תגובה (מוסרית)</li>
+                            <li>🛡️ <strong>חוק ההגנה</strong> - חובה להגן על חפים מפשע</li>
+                            <li>⚖️ <strong>חוק השוויון</strong> - כולם שווים בפני החוק</li>
+                            <li>⚡️ <strong>חוק הענישה</strong> - מי שעושה רע – משלם על כך</li>
+                            <li>🕊️ <strong>חוק החנינה</strong> - יש מקום למחילה בתנאים מסוימים</li>
+                            <li>💭 <strong>חוק הכוונה</strong> - גם לכוונות יש משקל במשפט</li>
+                            <li>👁️ <strong>חוק העדות</strong> - יש צורך בראיות ברורות</li>
+                            <li>🌍 <strong>חוק ההשפעה</strong> - חוק טוב משפיע על כל החברה לטובה</li>
+                        </ol>
+                        <p class="text-muted">🔹 שימוש בניתוח: האם הרעיון/הדמות פועלת בצדק או באי-צדק?</p>
+                        <a href="justice_laws.html" class="btn btn-primary">לניתוח בשיטת חוקי הצדק והמשפט</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- עשרת הדיברות -->
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title"><i class="fas fa-tablets"></i>📜 עשרת הדיברות</h3>
+                        <p>יסודות המוסר והאמונה - בין אדם למקום ובין אדם לחברו</p>
+                        <ol>
+                            <li>✨ <strong>אנוכי ה' אלוקיך</strong> - אמונה בבורא עולם</li>
+                            <li>🚫 <strong>לא יהיה לך</strong> - איסור עבודה זרה</li>
+                            <li>🗣️ <strong>לא תשא</strong> - כבוד השם ודיבור אמת</li>
+                            <li>🕊️ <strong>זכור את יום השבת</strong> - קדושת הזמן</li>
+                            <li>👨‍👩‍👦 <strong>כבד את אביך</strong> - כיבוד הורים ומסורת</li>
+                            <li>💔 <strong>לא תרצח</strong> - קדושת החיים</li>
+                            <li>💑 <strong>לא תנאף</strong> - קדושת המשפחה</li>
+                            <li>🤝 <strong>לא תגנוב</strong> - כבוד הרכוש</li>
+                            <li>👄 <strong>לא תענה</strong> - אמת בדיבור ובמשפט</li>
+                            <li>❤️ <strong>לא תחמוד</strong> - שמחה בחלקך</li>
+                        </ol>
+                        <p class="text-muted">🔹 שימוש בניתוח: האם הדמות/הרעיון מתאים או מנוגד לערכי עשרת הדיברות?
+                        </p>
+                        <a href="ten_commandments.html" class="btn btn-primary">לניתוח בשיטת עשרת הדיברות</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- עשר המידות לפי מסילת ישרים -->
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title"><i class="fas fa-book"></i>📖 עשר המידות לפי מסילת ישרים</h3>
+                        <p>ניתוח מידות הנפש על פי הרמח"ל בספרו "מסילת ישרים":</p>
+                        <ol>
+                            <li>👁️ <strong>זהירות</strong> - התבוננות פנימית והתרחקות מעבירות</li>
+                            <li>⚡️ <strong>זריזות</strong> - יוזמה והתלהבות בקיום מצוות</li>
+                            <li>✨ <strong>נקיות</strong> - היטהרות ממידות רעות וחטאים נסתרים</li>
+                            <li>🚫 <strong>פרישות</strong> - התרחקות גם מדברים מותרים</li>
+                            <li>💫 <strong>טהרה</strong> - זיכוך כוונות הנפש והמחשבות</li>
+                            <li>❤️ <strong>חסידות</strong> - עשיית טוב מעבר לנדרש</li>
+                            <li>🙏 <strong>ענווה</strong> - ביטול ה"אני" ושפלות רוח</li>
+                            <li>😰 <strong>יראת חטא</strong> - פחד עמוק מעוון</li>
+                            <li>✨ <strong>קדושה</strong> - חיבור תמידי עם ה'</li>
+                            <li>👑 <strong>רוח הקודש</strong> - השראת השכינה והתעלות רוחנית</li>
+                        </ol>
+                        <p class="text-muted">🔹 שימוש בניתוח: שיטה זו מסייעת בניתוח התפתחות רוחנית הדרגתית, כאשר כל
+                            מידה בנויה על קודמתה.</p>
+                        <a href="mesilat_yesharim.html" class="btn btn-primary">לניתוח בשיטת מסילת ישרים</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- שיטות ניתוח עם 13 מאפיינים -->
+        <div class="row mt-5">
+            <div class="col-12 mb-4">
+                <h2 class="text-center">שיטות ניתוח עם 13 מאפיינים</h2>
+            </div>
+
+            <!-- יג' דרכי הלימוד בתורה -->
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title"><i class="fas fa-book"></i>📚 יג' דרכי הלימוד בתורה</h3>
+                        <p>ניתוח שיטתי של לימוד תורה, מבוסס על מסורת התלמוד והמדרשים:</p>
+                        <ol>
+                            <li>📖 <strong>מקרא</strong> - לימוד הפשט</li>
+                            <li>📜 <strong>משנה</strong> - לימוד עקרונות ההלכה</li>
+                            <li>📚 <strong>גמרא</strong> - הבנה מעמיקה של המקורות</li>
+                            <li>⚖️ <strong>הלכה</strong> - יישום הלכה למעשה</li>
+                            <li>💡 <strong>מדרש</strong> - רמזים ומשלים נסתרי תורה</li>
+                            <li>📖 <strong>אגדה</strong> - מוסר וסיפורי חז"ל</li>
+                            <li>✨ <strong>קבלה</strong> - סודות הבריאה</li>
+                            <li>🙏 <strong>חסידות</strong> - חיבור פנימי לעבודה רוחנית</li>
+                            <li>🎯 <strong>מוסר</strong> - תיקון המידות ושיפור עצמי</li>
+                            <li>🧠 <strong>פילוסופיה יהודית</strong> - הבנת יסודות האמונה</li>
+                            <li>🔄 <strong>דרוש</strong> - יצירת חיבורים בין מקורות</li>
+                            <li>⚖️ <strong>פסיקת הלכה</strong> - הכרעה מעשית בחיי היומיום</li>
+                            <li>🔍 <strong>ביאור שיטות לימוד</strong> - חיבור בין הדרכים השונות</li>
+                        </ol>
+                        <p class="text-muted">🔹 שימוש בניתוח: שיטה זו מתאימה למי שרוצה להבין כיצד ללמוד תורה בצורה
+                            מובנית ומעמיקה.</p>
+                        <a href="torah_learning.html" class="btn btn-primary">לניתוח בשיטת דרכי הלימוד</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- יג' יסודות האמונה -->
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title"><i class="fas fa-scroll"></i>📖 יג' יסודות האמונה</h3>
+                        <p>ניתוח פילוסופי, מבוסס על הרמב"ם (פירוש המשנה, סנהדרין פרק י'):</p>
+                        <ol>
+                            <li>✨ <strong>מציאות ה'</strong> - הכרה בכך שה' קיים</li>
+                            <li>☝️ <strong>אחדות ה'</strong> - אין לו שותף</li>
+                            <li>🌌 <strong>אין לו גוף</strong> - אין לו מגבלות פיזיות</li>
+                            <li>⌛️ <strong>קדמות ה'</strong> - ה' תמיד היה ותמיד יהיה</li>
+                            <li>🙏 <strong>לעבוד רק לו</strong> - אין זולת ה'</li>
+                            <li>👁️ <strong>נבואה</strong> - תקשורת עם הנביאים</li>
+                            <li>📜 <strong>נבואת משה</strong> - משה היה הנביא הגדול ביותר</li>
+                            <li>🕊️ <strong>התורה מן השמים</strong> - התורה ניתנה ישירות מה'</li>
+                            <li>📖 <strong>התורה נצחית</strong> - אינה משתנה</li>
+                            <li>👁️ <strong>השגחה פרטית</strong> - ה' משגיח על הבריות</li>
+                            <li>⚖️ <strong>שכר ועונש</strong> - צדיק מקבל שכר ורשע נענש</li>
+                            <li>👑 <strong>ביאת המשיח</strong> - האמונה בגאולה</li>
+                            <li>✨ <strong>תחיית המתים</strong> - חיים מחודשים בעולם הבא</li>
+                        </ol>
+                        <p class="text-muted">🔹 שימוש בניתוח: שיטה זו עוזרת לנתח את יסודות היהדות מבחינה תיאולוגית
+                            ופילוסופית.</p>
+                        <a href="emuna_principles.html" class="btn btn-primary">לניתוח בשיטת יסודות האמונה</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- יג' מידות הרחמים -->
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title"><i class="fas fa-heart"></i>💙 יג' מידות הרחמים</h3>
+                        <p>ניתוח מושגי של רחמים בתורה, מבוסס על 13 מידות הרחמים של הקב"ה (שמות ל"ד):</p>
+                        <ol>
+                            <li>✨ <strong>ה'</strong> - חסד ללא גבול</li>
+                            <li>💫 <strong>ה'</strong> - גם לאחר חטא, רחמיו נמשכים</li>
+                            <li>💪 <strong>א-ל</strong> - כוח החסד בפועל</li>
+                            <li>💗 <strong>רחום</strong> - רגש של חמלה עמוקה</li>
+                            <li>🎁 <strong>חנון</strong> - נתינה לפנים משורת הדין</li>
+                            <li>⏳ <strong>ארך אפיים</strong> - סבלנות וסלחנות</li>
+                            <li>💝 <strong>רב חסד</strong> - חסד מרובה</li>
+                            <li>⚖️ <strong>אמת</strong> - רחמים המבוססים על יושר</li>
+                            <li>🔄 <strong>נוצר חסד לאלפים</strong> - המשכיות החסד</li>
+                            <li>🧹 <strong>נושא עוון</strong> - מחיקת החטא עצמו</li>
+                            <li>🛡️ <strong>ופשע</strong> - תיקון של מרידה מודעת</li>
+                            <li>🌱 <strong>וחטאה</strong> - סלחנות גם על כשלונות קטנים</li>
+                            <li>✨ <strong>ונקה</strong> - טהרה מוחלטת מהחטא</li>
+                        </ol>
+                        <p class="text-muted">🔹 שימוש בניתוח: שיטה זו מתאימה לניתוח כיצד התורה מציגה את המידות
+                            האלוקיות
+                            של הרחמים, ואיך ניתן ליישם אותן בחיים שלנו.</p>
+                        <a href="mercy_attributes.html" class="btn btn-primary">לניתוח בשיטת מידות הרחמים</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- יג' שלבים בתהליך גאולה -->
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title"><i class="fas fa-hourglass"></i>⏳ יג' שלבים בתהליך גאולה</h3>
+                        <p>מבוסס על מדרשים והקבלה:</p>
+                        <ol>
+                            <li>😰 <strong>חבלי משיח</strong> - קשיים עולמיים לפני הגאולה</li>
+                            <li>👑 <strong>ביאת המשיח</strong> - הופעת המשיח</li>
+                            <li>👑 <strong>הכרזת המלכות</strong> - קבלת מנהיגות המשיח</li>
+                            <li>⚖️ <strong>כינון המשפט</strong> - משפט צדק לכל העמים</li>
+                            <li>👁️ <strong>חזרת הנבואה</strong> - התחדשות הנבואה</li>
+                            <li>🌍 <strong>קיבוץ גלויות</strong> - שיבת עם ישראל לארצו</li>
+                            <li>🏛️ <strong>בניין בית המקדש</strong> - חזרת הקדושה</li>
+                            <li>🙏 <strong>חידוש העבודה</strong> - עבודת הקרבנות והמקדש</li>
+                            <li>🕊️ <strong>שלום עולמי</strong> - סיום המלחמות</li>
+                            <li>🧹 <strong>בירור הרע מהעולם</strong> - תיקון העולם ממידות רעות</li>
+                            <li>✨ <strong>השגת חכמה אלוקית</strong> - גילוי האלוקות בעולם</li>
+                            <li>💫 <strong>תחיית המתים</strong> - החזרת הנשמות לגוף</li>
+                            <li>🌟 <strong>העולם הבא</strong> - חיים נצחיים ברמת קיום חדשה</li>
+                        </ol>
+                        <p class="text-muted">🔹 שימוש בניתוח: שיטה זו מנתחת את התהליך העתידי של הגאולה על פי
+                            המקורות.
+                        </p>
+                        <a href="geula_process.html" class="btn btn-primary">לניתוח בשיטת תהליך הגאולה</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- יג' ערוצי התיקון בנפש -->
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title"><i class="fas fa-dove"></i>🕊️ יג' ערוצי התיקון בנפש</h3>
+                        <p>ניתוח תיקוני הנשמה, מבוסס על כתבי האר"י ורבי נחמן מברסלב:</p>
+                        <ol>
+                            <li>👄 <strong>תיקון הדיבור</strong> - שמירה על טהרת הדיבור</li>
+                            <li>🧠 <strong>תיקון המחשבה</strong> - מחשבות קדושות בלבד</li>
+                            <li>👁️ <strong>תיקון העיניים</strong> - לראות טוב ולא שלילי</li>
+                            <li>👂 <strong>תיקון השמיעה</strong> - להאזין לדברי אמת</li>
+                            <li>❤️ <strong>תיקון הרגש</strong> - לשלוט בכעס, קנאה וגאווה</li>
+                            <li>🍽️ <strong>תיקון האכילה</strong> - אכילה בקדושה ובכוונה</li>
+                            <li>💪 <strong>תיקון התאוות</strong> - שליטה על היצרים</li>
+                            <li>✨ <strong>תיקון הברית</strong> - שמירת הקדושה האישית</li>
+                            <li>🎯 <strong>תיקון המידות</strong> - יושר, ענווה, נתינה ועוד</li>
+                            <li>🧠 <strong>תיקון הזיכרון</strong> - לזכור מהות החיים</li>
+                            <li>🙏 <strong>תיקון ההודאה</strong> - הכרת תודה תמידית</li>
+                            <li>😊 <strong>תיקון השמחה</strong> - להיות חיובי ולשמוח בחלקך</li>
+                            <li>🙌 <strong>תיקון התפילה</strong> - להתפלל מתוך כוונה ותשוקה</li>
+                        </ol>
+                        <p class="text-muted">🔹 שימוש בניתוח: שיטה זו משמשת לעבודה פנימית על המידות ולתיקון הנפש.
+                        </p>
+                        <a href="soul_tikun.html" class="btn btn-primary">לניתוח בשיטת תיקוני הנפש</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- יג' שבילים בתורת הסוד -->
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title"><i class="fas fa-star-of-david"></i>🔮 יג' שבילים בתורת הסוד</h3>
+                        <p>ניתוח מסלולי חכמה קבליים, מבוסס על חכמת הקבלה והאופן שבו נחשפים הסודות האלוקיים:</p>
+                        <ol>
+                            <li>✨ <strong>סוד האור</strong> - חקר מהות האור האלוקי</li>
+                            <li>📝 <strong>סוד האותיות</strong> - כוחות האותיות והשפעתן</li>
+                            <li>👑 <strong>סוד השמות</strong> - גילוי שמות קדושים והשפעתם</li>
+                            <li>🔱 <strong>סוד השבטים</strong> - המבנה הפנימי של נשמות ישראל</li>
+                            <li>🌍 <strong>סוד העולמות</strong> - הבריאה במבנה ארבעת העולמות</li>
+                            <li>🌟 <strong>סוד הספירות</strong> - הבנת הנהגת האל דרך עשר הספירות</li>
+                            <li>7️⃣ <strong>סוד השביעיות</strong> - מחזוריות הבריאה (שבת, שמיטה, וכו')</li>
+                            <li>🙏 <strong>סוד התפילה</strong> - מבנה התפילה כעלייה בעולמות</li>
+                            <li>🌅 <strong>סוד הגאולה</strong> - חוקי הזמן והתהליך של תיקון העולם</li>
+                            <li>❤️ <strong>סוד האהבה האלוקית</strong> - הקשר בין האדם והבורא</li>
+                            <li>👁️ <strong>סוד הנבואה</strong> - איך האור האלוקי יורד לנביאים</li>
+                            <li>🔄 <strong>סוד הגלגולים</strong> - הבנת תהליכי הנשמות</li>
+                            <li>✨ <strong>סוד תחיית המתים</strong> - תהליך החזרת העולם למדרגתו העליונה</li>
+                        </ol>
+                        <p class="text-muted">🔹 שימוש בניתוח: שיטה זו מתאימה ללימוד עומקי הקבלה והבנת הסודות
+                            שמאחורי המציאות.</p>
+                        <a href="kabbalah_paths.html" class="btn btn-primary">לניתוח בשיטת שבילי הסוד</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- יג' שערים בחכמת הקבלה -->
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title"><i class="fas fa-star-of-david"></i>✨ יג' שערים בחכמת הקבלה</h3>
+                        <p>ניתוח עיוני בקבלה, מבוסס על ר' יוסף ג'יקטיליה (ספר שערי אורה):</p>
+                        <ol>
+                            <li>👑 <strong>שער הכתר</strong> - מקור האור האלוקי</li>
+                            <li>🧠 <strong>שער החכמה</strong> - עיקרי החכמה האלוקית</li>
+                            <li>🌌 <strong>שער הבינה</strong> - הבנה מעמיקה של היקום</li>
+                            <li>❤️ <strong>שער החסד</strong> - אור של אהבה והשפעה</li>
+                            <li>🛡️ <strong>שער הגבורה</strong> - הצבת גבולות</li>
+                            <li>⚖️ <strong>שער התפארת</strong> - האיזון האלוקי</li>
+                            <li>💪 <strong>שער הנצח</strong> - התמדה ושימור</li>
+                            <li>🙏 <strong>שער ההוד</strong> - ענוה ויראה</li>
+                            <li>🔗 <strong>שער היסוד</strong> - חיבור הרוח לחומר</li>
+                            <li>👑 <strong>שער המלכות</strong> - גילוי האלוקות בעולם</li>
+                            <li>✨ <strong>שער השמות</strong> - גילוי כוחות השם בעולם</li>
+                            <li>📝 <strong>שער הצירופים</strong> - הבנת הכוחות באותיות</li>
+                            <li>🌟 <strong>שער הספירות</strong> - הסבר מבנה ההנהגה האלוקית</li>
+                        </ol>
+                        <p class="text-muted">🔹 שימוש בניתוח: שיטה זו מנתחת את מבנה הספירות ואת הכוחות האלוקיים
+                            במציאות.</p>
+                        <a href="kabbalah_gates.html" class="btn btn-primary">לניתוח בשיטת שערי הקבלה</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- יג' תיקוני דיקנא -->
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title"><i class="fas fa-leaf"></i>🌿 יג' תיקוני דיקנא</h3>
+                        <p>ניתוח ברמות של תיקון רוחני, מבוסס על תיקוני הזוהר – התיקונים הרוחניים של הנהגת ה':</p>
+                        <ol>
+                            <li>👑 <strong>כתר עליון</strong> - החכמה העליונה</li>
+                            <li>✨ <strong>י"ג תיקונים בזקן הקדוש</strong> - דרכי ההנהגה האלוקית</li>
+                            <li>⏳ <strong>ארך אפיים</strong> - הנהגת האריכות</li>
+                            <li>💝 <strong>רב חסד</strong> - אור של חסד</li>
+                            <li>⚖️ <strong>אמת</strong> - דייקנות ותיקון העולם</li>
+                            <li>🧹 <strong>נושא עוון</strong> - מחילה ללא גבול</li>
+                            <li>🕊️ <strong>סבלנות אין קץ</strong> - חסד בלתי מוגבל</li>
+                            <li>✨ <strong>תיקון הברית</strong> - שמירת הטוהר</li>
+                            <li>👄 <strong>תיקון הלשון</strong> - דיבור קדוש</li>
+                            <li>🧠 <strong>תיקון המחשבה</strong> - חשיבה נכונה</li>
+                            <li>🤝 <strong>תיקון המעשים</strong> - השפעה חיובית</li>
+                            <li>💫 <strong>תיקון הרצון</strong> - להיטהר מבפנים</li>
+                            <li>⚖️ <strong>תיקון המידות</strong> - איזון ותיקון המידות</li>
+                        </ol>
+                        <p class="text-muted">🔹 שימוש בניתוח: שיטה זו עוסקת בתיקון האדם דרך הנהגות ה' בעולם.</p>
+                        <a href="dikna.html" class="btn btn-primary">לניתוח בשיטת תיקוני דיקנא</a>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- יג' מדרגות בסולם המרכבה -->
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title"><i class="fas fa-rocket"></i>🚀 יג' מדרגות בסולם המרכבה</h3>
+                        <p>ניתוח התעלות רוחנית, מבוסס על ספרות חז"ל והקבלה:</p>
+                        <ol>
+                            <li>🙏 <strong>יראה בסיסית</strong> - קבלת עול</li>
+                            <li>✨ <strong>אמונה יציבה</strong> - חיבור פנימי למקור</li>
+                            <li>🔄 <strong>תשובה</strong> - יכולת לתקן ולשוב</li>
+                            <li>🧠 <strong>התבוננות</strong> - הבנת החכמה האלוקית</li>
+                            <li>💫 <strong>עבודה פנימית</strong> - שינוי עצמי מתוך מודעות</li>
+                            <li>✨ <strong>קדושה אישית</strong> - טהרת הרצון והמחשבה</li>
+                            <li>❤️ <strong>אהבה עילאית</strong> - אהבת ה' ללא גבול</li>
+                            <li>👑 <strong>יראת רוממות</strong> - הכרה בעוצמת האלוקות</li>
+                            <li>🔗 <strong>דבקות</strong> - חיבור מוחלט לרצון הבורא</li>
+                            <li>🕊️ <strong>רוח הקודש</strong> - השראה ישירה מלמעלה</li>
+                            <li>👁️ <strong>נבואה</strong> - תקשורת אלוקית עליונה</li>
+                            <li>🌟 <strong>הארת הספירות</strong> - השגת מבנה העולמות</li>
+                            <li>✨ <strong>יחוד עליון</strong> - התמזגות מוחלטת עם האלוקות</li>
+                        </ol>
+                        <p class="text-muted">🔹 שימוש בניתוח: שיטה זו ממפה את שלבי ההתעלות הרוחנית כפי שמתוארת
+                            בספרי הקבלה.</p>
+                        <a href="merkava.html" class="btn btn-primary">לניתוח בשיטת סולם המרכבה</a>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- יג' כוחות הנפש -->
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h3 class="card-title"><i class="fas fa-brain"></i>🧠 יג' כוחות הנפש</h3>
+                        <p>ניתוח פסיכולוגי ורוחני, מבוסס על שילוב הקבלה והחסידות, תוך חיבור לספירות:</p>
+                        <ol>
+                            <li>👑 <strong>כתר</strong> - רצון פנימי ושאיפות</li>
+                            <li>💡 <strong>חכמה</strong> - הבזק של הבנה ותובנה</li>
+                            <li>🧠 <strong>בינה</strong> - עיבוד והעמקת הבנה</li>
+                            <li>🔗 <strong>דעת</strong> - החיבור בין שכל לרגש</li>
+                            <li>❤️ <strong>חסד</strong> - אהבה, נתינה וחום</li>
+                            <li>💪 <strong>גבורה</strong> - משמעת ושליטה עצמית</li>
+                            <li>⚖️ <strong>תפארת</strong> - איזון והרמוניה</li>
+                            <li>🎯 <strong>נצח</strong> - התמדה ונחישות</li>
+                            <li>🙏 <strong>הוד</strong> - קבלה וענווה</li>
+                            <li>🤝 <strong>יסוד</strong> - תקשורת וחיבור רגשי</li>
+                            <li>👑 <strong>מלכות</strong> - מימוש וכוח השפעה</li>
+                            <li>✨ <strong>תענוג</strong> - חוויית שמחה והשראה</li>
+                            <li>🌟 <strong>אמונה</strong> - הכוח שמחבר את הכל</li>
+                        </ol>
+                        <p class="text-muted">🔹 שימוש בניתוח: שיטה זו מסייעת בניתוח עומק אישיותי, תוך חיבור בין
+                            קבלה, פסיכולוגיה והתפתחות עצמית.</p>
+                        <a href="soul_powers.html" class="btn btn-primary">לניתוח בשיטת כוחות הנפש</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>אודות המאגר</h5>
+                    <p>מאגר מידע לניתוח טקסטים בשיטות מוצלבות</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>קישורים מהירים</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="pardes.html" class="text-white">פרד"ס</a></li>
+                        <li><a href="abiya.html" class="text-white">אביע עולמות</a></li>
+                        <li><a href="elements.html" class="text-white">ארבעת היסודות</a></li>
+                        <li><a href="sefirot.html" class="text-white">עשר הספירות</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>צור קשר</h5>
+                    <p>שאלות והצעות לשיפור המאגר</p>
+                    <button class="btn btn-outline-light">צור קשר</button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/your-code.js"></script>
+    <script src="scripts.js"></script>
+</body>
+
+</html>
+
+</html>
