@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10 הספירות - קלפים מעוצבים</title>
+    <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <style>
+        @page {
+            size: A4;
+            margin: 0px;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Frank Ruhl Libre', serif;
+            font-weight: 500;
+            background: white;
+            color: #2c3e50;
+        }
+
+        .page {
+            width: 210mm;
+            height: 297mm;
+            margin: 0 auto;
+            padding: 10mm;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(to bottom, #ffffff, #f8f9fa);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page::before {
+            content: '';
+            position: absolute;
+            top: 5mm;
+            left: 5mm;
+            right: 5mm;
+            bottom: 5mm;
+            border: 1px solid #d4af37;
+            pointer-events: none;
+        }
+
+        .page::after {
+            content: '';
+            position: absolute;
+            top: 6mm;
+            left: 6mm;
+            right: 6mm;
+            bottom: 6mm;
+            border: 1px solid #d4af37;
+            pointer-events: none;
+            opacity: 0.5;
+        }
+
+        .bsd {
+            position: absolute;
+            top: 8mm;
+            right: 8mm;
+            color: #d4af37;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #d4af37;
+            margin: 0 0 0mm;
+            text-align: center;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            position: relative;
+            padding: 3mm 0;
+        }
+
+        h1::before,
+        h1::after {
+            content: '✧';
+            color: #d4af37;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 20px;
+        }
+
+        h1::before {
+            right: 20%;
+        }
+
+        h1::after {
+            left: 20%;
+        }
+
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1mm;
+            /* margin-top: 10mm; */
+        }
+
+        .card {
+            background: rgb(212, 175, 55, 0.2);
+            position: relative;
+            padding: 5mm;
+            box-shadow: inset 0px 0px 44px rgba(212, 175, 55, 1);
+            transition: transform 0.3s ease;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 1mm;
+            left: 1mm;
+            right: 1mm;
+            bottom: 1mm;
+            border: 2px solid #d4af37;
+            pointer-events: none;
+        }
+
+        .card::after {
+            content: '';
+            position: absolute;
+            top: 2mm;
+            left: 2mm;
+            right: 2mm;
+            bottom: 2mm;
+            border: 2px solid #d4af37;
+            pointer-events: none;
+            opacity: 0.5;
+        }
+
+        .card .star-corner {
+            position: absolute;
+            color: #d4af37;
+            font-size: 14px;
+            z-index: 1;
+        }
+
+        .card .star-corner.top-right {
+            top: 3mm;
+            right: 3mm;
+        }
+
+        .card .star-corner.top-left {
+            top: 3mm;
+            left: 3mm;
+        }
+
+        .card .star-corner.bottom-right {
+            bottom: 3mm;
+            right: 3mm;
+        }
+
+        .card .star-corner.bottom-left {
+            bottom: 3mm;
+            left: 3mm;
+        }
+
+        .card:hover {
+            transform: translateY(-2mm);
+        }
+
+        .card-header {
+            text-align: center;
+            margin-bottom: 3mm;
+            position: relative;
+            z-index: 1;
+        }
+
+        .card-bsd {
+            position: absolute;
+            top: 0;
+            right: 3mm;
+            color: #d4af37;
+            font-size: 10px;
+            font-weight: bold;
+        }
+
+        .card-title {
+            font-size: 18px;
+            color: #d4af37;
+            margin: 0;
+            font-weight: bold;
+        }
+
+        .card-emoji {
+            font-size: 24px;
+            margin: 2mm 0;
+        }
+
+        .card-content {
+            font-size: 12px;
+            line-height: 1.4;
+            color: #34495e;
+            position: relative;
+            z-index: 1;
+        }
+
+        .card-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .card-list li {
+            margin-bottom: 1mm;
+            padding-right: 12px;
+            position: relative;
+        }
+
+        .card-list li::before {
+            content: "✡";
+            position: absolute;
+            right: 0;
+            color: #d4af37;
+        }
+
+        .card-keywords {
+            margin-top: 3mm;
+            font-size: 10px;
+            color: #d4af37;
+            text-align: center;
+            font-style: italic;
+            position: relative;
+            z-index: 1;
+        }
+
+        .star-of-david {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 240px;
+            text-shadow: 0px 0px 24px gold;
+            color: #d4af37;
+            opacity: 0.2;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+
+            .page {
+                width: 210mm;
+                height: 297mm;
+                margin: 0;
+                padding: 15mm;
+            }
+
+            .card {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <div class="bsd">(בס״ד)</div>
+        <h1>✧ י' - חכמה: מקור הרעיון האלוקי ✧</h1>
+        <div class="cards-container">
+            <!-- נקודת המקור -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-bsd">בס״ד</div>
+                    <div class="card-title">נקודת המקור</div>
+                    <div class="card-emoji">✨</div>
+                </div>
+                <div class="card-content">
+                    <ul class="card-list">
+                        <li>זיהוי הרעיון הראשוני</li>
+                        <li>התחברות למקור העליון</li>
+                        <li>הבנת השורש הפנימי</li>
+                        <li>גילוי הניצוץ האלוקי</li>
+                        <li>חיבור לנקודת ההתחלה</li>
+                        <li>זיהוי המהות הפנימית</li>
+                        <li>התבוננות בשורש הדברים</li>
+                        <li>חיפוש נקודת האמת</li>
+                        <li>גילוי הכוונה המקורית</li>
+                        <li>חיבור לתכלית הבריאה</li>
+                    </ul>
+                </div>
+                <div class="card-keywords">מקור • שורש • התחלה • מהות • אמת</div>
+            </div>
+
+            <!-- תובנה ראשונית -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-bsd">בס״ד</div>
+                    <div class="card-title">תובנה ראשונית</div>
+                    <div class="card-emoji">💡</div>
+                </div>
+                <div class="card-content">
+                    <ul class="card-list">
+                        <li>קליטת הרעיון הבסיסי</li>
+                        <li>הבנת הכיוון הכללי</li>
+                        <li>זיהוי המגמה העיקרית</li>
+                        <li>תפיסת המסר המרכזי</li>
+                        <li>הבנת המטרה הראשית</li>
+                        <li>גילוי הרמז הראשון</li>
+                        <li>זיהוי הדפוס הבסיסי</li>
+                        <li>הבנת הקו המנחה</li>
+                        <li>תפיסת הרעיון המרכזי</li>
+                        <li>גילוי הכיוון הנכון</li>
+                    </ul>
+                </div>
+                <div class="card-keywords">תובנה • הבנה • כיוון • מטרה • גילוי</div>
+            </div>
+
+            <!-- השראה והארה -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-bsd">בס״ד</div>
+                    <div class="card-title">השראה והארה</div>
+                    <div class="card-emoji">🌟</div>
+                </div>
+                <div class="card-content">
+                    <ul class="card-list">
+                        <li>קבלת השראה עליונה</li>
+                        <li>פתיחות לרעיונות חדשים</li>
+                        <li>הארה פנימית פתאומית</li>
+                        <li>גילוי תובנות חדשות</li>
+                        <li>התחברות לאור העליון</li>
+                        <li>קבלת רעיונות מקוריים</li>
+                        <li>פתיחת שערי חכמה</li>
+                        <li>גילוי דרכים חדשות</li>
+                        <li>חיבור להשראה אלוקית</li>
+                        <li>קבלת הארה רוחנית</li>
+                    </ul>
+                </div>
+                <div class="card-keywords">השראה • הארה • חידוש • גילוי • אור</div>
+            </div>
+
+            <!-- ספירת ספירת כתר -->
+
+
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                // הוספת מגן דוד
+                const starOfDavid = document.createElement('div');
+                starOfDavid.className = 'star-of-david';
+                starOfDavid.textContent = '✡';
+                card.appendChild(starOfDavid);
+
+                // הוספת הכוכבים בפינות
+                const corners = ['top-right', 'top-left', 'bottom-right', 'bottom-left'];
+                corners.forEach(corner => {
+                    const star = document.createElement('div');
+                    star.className = `star-corner ${corner}`;
+                    star.textContent = '✡';
+                    card.appendChild(star);
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
