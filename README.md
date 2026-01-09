@@ -1,6 +1,6 @@
 # שיטות התבוננות והשקפות ✨
 
-- [בניית אפליקציית ניתוח הוליסטי מבוססת Gemini](https://gemini.google.com/share/89167e55a63f)
+- [HolisView AI Holistic Analysis System](https://gemini.google.com/share/89167e55a63f)
 ---
 
 - [HolisView PRO 4.0](https://gemini.google.com/share/d750cd0bda58)
