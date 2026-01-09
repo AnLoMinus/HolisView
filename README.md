@@ -12,6 +12,11 @@
 - [HolisView PRO 4.1.1](https://gemini.google.com/share/26470b04c0de)
 
 ---
+
+- [HolisView PRO 4.1.4](https://gemini.google.com/share/0a0d40e67702)
+
+---
+
 מאגר זה מכיל אוסף מקיף של שיטות ניתוח והתבוננות מעולם המחשבה היהודית, המאורגן לפי מספרי יסוד (4, 7, 10, 13).
 
 ## 📊 סטטיסטיקות כלליות
