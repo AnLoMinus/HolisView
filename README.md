@@ -1,8 +1,13 @@
 # שיטות התבוננות והשקפות ✨
 
 - [בניית אפליקציית ניתוח הוליסטי מבוססת Gemini](https://gemini.google.com/share/89167e55a63f)
-- [בניית אפליקציית ניתוח הוליסטי מבוססת Gemini v4](https://gemini.google.com/share/d750cd0bda58)
+---
 
+- [HolisView PRO 4.0](https://gemini.google.com/share/d750cd0bda58)
+  
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/cab7134a-8ba3-4d47-b6de-914ce1c0fcfb" />
+
+---
 מאגר זה מכיל אוסף מקיף של שיטות ניתוח והתבוננות מעולם המחשבה היהודית, המאורגן לפי מספרי יסוד (4, 7, 10, 13).
 
 ## 📊 סטטיסטיקות כלליות
