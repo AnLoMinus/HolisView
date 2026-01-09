@@ -8,6 +8,10 @@
 <img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/cab7134a-8ba3-4d47-b6de-914ce1c0fcfb" />
 
 ---
+
+- [HolisView PRO 4.1.1](https://gemini.google.com/share/26470b04c0de)
+
+---
 מאגר זה מכיל אוסף מקיף של שיטות ניתוח והתבוננות מעולם המחשבה היהודית, המאורגן לפי מספרי יסוד (4, 7, 10, 13).
 
 ## 📊 סטטיסטיקות כלליות
