@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HolisView Future Roadmap Explorer</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Chosen Palette: HolisView Deep Space (Dark Mode) -->
+    <!-- Background: #0C0A09 (Stone-950) -->
+    <!-- Cards: #1C1917 (Stone-900) -->
+    <!-- Accents: #A855F7 (Purple), #22D3EE (Cyan), #94A3B8 (Slate), #F59E0B (Amber) -->
+
+    <!-- Application Structure Plan: 
+         The UI has been upgraded to a high-fidelity "Engineering Dashboard" style.
+         1. Integration: Deep integration with the GitHub repository link.
+         2. Aesthetics: Transitioned from a light "Paper" theme to a dark "IDE/Terminal" theme to better match the developer nature of the repository.
+         3. Dynamic Effects: Added glowing borders and subtle hover scales to reflect the "HolisView Gold/Aura" spirit mentioned in the repository character.
+    -->
+
+    <!-- Visualization & Content Choices:
+         - Using dark backgrounds to make the Category Colors (Purple/Cyan/Amber) pop as "Neon" indicators.
+         - Charts are updated with white text for dark mode compatibility.
+    -->
+
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+    <style>
+        body {
+            background-color: #0c0a09;
+            color: #e7e5e4;
+        }
+
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+
+        .glass-card {
+            background: rgba(28, 25, 23, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(68, 64, 60, 0.4);
+        }
+
+        .glow-purple:hover { box-shadow: 0 0 20px rgba(168, 85, 247, 0.2); border-color: rgba(168, 85, 247, 0.4); }
+        .glow-cyan:hover { box-shadow: 0 0 20px rgba(34, 211, 238, 0.2); border-color: rgba(34, 211, 238, 0.4); }
+        .glow-slate:hover { box-shadow: 0 0 20px rgba(148, 163, 184, 0.2); border-color: rgba(148, 163, 184, 0.4); }
+        .glow-amber:hover { box-shadow: 0 0 20px rgba(245, 158, 11, 0.2); border-color: rgba(245, 158, 11, 0.4); }
+
+        .fade-in {
+            animation: fadeIn 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .nav-active {
+            background: rgba(231, 229, 228, 0.1);
+            color: #ffffff;
+            border-bottom: 2px solid #a855f7;
+        }
+    </style>
+</head>
+<body class="font-sans min-h-screen flex flex-col">
+
+    <!-- Header Section -->
+    <header class="bg-stone-900/80 backdrop-blur-md border-b border-stone-800 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-4">
+                <div class="w-10 h-10 bg-gradient-to-br from-purple-600 to-blue-600 rounded-lg flex items-center justify-center text-white text-xl shadow-lg shadow-purple-500/20">
+                    <i class="fa-solid fa-microchip"></i>
+                </div>
+                <div>
+                    <h1 class="text-xl font-bold tracking-tight text-white">HolisView <span class="text-stone-500 font-light">Ecosystem</span></h1>
+                    <div class="flex items-center gap-2">
+                        <span class="inline-block w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+                        <p class="text-[10px] text-stone-400 uppercase tracking-widest">Repository Status: Active</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hidden md:flex items-center gap-6">
+                <nav class="flex gap-1">
+                    <button onclick="switchTab('matrix')" id="nav-matrix" class="px-4 py-2 rounded-t-md text-sm font-medium transition-all nav-active">מטריצת פיתוח</button>
+                    <button onclick="switchTab('analytics')" id="nav-analytics" class="px-4 py-2 rounded-t-md text-sm font-medium transition-all text-stone-500 hover:text-stone-300">ניתוח נתונים</button>
+                    <button onclick="switchTab('backlog')" id="nav-backlog" class="px-4 py-2 rounded-t-md text-sm font-medium transition-all text-stone-500 hover:text-stone-300">צבר רעיונות</button>
+                </nav>
+                <a href="https://github.com/AnLoMinus/HolisView" target="_blank" class="bg-white/5 hover:bg-white/10 border border-stone-700 px-4 py-2 rounded-full text-sm font-bold flex items-center gap-2 transition-all">
+                    <i class="fa-brands fa-github"></i>
+                    GitHub
+                </a>
+            </div>
+
+            <button class="md:hidden text-stone-400">
+                <i class="fa-solid fa-bars-staggered text-xl"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
+
+        <!-- VIEW 1: THE MATRIX EXPLORER -->
+        <section id="view-matrix" class="fade-in block">
+            <div class="mb-10 flex flex-col md:flex-row justify-between items-end gap-6">
+                <div class="max-w-2xl">
+                    <h2 class="text-3xl font-black text-white mb-3">מטריצת המערכות המלאה</h2>
+                    <p class="text-stone-400 leading-relaxed">
+                        חקירה ויזואלית של כל רכיבי ה-Ecosystem. כל מערכת כאן מהווה נדבך בארכיטקטורה הכוללת של HolisView, החל מניתוח שכבות תודעתיות ועד לאוטומציות עסקיות מתקדמות.
+                    </p>
+                </div>
+                <!-- Mini Stats -->
+                <div class="flex gap-4">
+                    <div class="bg-stone-900 border border-stone-800 p-3 rounded-xl text-center min-w-[100px]">
+                        <div class="text-2xl font-bold text-white">20</div>
+                        <div class="text-[10px] text-stone-500 uppercase">מערכות ליבה</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Enhanced Filter Controls -->
+            <div class="flex flex-wrap gap-3 mb-10 p-2 bg-stone-900/50 rounded-2xl border border-stone-800/50 inline-flex">
+                <button onclick="filterMatrix('all')" class="filter-btn active px-6 py-2 rounded-xl bg-stone-100 text-stone-950 font-bold text-sm transition-all" data-filter="all">כל המערכות</button>
+                <button onclick="filterMatrix('consciousness')" class="filter-btn px-6 py-2 rounded-xl text-stone-400 hover:text-stone-100 text-sm font-medium transition-all" data-filter="consciousness">תודעה</button>
+                <button onclick="filterMatrix('visualization')" class="filter-btn px-6 py-2 rounded-xl text-stone-400 hover:text-stone-100 text-sm font-medium transition-all" data-filter="visualization">ויזואליזציה</button>
+                <button onclick="filterMatrix('operations')" class="filter-btn px-6 py-2 rounded-xl text-stone-400 hover:text-stone-100 text-sm font-medium transition-all" data-filter="operations">תפעול</button>
+                <button onclick="filterMatrix('community')" class="filter-btn px-6 py-2 rounded-xl text-stone-400 hover:text-stone-100 text-sm font-medium transition-all" data-filter="community">קהילה</button>
+            </div>
+
+            <!-- Matrix Grid -->
+            <div id="matrix-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Content injected via JS -->
+            </div>
+        </section>
+
+        <!-- VIEW 2: ANALYTICS -->
+        <section id="view-analytics" class="hidden fade-in">
+            <div class="mb-10">
+                <h2 class="text-3xl font-black text-white mb-3">דאשבורד אנליטי</h2>
+                <p class="text-stone-400 max-w-2xl italic border-r-4 border-purple-500 pr-4">
+                    "סריקת המאגר חושפת שיטות עבודה רב-ממדיות שאינן מתועדות תמיד בצורה ליניארית, אלא קיימות בתוך הקוד והלוגיקה."
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
+                <div class="glass-card p-8 rounded-2xl">
+                    <h3 class="text-lg font-bold text-stone-200 mb-6 flex items-center gap-2">
+                        <i class="fa-solid fa-chart-line text-purple-500"></i>
+                        פריסת משאבים קטגוריאלית
+                    </h3>
+                    <div class="chart-container">
+                        <canvas id="categoryChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="glass-card p-8 rounded-2xl">
+                    <h3 class="text-lg font-bold text-stone-200 mb-6 flex items-center gap-2">
+                        <i class="fa-solid fa-layer-group text-cyan-500"></i>
+                        מדרג שכבות המערכת
+                    </h3>
+                    <div class="chart-container">
+                        <canvas id="typeChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- VIEW 3: BACKLOG -->
+        <section id="view-backlog" class="hidden fade-in">
+            <div class="mb-10 text-center">
+                <h2 class="text-3xl font-black text-white mb-2">Future Lab & Backlog</h2>
+                <p class="text-stone-400">רעיונות ושיטות הנמצאים בשלבי מחקר וסריקה ראשוניים.</p>
+            </div>
+
+            <div class="space-y-12" id="backlog-container">
+                <!-- Content via JS -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-stone-950 border-t border-stone-800 py-12">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="text-center md:text-right">
+                <p class="text-white font-black text-lg mb-1">HolisView Core</p>
+                <p class="text-stone-500 text-sm">פרויקט קוד פתוח המשלב AI, תודעה וטכנולוגיה.</p>
+            </div>
+            
+            <div class="flex gap-4">
+                <a href="https://github.com/AnLoMinus/HolisView" target="_blank" class="w-12 h-12 rounded-full bg-stone-900 border border-stone-800 flex items-center justify-center text-white hover:bg-white hover:text-black transition-all">
+                    <i class="fa-brands fa-github text-2xl"></i>
+                </a>
+                <div class="w-12 h-12 rounded-full bg-stone-900 border border-stone-800 flex items-center justify-center text-stone-500">
+                    <i class="fa-solid fa-terminal text-xl"></i>
+                </div>
+            </div>
+
+            <div class="text-stone-600 text-[10px] uppercase tracking-tighter text-center md:text-left">
+                &copy; 2026 HolisView Framework<br>
+                All logic systems active.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const categories = {
+            consciousness: { id: 'consciousness', name: 'תודעה', icon: 'fa-brain', color: '#A855F7', glow: 'glow-purple', bg: 'bg-purple-500/10', text: 'text-purple-400' },
+            visualization: { id: 'visualization', name: 'ויזואליזציה', icon: 'fa-palette', color: '#22D3EE', glow: 'glow-cyan', bg: 'bg-cyan-500/10', text: 'text-cyan-400' },
+            operations: { id: 'operations', name: 'תפעול', icon: 'fa-code-branch', color: '#94A3B8', glow: 'glow-slate', bg: 'bg-slate-500/10', text: 'text-slate-400' },
+            community: { id: 'community', name: 'קהילה', icon: 'fa-network-wired', color: '#F59E0B', glow: 'glow-amber', bg: 'bg-amber-500/10', text: 'text-amber-400' }
+        };
+
+        const types = {
+            parallel: 'מערכת מקבילה',
+            utility: 'כלי עזר',
+            subApp: 'תת-אפליקציה',
+            complementary: 'מערכת משלימה',
+            premium: 'AI & Premium'
+        };
+
+        const systems = [
+            { name: 'HolisMind 🧘', category: 'consciousness', type: 'parallel', desc: 'ניתוח עומק רפלקטיבי המבוסס על מודל הפרד"ס' },
+            { name: 'ViewFlow 🌊', category: 'visualization', type: 'parallel', desc: 'מיפוי ויזואלי של תהליכים דינמיים בזמן אמת' },
+            { name: 'HolisOS 🖥️', category: 'operations', type: 'parallel', desc: 'מערכת ניהול משאבים הוליסטית לארגונים' },
+            { name: 'GlobalView 🌍', category: 'community', type: 'parallel', desc: 'מבט מאקרו על הקהילה הגלובלית של המשתמשים' },
+            { name: 'DeepScan 🔎', category: 'consciousness', type: 'utility', desc: 'סריקת תוכן לזיהוי רבדים סמויים' },
+            { name: 'AssetGen 🖼️', category: 'visualization', type: 'utility', desc: 'מחולל אוטומטי של רכיבי עיצוב מותאמים' },
+            { name: 'TaskNode ⚙️', category: 'operations', type: 'utility', desc: 'ניהול משימות חכם המבוסס על לוגיקת צמתים' },
+            { name: 'SyncHub 🔄', category: 'community', type: 'utility', desc: 'סנכרון רב-משתמשים ותיאום צוותי' },
+            { name: 'SoulMap 🗺️', category: 'consciousness', type: 'subApp', desc: 'מיפוי ארכיטיפים אישיים ותהליכי צמיחה' },
+            { name: 'ColorSoul 🌈', category: 'visualization', type: 'subApp', desc: 'מחקר צבע ותדר המותאם למצב התודעתי' },
+            { name: 'PrintMaster 🖨️', category: 'operations', type: 'subApp', desc: 'מערכת הידור והדפסה לתוצרי עולם פיזי' },
+            { name: 'PeerLink 🤝', category: 'community', type: 'subApp', desc: 'חיבור ישיר בין משתמשים בעלי תדר דומה' },
+            { name: 'BioSync 🧬', category: 'consciousness', type: 'complementary', desc: 'חיבור בין נתונים ביולוגיים למחזורי עבודה' },
+            { name: 'GlowStudio ✨', category: 'visualization', type: 'complementary', desc: 'עורך ויזואלי מתקדם לאפקטים של תאורה והילה' },
+            { name: 'DataFlow 📊', category: 'operations', type: 'complementary', desc: 'עיבוד נתונים סטטיסטי וחיזוי מגמות' },
+            { name: 'OpenHolis 🔓', category: 'community', type: 'complementary', desc: 'תשתית לפיתוח הרחבות ופלאגינים על ידי הקהילה' },
+            { name: 'Oracle AI 🔮', category: 'consciousness', type: 'premium', desc: 'מודל AI לחיזוי והדרכה בתהליכי קבלת החלטות' },
+            { name: 'GoldLux 🔱', category: 'visualization', type: 'premium', desc: 'עיצוב פרימיום בגימור "גולד" למערכות קצה' },
+            { name: 'AutoProphet ⚡', category: 'operations', type: 'premium', desc: 'אוטומציה מלאה של תהליכי ייצור וניהול' },
+            { name: 'NetworkPro 💎', category: 'community', type: 'premium', desc: 'רשת מקצועית סגורה לשיתופי פעולה אסטרטגיים' }
+        ];
+
+        const backlog = [
+            { name: 'HolisGraph 📊', desc: 'מיפוי קשרים לוגיים', category: 'consciousness' },
+            { name: 'ZenQuery ☯️', desc: 'שאילתות מונחות שלווה', category: 'consciousness' },
+            { name: 'MotionMatrix 🎬', desc: 'קלפים זזים ואנימטיביים', category: 'visualization' },
+            { name: 'InfiniteCanvas 🌌', desc: 'מרחב עבודה אינסופי', category: 'visualization' },
+            { name: 'QuickPardes ⚡', desc: 'ניתוח בזק ב-4 שלבים', category: 'operations' },
+            { name: 'HolisBot 🤖', desc: 'עוזר אישי אוטומטי', category: 'operations' },
+            { name: 'InsightShare 📢', desc: 'שיתוף תובנות מהיר', category: 'community' },
+            { name: 'HolisMarket 🏷️', desc: 'שוק תבניות ומטריצות', category: 'community' }
+        ];
+
+        let state = { activeTab: 'matrix', activeFilter: 'all' };
+
+        function renderMatrix() {
+            const grid = document.getElementById('matrix-grid');
+            grid.innerHTML = '';
+            const filtered = state.activeFilter === 'all' ? systems : systems.filter(s => s.category === state.activeFilter);
+
+            filtered.forEach(sys => {
+                const cat = categories[sys.category];
+                const card = document.createElement('div');
+                card.className = `glass-card rounded-2xl p-6 transition-all duration-300 ${cat.glow} group cursor-default`;
+                card.innerHTML = `
+                    <div class="flex justify-between items-start mb-4">
+                        <div class="w-10 h-10 rounded-lg ${cat.bg} flex items-center justify-center ${cat.text}">
+                            <i class="fa-solid ${cat.icon} text-lg"></i>
+                        </div>
+                        <span class="text-[9px] font-black uppercase tracking-widest text-stone-600 bg-stone-950 px-2 py-1 rounded-md border border-stone-800">${types[sys.type]}</span>
+                    </div>
+                    <h3 class="text-white font-bold text-lg mb-2 group-hover:text-${cat.id === 'visualization' ? 'cyan' : cat.id === 'consciousness' ? 'purple' : cat.id === 'operations' ? 'slate' : 'amber'}-400 transition-colors">${sys.name}</h3>
+                    <p class="text-stone-500 text-xs leading-relaxed mb-4">${sys.desc}</p>
+                    <div class="flex items-center gap-2 pt-4 border-t border-stone-800">
+                        <a href="https://github.com/AnLoMinus/HolisView" target="_blank" class="text-[10px] text-stone-400 hover:text-white flex items-center gap-1">
+                            <i class="fa-brands fa-github"></i> סריקת קוד
+                        </a>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function renderCharts() {
+            const catCounts = Object.keys(categories).map(k => systems.filter(s => s.category === k).length);
+            const typeLabels = Object.values(types);
+            const typeCounts = Object.keys(types).map(k => systems.filter(s => s.type === k).length);
+
+            const commonOptions = {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { labels: { color: '#a8a29e', font: { size: 10 } } } }
+            };
+
+            // Category Chart
+            const ctx1 = document.getElementById('categoryChart').getContext('2d');
+            if(window.ch1) window.ch1.destroy();
+            window.ch1 = new Chart(ctx1, {
+                type: 'polarArea',
+                data: {
+                    labels: Object.values(categories).map(c => c.name),
+                    datasets: [{
+                        data: catCounts,
+                        backgroundColor: ['rgba(168, 85, 247, 0.5)', 'rgba(34, 211, 238, 0.5)', 'rgba(148, 163, 184, 0.5)', 'rgba(245, 158, 11, 0.5)'],
+                        borderColor: '#1c1917',
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    ...commonOptions,
+                    scales: { r: { grid: { color: '#292524' }, ticks: { display: false } } }
+                }
+            });
+
+            // Type Chart
+            const ctx2 = document.getElementById('typeChart').getContext('2d');
+            if(window.ch2) window.ch2.destroy();
+            window.ch2 = new Chart(ctx2, {
+                type: 'bar',
+                data: {
+                    labels: typeLabels,
+                    datasets: [{
+                        label: 'כמות מערכות',
+                        data: typeCounts,
+                        backgroundColor: '#ffffff',
+                        borderRadius: 4
+                    }]
+                },
+                options: {
+                    ...commonOptions,
+                    scales: { 
+                        y: { grid: { color: '#292524' }, ticks: { color: '#78716c' } },
+                        x: { grid: { display: false }, ticks: { color: '#78716c' } }
+                    }
+                }
+            });
+        }
+
+        function renderBacklog() {
+            const container = document.getElementById('backlog-container');
+            container.innerHTML = '';
+            const grouped = backlog.reduce((acc, item) => {
+                acc[item.category] = acc[item.category] || [];
+                acc[item.category].push(item);
+                return acc;
+            }, {});
+
+            Object.keys(categories).forEach(k => {
+                if(!grouped[k]) return;
+                const cat = categories[k];
+                const section = document.createElement('div');
+                section.innerHTML = `
+                    <div class="flex items-center gap-4 mb-6">
+                        <span class="h-px flex-grow bg-stone-800"></span>
+                        <h4 class="text-stone-400 font-bold uppercase tracking-widest text-xs flex items-center gap-2">
+                            <i class="fa-solid ${cat.icon}"></i> ${cat.name}
+                        </h4>
+                        <span class="h-px flex-grow bg-stone-800"></span>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                        ${grouped[k].map(item => `
+                            <div class="bg-stone-900/40 border border-stone-800 p-4 rounded-xl hover:border-stone-600 transition-all">
+                                <div class="text-white font-bold text-sm mb-1">${item.name}</div>
+                                <div class="text-stone-500 text-[10px]">${item.desc}</div>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+                container.appendChild(section);
+            });
+        }
+
+        function switchTab(tabId) {
+            state.activeTab = tabId;
+            ['matrix', 'analytics', 'backlog'].forEach(id => {
+                document.getElementById(`view-${id}`).classList.toggle('hidden', id !== tabId);
+                document.getElementById(`nav-${id}`).classList.toggle('nav-active', id === tabId);
+                if(id !== tabId) document.getElementById(`nav-${id}`).classList.remove('nav-active');
+            });
+            if(tabId === 'analytics') setTimeout(renderCharts, 50);
+        }
+
+        function filterMatrix(category) {
+            state.activeFilter = category;
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                const isActive = btn.getAttribute('data-filter') === category;
+                btn.classList.toggle('bg-stone-100', isActive);
+                btn.classList.toggle('text-stone-950', isActive);
+                btn.classList.toggle('text-stone-400', !isActive);
+            });
+            renderMatrix();
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderMatrix();
+            renderBacklog();
+        });
+    </script>
+</body>
+</html>
