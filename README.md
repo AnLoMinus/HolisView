@@ -1,5 +1,7 @@
 # שיטות התבוננות והשקפות ✨
 
+<img width="1440" height="23" alt="image" src="https://github.com/user-attachments/assets/70de0af5-9684-4294-a014-2c2b0cc66731" />
+
 - [HolisView AI Holistic Analysis System](https://gemini.google.com/share/89167e55a63f)
 ---
 
