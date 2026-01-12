@@ -2,7 +2,7 @@
 
 <img width="1440" height="23" alt="image" src="https://github.com/user-attachments/assets/70de0af5-9684-4294-a014-2c2b0cc66731" />
 
-- [HolisView PRO V6.0 PRO CARDS | PRO GENERATION ENGINE Infinite Cards](https://gemini.google.com/share/d750cd0bda58)
+- [HolisView PRO V6.0 PRO CARDS | PRO GENERATION ENGINE Infinite Cards](https://gemini.google.com/share/79e2e9826310)
 
 
 - [HolisView AI Holistic Analysis System](https://gemini.google.com/share/89167e55a63f)
