@@ -3294,6 +3294,977 @@ export default App;
 
 ---
 
+# HolisView AI - Holistic Analysis System
+- https://gemini.google.com/share/89167e55a63f
+
+```jsx
+import React, { useState, useEffect } from 'react';
+import { 
+  Sparkles, Brain, Code, Palette, Zap, Send, Loader2, 
+  ChevronRight, Hash, Eye, BookOpen, Share2, Anchor, Activity,
+  Cpu, Layout, Star
+} from 'lucide-react';
+
+// In this environment, the API key is injected automatically at runtime.
+const apiKey = ""; 
+
+const App = () => {
+  const [inputText, setInputText] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [activeTab, setActiveTab] = useState('holisview_integrated');
+  const [analysisResult, setAnalysisResult] = useState(null);
+  const [storyResult, setStoryResult] = useState(null);
+  const [showStoryModal, setShowStoryModal] = useState(false);
+  const [storyLoading, setStoryLoading] = useState(false);
+
+  // Analysis methods - The "Tabs"
+  const methods = [
+    {
+      id: 'holisview_integrated',
+      name: 'HolisView Prime',
+      icon: <Eye className="w-4 h-4" />,
+      color: 'from-purple-500 to-cyan-500',
+      description: 'ניתוח הוליסטי משולב: רוח, טכנולוגיה ומהות.',
+      promptContext: "You are the 'HolisView' engine. Analyze the text holistically. Combine spiritual insight, technological metaphor, and core essence. Look for the 'Holy Vibe' and 'Tech Innovation' balance."
+    },
+    {
+      id: 'sefirot_flow',
+      name: 'עץ הספירות',
+      icon: <Activity className="w-4 h-4" />,
+      color: 'from-yellow-500 to-red-500',
+      description: 'מיפוי הטקסט על פי 10 הספירות (קבלה) והזרימה ביניהן.',
+      promptContext: "Map the input text to the Kabbalistic Tree of Life (10 Sefirot). Explain which Sefira (e.g., Chesed, Gevurah, Tiferet) is most dominant in the text and why. Describe the 'energy flow' between concepts."
+    },
+    {
+      id: 'gematria_mystic',
+      name: 'צפנים וגימטריה',
+      icon: <Hash className="w-4 h-4" />,
+      color: 'from-blue-500 to-indigo-500',
+      description: 'חישוב ערכים, תבניות מתמטיות וקשרים נסתרים.',
+      promptContext: "Perform a deep Gematria analysis. Calculate values, find matching words in Hebrew tradition, and look for mathematical patterns in the structure of the text."
+    },
+    {
+      id: 'archetype_identity',
+      name: 'ארכיטיפים',
+      icon: <Brain className="w-4 h-4" />,
+      color: 'from-pink-500 to-rose-500',
+      description: 'זיהוי הדמויות הפנימיות, הצל, והמסע הפסיכולוגי.',
+      promptContext: "Analyze the text for Jungian Archetypes. Who is speaking? The Hero? The Sage? The Rebel? Identify the 'Shadow' (hidden intent) and the 'Persona' (displayed intent)."
+    },
+    {
+      id: 'future_tech',
+      name: 'קוד תודעה',
+      icon: <Code className="w-4 h-4" />,
+      color: 'from-emerald-500 to-teal-500',
+      description: 'ניתוח הטקסט כאלגוריתם של מערכת הפעלה תודעתית.',
+      promptContext: "Treat the text as Source Code. Debug the logic. What is the 'Algorithm' of this thought? Suggest 'Patches' or 'Upgrades' to the thinking pattern using cyberpunk/tech metaphors."
+    }
+  ];
+
+  const generateGeminiContent = async (systemPrompt, userPrompt) => {
+    try {
+      // Automatic API handling
+      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          contents: [{ parts: [{ text: systemPrompt + "\n\n" + userPrompt }] }]
+        })
+      });
+      const data = await response.json();
+      if (data.error) throw new Error(data.error.message);
+      return data.candidates?.[0]?.content?.parts?.[0]?.text;
+    } catch (error) {
+      console.error("Gemini API Error:", error);
+      return "שגיאה בניתוח הנתונים. אנא נסה שנית.";
+    }
+  };
+
+  const handleAnalyze = async () => {
+    if (!inputText) return;
+    setLoading(true);
+    setAnalysisResult(null); // Reset previous result to show transition
+    
+    const method = methods.find(m => m.id === activeTab);
+    const systemPrompt = `
+      You are the HolisView AI. 
+      Method: ${method.name}
+      Context: ${method.promptContext}
+      Output: Hebrew (Ivrit), Markdown formatted. Be mystical yet technological.
+    `;
+    
+    const result = await generateGeminiContent(systemPrompt, `נתח את הטקסט: "${inputText}"`);
+    setAnalysisResult(result);
+    setLoading(false);
+  };
+
+  const handleGenerateStory = async () => {
+    if (!inputText) return;
+    setStoryLoading(true);
+    setShowStoryModal(true);
+    
+    const systemPrompt = `
+      You are a Master Storyteller AI (The Bard of HolisView).
+      Create a short, epic, or mystical "Origin Story" or "Background Lore" based on the user's input text.
+      Imagine the text is a relic, a prophecy, or a transmission from the future.
+      Style: Cinematic, slightly sci-fi/fantasy.
+      Output: Hebrew.
+    `;
+
+    const result = await generateGeminiContent(systemPrompt, `צור סיפור רקע עבור: "${inputText}"`);
+    setStoryResult(result);
+    setStoryLoading(false);
+  };
+
+  // Trigger analysis when tab changes (if text exists)
+  useEffect(() => {
+    if (inputText && analysisResult) {
+      handleAnalyze();
+    }
+  }, [activeTab]);
+
+  return (
+    <div className="min-h-screen bg-[#050510] text-slate-200 font-sans selection:bg-purple-500/30 selection:text-purple-200 flex flex-col" dir="rtl">
+      
+      {/* Navbar / Header */}
+      <header className="bg-slate-900/40 backdrop-blur-xl border-b border-white/5 sticky top-0 z-30">
+        <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="relative group">
+              <div className="absolute inset-0 bg-purple-600 rounded-full blur-md opacity-50 group-hover:opacity-100 transition-opacity animate-pulse"></div>
+              <div className="relative p-2 bg-slate-950 rounded-full border border-purple-500/30">
+                <Sparkles className="w-5 h-5 text-purple-400" />
+              </div>
+            </div>
+            <div>
+              <h1 className="text-xl font-bold bg-gradient-to-r from-purple-400 via-cyan-400 to-purple-400 bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient">
+                HolisView AI
+              </h1>
+              <p className="text-[10px] text-slate-500 tracking-[0.2em] uppercase">Holistic Analysis System</p>
+            </div>
+          </div>
+          
+          <div className="hidden md:flex items-center gap-4 text-xs font-mono text-slate-500">
+            <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span> SYSTEM: ONLINE</span>
+            <span className="flex items-center gap-1"><Cpu className="w-3 h-3" /> GEMINI: LINKED</span>
+          </div>
+        </div>
+      </header>
+
+      <main className="flex-1 max-w-6xl mx-auto w-full px-4 py-6 flex flex-col gap-6">
+
+        {/* Top Section: Input & Controls */}
+        <section className="bg-slate-900/30 border border-white/5 rounded-2xl p-1 overflow-hidden backdrop-blur-sm relative">
+          <div className="absolute top-0 right-0 p-4 opacity-20 pointer-events-none">
+            <Layout className="w-32 h-32 text-purple-500" />
+          </div>
+          
+          <textarea
+            value={inputText}
+            onChange={(e) => setInputText(e.target.value)}
+            placeholder="הזן כאן את הטקסט, החלום, או הקוד שלך לניתוח..."
+            className="w-full h-32 bg-transparent rounded-xl p-4 text-lg text-slate-200 resize-none focus:outline-none placeholder:text-slate-600 leading-relaxed font-light z-10 relative"
+          />
+          
+          <div className="bg-slate-950/50 p-2 rounded-xl flex justify-between items-center border-t border-white/5">
+            <div className="text-xs text-slate-500 px-2 font-mono">
+              {inputText.length} CHARS DETECTED
+            </div>
+            <div className="flex gap-2">
+              <button 
+                onClick={handleGenerateStory}
+                disabled={!inputText || storyLoading}
+                className="px-4 py-2 rounded-lg bg-indigo-500/10 hover:bg-indigo-500/20 text-indigo-300 text-sm font-medium transition-all flex items-center gap-2 border border-indigo-500/20 hover:border-indigo-500/50"
+              >
+                <BookOpen className="w-4 h-4" />
+                <span className="hidden sm:inline">צור סיפור רקע</span>
+              </button>
+              
+              <button 
+                onClick={handleAnalyze}
+                disabled={loading || !inputText}
+                className="px-6 py-2 rounded-lg bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-500 hover:to-cyan-500 text-white text-sm font-bold shadow-[0_0_20px_rgba(168,85,247,0.3)] hover:shadow-[0_0_30px_rgba(168,85,247,0.5)] transition-all flex items-center gap-2 transform active:scale-95"
+              >
+                {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Zap className="w-4 h-4 fill-white" />}
+                <span>נתח הוליסטית</span>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        {/* Carousel / Tabs Navigation */}
+        <nav className="flex overflow-x-auto pb-2 gap-2 scrollbar-hide">
+          {methods.map((method) => (
+            <button
+              key={method.id}
+              onClick={() => setActiveTab(method.id)}
+              className={`flex-shrink-0 flex items-center gap-2 px-5 py-3 rounded-xl border transition-all duration-300 relative overflow-hidden group ${
+                activeTab === method.id
+                  ? 'bg-slate-800 border-purple-500/50 text-white shadow-lg'
+                  : 'bg-slate-900/30 border-white/5 text-slate-400 hover:bg-slate-800/50 hover:text-slate-200'
+              }`}
+            >
+              <div className={`absolute inset-0 bg-gradient-to-r ${method.color} opacity-0 group-hover:opacity-5 transition-opacity`}></div>
+              {activeTab === method.id && (
+                <div className={`absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r ${method.color}`}></div>
+              )}
+              {method.icon}
+              <span className="text-sm font-medium whitespace-nowrap">{method.name}</span>
+            </button>
+          ))}
+        </nav>
+
+        {/* Dynamic Content Container */}
+        <section className="flex-1 relative min-h-[400px]">
+          {loading ? (
+            <div className="absolute inset-0 flex flex-col items-center justify-center bg-slate-900/20 backdrop-blur-sm rounded-3xl border border-white/5">
+              <div className="relative">
+                <div className="w-16 h-16 border-4 border-purple-500/30 border-t-purple-500 rounded-full animate-spin"></div>
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
+                </div>
+              </div>
+              <p className="mt-4 text-purple-300 font-mono text-sm animate-pulse">MAPPING DATA POINTS...</p>
+            </div>
+          ) : analysisResult ? (
+            <div className="h-full bg-slate-900/40 border border-white/10 rounded-3xl p-8 backdrop-blur-md overflow-hidden relative animate-fade-in-up">
+              {/* Decorative Background Elements */}
+              <div className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r ${methods.find(m => m.id === activeTab).color}`}></div>
+              <div className="absolute -top-20 -right-20 w-64 h-64 bg-purple-500/5 rounded-full blur-3xl"></div>
+              <div className="absolute -bottom-20 -left-20 w-64 h-64 bg-cyan-500/5 rounded-full blur-3xl"></div>
+
+              {/* Content Header */}
+              <div className="flex items-center gap-3 mb-6 relative z-10">
+                <div className={`p-2 rounded-lg bg-gradient-to-br ${methods.find(m => m.id === activeTab).color} bg-opacity-10`}>
+                   {methods.find(m => m.id === activeTab).icon}
+                </div>
+                <h2 className="text-xl font-bold text-slate-100">
+                  {methods.find(m => m.id === activeTab).name} Result
+                </h2>
+              </div>
+
+              {/* Markdown Render */}
+              <div className="prose prose-invert prose-p:text-slate-300 prose-headings:text-white prose-strong:text-purple-300 max-w-none relative z-10 h-[500px] overflow-y-auto pr-2 custom-scrollbar">
+                 <div className="whitespace-pre-wrap leading-relaxed">
+                   {analysisResult.split('\n').map((line, i) => {
+                     // Custom parsing for better visuals
+                     if (line.startsWith('##')) return <h3 key={i} className="text-lg font-bold text-cyan-300 mt-6 mb-3 flex items-center gap-2"><ChevronRight className="w-4 h-4" />{line.replace('##', '')}</h3>;
+                     if (line.startsWith('#')) return <h2 key={i} className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400 mb-6 border-b border-white/10 pb-2">{line.replace('#', '')}</h2>;
+                     if (line.trim().startsWith('-')) return <li key={i} className="ml-4 text-slate-300 list-none flex items-start gap-2 mb-2"><span className="text-purple-500 mt-1.5">•</span><span>{line.replace('-', '')}</span></li>;
+                     if (line.includes('**')) {
+                        const parts = line.split('**');
+                        return <p key={i} className="mb-3">{parts.map((part, idx) => idx % 2 === 1 ? <span key={idx} className="text-purple-200 font-semibold bg-purple-500/10 px-1 rounded">{part}</span> : part)}</p>;
+                     }
+                     return <p key={i} className="mb-3 text-slate-300">{line}</p>;
+                   })}
+                 </div>
+              </div>
+            </div>
+          ) : (
+            // Empty State
+            <div className="h-full flex flex-col items-center justify-center text-center p-12 bg-slate-900/20 rounded-3xl border border-dashed border-white/10">
+              <div className="w-20 h-20 bg-slate-800 rounded-full flex items-center justify-center mb-6 shadow-inner">
+                <Activity className="w-10 h-10 text-slate-600" />
+              </div>
+              <h3 className="text-xl font-bold text-slate-400 mb-2">מוכן לניתוח</h3>
+              <p className="text-slate-500 max-w-md">
+                בחר שיטה מהתפריט למעלה ולחץ על "נתח הוליסטית" כדי להתחיל את המסע אל תוך הטקסט שלך.
+              </p>
+            </div>
+          )}
+        </section>
+
+      </main>
+
+      {/* Footer */}
+      <footer className="bg-slate-950 border-t border-white/5 py-8 mt-8">
+        <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6">
+          <div className="text-center md:text-right">
+            <h4 className="font-bold text-slate-300 mb-2">HolisView Project</h4>
+            <p className="text-xs text-slate-500">
+              Developed by AnLoMinus using Gemini AI. <br/>Combining Tech, Spirit, and Art.
+            </p>
+          </div>
+          
+          <div className="flex gap-4">
+            <a href="https://github.com/AnLoMinus/HolisView" target="_blank" rel="noreferrer" 
+               className="p-3 bg-slate-900 rounded-full hover:bg-slate-800 hover:text-white transition-colors border border-white/5 hover:border-purple-500/30 group">
+              <Code className="w-5 h-5 text-slate-400 group-hover:text-purple-400" />
+            </a>
+            <a href="https://anlominus.github.io/HolisView/" target="_blank" rel="noreferrer"
+               className="p-3 bg-slate-900 rounded-full hover:bg-slate-800 hover:text-white transition-colors border border-white/5 hover:border-cyan-500/30 group">
+              <Anchor className="w-5 h-5 text-slate-400 group-hover:text-cyan-400" />
+            </a>
+          </div>
+        </div>
+      </footer>
+
+      {/* AI Story Modal (Overlay) */}
+      {showStoryModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fade-in">
+          <div className="bg-[#0f0f1a] border border-purple-500/30 rounded-2xl w-full max-w-2xl max-h-[80vh] overflow-hidden flex flex-col shadow-[0_0_50px_rgba(139,92,246,0.3)]">
+            
+            <div className="p-6 border-b border-white/10 bg-gradient-to-r from-purple-900/20 to-transparent flex justify-between items-center">
+              <div className="flex items-center gap-3">
+                <Star className="w-5 h-5 text-yellow-400 fill-yellow-400 animate-pulse" />
+                <h3 className="text-xl font-bold text-white">AI Origin Story</h3>
+              </div>
+              <button onClick={() => setShowStoryModal(false)} className="text-slate-400 hover:text-white">✕</button>
+            </div>
+
+            <div className="flex-1 p-8 overflow-y-auto custom-scrollbar relative">
+              {storyLoading ? (
+                <div className="space-y-4 py-12 text-center">
+                  <Loader2 className="w-12 h-12 text-purple-500 animate-spin mx-auto" />
+                  <p className="text-purple-300 font-mono animate-pulse">WEAVING NARRATIVE STRANDS...</p>
+                </div>
+              ) : (
+                <div className="prose prose-invert prose-lg text-slate-200 leading-loose whitespace-pre-wrap font-serif">
+                   {storyResult}
+                </div>
+              )}
+            </div>
+
+            <div className="p-4 border-t border-white/10 bg-slate-900/50 flex justify-end">
+              <button 
+                onClick={() => setShowStoryModal(false)}
+                className="px-6 py-2 rounded-lg bg-white/10 hover:bg-white/20 text-white transition-colors"
+              >
+                סגור
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* CSS for custom scrollbar embedded */}
+      <style jsx global>{`
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+          width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+          background: rgba(255, 255, 255, 0.02);
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+          background: rgba(139, 92, 246, 0.3);
+          border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+          background: rgba(139, 92, 246, 0.5);
+        }
+        @keyframes fade-in-up {
+          from { opacity: 0; transform: translateY(10px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in-up {
+          animation: fade-in-up 0.5s ease-out forwards;
+        }
+      `}</style>
+    </div>
+  );
+};
+
+export default App;
+```
+
+---
+
+# HolisView / Architect - Active Matrices
+
+```jsx
+import React, { useState, useEffect, useRef } from 'react';
+import { 
+  Sparkles, Zap, Loader2, ChevronDown, ChevronLeft, 
+  Menu, X, CheckSquare, Square, FileText, Layers, AlignRight,
+  Volume2, Copy, Check, RefreshCw, Hexagon, Printer, Download, Grid,
+  Maximize2, Wind, Flame, Droplets, Mountain, Activity,
+  Bookmark, ShieldCheck, Star, Brain, Eye, Heart, Feather, Globe, Command,
+  Github
+} from 'lucide-react';
+
+// In this environment, the API key is injected automatically at runtime.
+const apiKey = ""; 
+
+// --- CONSTANTS & DATA ---
+const VERSION = "5.1.0 OPEN SOURCE";
+
+const methodsData = [
+  {
+    level: 1,
+    title: "רמה 1 - יסודות (מבנה)",
+    description: "מיפוי המציאות על בסיס תבניות יסוד של 4",
+    baseColor: "blue",
+    methods: [
+      { id: 'l1_pardes', name: 'פרד״ס (פשט, רמז, דרש, סוד)' },
+      { id: 'l1_abya', name: 'אביע עולמות (אצילות, בריאה, יצירה, עשייה)' },
+      { id: 'l1_elements', name: 'ארבעת היסודות (רוח, אש, מים, אדמה)' },
+      { id: 'l1_name', name: 'ארבע אותיות השם (י-ה-ו-ה)' },
+      { id: 'l1_creatures', name: 'ארבע חיות הקודש (אריה, שור, נשר, אדם)' },
+      { id: 'l1_sons', name: 'ארבעה בנים (חכם, רשע, תם, שאינו יודע)' },
+      { id: 'l1_service', name: 'ארבע מדרגות בעבודת ה׳ (יראה, אהבה, תורה, דבקות)' },
+      { id: 'l1_species', name: 'ארבעת המינים (אתרוג, לולב, הדס, ערבה)' },
+      { id: 'l1_providence', name: 'ארבעה אופני השגחה (טבע, נס נסתר, נס גלוי, ישירה)' },
+      { id: 'l1_exiles', name: 'ארבע גלויות (בבל, פרס, יוון, אדום)' },
+      { id: 'l1_guardians', name: 'ארבעה שומרים (חינם, שואל, נושא שכר, שוכר)' },
+      { id: 'l1_newyears', name: 'ארבעה ראשי שנים (מלכים, בהמה, שנים, אילן)' }
+    ]
+  },
+  {
+    level: 2,
+    title: "רמה 2 - צמיחה (תהליך)",
+    baseColor: "green",
+    methods: [
+      { id: 'l2_creation', name: 'מעשה בראשית (7 ימים כהשתקפות הנפש)' },
+      { id: 'l2_principles', name: 'שבעה עקרונות לתודעה גבוהה' },
+      { id: 'l2_repentance', name: 'שבעה שלבים של תהליך תשובה' },
+      { id: 'l2_world_correction', name: 'שבעה עקרונות של תיקון עולם' },
+    ]
+  },
+  {
+    level: 3,
+    title: "רמה 3 - מערכות (חוקיות)",
+    baseColor: "purple",
+    methods: [
+      { id: 'l3_sefirot', name: 'עשר הספירות' },
+      { id: 'l3_sayings', name: 'עשרת המאמרות' },
+      { id: 'l3_success', name: 'עשרת חוקי ההצלחה' },
+      { id: 'l3_commandments', name: 'עשרת הדיברות' },
+    ]
+  },
+  {
+    level: 4,
+    title: "רמה 4 - ייחוד (מהות)",
+    baseColor: "cyan",
+    methods: [
+      { id: 'l4_faith_principles', name: 'י"ג יסודות האמונה' },
+      { id: 'l4_mercy', name: 'י"ג מידות הרחמים' },
+      { id: 'l4_soul_powers', name: 'י"ג כוחות הנפש' },
+    ]
+  }
+];
+
+const getColorClasses = (colorName) => {
+  const map = {
+    blue: { 
+      text: 'text-blue-400', bg: 'bg-blue-500/5', border: 'border-blue-500/20', 
+      glow: 'shadow-[0_0_20px_rgba(59,130,246,0.15)]', gradient: 'from-blue-600 to-blue-400',
+      accent: 'bg-blue-500', icon: 'text-blue-300'
+    },
+    green: { 
+      text: 'text-emerald-400', bg: 'bg-emerald-500/5', border: 'border-emerald-500/20', 
+      glow: 'shadow-[0_0_20px_rgba(16,185,129,0.15)]', gradient: 'from-emerald-600 to-emerald-400',
+      accent: 'bg-emerald-500', icon: 'text-emerald-300'
+    },
+    purple: { 
+      text: 'text-purple-400', bg: 'bg-purple-500/5', border: 'border-purple-500/20', 
+      glow: 'shadow-[0_0_20px_rgba(168,85,247,0.15)]', gradient: 'from-purple-600 to-purple-400',
+      accent: 'bg-purple-500', icon: 'text-purple-300'
+    },
+    cyan: { 
+      text: 'text-cyan-400', bg: 'bg-cyan-500/5', border: 'border-cyan-500/20', 
+      glow: 'shadow-[0_0_20px_rgba(6,182,212,0.15)]', gradient: 'from-cyan-600 to-cyan-400',
+      accent: 'bg-cyan-500', icon: 'text-cyan-300'
+    },
+    gold: { 
+      text: 'text-amber-400', bg: 'bg-amber-500/5', border: 'border-amber-500/20', 
+      glow: 'shadow-[0_0_25px_rgba(245,158,11,0.2)]', gradient: 'from-amber-600 to-amber-400',
+      accent: 'bg-amber-500', icon: 'text-amber-300'
+    }
+  };
+  return map[colorName] || map.blue;
+};
+
+// --- RENDERERS ---
+
+const TextCompiler = ({ content, styles }) => {
+  if (!content) return null;
+  const lines = content.split('\n');
+  const renderedElements = [];
+  
+  lines.forEach((line, index) => {
+    const trimmed = line.trim();
+    if (trimmed.startsWith('### ')) {
+      renderedElements.push(<h4 key={index} className={`text-lg font-bold mt-6 mb-3 flex items-center gap-2 ${styles.text} print:text-black`}>
+        <span className="text-xl opacity-50">❖</span>
+        {trimmed.replace('### ', '')}
+      </h4>);
+    } else if (trimmed.startsWith('## ')) {
+      renderedElements.push(<h3 key={index} className={`text-xl font-medium mt-8 mb-4 border-b ${styles.border} pb-2 tracking-tight ${styles.text} opacity-90 print:text-black print:border-black`}>{trimmed.replace('## ', '')}</h3>);
+    } else if (trimmed.startsWith('- ')) {
+      renderedElements.push(
+        <li key={index} className="mr-4 list-none flex items-start gap-3 mb-3 text-slate-300 group/item print:text-black">
+          <div className={`mt-2 w-1.5 h-1.5 rounded-full ${styles.accent} opacity-40 group-hover/item:opacity-100 transition-opacity`}></div>
+          <span className="leading-relaxed">{trimmed.replace('- ', '').split(/(\*\*.*?\*\*)/).map((p, i) => p.startsWith('**') ? <strong key={i} className="text-slate-100 font-bold">{p.slice(2,-2)}</strong> : p)}</span>
+        </li>
+      );
+    } else if (trimmed.length > 0) {
+      renderedElements.push(
+        <p key={index} className="mb-4 leading-7 text-slate-400 font-normal tracking-wide print:text-black">
+           {trimmed.split(/(\*\*.*?\*\*)/).map((part, i) => 
+            part.startsWith('**') && part.endsWith('**') 
+              ? <strong key={i} className={`${styles.text} font-bold bg-white/5 px-1.5 py-0.5 rounded-md mx-0.5`}>{part.slice(2, -2)}</strong> 
+              : part
+          )}
+        </p>
+      );
+    }
+  });
+
+  return <div>{renderedElements}</div>;
+};
+
+// --- NEW COMPONENTS ---
+
+const QuartetGrid = ({ items, styles }) => {
+  if (!items || items.length !== 4) return null;
+
+  const icons = [Brain, Heart, Wind, Star]; // Fallback icons if logic needs them
+
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-6 w-full">
+      {items.map((item, idx) => {
+        const Icon = icons[idx] || Star;
+        return (
+          <div 
+            key={idx} 
+            className={`
+              relative overflow-hidden rounded-xl border ${styles.border} bg-white/[0.02] p-5
+              hover:bg-white/[0.04] hover:scale-[1.02] transition-all duration-300 group
+              flex flex-col h-full
+            `}
+          >
+            {/* Number Watermark */}
+            <div className={`absolute -bottom-4 -left-4 text-8xl font-black opacity-[0.03] ${styles.text} select-none pointer-events-none`}>
+              {idx + 1}
+            </div>
+            
+            <div className="flex items-center gap-3 mb-3 z-10">
+              <div className={`w-8 h-8 rounded-lg flex items-center justify-center bg-white/5 ${styles.text}`}>
+                 <span className="font-mono font-bold">{idx + 1}</span>
+              </div>
+              <h4 className={`font-bold text-lg ${styles.text} leading-tight`}>{item.title}</h4>
+            </div>
+            
+            <p className="text-sm text-slate-400 leading-relaxed font-light z-10">
+              {item.content}
+            </p>
+
+            {/* Bottom Glow Bar */}
+            <div className={`absolute bottom-0 left-0 h-1 w-full ${styles.accent} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
+          </div>
+        );
+      })}
+    </div>
+  );
+};
+
+// --- ENHANCED CARD COMPONENT ---
+
+const EssenceCard = ({ card }) => {
+  const isFire = card.element.includes('אש');
+  const isWater = card.element.includes('מים');
+  const isAir = card.element.includes('רוח') || card.element.includes('אוויר');
+  const isEarth = card.element.includes('אדמה');
+
+  const theme = isFire ? { border: 'border-orange-500/30', shadow: 'shadow-orange-500/10', text: 'text-orange-500', bg: 'bg-orange-500/5', icon: <Flame className="text-orange-500" /> } :
+                isWater ? { border: 'border-blue-500/30', shadow: 'shadow-blue-500/10', text: 'text-blue-500', bg: 'bg-blue-500/5', icon: <Droplets className="text-blue-500" /> } :
+                isAir ? { border: 'border-cyan-500/30', shadow: 'shadow-cyan-500/10', text: 'text-cyan-500', bg: 'bg-cyan-500/5', icon: <Wind className="text-cyan-500" /> } :
+                isEarth ? { border: 'border-amber-700/30', shadow: 'shadow-amber-700/10', text: 'text-amber-600', bg: 'bg-amber-700/5', icon: <Mountain className="text-amber-700" /> } :
+                { border: 'border-purple-500/30', shadow: 'shadow-purple-500/10', text: 'text-purple-500', bg: 'bg-purple-500/5', icon: <Sparkles className="text-purple-500" /> };
+
+  return (
+    <div className={`
+      relative h-full ${theme.bg} rounded-2xl border ${theme.border} 
+      p-6 flex flex-col justify-between overflow-hidden ${theme.shadow} 
+      hover:shadow-2xl hover:-translate-y-1 transition-all duration-500 group print:shadow-none print:border-black
+    `}>
+      
+      <div className="flex justify-between items-start mb-6">
+        <div>
+          <h3 className={`text-2xl font-black ${theme.text} leading-none mb-2`}>{card.title}</h3>
+          <div className="flex items-center gap-2 opacity-80">
+            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500">{card.energy}</span>
+            <div className="flex gap-1">
+              {[...Array(5)].map((_, i) => (
+                <div key={i} className={`w-1 h-3 rounded-full ${i < card.score ? theme.text.replace('text', 'bg') : 'bg-slate-800'}`}></div>
+              ))}
+            </div>
+          </div>
+        </div>
+        <div className={`p-3 rounded-2xl bg-white/5 border border-white/5 backdrop-blur-sm`}>
+          {theme.icon}
+        </div>
+      </div>
+
+      <div className="space-y-4">
+        {card.sentences.map((s, idx) => (
+          <div key={idx} className="group/line">
+            <div className="flex items-center gap-2 mb-1">
+              <div className={`w-1 h-1 rounded-full ${theme.text} opacity-50`}></div>
+              <span className="text-[9px] font-bold text-slate-500 uppercase tracking-widest group-hover/line:text-slate-300 transition-colors">
+                {["תובנה", "מיקוד", "פעולה", "הטמעה"][idx]}
+              </span>
+            </div>
+            <p className="text-sm text-slate-300 font-light leading-snug group-hover/line:text-white transition-colors">{s}</p>
+          </div>
+        ))}
+      </div>
+
+      <div className="mt-6 pt-4 border-t border-white/5 flex justify-between items-center opacity-50">
+        <span className="text-[10px] font-mono text-slate-500">HV-ID: {card.element}</span>
+      </div>
+    </div>
+  );
+};
+
+// --- ENHANCED RESULT CARD ---
+
+const ResultCard = ({ segment }) => {
+  const [copied, setCopied] = useState(false);
+  let colorKey = segment.level === 1 ? 'blue' : segment.level === 2 ? 'green' : segment.level === 3 ? 'purple' : segment.level === 4 ? 'cyan' : 'gold';
+  const styles = getColorClasses(colorKey);
+
+  return (
+    <div className={`
+      relative w-full rounded-2xl border ${styles.border} ${styles.bg} 
+      backdrop-blur-sm transition-all duration-700 mb-8 print:border-none print:bg-white
+      animate-in fade-in slide-in-from-bottom-6 group
+    `}>
+      
+      {/* Header */}
+      <div className="px-6 py-5 md:px-8 flex items-center justify-between border-b border-white/5 relative z-10">
+        <div className="flex items-center gap-4">
+          <div className={`
+            w-10 h-10 rounded-xl bg-gradient-to-br ${styles.gradient} 
+            flex items-center justify-center text-white shadow-lg shadow-black/20
+          `}>
+             <span className="font-mono font-bold">{segment.level === 99 ? '★' : segment.level}</span>
+          </div>
+          <div>
+            <h3 className={`text-xl font-bold tracking-tight text-white`}>{segment.title}</h3>
+            <span className={`text-[10px] font-medium uppercase tracking-widest ${styles.text} opacity-80`}>
+               ניתוח מערכתי
+            </span>
+          </div>
+        </div>
+        
+        <div className="flex gap-2">
+           <button 
+            onClick={() => { navigator.clipboard.writeText(JSON.stringify(segment)); setCopied(true); setTimeout(()=>setCopied(false), 2000); }}
+            className="p-2 rounded-lg hover:bg-white/5 text-slate-500 hover:text-white transition-all"
+          >
+            {copied ? <Check size={16} /> : <Copy size={16} />}
+          </button>
+        </div>
+      </div>
+
+      <div className="p-6 md:p-8 relative z-10">
+        {/* Conditional Rendering: Quartet for Level 1, Standard for others */}
+        {segment.level === 1 && segment.quartet ? (
+          <div className="animate-in fade-in zoom-in-95 duration-500">
+             <p className="text-slate-400 mb-4 font-light text-sm">{segment.content}</p> {/* Introduction text */}
+             <QuartetGrid items={segment.quartet} styles={styles} />
+          </div>
+        ) : (
+          <TextCompiler content={segment.content} styles={styles} />
+        )}
+      </div>
+    </div>
+  );
+};
+
+// --- APP COMPONENT ---
+
+const App = () => {
+  const [inputText, setInputText] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [analysisData, setAnalysisData] = useState(null);
+  const [cardsData, setCardsData] = useState(null);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [selectedMethods, setSelectedMethods] = useState([]);
+  const [expandedLevels, setExpandedLevels] = useState({1: true, 2: false, 3: false, 4: false});
+
+  // Select defaults on mount
+  useEffect(() => {
+     if(selectedMethods.length === 0) {
+        setSelectedMethods(['l1_pardes', 'l1_elements']);
+     }
+  }, []);
+
+  const handleAnalyze = async () => {
+    if (!inputText || selectedMethods.length === 0) return;
+    setLoading(true);
+    setAnalysisData(null);
+    setCardsData(null);
+    
+    const activeMethods = [];
+    methodsData.forEach(l => l.methods.forEach(m => selectedMethods.includes(m.id) && activeMethods.push({ ...m, level: l.level })));
+
+    // Enhanced Prompt requesting specific JSON structure for Level 1
+    const systemPrompt = `
+      You are 'HolisView', a profound systemic analyzer.
+      Analyze the user input using these methods: ${activeMethods.map(m => m.name).join(', ')}.
+      
+      Return a JSON object with two keys:
+      1. "analysis": An array of objects. Each object represents a method and has:
+         - "title": Name of the method.
+         - "level": The level number (1-4).
+         - "content": A markdown summary text.
+         - "quartet": ONLY IF level is 1. This must be an array of exactly 4 objects, representing the 4 parts of the method (e.g., Pshat, Remez, Drash, Sod). Each object must have: {"title": "Part Name", "content": "Brief analysis"}. For levels 2-4, "quartet" should be null.
+      
+      2. "cards": Exactly 9 objects representing practical essences. Each has:
+         - "title": Short impactful title.
+         - "element": Related element (Fire/Water/Air/Earth).
+         - "energy": One word energy signature.
+         - "score": 1-5 integer.
+         - "sentences": Array of exactly 4 short strings with Hebrew Nikud.
+
+      Important: 
+      - Level 1 results MUST include the "quartet" array.
+      - Output strictly valid JSON.
+      - Language: Hebrew.
+    `;
+    
+    try {
+      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          contents: [{ parts: [{ text: systemPrompt + "\nInput: " + inputText }] }],
+          generationConfig: { responseMimeType: "application/json" }
+        })
+      });
+      const data = await response.json();
+      const parsed = JSON.parse(data.candidates[0].content.parts[0].text);
+      setAnalysisData(parsed.analysis);
+      setCardsData(parsed.cards);
+    } catch (e) {
+      console.error(e);
+      setAnalysisData([{ title: "שגיאה בניתוח", level: 1, content: "אירעה שגיאה. אנא נסה שנית או קצר את הטקסט." }]);
+    }
+    setLoading(false);
+  };
+
+  return (
+    <div className="min-h-screen bg-[#05050A] text-slate-200 font-sans flex flex-col dir-rtl selection:bg-purple-500/30" dir="rtl">
+      
+      {/* Header - Cognitive Minimalist */}
+      <header className="sticky top-0 z-50 h-16 border-b border-white/[0.06] bg-[#05050A]/80 backdrop-blur-xl flex items-center justify-between px-6 print:hidden">
+        <div className="flex items-center gap-4">
+          <button onClick={() => setIsSidebarOpen(!isSidebarOpen)} className="p-2 rounded-lg text-slate-400 hover:bg-white/5 hover:text-white transition-all">
+            {isSidebarOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
+          <div className="flex items-center gap-3">
+             <div className="w-8 h-8 bg-gradient-to-tr from-purple-600 to-blue-600 rounded-lg flex items-center justify-center shadow-lg shadow-purple-900/20">
+                <Brain size={18} className="text-white" />
+             </div>
+             <h1 className="text-lg font-bold text-slate-200 tracking-tight">HolisView <span className="text-slate-600 font-normal mx-1">/</span> Architect</h1>
+          </div>
+        </div>
+        
+        <div className="flex items-center gap-2">
+           <a 
+            href="https://github.com/AnLoMinus/HolisView" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="p-2 rounded-full hover:bg-white/5 text-slate-400 hover:text-white transition-all"
+            title="View on GitHub"
+          >
+            <Github size={20} />
+          </a>
+          
+          {analysisData && (
+            <button onClick={() => window.print()} className="p-2 rounded-full hover:bg-white/5 text-slate-400 hover:text-white transition-all">
+              <Download size={18} />
+            </button>
+          )}
+        </div>
+      </header>
+
+      <div className="flex flex-1 overflow-hidden print:block relative">
+        
+        {/* Sidebar - Methods */}
+        <aside className={`
+          absolute inset-y-0 right-0 z-40 w-72 bg-[#090912] border-l border-white/5 transform transition-transform duration-500 cubic-bezier(0.2, 0.8, 0.2, 1)
+          ${isSidebarOpen ? 'translate-x-0 shadow-2xl shadow-black/50' : 'translate-x-full pointer-events-none opacity-0'} 
+          md:relative md:translate-x-0 md:pointer-events-auto md:opacity-100 md:shadow-none
+          ${isSidebarOpen ? 'md:w-72' : 'md:w-0 md:border-none'} overflow-hidden
+        `}>
+          <div className="p-5 h-full flex flex-col">
+            <h2 className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-6 px-1">Active Matrices</h2>
+            <div className="flex-1 space-y-3 overflow-y-auto custom-scrollbar px-1">
+              {methodsData.map(l => (
+                <div key={l.level} className="space-y-1">
+                  <button 
+                    onClick={() => setExpandedLevels(prev => ({...prev, [l.level]: !prev[l.level]}))} 
+                    className={`
+                      w-full flex items-center justify-between p-3 rounded-lg transition-all text-sm
+                      ${expandedLevels[l.level] ? 'bg-white/[0.03] text-white' : 'text-slate-400 hover:text-slate-200'}
+                    `}
+                  >
+                    <div className="flex items-center gap-3">
+                      <div className={`w-1.5 h-1.5 rounded-full bg-${l.baseColor}-500 shadow-[0_0_10px_currentColor]`}></div>
+                      <span className="font-medium">{l.title.split('-')[1]}</span>
+                    </div>
+                    <ChevronDown size={14} className={`transition-transform duration-300 ${expandedLevels[l.level] ? 'rotate-180' : ''}`} />
+                  </button>
+                  
+                  <div className={`grid transition-all duration-300 ease-in-out ${expandedLevels[l.level] ? 'grid-rows-[1fr] opacity-100 mb-4' : 'grid-rows-[0fr] opacity-0'}`}>
+                    <div className="overflow-hidden space-y-1">
+                      {l.methods.map(m => {
+                        const isSelected = selectedMethods.includes(m.id);
+                        return (
+                          <div 
+                            key={m.id} 
+                            onClick={() => setSelectedMethods(prev => prev.includes(m.id) ? prev.filter(x=>x!==m.id) : [...prev, m.id])} 
+                            className={`
+                              ml-4 p-2 rounded-md text-xs cursor-pointer border transition-all flex items-center gap-3
+                              ${isSelected 
+                                ? `bg-${l.baseColor}-500/10 border-${l.baseColor}-500/30 text-${l.baseColor}-200` 
+                                : 'bg-transparent border-transparent text-slate-500 hover:text-slate-300 hover:bg-white/[0.02]'}
+                            `}
+                          >
+                            <div className={`
+                              w-3.5 h-3.5 rounded-[3px] border flex items-center justify-center transition-all
+                              ${isSelected ? `bg-${l.baseColor}-500 border-${l.baseColor}-500` : 'border-slate-700'}
+                            `}>
+                              {isSelected && <Check size={8} className="text-white" />}
+                            </div>
+                            {m.name.split('(')[0]}
+                          </div>
+                        )
+                      })}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </aside>
+
+        {/* Main Workspace */}
+        <main className="flex-1 overflow-y-auto custom-scrollbar bg-[#05050A] relative scroll-smooth">
+          {/* Subtle Background Mesh */}
+          <div className="fixed inset-0 pointer-events-none opacity-20 bg-[radial-gradient(#ffffff05_1px,transparent_1px)] [background-size:20px_20px]"></div>
+          
+          <div className="max-w-6xl mx-auto p-6 md:p-12 relative z-10 min-h-full flex flex-col">
+            
+            {/* Input Section - Hero Style */}
+            <section className={`
+              transition-all duration-700 ease-[cubic-bezier(0.2,0.8,0.2,1)] print:hidden
+              ${analysisData ? 'mb-12' : 'flex-1 flex flex-col justify-center mb-0'}
+            `}>
+              <div className={`mx-auto w-full transition-all duration-700 ${analysisData ? 'max-w-full' : 'max-w-3xl'}`}>
+                
+                {!analysisData && (
+                  <div className="text-center mb-10 space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-700">
+                    <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tight">
+                      פענוח <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400">הוליסטי</span>
+                    </h2>
+                    <p className="text-slate-400 text-lg">הזן טקסט, שאלה או דילמה וקבל מיפוי עומק רב-ממדי</p>
+                  </div>
+                )}
+
+                <div className="relative group rounded-3xl p-[1px] bg-gradient-to-b from-white/10 to-white/0 focus-within:from-purple-500/50 focus-within:to-blue-500/50 transition-all duration-500">
+                  <div className="relative bg-[#0A0A14] rounded-[23px] overflow-hidden shadow-2xl shadow-black/50">
+                    <textarea 
+                      value={inputText} onChange={(e) => setInputText(e.target.value)}
+                      placeholder="כאן כותבים את המחשבות..."
+                      className={`
+                        w-full bg-transparent p-6 text-lg font-light text-slate-200 focus:outline-none placeholder:text-slate-700 resize-none custom-scrollbar
+                        transition-all duration-500 ${analysisData ? 'h-32' : 'h-48'}
+                      `}
+                    />
+                    <div className="flex items-center justify-between px-4 py-3 bg-[#0E0E1A] border-t border-white/5">
+                      <div className="flex items-center gap-2">
+                        <span className="flex h-2 w-2 rounded-full bg-purple-500 animate-pulse"></span>
+                        <span className="text-xs font-medium text-slate-400">{selectedMethods.length} מודלים פעילים</span>
+                      </div>
+                      <button 
+                        onClick={handleAnalyze} disabled={loading || !inputText || selectedMethods.length === 0}
+                        className={`
+                          px-6 py-2.5 rounded-xl text-white font-medium text-sm transition-all flex items-center gap-2
+                          ${loading 
+                            ? 'bg-slate-800 cursor-not-allowed' 
+                            : 'bg-gradient-to-r from-purple-600 to-blue-600 hover:shadow-[0_0_20px_rgba(124,58,237,0.3)] hover:scale-105 active:scale-95'}
+                        `}
+                      >
+                        {loading ? <Loader2 size={16} className="animate-spin" /> : <>נתח עומק <Zap size={16} /></>}
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            {/* Analysis Feed */}
+            {loading ? (
+              <div className="flex-1 flex flex-col items-center justify-center min-h-[400px]">
+                <div className="w-16 h-16 border-2 border-purple-500/20 border-t-purple-500 rounded-full animate-spin mb-6"></div>
+                <div className="text-center space-y-2">
+                  <h3 className="text-xl font-medium text-white">מעבד נתונים</h3>
+                  <p className="text-slate-500 text-sm animate-pulse">מפעיל אלגוריתמים הוליסטיים...</p>
+                </div>
+              </div>
+            ) : analysisData ? (
+              <div className="space-y-16 pb-20 animate-in fade-in duration-1000">
+                
+                {/* Print Header */}
+                <div className="hidden print:block text-center border-b border-black pb-8 mb-8">
+                   <h1 className="text-3xl font-bold text-black">דוח ניתוח הוליסטי</h1>
+                </div>
+
+                {/* Analysis Cards */}
+                <div className="space-y-6">
+                  {analysisData.map((seg, i) => <ResultCard key={i} segment={seg} />)}
+                </div>
+
+                {/* Essence Cards Grid */}
+                {cardsData && (
+                  <div className="print:break-before-page">
+                    <div className="flex items-center gap-4 mb-10 opacity-80">
+                      <div className="h-px flex-1 bg-gradient-to-r from-transparent via-slate-700 to-transparent"></div>
+                      <h2 className="text-2xl font-light text-slate-300 tracking-widest uppercase">מפת המהויות</h2>
+                      <div className="h-px flex-1 bg-gradient-to-r from-transparent via-slate-700 to-transparent"></div>
+                    </div>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                      {cardsData.map((c, i) => <EssenceCard key={i} card={c} />)}
+                    </div>
+                  </div>
+                )}
+              </div>
+            ) : null}
+          </div>
+        </main>
+      </div>
+
+      <style jsx global>{`
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 10px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
+        @media print {
+          @page { size: A4; margin: 1.5cm; }
+          body { background: white !important; color: black !important; }
+          .print\:hidden { display: none !important; }
+          .print\:text-black { color: black !important; }
+          .print\:border-black { border-color: black !important; }
+          .print\:bg-white { background: white !important; box-shadow: none !important; }
+        }
+      `}</style>
+    </div>
+  );
+};
+
+export default App;
+```
+
+---
+
 # אפליקציות לפיתוח
 
 - כאן אני אשמור את הקודים של האפליקצייה על מנת ליצור להם דוקומנטצייה מלאה על ידי סריקת הגירסאות השונות, ויצירת ליקוטים שונים של מקטעים מכל הגירסאות וליצור אחת מלאה המשלבת את הפונקציונאליות של כולם.
