@@ -1,6 +1,6 @@
 
 ## HolisView PRO ~ V6.0 PRO CARDS
-
+- https://gemini.google.com/share/79e2e9826310
 
 ```jsx
 import React, { useState, useEffect, useRef } from 'react';
@@ -569,6 +569,8 @@ export default App;
 ---
 
 # HolisView MATRIX - Build 8.6 JSON FIX
+- https://gemini.google.com/share/4b7955663add
+
 
 ```jsx
 import React, { useState, useEffect, useRef } from 'react';
@@ -1000,6 +1002,9 @@ export default App;
 ---
 
 # HolisView ULTIMATE - Matrix 8.3 WELCOME MATRIX (FIXED)
+-https://gemini.google.com/share/6f0110f65768
+- https://gemini.google.com/share/8508137eabf6
+
 
 ```jsx
 import React, { useState, useEffect, useRef } from 'react';
@@ -1422,6 +1427,1326 @@ const App = () => {
           </div>
         </main>
       </div>
+    </div>
+  );
+};
+
+export default App;
+```
+
+---
+
+# HolisView ULTIMATE Collector Edition Matrix
+- https://gemini.google.com/share/4bd68a665393
+
+```jsx
+import React, { useState, useEffect, useRef } from 'react';
+import { 
+  Sparkles, Zap, Loader2, ChevronDown, ChevronLeft, 
+  Menu, X, CheckSquare, Square, FileText, Layers, AlignRight,
+  Volume2, Copy, Check, RefreshCw, Hexagon, Printer, Download, Grid,
+  Maximize2, Wind, Flame, Droplets, Mountain, Activity,
+  Bookmark, ShieldCheck, Star, Brain, Eye, Heart, Feather, Globe, Command,
+  Github, Layout, Sun, Moon, Calendar, Hash, ArrowLeftRight
+} from 'lucide-react';
+
+const apiKey = ""; 
+
+const VERSION = "8.1 ULTIMATE COLLECTOR (FIXED)";
+
+const methodsData = [
+  {
+    level: 1,
+    title: "רמה 1 - יסודות (CORE)",
+    baseColor: "blue",
+    methods: [
+      { id: 'l1_pardes', name: 'פרד״ס (פשט, רמז, דרש, סוד)' },
+      { id: 'l1_elements', name: 'ארבעת היסודות (רוח, אש, מים, אדמה)' },
+      { id: 'l1_name', name: 'ארבע אותיות השם (י-ה-ו-ה)' },
+      { id: 'l1_creatures', name: 'ארבע חיות הקודש (אריה, שור, נשר, אדם)' },
+      { id: 'l1_sons', name: 'ארבעה בנים (חכם, רשע, תם, שאינו יודע)' },
+    ]
+  },
+  {
+    level: 2,
+    title: "רמה 2 - צמיחה (EVOLUTION)",
+    baseColor: "green",
+    methods: [
+      { id: 'l2_creation', name: 'מעשה בראשית (7 ימים)' },
+      { id: 'l2_principles', name: 'שבעה עקרונות לתודעה' },
+    ]
+  },
+  {
+    level: 3,
+    title: "רמה 3 - מערכות (ANCIENT)",
+    baseColor: "purple",
+    methods: [
+      { id: 'l3_sefirot', name: 'עשר הספירות' },
+      { id: 'l3_commandments', name: 'עשרת הדיברות' },
+    ]
+  },
+  {
+    level: 4,
+    title: "רמה 4 - ייחוד (LEGENDARY)",
+    baseColor: "gold",
+    methods: [
+      { id: 'l4_mercy', name: 'י"ג מידות הרחמים' },
+      { id: 'l4_soul_powers', name: 'י"ג כוחות הנפש' },
+    ]
+  }
+];
+
+const getColorClasses = (colorName) => {
+  const map = {
+    blue: { 
+      text: 'text-blue-300', 
+      bg: 'bg-blue-900/40', 
+      border: 'border-blue-400/50', 
+      accent: 'bg-blue-400', 
+      glow: 'shadow-blue-500/40',
+      gradient: 'from-blue-600/30 via-blue-900/10 to-transparent',
+      foil: 'linear-gradient(135deg, rgba(59,130,246,0.1) 0%, rgba(255,255,255,0.05) 50%, rgba(59,130,246,0.1) 100%)'
+    },
+    green: { 
+      text: 'text-emerald-300', 
+      bg: 'bg-emerald-900/40', 
+      border: 'border-emerald-400/50', 
+      accent: 'bg-emerald-400', 
+      glow: 'shadow-emerald-500/40',
+      gradient: 'from-emerald-600/30 via-emerald-900/10 to-transparent',
+      foil: 'linear-gradient(135deg, rgba(16,185,129,0.1) 0%, rgba(255,255,255,0.05) 50%, rgba(16,185,129,0.1) 100%)'
+    },
+    purple: { 
+      text: 'text-purple-300', 
+      bg: 'bg-purple-900/40', 
+      border: 'border-purple-400/50', 
+      accent: 'bg-purple-400', 
+      glow: 'shadow-purple-500/40',
+      gradient: 'from-purple-600/30 via-purple-900/10 to-transparent',
+      foil: 'linear-gradient(135deg, rgba(139,92,246,0.1) 0%, rgba(255,255,255,0.05) 50%, rgba(139,92,246,0.1) 100%)'
+    },
+    gold: { 
+      text: 'text-amber-300', 
+      bg: 'bg-amber-900/40', 
+      border: 'border-amber-400/60', 
+      accent: 'bg-amber-400', 
+      glow: 'shadow-amber-500/50',
+      gradient: 'from-amber-600/40 via-amber-900/10 to-transparent',
+      foil: 'linear-gradient(135deg, rgba(245,158,11,0.2) 0%, rgba(255,255,255,0.1) 50%, rgba(245,158,11,0.2) 100%)'
+    }
+  };
+  return map[colorName] || map.blue;
+};
+
+// --- PRO CARD COMPONENT ---
+const ProCard = ({ card, index }) => {
+  const styles = getColorClasses(card.colorKey);
+  const isQuad = card.layout === 'quad';
+  const cardRef = useRef(null);
+
+  const handleMouseMove = (e) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const rotateX = (y - centerY) / 10;
+    const rotateY = (centerX - x) / 10;
+    cardRef.current.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+  };
+
+  const handleMouseLeave = () => {
+    if (!cardRef.current) return;
+    cardRef.current.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+  };
+
+  return (
+    <div className="w-full min-w-[320px] max-w-[400px] shrink-0 h-[500px] flex flex-col p-2 select-none group/card">
+      <div 
+        ref={cardRef}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        className={`
+          relative h-full rounded-2xl border-2 ${styles.border} bg-[#050508] overflow-hidden flex flex-col 
+          transition-all duration-200 ease-out cursor-pointer ${styles.glow}
+        `}
+      >
+        <div className="absolute inset-0 opacity-0 group-hover/card:opacity-100 transition-opacity duration-500 pointer-events-none z-20"
+             style={{ background: styles.foil, mixBlendMode: 'color-dodge' }}></div>
+        
+        <div className="absolute inset-0 opacity-10 pointer-events-none mix-blend-overlay" 
+             style={{ backgroundImage: `url("https://www.transparenttextures.com/patterns/stardust.png")` }}></div>
+
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-[0.03] group-hover/card:opacity-[0.07] transition-all duration-700">
+           <Hexagon size={300} strokeWidth={0.5} className={styles.text} />
+        </div>
+
+        <div className={`relative z-10 p-5 border-b border-white/10 bg-gradient-to-l ${styles.gradient}`}>
+          <div className="flex justify-between items-start mb-2">
+            <div className={`px-2 py-0.5 rounded text-[9px] font-black tracking-widest uppercase bg-black/60 ${styles.text} border border-white/10`}>
+              {card.rarity || 'RARE'}
+            </div>
+            <div className={`flex items-center gap-1 text-[10px] font-mono ${styles.text}`}>
+               <Hash size={10} /> {index + 101}
+            </div>
+          </div>
+          <h3 className="text-xl font-black text-white leading-tight drop-shadow-md">{card.title}</h3>
+          <p className={`text-[10px] font-bold uppercase tracking-[0.2em] mt-1 ${styles.text} opacity-80`}>{card.methodName}</p>
+        </div>
+
+        <div className="relative z-10 p-5 flex-1 flex flex-col justify-center">
+          {isQuad ? (
+            <div className="grid grid-cols-2 gap-3">
+              {card.contentItems.slice(0, 4).map((item, idx) => (
+                <div key={idx} className="relative p-3 rounded-lg bg-black/40 border border-white/5 backdrop-blur-sm group/item hover:border-white/20 transition-all overflow-hidden">
+                  <div className={`text-[8px] font-black ${styles.text} mb-1 opacity-60 uppercase`}>{item.label}</div>
+                  <div className="text-xs text-slate-200 leading-snug font-medium">{item.value}</div>
+                  <div className={`absolute -bottom-1 -right-1 w-4 h-4 rounded-full ${styles.bg} blur-md opacity-0 group-hover/item:opacity-100 transition-opacity`}></div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="space-y-4">
+              {card.contentItems.map((item, idx) => (
+                <div key={idx} className="flex gap-4 items-center group/line">
+                   <div className={`w-8 h-px ${styles.accent} opacity-30 group-hover/line:w-12 transition-all`}></div>
+                   <div className="flex-1">
+                     <span className={`text-[10px] font-bold ${styles.text} block mb-0.5`}>{item.label}</span>
+                     <p className="text-xs text-slate-300 leading-relaxed italic">"{item.value}"</p>
+                   </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+
+        <div className="relative z-10 px-5 py-4 bg-black/80 border-t border-white/10 flex justify-between items-center">
+           <div className="flex items-center gap-3">
+              <div className={`w-8 h-8 rounded-lg flex items-center justify-center bg-white/5 border border-white/10`}>
+                 <Star size={14} className={styles.text} />
+              </div>
+              <div className="flex flex-col">
+                <span className="text-[10px] text-white font-bold leading-none">{card.hebrewDate}</span>
+                <span className="text-[8px] text-slate-500 uppercase tracking-tighter">HolisView Archive</span>
+              </div>
+           </div>
+           <div className="flex -space-x-1">
+              {[1,2,3].map(s => <div key={s} className={`w-1.5 h-1.5 rounded-full ${styles.accent} border border-black`}></div>)}
+           </div>
+        </div>
+
+        <div className={`absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-white/40 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-1000`}></div>
+      </div>
+    </div>
+  );
+};
+
+// --- MAIN APP ---
+const App = () => {
+  const [inputText, setInputText] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [sections, setSections] = useState(null); 
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [selectedMethods, setSelectedMethods] = useState(['l1_pardes', 'l1_elements', 'l4_soul_powers']);
+
+  const handleAnalyze = async () => {
+    if (!inputText || selectedMethods.length === 0) return;
+    setLoading(true);
+    setSections(null);
+    
+    const activeMethods = [];
+    methodsData.forEach(l => l.methods.forEach(m => selectedMethods.includes(m.id) && activeMethods.push({ ...m, level: l.level })));
+
+    const systemPrompt = `
+      You are 'HolisView Matrix ULTIMATE', a master of systemic kabbalistic analysis.
+      
+      TASK:
+      Analyze: "${inputText}"
+      Using: ${activeMethods.map(m => m.name).join(', ')}.
+
+      FORMAT:
+      Return JSON with a "sections" array. Each section corresponds to ONE method.
+      Ensure the cards feel "Legendary" and "Epic" in their descriptions.
+      
+      JSON SCHEMA:
+      {
+        "sections": [
+          {
+            "methodId": "...",
+            "methodName": "...",
+            "level": 1-4,
+            "cards": [
+              {
+                "title": "...",
+                "rarity": "LEGENDARY" | "ULTRA RARE" | "HOLOGRAM",
+                "layout": "quad" | "list",
+                "hebrewDate": "...",
+                "contentItems": [{"label": "...", "value": "..."}]
+              }
+            ]
+          }
+        ]
+      }
+    `;
+
+    try {
+      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          contents: [{ parts: [{ text: systemPrompt }] }],
+          generationConfig: { responseMimeType: "application/json" }
+        })
+      });
+      const data = await response.json();
+      const parsed = JSON.parse(data.candidates[0].content.parts[0].text);
+      
+      const processed = parsed.sections.map(sec => ({
+        ...sec,
+        colorKey: sec.level === 1 ? 'blue' : sec.level === 2 ? 'green' : sec.level === 3 ? 'purple' : 'gold'
+      }));
+
+      setSections(processed);
+    } catch (e) { console.error(e); }
+    setLoading(false);
+  };
+
+  return (
+    <div className="h-screen bg-[#020204] text-slate-200 font-sans flex flex-col dir-rtl overflow-hidden" dir="rtl">
+      {/* Inject custom styles via a standard style tag */}
+      <style dangerouslySetInnerHTML={{ __html: `
+        .custom-scrollbar::-webkit-scrollbar { height: 8px; width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.05); border-radius: 20px; border: 2px solid transparent; background-clip: padding-box; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.1); }
+        
+        .animate-spin-slow { animation: spin 12s linear infinite; }
+        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+        @media print {
+          body { background: white !important; }
+          .snap-start { page-break-inside: avoid; break-inside: avoid; }
+        }
+      `}} />
+
+      <header className="h-16 border-b border-white/10 bg-[#050508]/80 backdrop-blur-md flex items-center justify-between px-6 shrink-0 z-50">
+        <div className="flex items-center gap-6">
+          <button onClick={() => setIsSidebarOpen(!isSidebarOpen)} className="p-2 hover:bg-white/10 rounded-xl transition-all">
+            <Menu size={20} />
+          </button>
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 bg-gradient-to-tr from-amber-500 via-purple-600 to-blue-500 rounded-xl flex items-center justify-center shadow-lg shadow-purple-500/20">
+              <Sparkles size={20} className="text-white animate-pulse" />
+            </div>
+            <div>
+              <h1 className="text-lg font-black tracking-tight leading-none italic">HolisView <span className="text-amber-400">ULTIMATE</span></h1>
+              <span className="text-[9px] font-mono text-slate-500 uppercase tracking-widest">Collector Edition Matrix</span>
+            </div>
+          </div>
+        </div>
+        <div className="flex items-center gap-4">
+           <button onClick={() => window.print()} className="p-2.5 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl transition-all">
+             <Printer size={18}/>
+           </button>
+        </div>
+      </header>
+
+      <div className="flex flex-1 overflow-hidden relative">
+        <div className="absolute top-1/4 -right-20 w-96 h-96 bg-blue-600/10 blur-[120px] rounded-full pointer-events-none"></div>
+        <div className="absolute bottom-1/4 -left-20 w-96 h-96 bg-purple-600/10 blur-[120px] rounded-full pointer-events-none"></div>
+
+        <aside className={`bg-[#050508]/90 backdrop-blur-xl border-l border-white/10 transition-all duration-500 overflow-hidden flex flex-col shrink-0 ${isSidebarOpen ? 'w-80' : 'w-0'}`}>
+          <div className="p-6 flex-1 overflow-y-auto custom-scrollbar">
+            <div className="flex items-center justify-between mb-8">
+              <h2 className="text-[11px] font-black text-slate-400 uppercase tracking-[0.3em]">Deck Configuration</h2>
+              <div className="w-10 h-px bg-white/10"></div>
+            </div>
+            
+            {methodsData.map(l => (
+              <div key={l.level} className="mb-8">
+                <div className={`text-[10px] font-bold mb-4 flex items-center gap-2 ${getColorClasses(l.baseColor).text}`}>
+                   <div className={`w-1.5 h-1.5 rounded-full ${getColorClasses(l.baseColor).accent}`}></div>
+                   {l.title}
+                </div>
+                <div className="space-y-2">
+                  {l.methods.map(m => (
+                    <button 
+                      key={m.id}
+                      onClick={() => setSelectedMethods(p => p.includes(m.id) ? p.filter(x=>x!==m.id) : [...p, m.id])}
+                      className={`
+                        w-full text-right p-3 rounded-xl text-xs transition-all flex items-center justify-between group
+                        ${selectedMethods.includes(m.id) 
+                          ? 'bg-white/10 border border-white/10 text-white shadow-inner' 
+                          : 'text-slate-500 hover:text-slate-300 hover:bg-white/5 border border-transparent'}
+                      `}
+                    >
+                      <span className="font-medium">{m.name.split('(')[0]}</span>
+                      {selectedMethods.includes(m.id) ? <CheckSquare size={14} className={getColorClasses(l.baseColor).text} /> : <Square size={14} className="opacity-20" />}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </aside>
+
+        <main className="flex-1 flex flex-col overflow-hidden">
+          <div className="p-8 border-b border-white/5 bg-black/20 shrink-0">
+            <div className="max-w-5xl mx-auto relative group">
+              <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 via-purple-600 to-amber-500 rounded-2xl blur opacity-20 group-focus-within:opacity-40 transition duration-1000"></div>
+              <div className="relative flex gap-3 bg-[#0A0A0F] p-2 rounded-2xl border border-white/10">
+                <input 
+                  value={inputText} onChange={e => setInputText(e.target.value)}
+                  placeholder="הזן נושא לניתוח אסטרטגי עמוק..."
+                  className="flex-1 bg-transparent px-6 py-3 text-lg font-light text-slate-100 focus:outline-none placeholder:text-slate-700"
+                />
+                <button 
+                  onClick={handleAnalyze} disabled={loading}
+                  className="bg-white text-black hover:bg-amber-400 disabled:opacity-50 px-8 py-3 rounded-xl text-sm font-black transition-all flex items-center gap-2 shadow-xl shadow-white/5"
+                >
+                  {loading ? <Loader2 size={18} className="animate-spin" /> : <Zap size={18} fill="currentColor" />}
+                  GENERATE MATRIX
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex-1 overflow-auto custom-scrollbar p-10">
+            {loading ? (
+              <div className="h-full flex flex-col items-center justify-center space-y-8">
+                <div className="relative">
+                  <div className="w-24 h-24 border-2 border-amber-500/20 rounded-2xl animate-spin-slow"></div>
+                  <div className="absolute inset-0 w-24 h-24 border-t-2 border-amber-500 rounded-2xl animate-spin"></div>
+                  <Sparkles size={32} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-amber-500 animate-pulse" />
+                </div>
+                <div className="text-center">
+                  <h3 className="text-xl font-black tracking-widest uppercase text-white">Forging Matrix Elements</h3>
+                  <p className="text-xs font-mono text-slate-500 mt-2">Applying 8 layers of reality distortion...</p>
+                </div>
+              </div>
+            ) : sections ? (
+              <div className="max-w-[1800px] mx-auto space-y-16">
+                {sections.map((section, idx) => (
+                  <div key={idx} className="space-y-6 animate-in fade-in slide-in-from-right-10 duration-700">
+                    <div className="flex items-center gap-6">
+                       <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${getColorClasses(section.colorKey).gradient} border border-white/10 flex items-center justify-center`}>
+                          <Layers size={20} className={getColorClasses(section.colorKey).text} />
+                       </div>
+                       <div>
+                         <h2 className="text-2xl font-black text-white tracking-tight">{section.methodName}</h2>
+                         <div className="flex items-center gap-2 mt-1">
+                            <span className={`text-[10px] font-black uppercase px-2 py-0.5 rounded bg-white/5 border border-white/10 ${getColorClasses(section.colorKey).text}`}>Level {section.level} Matrix</span>
+                            <div className="h-px w-24 bg-white/10"></div>
+                         </div>
+                       </div>
+                    </div>
+
+                    <div className="flex gap-6 overflow-x-auto pb-10 px-2 custom-scrollbar snap-x snap-mandatory">
+                      {section.cards.map((card, cIdx) => (
+                        <div key={cIdx} className="snap-start">
+                          <ProCard card={{...card, colorKey: section.colorKey}} index={cIdx} />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="h-full flex flex-col items-center justify-center text-slate-800">
+                <Hexagon size={120} strokeWidth={0.5} className="opacity-20 mb-6 animate-spin-slow" />
+                <p className="text-lg font-light tracking-widest uppercase">Select Matrices to begin alignment</p>
+              </div>
+            )}
+          </div>
+        </main>
+      </div>
+    </div>
+  );
+};
+
+export default App;
+```
+
+---
+
+# HolisView ULTIMATE - Collector Edition Matrix
+- https://gemini.google.com/share/4edfb9f660ea
+
+```jsx
+import React, { useState, useEffect, useRef } from 'react';
+import { 
+  Sparkles, Zap, Loader2, ChevronDown, ChevronLeft, 
+  Menu, X, CheckSquare, Square, FileText, Layers, AlignRight,
+  Volume2, Copy, Check, RefreshCw, Hexagon, Printer, Download, Grid,
+  Maximize2, Wind, Flame, Droplets, Mountain, Activity,
+  Bookmark, ShieldCheck, Star, Brain, Eye, Heart, Feather, Globe, Command,
+  Github, Layout, Sun, Moon, Calendar, Hash, ArrowLeftRight
+} from 'lucide-react';
+
+const apiKey = ""; 
+
+const VERSION = "8.1 ULTIMATE COLLECTOR (FIXED)";
+
+const methodsData = [
+  {
+    level: 1,
+    title: "רמה 1 - יסודות (CORE)",
+    baseColor: "blue",
+    methods: [
+      { id: 'l1_pardes', name: 'פרד״ס (פשט, רמז, דרש, סוד)' },
+      { id: 'l1_elements', name: 'ארבעת היסודות (רוח, אש, מים, אדמה)' },
+      { id: 'l1_name', name: 'ארבע אותיות השם (י-ה-ו-ה)' },
+      { id: 'l1_creatures', name: 'ארבע חיות הקודש (אריה, שור, נשר, אדם)' },
+      { id: 'l1_sons', name: 'ארבעה בנים (חכם, רשע, תם, שאינו יודע)' },
+    ]
+  },
+  {
+    level: 2,
+    title: "רמה 2 - צמיחה (EVOLUTION)",
+    baseColor: "green",
+    methods: [
+      { id: 'l2_creation', name: 'מעשה בראשית (7 ימים)' },
+      { id: 'l2_principles', name: 'שבעה עקרונות לתודעה' },
+    ]
+  },
+  {
+    level: 3,
+    title: "רמה 3 - מערכות (ANCIENT)",
+    baseColor: "purple",
+    methods: [
+      { id: 'l3_sefirot', name: 'עשר הספירות' },
+      { id: 'l3_commandments', name: 'עשרת הדיברות' },
+    ]
+  },
+  {
+    level: 4,
+    title: "רמה 4 - ייחוד (LEGENDARY)",
+    baseColor: "gold",
+    methods: [
+      { id: 'l4_mercy', name: 'י"ג מידות הרחמים' },
+      { id: 'l4_soul_powers', name: 'י"ג כוחות הנפש' },
+    ]
+  }
+];
+
+const getColorClasses = (colorName) => {
+  const map = {
+    blue: { 
+      text: 'text-blue-300', 
+      bg: 'bg-blue-900/40', 
+      border: 'border-blue-400/50', 
+      accent: 'bg-blue-400', 
+      glow: 'shadow-blue-500/40',
+      gradient: 'from-blue-600/30 via-blue-900/10 to-transparent',
+      foil: 'linear-gradient(135deg, rgba(59,130,246,0.1) 0%, rgba(255,255,255,0.05) 50%, rgba(59,130,246,0.1) 100%)'
+    },
+    green: { 
+      text: 'text-emerald-300', 
+      bg: 'bg-emerald-900/40', 
+      border: 'border-emerald-400/50', 
+      accent: 'bg-emerald-400', 
+      glow: 'shadow-emerald-500/40',
+      gradient: 'from-emerald-600/30 via-emerald-900/10 to-transparent',
+      foil: 'linear-gradient(135deg, rgba(16,185,129,0.1) 0%, rgba(255,255,255,0.05) 50%, rgba(16,185,129,0.1) 100%)'
+    },
+    purple: { 
+      text: 'text-purple-300', 
+      bg: 'bg-purple-900/40', 
+      border: 'border-purple-400/50', 
+      accent: 'bg-purple-400', 
+      glow: 'shadow-purple-500/40',
+      gradient: 'from-purple-600/30 via-purple-900/10 to-transparent',
+      foil: 'linear-gradient(135deg, rgba(139,92,246,0.1) 0%, rgba(255,255,255,0.05) 50%, rgba(139,92,246,0.1) 100%)'
+    },
+    gold: { 
+      text: 'text-amber-300', 
+      bg: 'bg-amber-900/40', 
+      border: 'border-amber-400/60', 
+      accent: 'bg-amber-400', 
+      glow: 'shadow-amber-500/50',
+      gradient: 'from-amber-600/40 via-amber-900/10 to-transparent',
+      foil: 'linear-gradient(135deg, rgba(245,158,11,0.2) 0%, rgba(255,255,255,0.1) 50%, rgba(245,158,11,0.2) 100%)'
+    }
+  };
+  return map[colorName] || map.blue;
+};
+
+// --- PRO CARD COMPONENT ---
+const ProCard = ({ card, index }) => {
+  const styles = getColorClasses(card.colorKey);
+  const isQuad = card.layout === 'quad';
+  const cardRef = useRef(null);
+
+  const handleMouseMove = (e) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const rotateX = (y - centerY) / 10;
+    const rotateY = (centerX - x) / 10;
+    cardRef.current.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+  };
+
+  const handleMouseLeave = () => {
+    if (!cardRef.current) return;
+    cardRef.current.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+  };
+
+  return (
+    <div className="w-full min-w-[320px] max-w-[400px] shrink-0 h-[500px] flex flex-col p-2 select-none group/card">
+      <div 
+        ref={cardRef}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        className={`
+          relative h-full rounded-2xl border-2 ${styles.border} bg-[#050508] overflow-hidden flex flex-col 
+          transition-all duration-200 ease-out cursor-pointer ${styles.glow}
+        `}
+      >
+        <div className="absolute inset-0 opacity-0 group-hover/card:opacity-100 transition-opacity duration-500 pointer-events-none z-20"
+             style={{ background: styles.foil, mixBlendMode: 'color-dodge' }}></div>
+        
+        <div className="absolute inset-0 opacity-10 pointer-events-none mix-blend-overlay" 
+             style={{ backgroundImage: `url("https://www.transparenttextures.com/patterns/stardust.png")` }}></div>
+
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-[0.03] group-hover/card:opacity-[0.07] transition-all duration-700">
+           <Hexagon size={300} strokeWidth={0.5} className={styles.text} />
+        </div>
+
+        <div className={`relative z-10 p-5 border-b border-white/10 bg-gradient-to-l ${styles.gradient}`}>
+          <div className="flex justify-between items-start mb-2">
+            <div className={`px-2 py-0.5 rounded text-[9px] font-black tracking-widest uppercase bg-black/60 ${styles.text} border border-white/10`}>
+              {card.rarity || 'RARE'}
+            </div>
+            <div className={`flex items-center gap-1 text-[10px] font-mono ${styles.text}`}>
+               <Hash size={10} /> {index + 101}
+            </div>
+          </div>
+          <h3 className="text-xl font-black text-white leading-tight drop-shadow-md">{card.title}</h3>
+          <p className={`text-[10px] font-bold uppercase tracking-[0.2em] mt-1 ${styles.text} opacity-80`}>{card.methodName}</p>
+        </div>
+
+        <div className="relative z-10 p-5 flex-1 flex flex-col justify-center">
+          {isQuad ? (
+            <div className="grid grid-cols-2 gap-3">
+              {card.contentItems.slice(0, 4).map((item, idx) => (
+                <div key={idx} className="relative p-3 rounded-lg bg-black/40 border border-white/5 backdrop-blur-sm group/item hover:border-white/20 transition-all overflow-hidden">
+                  <div className={`text-[8px] font-black ${styles.text} mb-1 opacity-60 uppercase`}>{item.label}</div>
+                  <div className="text-xs text-slate-200 leading-snug font-medium">{item.value}</div>
+                  <div className={`absolute -bottom-1 -right-1 w-4 h-4 rounded-full ${styles.bg} blur-md opacity-0 group-hover/item:opacity-100 transition-opacity`}></div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="space-y-4">
+              {card.contentItems.map((item, idx) => (
+                <div key={idx} className="flex gap-4 items-center group/line">
+                   <div className={`w-8 h-px ${styles.accent} opacity-30 group-hover/line:w-12 transition-all`}></div>
+                   <div className="flex-1">
+                     <span className={`text-[10px] font-bold ${styles.text} block mb-0.5`}>{item.label}</span>
+                     <p className="text-xs text-slate-300 leading-relaxed italic">"{item.value}"</p>
+                   </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+
+        <div className="relative z-10 px-5 py-4 bg-black/80 border-t border-white/10 flex justify-between items-center">
+           <div className="flex items-center gap-3">
+              <div className={`w-8 h-8 rounded-lg flex items-center justify-center bg-white/5 border border-white/10`}>
+                 <Star size={14} className={styles.text} />
+              </div>
+              <div className="flex flex-col">
+                <span className="text-[10px] text-white font-bold leading-none">{card.hebrewDate}</span>
+                <span className="text-[8px] text-slate-500 uppercase tracking-tighter">HolisView Archive</span>
+              </div>
+           </div>
+           <div className="flex -space-x-1">
+              {[1,2,3].map(s => <div key={s} className={`w-1.5 h-1.5 rounded-full ${styles.accent} border border-black`}></div>)}
+           </div>
+        </div>
+
+        <div className={`absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-white/40 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-1000`}></div>
+      </div>
+    </div>
+  );
+};
+
+// --- MAIN APP ---
+const App = () => {
+  const [inputText, setInputText] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [sections, setSections] = useState(null); 
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [selectedMethods, setSelectedMethods] = useState(['l1_pardes', 'l1_elements', 'l4_soul_powers']);
+
+  const handleAnalyze = async () => {
+    if (!inputText || selectedMethods.length === 0) return;
+    setLoading(true);
+    setSections(null);
+    
+    const activeMethods = [];
+    methodsData.forEach(l => l.methods.forEach(m => selectedMethods.includes(m.id) && activeMethods.push({ ...m, level: l.level })));
+
+    const systemPrompt = `
+      You are 'HolisView Matrix ULTIMATE', a master of systemic kabbalistic analysis.
+      
+      TASK:
+      Analyze: "${inputText}"
+      Using: ${activeMethods.map(m => m.name).join(', ')}.
+
+      FORMAT:
+      Return JSON with a "sections" array. Each section corresponds to ONE method.
+      Ensure the cards feel "Legendary" and "Epic" in their descriptions.
+      
+      JSON SCHEMA:
+      {
+        "sections": [
+          {
+            "methodId": "...",
+            "methodName": "...",
+            "level": 1-4,
+            "cards": [
+              {
+                "title": "...",
+                "rarity": "LEGENDARY" | "ULTRA RARE" | "HOLOGRAM",
+                "layout": "quad" | "list",
+                "hebrewDate": "...",
+                "contentItems": [{"label": "...", "value": "..."}]
+              }
+            ]
+          }
+        ]
+      }
+    `;
+
+    try {
+      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          contents: [{ parts: [{ text: systemPrompt }] }],
+          generationConfig: { responseMimeType: "application/json" }
+        })
+      });
+      const data = await response.json();
+      const parsed = JSON.parse(data.candidates[0].content.parts[0].text);
+      
+      const processed = parsed.sections.map(sec => ({
+        ...sec,
+        colorKey: sec.level === 1 ? 'blue' : sec.level === 2 ? 'green' : sec.level === 3 ? 'purple' : 'gold'
+      }));
+
+      setSections(processed);
+    } catch (e) { console.error(e); }
+    setLoading(false);
+  };
+
+  return (
+    <div className="h-screen bg-[#020204] text-slate-200 font-sans flex flex-col dir-rtl overflow-hidden" dir="rtl">
+      {/* Inject custom styles via a standard style tag */}
+      <style dangerouslySetInnerHTML={{ __html: `
+        .custom-scrollbar::-webkit-scrollbar { height: 8px; width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.05); border-radius: 20px; border: 2px solid transparent; background-clip: padding-box; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.1); }
+        
+        .animate-spin-slow { animation: spin 12s linear infinite; }
+        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+        @media print {
+          body { background: white !important; }
+          .snap-start { page-break-inside: avoid; break-inside: avoid; }
+        }
+      `}} />
+
+      <header className="h-16 border-b border-white/10 bg-[#050508]/80 backdrop-blur-md flex items-center justify-between px-6 shrink-0 z-50">
+        <div className="flex items-center gap-6">
+          <button onClick={() => setIsSidebarOpen(!isSidebarOpen)} className="p-2 hover:bg-white/10 rounded-xl transition-all">
+            <Menu size={20} />
+          </button>
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 bg-gradient-to-tr from-amber-500 via-purple-600 to-blue-500 rounded-xl flex items-center justify-center shadow-lg shadow-purple-500/20">
+              <Sparkles size={20} className="text-white animate-pulse" />
+            </div>
+            <div>
+              <h1 className="text-lg font-black tracking-tight leading-none italic">HolisView <span className="text-amber-400">ULTIMATE</span></h1>
+              <span className="text-[9px] font-mono text-slate-500 uppercase tracking-widest">Collector Edition Matrix</span>
+            </div>
+          </div>
+        </div>
+        <div className="flex items-center gap-4">
+           <button onClick={() => window.print()} className="p-2.5 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl transition-all">
+             <Printer size={18}/>
+           </button>
+        </div>
+      </header>
+
+      <div className="flex flex-1 overflow-hidden relative">
+        <div className="absolute top-1/4 -right-20 w-96 h-96 bg-blue-600/10 blur-[120px] rounded-full pointer-events-none"></div>
+        <div className="absolute bottom-1/4 -left-20 w-96 h-96 bg-purple-600/10 blur-[120px] rounded-full pointer-events-none"></div>
+
+        <aside className={`bg-[#050508]/90 backdrop-blur-xl border-l border-white/10 transition-all duration-500 overflow-hidden flex flex-col shrink-0 ${isSidebarOpen ? 'w-80' : 'w-0'}`}>
+          <div className="p-6 flex-1 overflow-y-auto custom-scrollbar">
+            <div className="flex items-center justify-between mb-8">
+              <h2 className="text-[11px] font-black text-slate-400 uppercase tracking-[0.3em]">Deck Configuration</h2>
+              <div className="w-10 h-px bg-white/10"></div>
+            </div>
+            
+            {methodsData.map(l => (
+              <div key={l.level} className="mb-8">
+                <div className={`text-[10px] font-bold mb-4 flex items-center gap-2 ${getColorClasses(l.baseColor).text}`}>
+                   <div className={`w-1.5 h-1.5 rounded-full ${getColorClasses(l.baseColor).accent}`}></div>
+                   {l.title}
+                </div>
+                <div className="space-y-2">
+                  {l.methods.map(m => (
+                    <button 
+                      key={m.id}
+                      onClick={() => setSelectedMethods(p => p.includes(m.id) ? p.filter(x=>x!==m.id) : [...p, m.id])}
+                      className={`
+                        w-full text-right p-3 rounded-xl text-xs transition-all flex items-center justify-between group
+                        ${selectedMethods.includes(m.id) 
+                          ? 'bg-white/10 border border-white/10 text-white shadow-inner' 
+                          : 'text-slate-500 hover:text-slate-300 hover:bg-white/5 border border-transparent'}
+                      `}
+                    >
+                      <span className="font-medium">{m.name.split('(')[0]}</span>
+                      {selectedMethods.includes(m.id) ? <CheckSquare size={14} className={getColorClasses(l.baseColor).text} /> : <Square size={14} className="opacity-20" />}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </aside>
+
+        <main className="flex-1 flex flex-col overflow-hidden">
+          <div className="p-8 border-b border-white/5 bg-black/20 shrink-0">
+            <div className="max-w-5xl mx-auto relative group">
+              <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 via-purple-600 to-amber-500 rounded-2xl blur opacity-20 group-focus-within:opacity-40 transition duration-1000"></div>
+              <div className="relative flex gap-3 bg-[#0A0A0F] p-2 rounded-2xl border border-white/10">
+                <input 
+                  value={inputText} onChange={e => setInputText(e.target.value)}
+                  placeholder="הזן נושא לניתוח אסטרטגי עמוק..."
+                  className="flex-1 bg-transparent px-6 py-3 text-lg font-light text-slate-100 focus:outline-none placeholder:text-slate-700"
+                />
+                <button 
+                  onClick={handleAnalyze} disabled={loading}
+                  className="bg-white text-black hover:bg-amber-400 disabled:opacity-50 px-8 py-3 rounded-xl text-sm font-black transition-all flex items-center gap-2 shadow-xl shadow-white/5"
+                >
+                  {loading ? <Loader2 size={18} className="animate-spin" /> : <Zap size={18} fill="currentColor" />}
+                  GENERATE MATRIX
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex-1 overflow-auto custom-scrollbar p-10">
+            {loading ? (
+              <div className="h-full flex flex-col items-center justify-center space-y-8">
+                <div className="relative">
+                  <div className="w-24 h-24 border-2 border-amber-500/20 rounded-2xl animate-spin-slow"></div>
+                  <div className="absolute inset-0 w-24 h-24 border-t-2 border-amber-500 rounded-2xl animate-spin"></div>
+                  <Sparkles size={32} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-amber-500 animate-pulse" />
+                </div>
+                <div className="text-center">
+                  <h3 className="text-xl font-black tracking-widest uppercase text-white">Forging Matrix Elements</h3>
+                  <p className="text-xs font-mono text-slate-500 mt-2">Applying 8 layers of reality distortion...</p>
+                </div>
+              </div>
+            ) : sections ? (
+              <div className="max-w-[1800px] mx-auto space-y-16">
+                {sections.map((section, idx) => (
+                  <div key={idx} className="space-y-6 animate-in fade-in slide-in-from-right-10 duration-700">
+                    <div className="flex items-center gap-6">
+                       <div className={`w-12 h-12 rounded-2xl bg-gradient-to-br ${getColorClasses(section.colorKey).gradient} border border-white/10 flex items-center justify-center`}>
+                          <Layers size={20} className={getColorClasses(section.colorKey).text} />
+                       </div>
+                       <div>
+                         <h2 className="text-2xl font-black text-white tracking-tight">{section.methodName}</h2>
+                         <div className="flex items-center gap-2 mt-1">
+                            <span className={`text-[10px] font-black uppercase px-2 py-0.5 rounded bg-white/5 border border-white/10 ${getColorClasses(section.colorKey).text}`}>Level {section.level} Matrix</span>
+                            <div className="h-px w-24 bg-white/10"></div>
+                         </div>
+                       </div>
+                    </div>
+
+                    <div className="flex gap-6 overflow-x-auto pb-10 px-2 custom-scrollbar snap-x snap-mandatory">
+                      {section.cards.map((card, cIdx) => (
+                        <div key={cIdx} className="snap-start">
+                          <ProCard card={{...card, colorKey: section.colorKey}} index={cIdx} />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <div className="h-full flex flex-col items-center justify-center text-slate-800">
+                <Hexagon size={120} strokeWidth={0.5} className="opacity-20 mb-6 animate-spin-slow" />
+                <p className="text-lg font-light tracking-widest uppercase">Select Matrices to begin alignment</p>
+              </div>
+            )}
+          </div>
+        </main>
+      </div>
+    </div>
+  );
+};
+
+export default App;
+```
+
+---
+
+# HolisView - 4.2.0 GOLD - System Integration Matrix
+- https://gemini.google.com/share/90918d618301
+
+```jsx
+import React, { useState, useEffect, useRef } from 'react';
+import { 
+  Sparkles, Zap, Loader2, ChevronDown, ChevronLeft, 
+  Menu, X, CheckSquare, Square, FileText, Layers, AlignRight,
+  Volume2, Copy, Check, RefreshCw, Hexagon, Printer, Download, Grid,
+  Maximize2, Wind, Flame, Droplets, Mountain, Activity,
+  Bookmark, ShieldCheck, Star
+} from 'lucide-react';
+
+// In this environment, the API key is injected automatically at runtime.
+const apiKey = ""; 
+
+// --- CONSTANTS & DATA ---
+const VERSION = "4.2.0 GOLD";
+
+const methodsData = [
+  {
+    level: 1,
+    title: "רמה 1 - יסודות",
+    description: "הבנת היסודות והכוחות הפועלים בעולם ובאדם",
+    baseColor: "blue",
+    methods: [
+      { id: 'l1_pardes', name: 'פרד״ס (פשט, רמז, דרש, סוד)' },
+      { id: 'l1_abya', name: 'אביע עולמות (אצילות, בריאה, יצירה, עשייה)' },
+      { id: 'l1_elements', name: 'ארבעת היסודות (רוח, אש, מים, אדמה)' },
+      { id: 'l1_creatures', name: 'ארבע חיות הקודש (אריה, שור, נשר, אדם)' },
+      { id: 'l1_service', name: 'ארבע מדרגות בעבודת ה׳ (יראה, אהבה, תורה, דבקות)' },
+      { id: 'l1_providence', name: 'ארבעה אופני השגחה (טבע, נס נסתר, נס גלוי, ישירה)' },
+    ]
+  },
+  {
+    level: 2,
+    title: "רמה 2 - צמיחה",
+    baseColor: "green",
+    methods: [
+      { id: 'l2_creation', name: 'מעשה בראשית (7 ימים כהשתקפות הנפש)' },
+      { id: 'l2_principles', name: 'שבעה עקרונות לתודעה גבוהה' },
+      { id: 'l2_repentance', name: 'שבעה שלבים של תהליך תשובה' },
+      { id: 'l2_world_correction', name: 'שבעה עקרונות של תיקון עולם' },
+    ]
+  },
+  {
+    level: 3,
+    title: "רמה 3 - מערכות",
+    baseColor: "purple",
+    methods: [
+      { id: 'l3_sefirot', name: 'עשר הספירות' },
+      { id: 'l3_sayings', name: 'עשרת המאמרות' },
+      { id: 'l3_success', name: 'עשרת חוקי ההצלחה' },
+      { id: 'l3_commandments', name: 'עשרת הדיברות' },
+    ]
+  },
+  {
+    level: 4,
+    title: "רמה 4 - ייחוד",
+    baseColor: "cyan",
+    methods: [
+      { id: 'l4_faith_principles', name: 'י"ג יסודות האמונה' },
+      { id: 'l4_mercy', name: 'י"ג מידות הרחמים' },
+      { id: 'l4_soul_powers', name: 'י"ג כוחות הנפש' },
+    ]
+  }
+];
+
+const getColorClasses = (colorName) => {
+  const map = {
+    blue: { 
+      text: 'text-blue-400', bg: 'bg-blue-500/10', border: 'border-blue-500/30', 
+      glow: 'shadow-[0_0_15px_rgba(59,130,246,0.3)]', gradient: 'from-blue-600 to-blue-400',
+      accent: 'bg-blue-500' 
+    },
+    green: { 
+      text: 'text-emerald-400', bg: 'bg-emerald-500/10', border: 'border-emerald-500/30', 
+      glow: 'shadow-[0_0_15px_rgba(16,185,129,0.3)]', gradient: 'from-emerald-600 to-emerald-400',
+      accent: 'bg-emerald-500'
+    },
+    purple: { 
+      text: 'text-purple-400', bg: 'bg-purple-500/10', border: 'border-purple-500/30', 
+      glow: 'shadow-[0_0_15px_rgba(168,85,247,0.3)]', gradient: 'from-purple-600 to-purple-400',
+      accent: 'bg-purple-500'
+    },
+    cyan: { 
+      text: 'text-cyan-400', bg: 'bg-cyan-500/10', border: 'border-cyan-500/30', 
+      glow: 'shadow-[0_0_15px_rgba(6,182,212,0.3)]', gradient: 'from-cyan-600 to-cyan-400',
+      accent: 'bg-cyan-500'
+    },
+    gold: { 
+      text: 'text-amber-400', bg: 'bg-amber-500/10', border: 'border-amber-500/30', 
+      glow: 'shadow-[0_0_20px_rgba(245,158,11,0.4)]', gradient: 'from-amber-600 to-amber-400',
+      accent: 'bg-amber-500'
+    }
+  };
+  return map[colorName] || map.blue;
+};
+
+// --- RENDERERS ---
+
+const TextCompiler = ({ content, styles }) => {
+  if (!content) return null;
+  const lines = content.split('\n');
+  const renderedElements = [];
+  
+  lines.forEach((line, index) => {
+    const trimmed = line.trim();
+    if (trimmed.startsWith('### ')) {
+      renderedElements.push(<h4 key={index} className={`text-lg font-bold mt-6 mb-2 flex items-center gap-2 ${styles.text} print:text-black`}>
+        <div className={`w-1.5 h-1.5 rounded-full ${styles.accent}`}></div>
+        {trimmed.replace('### ', '')}
+      </h4>);
+    } else if (trimmed.startsWith('## ')) {
+      renderedElements.push(<h3 key={index} className={`text-xl font-black mt-8 mb-4 border-b-2 ${styles.border} pb-2 tracking-tight ${styles.text} print:text-black print:border-black`}>{trimmed.replace('## ', '')}</h3>);
+    } else if (trimmed.startsWith('- ')) {
+      renderedElements.push(
+        <li key={index} className="mr-4 list-none flex items-start gap-2 mb-2 text-slate-300 print:text-black">
+          <span className={`${styles.text} mt-1`}>✦</span>
+          <span>{trimmed.replace('- ', '').split(/(\*\*.*?\*\*)/).map((p, i) => p.startsWith('**') ? <strong key={i} className="text-white font-bold">{p.slice(2,-2)}</strong> : p)}</span>
+        </li>
+      );
+    } else if (trimmed.length > 0) {
+      renderedElements.push(
+        <p key={index} className="mb-4 leading-relaxed text-slate-300/90 font-light print:text-black">
+           {trimmed.split(/(\*\*.*?\*\*)/).map((part, i) => 
+            part.startsWith('**') && part.endsWith('**') 
+              ? <strong key={i} className={`${styles.text} font-bold bg-white/5 px-1 rounded`}>{part.slice(2, -2)}</strong> 
+              : part
+          )}
+        </p>
+      );
+    }
+  });
+
+  return <div>{renderedElements}</div>;
+};
+
+// --- ENHANCED CARD COMPONENT ---
+
+const EssenceCard = ({ card }) => {
+  const isFire = card.element.includes('אש');
+  const isWater = card.element.includes('מים');
+  const isAir = card.element.includes('רוח') || card.element.includes('אוויר');
+  const isEarth = card.element.includes('אדמה');
+
+  const theme = isFire ? { border: 'border-orange-500/40', shadow: 'shadow-orange-500/20', text: 'text-orange-600', grad: 'from-orange-50 to-white', icon: <Flame className="text-orange-500" /> } :
+                isWater ? { border: 'border-blue-500/40', shadow: 'shadow-blue-500/20', text: 'text-blue-600', grad: 'from-blue-50 to-white', icon: <Droplets className="text-blue-500" /> } :
+                isAir ? { border: 'border-cyan-500/40', shadow: 'shadow-cyan-500/20', text: 'text-cyan-600', grad: 'from-cyan-50 to-white', icon: <Wind className="text-cyan-500" /> } :
+                isEarth ? { border: 'border-amber-700/40', shadow: 'shadow-amber-700/20', text: 'text-amber-800', grad: 'from-amber-50 to-white', icon: <Mountain className="text-amber-700" /> } :
+                { border: 'border-purple-500/40', shadow: 'shadow-purple-500/20', text: 'text-purple-600', grad: 'from-purple-50 to-white', icon: <Sparkles className="text-purple-500" /> };
+
+  return (
+    <div className={`
+      relative h-full bg-gradient-to-br ${theme.grad} rounded-2xl border-2 ${theme.border} 
+      p-5 flex flex-col justify-between overflow-hidden shadow-xl ${theme.shadow} 
+      hover:scale-[1.02] transition-all duration-500 group print:shadow-none print:border-black
+    `}>
+      {/* Background Decorative Element */}
+      <div className="absolute top-0 right-0 p-8 opacity-[0.05] group-hover:opacity-[0.1] transition-opacity pointer-events-none">
+        <Hexagon size={120} strokeWidth={1} />
+      </div>
+
+      <div className="relative z-10">
+        <div className="flex justify-between items-start mb-4">
+          <div>
+            <h3 className={`text-xl font-black ${theme.text} leading-tight mb-0.5`}>{card.title}</h3>
+            <div className="flex items-center gap-1.5">
+              <span className="text-[9px] font-bold uppercase tracking-widest text-slate-400 px-1.5 py-0.5 bg-slate-100 rounded">{card.energy}</span>
+              <div className="flex gap-0.5">
+                {[...Array(5)].map((_, i) => (
+                  <div key={i} className={`w-1 h-1 rounded-full ${i < card.score ? theme.text.replace('text', 'bg') : 'bg-slate-200'}`}></div>
+                ))}
+              </div>
+            </div>
+          </div>
+          <div className="p-2 bg-white rounded-xl shadow-sm border border-slate-100">
+            {theme.icon}
+          </div>
+        </div>
+
+        <div className="space-y-3">
+          {card.sentences.map((s, idx) => (
+            <div key={idx} className="relative pr-3 border-r-2 border-slate-200">
+              <span className="text-[8px] font-bold text-slate-400 uppercase block mb-0.5 tracking-tighter">
+                {["הוראה", "מיקוד", "יישום", "זכירה"][idx]}
+              </span>
+              <p className="text-[13px] text-slate-800 font-serif leading-snug">{s}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="mt-4 flex justify-between items-center border-t border-slate-200/50 pt-3">
+        <span className="text-[9px] font-mono text-slate-400">#HV-{card.element}</span>
+        <div className="flex items-center gap-1">
+          <div className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></div>
+          <span className="text-[8px] font-black text-slate-500">HOLISVIEW GOLD</span>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// --- ENHANCED RESULT CARD ---
+
+const ResultCard = ({ segment }) => {
+  const [copied, setCopied] = useState(false);
+  let colorKey = segment.level === 1 ? 'blue' : segment.level === 2 ? 'green' : segment.level === 3 ? 'purple' : segment.level === 4 ? 'cyan' : 'gold';
+  const styles = getColorClasses(colorKey);
+
+  return (
+    <div className={`
+      relative group overflow-hidden rounded-2xl border ${styles.border} ${styles.bg} ${styles.glow}
+      backdrop-blur-xl transition-all duration-700 mb-10 print:border-none print:bg-white
+      animate-in fade-in slide-in-from-bottom-4
+    `}>
+      {/* Dynamic Animated Border Glow */}
+      <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none`}>
+        <div className={`absolute -inset-[2px] rounded-2xl border-2 ${styles.border} animate-pulse`}></div>
+      </div>
+
+      <div className="p-6 md:p-8 flex items-center justify-between border-b border-white/10 relative z-10">
+        <div className="flex items-center gap-5">
+          <div className={`w-14 h-14 rounded-2xl bg-black/40 flex items-center justify-center border ${styles.border} ${styles.text}`}>
+            {segment.level === 99 ? <Star className="animate-spin-slow" /> : <Hexagon strokeWidth={1.5} />}
+          </div>
+          <div>
+            <h3 className={`text-2xl font-black tracking-tight ${styles.text} print:text-black`}>{segment.title}</h3>
+            <div className="flex items-center gap-2 mt-1">
+               <span className="text-[10px] uppercase font-mono tracking-[0.2em] text-slate-500">
+                {segment.level === 99 ? 'INTEGRATION ARCHITECTURE' : `PHASE 0${segment.level}`}
+              </span>
+              <div className={`h-1 w-12 rounded-full ${styles.accent} opacity-30`}></div>
+            </div>
+          </div>
+        </div>
+        <button 
+          onClick={() => { navigator.clipboard.writeText(segment.content); setCopied(true); setTimeout(()=>setCopied(false), 2000); }}
+          className="p-3 rounded-xl hover:bg-white/10 text-slate-400 transition-all border border-transparent hover:border-white/10"
+        >
+          {copied ? <Check className="text-green-400" /> : <Copy size={20} />}
+        </button>
+      </div>
+
+      <div className="p-8 md:p-10 relative z-10">
+        <TextCompiler content={segment.content} styles={styles} />
+      </div>
+
+      {/* Modern Background Texture */}
+      <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-black/20 to-transparent pointer-events-none"></div>
+    </div>
+  );
+};
+
+// --- APP COMPONENT ---
+
+const App = () => {
+  const [inputText, setInputText] = useState('');
+  const [loading, setLoading] = useState(false);
+  const [analysisData, setAnalysisData] = useState(null);
+  const [cardsData, setCardsData] = useState(null);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [selectedMethods, setSelectedMethods] = useState([]);
+  const [expandedLevels, setExpandedLevels] = useState({1: true, 2: false, 3: false, 4: false});
+
+  const handleAnalyze = async () => {
+    if (!inputText || selectedMethods.length === 0) return;
+    setLoading(true);
+    setAnalysisData(null);
+    setCardsData(null);
+    
+    const activeMethods = [];
+    methodsData.forEach(l => l.methods.forEach(m => selectedMethods.includes(m.id) && activeMethods.push({ ...m, level: l.level })));
+
+    const systemPrompt = `Analyze the user input using: ${activeMethods.map(m => m.name).join(', ')}. Return JSON with "analysis" (array of {title, level, content}) and "cards" (exactly 9 {title, element, energy, score, sentences:[4]}) keys. Use Nikud in cards sentences. Format content with markdown.`;
+    
+    try {
+      const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          contents: [{ parts: [{ text: systemPrompt + "\nInput: " + inputText }] }],
+          generationConfig: { responseMimeType: "application/json" }
+        })
+      });
+      const data = await response.json();
+      const parsed = JSON.parse(data.candidates[0].content.parts[0].text);
+      setAnalysisData(parsed.analysis);
+      setCardsData(parsed.cards);
+    } catch (e) {
+      setAnalysisData([{ title: "שגיאה", level: 1, content: "אירעה שגיאה בעיבוד הנתונים." }]);
+    }
+    setLoading(false);
+  };
+
+  return (
+    <div className="min-h-screen bg-[#020208] text-slate-200 font-sans flex flex-col dir-rtl" dir="rtl">
+      
+      {/* Glass Header */}
+      <header className="sticky top-0 z-50 h-20 border-b border-white/5 bg-black/40 backdrop-blur-2xl flex items-center justify-between px-6 print:hidden">
+        <div className="flex items-center gap-4">
+          <button onClick={() => setIsSidebarOpen(!isSidebarOpen)} className="p-3 bg-white/5 rounded-xl border border-white/10 hover:border-purple-500/50 transition-all">
+            {isSidebarOpen ? <X /> : <Menu className="text-purple-400" />}
+          </button>
+          <div className="flex flex-col">
+            <h1 className="text-xl font-black bg-gradient-to-r from-purple-400 via-amber-400 to-cyan-400 bg-clip-text text-transparent flex items-center gap-2">
+              HolisView <span className="text-[10px] text-slate-500 font-mono tracking-widest bg-white/5 px-2 py-0.5 rounded border border-white/5">{VERSION}</span>
+            </h1>
+            <span className="text-[9px] text-slate-500 font-bold tracking-widest uppercase">System Integration Matrix</span>
+          </div>
+        </div>
+        
+        <div className="flex items-center gap-3">
+          {analysisData && (
+            <button onClick={() => window.print()} className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-amber-600 to-amber-500 text-white font-bold text-xs shadow-lg shadow-amber-900/20 hover:scale-105 active:scale-95 transition-all">
+              <Download size={14} /> ייצוא דוח מהודר
+            </button>
+          )}
+        </div>
+      </header>
+
+      <div className="flex flex-1 overflow-hidden print:block">
+        
+        {/* Sidebar - Methods */}
+        <aside className={`fixed inset-y-0 right-0 z-40 w-80 bg-slate-950 border-l border-white/5 transform transition-transform duration-500 ${isSidebarOpen ? 'translate-x-0' : 'translate-x-full'} md:relative md:translate-x-0 ${isSidebarOpen ? 'md:w-80' : 'md:w-0 md:opacity-0 md:p-0'} overflow-hidden`}>
+          <div className="p-6 h-full flex flex-col">
+            <div className="flex items-center gap-2 mb-8">
+              <Layers className="text-purple-500" />
+              <h2 className="font-bold text-lg">ארכיטקטורת ניתוח</h2>
+            </div>
+            <div className="flex-1 space-y-4 overflow-y-auto custom-scrollbar pr-1">
+              {methodsData.map(l => (
+                <div key={l.level} className="space-y-2">
+                  <button onClick={() => setExpandedLevels(prev => ({...prev, [l.level]: !prev[l.level]}))} className={`w-full flex items-center justify-between p-4 rounded-xl bg-white/5 border border-white/5 hover:bg-white/10 transition-all`}>
+                    <span className="text-sm font-bold">{l.title}</span>
+                    <ChevronDown className={`w-4 h-4 transition-transform ${expandedLevels[l.level] ? 'rotate-180' : ''}`} />
+                  </button>
+                  {expandedLevels[l.level] && (
+                    <div className="grid grid-cols-1 gap-2 p-1">
+                      {l.methods.map(m => (
+                        <div key={m.id} onClick={() => setSelectedMethods(prev => prev.includes(m.id) ? prev.filter(x=>x!==m.id) : [...prev, m.id])} className={`p-3 rounded-lg text-xs cursor-pointer border transition-all flex items-center gap-3 ${selectedMethods.includes(m.id) ? 'bg-purple-500/10 border-purple-500/40 text-purple-200' : 'bg-transparent border-white/5 text-slate-500 hover:text-slate-300'}`}>
+                          <div className={`w-4 h-4 rounded-md border flex items-center justify-center transition-all ${selectedMethods.includes(m.id) ? 'bg-purple-500 border-purple-500' : 'border-slate-700'}`}>
+                            {selectedMethods.includes(m.id) && <Check size={10} className="text-white" />}
+                          </div>
+                          {m.name}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </aside>
+
+        {/* Main Workspace */}
+        <main className="flex-1 overflow-y-auto p-6 md:p-12 custom-scrollbar bg-[radial-gradient(circle_at_top_right,_#101025_0%,_#020208_100%)] print:bg-white">
+          <div className="max-w-5xl mx-auto space-y-12">
+            
+            {/* Elegant Input Area */}
+            <section className="relative group print:hidden">
+              <div className="absolute -inset-1 bg-gradient-to-r from-purple-600 to-cyan-600 rounded-3xl blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
+              <div className="relative bg-slate-900/60 backdrop-blur-xl border border-white/10 rounded-3xl p-2">
+                <textarea 
+                  value={inputText} onChange={(e) => setInputText(e.target.value)}
+                  placeholder="הזן את הטקסט או הנושא לניתוח עומק..."
+                  className="w-full h-48 bg-transparent p-6 text-xl font-light text-slate-100 focus:outline-none placeholder:text-slate-700 resize-none"
+                />
+                <div className="flex items-center justify-between p-4 bg-black/40 rounded-2xl border-t border-white/5">
+                  <div className="flex items-center gap-3 text-slate-500 px-4">
+                    <Activity size={16} />
+                    <span className="text-[10px] font-mono uppercase tracking-widest">{selectedMethods.length} Methods active</span>
+                  </div>
+                  <button 
+                    onClick={handleAnalyze} disabled={loading || !inputText || selectedMethods.length === 0}
+                    className="px-10 py-4 bg-gradient-to-r from-purple-600 via-indigo-600 to-cyan-600 rounded-xl text-white font-black tracking-tighter hover:shadow-[0_0_30px_rgba(124,58,237,0.4)] disabled:opacity-30 transition-all active:scale-95 flex items-center gap-3"
+                  >
+                    {loading ? <Loader2 className="animate-spin" /> : <Zap size={18} className="fill-white" />}
+                    נתח עכשיו
+                  </button>
+                </div>
+              </div>
+            </section>
+
+            {/* Analysis Feed */}
+            <div className="space-y-10">
+              {loading ? (
+                <div className="py-32 flex flex-col items-center gap-6">
+                  <div className="relative">
+                    <div className="w-24 h-24 rounded-full border-4 border-purple-500/10 border-t-purple-500 animate-spin"></div>
+                    <Hexagon className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-cyan-400 animate-pulse" size={32} />
+                  </div>
+                  <p className="text-slate-500 font-mono tracking-[0.3em] uppercase animate-pulse">Processing Holistic Matrix...</p>
+                </div>
+              ) : analysisData ? (
+                <>
+                  <div className="hidden print:block text-center border-b-2 border-black pb-8 mb-12">
+                    <h1 className="text-4xl font-black text-black">HolisView Analysis Report</h1>
+                    <p className="text-gray-500 mt-2">v{VERSION} • Holistic Intelligence Engine</p>
+                  </div>
+
+                  {analysisData.map((seg, i) => <ResultCard key={i} segment={seg} />)}
+
+                  {/* Essence Cards Grid */}
+                  {cardsData && (
+                    <div className="mt-20 space-y-10 print:break-before-page">
+                      <div className="flex flex-col items-center gap-3">
+                        <div className="h-px w-32 bg-gradient-to-r from-transparent via-amber-500 to-transparent"></div>
+                        <h2 className="text-3xl font-black text-center bg-gradient-to-b from-white to-slate-500 bg-clip-text text-transparent">רשת המהויות: הלכה למעשה</h2>
+                        <div className="h-px w-32 bg-gradient-to-r from-transparent via-amber-500 to-transparent"></div>
+                      </div>
+                      
+                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-20">
+                        {cardsData.map((c, i) => <div key={i} className="aspect-[3/4]"><EssenceCard card={c} /></div>)}
+                      </div>
+                    </div>
+                  )}
+                </>
+              ) : (
+                <div className="py-40 flex flex-col items-center text-slate-700 opacity-20 select-none">
+                  <Hexagon size={120} strokeWidth={0.5} className="mb-6" />
+                  <p className="text-xl font-light">ממתין לפקודת ניתוח...</p>
+                </div>
+              )}
+            </div>
+          </div>
+        </main>
+      </div>
+
+      <style jsx global>{`
+        @keyframes spin-slow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        .animate-spin-slow { animation: spin-slow 12s linear infinite; }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.05); border-radius: 10px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.1); }
+        @media print {
+          @page { size: A4; margin: 1cm; }
+          body { background: white !important; }
+          .print\:hidden { display: none !important; }
+        }
+      `}</style>
     </div>
   );
 };
