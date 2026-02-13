@@ -1,3 +1,9 @@
+
+- https://ai.studio/apps/drive/1rTnbyvD36HjviCEtyVyuFAiwrRHHYsl6?fullscreenApplet=true
+- <img width="635" height="1038" alt="image" src="https://github.com/user-attachments/assets/258bf0e2-2dbc-467a-acf9-fbed2f355c9d" />
+
+---
+
 # שיטות התבוננות והשקפות ✨
 
 <img width="1440" height="23" alt="image" src="https://github.com/user-attachments/assets/70de0af5-9684-4294-a014-2c2b0cc66731" />
