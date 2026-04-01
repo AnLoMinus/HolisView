@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="he">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>פרד"ס - ארבעת רמות ההבנה</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+
+            .print-card,
+            .print-card * {
+                visibility: visible;
+            }
+
+            .print-card {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 7cm;
+                height: 10cm;
+                border: 1px solid black;
+                padding: 10px;
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>פרד"ס - ארבעת רמות ההבנה</h1>
+
+        <div class="navigation-links">
+            <a href="פשט.html" class="nav-link">פשט</a> |
+            <a href="רמז.html" class="nav-link">רמז</a> |
+            <a href="דרש.html" class="nav-link">דרש</a> |
+            <a href="סוד.html" class="nav-link">סוד</a>
+        </div>
+
+        <div class="elements-grid">
+            <div class="element-card" data-element="פשט">
+                <h2>פשט</h2>
+                <p>הרמה הפשוטה והמילולית</p>
+                <button class="learn-more" data-modal="פשט">למד עוד</button>
+                <a href="פשט.html" class="full-doc-link">למסמך המלא</a>
+            </div>
+
+            <div class="element-card" data-element="רמז">
+                <h2>רמז</h2>
+                <p>הרמה האלגורית והסמלית</p>
+                <button class="learn-more" data-modal="רמז">למד עוד</button>
+                <a href="רמז.html" class="full-doc-link">למסמך המלא</a>
+            </div>
+
+            <div class="element-card" data-element="דרש">
+                <h2>דרש</h2>
+                <p>הרמה הדרשנית והמוסרית</p>
+                <button class="learn-more" data-modal="דרש">למד עוד</button>
+                <a href="דרש.html" class="full-doc-link">למסמך המלא</a>
+            </div>
+
+            <div class="element-card" data-element="סוד">
+                <h2>סוד</h2>
+                <p>הרמה המיסטית והנסתרת</p>
+                <button class="learn-more" data-modal="סוד">למד עוד</button>
+                <a href="סוד.html" class="full-doc-link">למסמך המלא</a>
+            </div>
+        </div>
+
+        <div class="print-cards-section">
+            <h2>כרטיסי הדפסה</h2>
+
+            <div class="print-card-container">
+                <div class="print-card peshat-card">
+                    <div class="card-front">
+                        <div class="card-header">
+                            <h2>פשט</h2>
+                            <div class="card-icon">📖</div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-description">הבנה בסיסית ופשוטה של הטקסט</div>
+                            <ul class="card-features">
+                                <li>הבנת המשמעות המילולית</li>
+                                <li>פירוש פשוט וברור</li>
+                                <li>התמקדות בפשט הכתוב</li>
+                            </ul>
+                        </div>
+                        <div class="card-footer">גודל כרטיס: 7x10 ס"מ</div>
+                    </div>
+                    <div class="card-back peshat-back">
+                        <div class="back-content">
+                            <h3>פשט</h3>
+                            <p>המשמעות הפשוטה והמילולית של הטקסט</p>
+                            <div class="back-icon">📖</div>
+                        </div>
+                    </div>
+                </div>
+                <button class="print-button" onclick="printCard('פשט')">הדפס כרטיס פשט</button>
+            </div>
+
+            <div class="print-card-container">
+                <div class="print-card remez-card">
+                    <div class="card-front">
+                        <div class="card-header">
+                            <h2>רמז</h2>
+                            <div class="card-icon">🔍</div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-description">חיפוש רמזים וסימנים בטקסט</div>
+                            <ul class="card-features">
+                                <li>זיהוי רמזים נסתרים</li>
+                                <li>פירוש אלגורי</li>
+                                <li>הבנת משמעויות עמוקות</li>
+                            </ul>
+                        </div>
+                        <div class="card-footer">גודל כרטיס: 7x10 ס"מ</div>
+                    </div>
+                    <div class="card-back remez-back">
+                        <div class="back-content">
+                            <h3>רמז</h3>
+                            <p>המשמעות הרמוזה והסמלית של הטקסט</p>
+                            <div class="back-icon">🔍</div>
+                        </div>
+                    </div>
+                </div>
+                <button class="print-button" onclick="printCard('רמז')">הדפס כרטיס רמז</button>
+            </div>
+
+            <div class="print-card-container">
+                <div class="print-card drash-card">
+                    <div class="card-front">
+                        <div class="card-header">
+                            <h2>דרש</h2>
+                            <div class="card-icon">📚</div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-description">פירוש מוסרי והלכתי</div>
+                            <ul class="card-features">
+                                <li>הפקת לקחים מוסריים</li>
+                                <li>יישום הלכתי</li>
+                                <li>הבנת המשמעות המעשית</li>
+                            </ul>
+                        </div>
+                        <div class="card-footer">גודל כרטיס: 7x10 ס"מ</div>
+                    </div>
+                    <div class="card-back drash-back">
+                        <div class="back-content">
+                            <h3>דרש</h3>
+                            <p>המשמעות המוסרית וההלכתית של הטקסט</p>
+                            <div class="back-icon">📚</div>
+                        </div>
+                    </div>
+                </div>
+                <button class="print-button" onclick="printCard('דרש')">הדפס כרטיס דרש</button>
+            </div>
+
+            <div class="print-card-container">
+                <div class="print-card sod-card">
+                    <div class="card-front">
+                        <div class="card-header">
+                            <h2>סוד</h2>
+                            <div class="card-icon">🔮</div>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-description">הבנת המשמעויות הנסתרות</div>
+                            <ul class="card-features">
+                                <li>פירוש קבלי</li>
+                                <li>הבנת סודות התורה</li>
+                                <li>העמקה במיסטיקה</li>
+                            </ul>
+                        </div>
+                        <div class="card-footer">גודל כרטיס: 7x10 ס"מ</div>
+                    </div>
+                    <div class="card-back sod-back">
+                        <div class="back-content">
+                            <h3>סוד</h3>
+                            <p>המשמעות המיסטית והנסתרת של הטקסט</p>
+                            <div class="back-icon">🔮</div>
+                        </div>
+                    </div>
+                </div>
+                <button class="print-button" onclick="printCard('סוד')">הדפס כרטיס סוד</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-container"></div>
+    <script src="modals.js"></script>
+    <script>
+        function printCard(element) {
+            const cards = document.querySelectorAll('.print-card-container');
+            cards.forEach(card => {
+                if (card.querySelector(`.${element}-card`)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            window.print();
+            cards.forEach(card => {
+                card.style.display = 'block';
+            });
+        }
+    </script>
+</body>
+
+</html>
