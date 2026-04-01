@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>רוח - ארבעת היסודות</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700&display=swap');
+
+        :root {
+            --primary-color: #95a5a6;
+            --secondary-color: #7f8c8d;
+            --accent-color: #bdc3c7;
+            --shadow-color: rgba(149, 165, 166, 0.2);
+            --gradient-start: #ecf0f1;
+            --gradient-end: #f5f6fa;
+        }
+
+        body {
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+            font-family: 'Heebo', Arial, sans-serif;
+        }
+
+        .card {
+            width: 21cm;
+            height: 29.7cm;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15),
+                inset 0 0 100px var(--shadow-color);
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+        }
+
+        .card::after {
+            content: '💨';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 400px;
+            opacity: 0.1;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2),
+                inset 0 0 100px var(--shadow-color);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 20px solid transparent;
+            border-image: linear-gradient(45deg, var(--primary-color), var(--secondary-color)) 1;
+            border-radius: 15px;
+            pointer-events: none;
+            animation: borderFlow 5s infinite linear;
+        }
+
+        @keyframes borderFlow {
+            0% {
+                border-image: linear-gradient(45deg, var(--primary-color), var(--secondary-color)) 1;
+            }
+
+            50% {
+                border-image: linear-gradient(225deg, var(--primary-color), var(--secondary-color)) 1;
+            }
+
+            100% {
+                border-image: linear-gradient(405deg, var(--primary-color), var(--secondary-color)) 1;
+            }
+        }
+
+        .header {
+            height: 60px;
+            margin: 40px;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            border-radius: 10px;
+            box-shadow: 0 4px 15px var(--shadow-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 28px;
+            font-weight: bold;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(to right,
+                    rgba(255, 255, 255, 0) 0%,
+                    rgba(255, 255, 255, 0.3) 50%,
+                    rgba(255, 255, 255, 0) 100%);
+            transform: rotate(45deg);
+            animation: windFlow 8s infinite linear;
+        }
+
+        @keyframes windFlow {
+            0% {
+                transform: translateX(-100%) rotate(45deg);
+            }
+
+            100% {
+                transform: translateX(100%) rotate(45deg);
+            }
+        }
+
+        .image-area {
+            flex: 0.7;
+            margin: 0 40px;
+            background: linear-gradient(to bottom right, var(--gradient-start), var(--gradient-end));
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 15px var(--shadow-color);
+            border: 2px solid var(--primary-color);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 20px;
+        }
+
+        .image-area:hover {
+            transform: scale(1.005);
+            box-shadow: 0 6px 20px var(--shadow-color);
+        }
+
+        .image-placeholder {
+            font-size: 64px;
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .instructions {
+            text-align: right;
+            width: 100%;
+            max-width: 600px;
+            color: var(--secondary-color);
+        }
+
+        .instructions h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+
+        .instructions ol {
+            margin: 0;
+            padding-right: 20px;
+        }
+
+        .instructions li {
+            margin-bottom: 10px;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .divider {
+            height: 40px;
+            margin: 20px 40px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 10px;
+            box-shadow: 0 4px 15px var(--shadow-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .text-area {
+            margin: 0 40px 40px 40px;
+            height: auto;
+            min-height: 200px;
+            background: linear-gradient(to bottom right, var(--gradient-start), var(--gradient-end));
+            border-radius: 15px;
+            position: relative;
+            box-shadow: 0 4px 15px var(--shadow-color);
+            border: 2px solid var(--primary-color);
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .text-area:hover {
+            box-shadow: 0 6px 20px var(--shadow-color);
+        }
+
+        .text-content {
+            position: relative;
+            z-index: 1;
+            color: var(--primary-color);
+            font-size: 18px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <div class="header">רוח - ניתוח רעיוני ומופשט</div>
+
+        <div class="image-area">
+            <div class="image-placeholder">💨</div>
+            <div class="instructions">
+                <h3>הנחיות לניתוח רעיוני:</h3>
+                <ol>
+                    <li>התבונן בנושא מנקודת מבט מופשטת ורעיונית</li>
+                    <li>זהה את העקרונות והרעיונות המרכזיים</li>
+                    <li>חפש קשרים והקבלות לרעיונות דומים</li>
+                    <li>נתח את המשמעות הפילוסופית והרוחנית</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="divider">שאלות מנחות לניתוח</div>
+
+        <div class="text-area">
+            <div class="text-content">
+                <p>1. מהם העקרונות המופשטים העומדים בבסיס הנושא?</p>
+                <p>2. איך הרעיון מתקשר לתפיסות פילוסופיות רחבות יותר?</p>
+                <p>3. מהי המשמעות הרוחנית העמוקה של הנושא?</p>
+                <p>4. אילו תובנות אוניברסליות ניתן להפיק?</p>
+                <p>5. כיצד הרעיון משתלב במערכת החשיבה הכללית?</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
